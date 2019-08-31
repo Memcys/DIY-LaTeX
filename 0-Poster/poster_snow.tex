@@ -1,0 +1,280 @@
+%%%% Modefied by memcys@github.com on 2019/09/31
+%%%% Based on Better Poster latex template example v1.0 (2019/04/04)
+%%%% GNU General Public License v3.0
+%%%% Rafael Bailo
+%%%% https://github.com/rafaelbailo/betterposter-latex-template
+%%%% 
+%%%% Original design from Mike Morrison
+%%%% https://twitter.com/mikemorrison
+
+\documentclass[a0paper,fleqn]{betterposter}
+\usepackage[scheme=plain]{ctex}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{tcolorbox}
+\usepackage{multicol}
+
+\usetikzlibrary{mindmap,calendar,shadows,fadings,backgrounds,
+decorations.footprints,shadings,%
+decorations.fractals,%
+decorations.pathmorphing,%
+}
+
+% Please add additional folder addresses for images below
+\graphicspath{{./},%{another-directory}
+}
+
+\newcommand{\Time}{10:00--10:30 AM, 2019 年 9 月 8 日，周日}
+\newcommand{\place}{玉泉图书馆二层会议室}
+
+%%%% Uncomment the following commands to customise the format
+
+% Setting the width of columns
+% Left column
+\setlength{\leftbarwidth}{0\paperwidth}
+% Right column
+\setlength{\rightbarwidth}{0.2\paperwidth}
+
+%% Setting the column margins
+% Horizontal margin
+\setlength{\columnmarginvertical}{0.05\paperheight}
+% Vertical margin
+\setlength{\columnmarginhorizontal}{0.02\paperheight}
+% Horizontal margin for the main column
+\setlength{\maincolumnmarginvertical}{0.\paperheight}
+% Vertical margin for the main column
+\setlength{\maincolumnmarginhorizontal}{0.\paperheight}
+
+%% Changing font sizes
+% Text font
+\renewcommand{\fontsizestandard}{\fontsize{58}{65} \selectfont}
+% Main column font
+\renewcommand{\fontsizemain}{\fontsize{68}{80} \selectfont}
+% Title font
+\renewcommand{\fontsizetitle}{\fontsize{70}{110} \selectfont}
+% Author font
+%\renewcommand{\fontsizeauthor}{\fontsize{28}{35} \selectfont}
+% Section font
+\renewcommand{\fontsizesection}{\fontsize{60}{75} \selectfont}
+
+%% Changing font sizes for a specific text segment
+% Place the text inside brackets:
+% {\fontsize{28}{35} \selectfont \LaTeX}
+
+%% Changing colours
+% Background of side columns
+% \renewcommand{\columnbackgroundcolor}{theory}
+% Font of side columns
+% \renewcommand{\columnfontcolor}{imperialblue}
+% Background of main column
+% \renewcommand{\maincolumnbackgroundcolor}{empirical}
+% Font of main column
+% \renewcommand{\maincolumnfontcolor}{gray}
+
+\newcommand{\mainbgcolor}{green!50!black!50}
+\newcommand{\maincolumnwidth}{\paperwidth - \rightbarwidth - \leftbarwidth}
+
+\renewcommand{\maincolumnbackgroundcolor}{\mainbgcolor}
+\renewcommand{\maincolumnfontcolor}{black}
+\renewcommand{\columnbackgroundcolor}{imperialblue}
+\renewcommand{\columnfontcolor}{white}
+
+\begin{document}	
+\betterposter{
+%%%%%%%% MAIN COLUMN
+\maincolumn{
+% TikZ
+\begin{tikzpicture}[%
+  block/.style={
+      rectangle,
+      thick,
+      fill=white,
+      align=center,
+  },
+  title/.style={
+    rectangle,
+    very thick,
+    fill=white,
+    align=center,
+  },
+]
+  % Background
+  \coordinate (front) at (0,-.42\paperheight);
+  \coordinate (horizon) at (0,-.3\paperheight);
+  \coordinate (bottom) at (0,-.5\paperheight);
+  \coordinate (sky) at (0,.5\paperheight);
+  \coordinate (left) at (-.5\maincolumnwidth,0);
+  \coordinate (right) at (.5\maincolumnwidth,0);
+
+  \shade [bottom color=blue!30!black!10,top color=blue!30!black!50]
+    ([yshift=-1cm]horizon -|  left) rectangle (sky -| right);
+  \shade [bottom color=black!70!green!25,top color=black!70!green!10]
+    (front -| left) -- (horizon -| left)
+    decorate [decoration={random steps,amplitude=25pt}] { -- (horizon -| right) }
+    -- (front -| right) -- cycle;
+  \shade [top color=black!70!green!25,bottom color=black!25]
+    (front -| left) -- (horizon -| left)
+    decorate [decoration={random steps,amplitude=25pt}] { -- (horizon -| right) }
+    -- (front -| right) -- cycle;
+  \shade [top color=black!70!green!25,bottom color=black!25]
+    ([yshift=-5mm-1pt]front -| left) rectangle ([yshift=1pt]front -| right);
+  \fill [black!25] (bottom -| left) rectangle ([yshift=-5mm]front -| right);
+
+  % Snow
+  \foreach \i in {0.05,0.1,...,3}
+    \fill [white,decoration=Koch snowflake,opacity=.73]
+          [shift=(horizon),shift={(rand*75,rnd*55)},scale=\i]
+          [double copy shadow={opacity=0.2,shadow xshift=-5pt,shadow
+            yshift=15*\i pt,fill=blue!5,draw=none}]
+      decorate {
+        decorate {
+          decorate {
+            (0,0) -- ++(60:1) -- ++(-60:1) -- cycle
+          }
+        }
+      };
+
+  % Mindmap
+  \begin{pgflowlevelscope}{\pgftransformscale{4.5}}
+    \begin{scope}[
+      xshift=-7.ex,
+      yshift=2.5ex,
+      mindmap,every node/.style={concept, circular drop shadow={%path fading={circle with fuzzy edge 5 percent}
+      shadow xshift=.15ex, shadow yshift=-.2ex}, execute at begin node=\hskip0pt},
+      root concept/.append style={
+        concept color=black,
+        fill=blue!5!white,line width=.16ex,
+        text=black,%font=\scshape
+        },
+      text=white,
+      elements/.style={concept color=red!50!black,faded/.style={concept color=red!50!black!50}},
+      math/.style={concept color=blue,faded/.style={concept color=blue!50}},
+      debug/.style={concept color=orange,faded/.style={concept color=orange!50}},
+      tikz/.style={concept color=green!50!black,faded/.style={concept color=green!50!black!50}},
+      chinese/.style={concept color=green!50!blue,faded/.style={concept color=green!50!blue!50}},
+      ref/.style={concept color=red!50!blue,faded/.style={concept color=red!50!blue!50}},
+      grow cyclic,
+      level 1/.append style={%level distance=4.5cm,
+      sibling angle=60,%font=\scshape
+      },
+      % level 2/.append style={level distance=3cm,sibling angle=45,font=\scriptsize
+      %}
+      ]
+    \node[root concept] (LaTeX) %at (center) 
+      {{\Huge\LaTeX} \\{\Large 讨论主题}}% root
+      child[math] {node[yshift=-1cm] (Math) {公式定理}
+        child {node (AMS) {数学模式、AMS 宏集}}
+        child {node(Line) {行内、行间及多行公式} }
+        child[faded] {node(Sep) {公式间距、字体控制、定理环境} }
+        %child {node(Key Problems) {KeyProblems} }
+        }
+      child[tikz, faded] {node[yshift=-1cm] (TikZ) {Ti\emph{k}Z \\绘图}}
+      child[elements] {node[xshift=1cm,yshift=-1cm]  (Elements) {文档元素}
+        child {node(FigTab) {表格和图片} }
+        child {node(Sec) {章节、目录、标题、边脚注} }
+        child {node(List) {列表、引用、摘要环境} }
+        child {node(Cross ref) {交叉引用} }
+        child[faded] {node(Box) {盒子、浮动体} }
+        %child {node(Programming in Logic) {Programmingin Logic} }
+        }
+      child[ref] {node[yshift=0cm] (Ref) {文献索引}
+        child {node(bib) {bib 条目的获取、自动生成} }
+        child {node(biblatex) {biblatex/natbib} }
+        child[faded] {node(Index) {索引} }
+        %child[faded] {node(Describing Complexity) {DescribingComplexity} }
+        }
+      child[chinese] {node[yshift=0cm] (Chinese) {中文排版}}
+      child[debug] {node[yshift=0cm] (Debug) {简单排错和寻求帮助}
+        child[faded] {node (Log) {编译日志}}
+        child {node (MWE) {Minimal Working Example}}
+        child {node (Doc) {宏包文档阅读}}
+        child {node (Community) {\LaTeX 论坛社区群组}}
+      };
+  \end{scope}
+  \end{pgflowlevelscope}
+
+  \LARGE
+  \calendar[day list downward,
+            month text=\textcolor{blue!80!white}{\%mt}\ \%y0,
+            month yshift=1.5em,
+            name=cal,
+            at={(-.85\textwidth,.5\textheight-3cm)},
+            dates=2019-09-01 to 2019-11-last]
+    if (Sunday)
+      [blue]
+    else [black!30]
+    if (day of month=1) {
+      \node at (0pt,1.5em)[anchor=base west][black] {\huge\tikzmonthtext};
+    };
+
+    \node [anchor=west] at (cal-2019-09-08.east) {
+    {\begin{tcolorbox}[leftrule=.3cm,width=10cm,
+      colback=brown!37!white,colframe=green!50!blue!50]
+      \textbf{UCAS \LaTeX er 主题讨论邀请会}
+    \end{tcolorbox}}
+    };
+
+    \draw [red] (cal-2019-09-08) circle (12pt);
+
+  \node[xshift=-32cm,yshift=-31cm] (QR base) {};
+
+  % QR Code pictures
+  \node[block,xshift=-30cm,] (Invitation) at (QR base) {\includegraphics{qr-text}};
+  \node[block,xshift=-10cm,] (QQ) at (QR base) {\includegraphics[width=6.3cm]{qr-qq}};
+  \node[block,xshift=10cm,] (WeChat) at (QR base) {\includegraphics[width=6.3cm]{qr-wechat}};
+  \node[block,xshift=30cm,] (GitHub) at (QR base) {\includegraphics{qr-url}};
+
+  \node [title,anchor=south] at (Invitation.north) {活动邀请函};
+  \node [title,anchor=south] at (QQ.north) {活动 QQ 群};
+  \node [title,anchor=south] at (WeChat.north) {活动微信群};
+  \node [title,anchor=south] at (GitHub.north) {海报源码};
+
+  % Host
+  \node [very thick,scale=2,yshift=-3cm] at (QR base) {主办：$\qquad$ 玉泉图书馆 $\qquad$ 信息达人社};
+  \node [very thick,scale=2,yshift=-4cm] at (QR base) {\color{blue!50!black!50}Version: 31/09/2019 Snow A0paper};
+\end{tikzpicture}
+}{
+%%%% Bottom space
+% Blank
+}
+}{
+%%%%%%%% LEFT COLUMN
+% Blank
+}{
+%%%%%%%% RIGHT COLUMN
+\title{%
+\begin{tabular}{rp{.35\linewidth}}
+UCAS & \multirow{3}{*}{\includegraphics[width=.6\textwidth]{invitation.pdf}} \\%[.1\baselineskip]
+\LaTeX er\\[.2\baselineskip]
+主题讨论 \\ %\\[\baselineskip]
+% · 
+% 邀请会
+\end{tabular}
+}
+
+\section{\LaTeX 使用场景}
+\begin{multicols}{2}
+\begin{itemize}
+% \item arXiv/期刊/会议论文排版
+\item %毕业
+论文排版
+\item Beamer
+\item 课程作业
+\item 建模报告
+\item 书籍排版
+\item 简历制作
+\item 海报制作
+\item ……
+\end{itemize}
+\end{multicols}
+
+\section{邀请会详情}
+\begin{tabular}{l@{\quad}p{.6\textwidth}}
+对象 & (U)CAS 学生\\ & \textbf{无视}基础 \\[1ex]
+时间 & 10:00--10:45\\ & 9 月 8 日 \\ & 周日 \\[1ex]
+地点 & 玉泉图书馆\\ & 二层会议室 \\[1ex]
+建议 & 携带可编译\\ & \LaTeX 的工具 \\[1ex]
+提示 & 到场即可\\ & 领取小礼品 \\
+\end{tabular}
+}
+\end{document}

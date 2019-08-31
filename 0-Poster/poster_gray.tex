@@ -1,0 +1,362 @@
+%%%% Modefied by memcys@github.com on 2019/09/30
+%%%% Better Poster latex template example v1.0 (2019/04/04)
+%%%% GNU General Public License v3.0
+%%%% Rafael Bailo
+%%%% https://github.com/rafaelbailo/betterposter-latex-template
+%%%% 
+%%%% Original design from Mike Morrison
+%%%% https://twitter.com/mikemorrison
+
+\documentclass[a0paper,fleqn]{betterposter}
+\usepackage[scheme=plain]{ctex}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{tcolorbox}
+\usepackage{multicol}
+
+\usetikzlibrary{mindmap,calendar,shadows,fadings,backgrounds}
+
+\graphicspath{{./},}
+
+\setCJKmainfont{Noto Sans CJK SC}
+% \ctexset{
+%     fontset=adobe
+% }
+
+%\newcommand{\sub1}{%
+%UCAS \LaTeX er 主题讨论邀请会%
+%}
+%\newcommand{\sub2}{DIY \LaTeX}
+\newcommand{\Time}{10:00--10:30 AM, 2019 年 9 月 7 日，周六}
+\newcommand{\place}{玉泉图书馆二层会议室}
+
+%%%% Uncomment the following commands to customise the format
+
+% Setting the width of columns
+% Left column
+\setlength{\leftbarwidth}{0\paperwidth}
+% Right column
+\setlength{\rightbarwidth}{0.2\paperwidth}
+
+%% Setting the column margins
+% Horizontal margin
+\setlength{\columnmarginvertical}{0.05\paperheight}
+% Vertical margin
+\setlength{\columnmarginhorizontal}{0.02\paperheight}
+% Horizontal margin for the main column
+\setlength{\maincolumnmarginvertical}{0.05\paperheight}
+% Vertical margin for the main column
+\setlength{\maincolumnmarginhorizontal}{0.\paperheight}
+
+%% Changing font sizes
+% Text font
+\renewcommand{\fontsizestandard}{\fontsize{58}{65} \selectfont}
+% Main column font
+\renewcommand{\fontsizemain}{\fontsize{68}{80} \selectfont}
+% Title font
+\renewcommand{\fontsizetitle}{\fontsize{70}{110} \selectfont}
+% Author font
+%\renewcommand{\fontsizeauthor}{\fontsize{28}{35} \selectfont}
+% Section font
+\renewcommand{\fontsizesection}{\fontsize{60}{75} \selectfont}
+
+%% Changing font sizes for a specific text segment
+% Place the text inside brackets:
+% {\fontsize{28}{35} \selectfont \LaTeX}
+
+%% Changing colours
+% Background of side columns
+% \renewcommand{\columnbackgroundcolor}{theory}
+% Font of side columns
+% \renewcommand{\columnfontcolor}{gray}
+% Background of main column
+% \renewcommand{\maincolumnbackgroundcolor}{empirical}
+% Font of main column
+% \renewcommand{\maincolumnfontcolor}{gray}
+
+\newcommand{\mainbgcolor}{black!37}
+
+\renewcommand{\maincolumnbackgroundcolor}{\mainbgcolor}
+\renewcommand{\maincolumnfontcolor}{black}
+\renewcommand{\columnbackgroundcolor}{theory}
+\renewcommand{\columnfontcolor}{white}
+
+\begin{document}	
+\betterposter{
+%%%%%%%% MAIN COLUMN
+
+\maincolumn{
+%%%% Main space
+% \begin{center}
+% \title{%
+% %致每一位 UCAS \LaTeX er 的
+% %邀请函
+% 候选主题
+% }
+% \end{center}
+
+% \vbox{}
+
+% TikZ
+% \pgfdeclarelayer{background}
+% \pgfsetlayers{background,main}
+\noindent
+% \scalebox{2.5}{
+\begin{tikzpicture}[
+  framed,
+  background rectangle/.style={fill=\mainbgcolor},
+  % background top/.style={draw=black,line width=3ex},
+  block/.style={
+      rectangle,
+      thick,
+      fill=white,
+      align=center,
+  },
+  title/.style={
+    rectangle,
+    very thick,
+    fill=white,
+    align=center,
+},
+]
+\begin{pgflowlevelscope}{\pgftransformscale{4.5}}
+  \begin{scope}[
+    yshift=3ex,
+    mindmap,every node/.style={concept, circular drop shadow={%path fading={circle with fuzzy edge 5 percent}
+    shadow xshift=.15ex, shadow yshift=-.2ex}, execute at begin node=\hskip0pt},
+    root concept/.append style={
+      concept color=black,
+      fill=black!18!white,line width=.16ex,
+      text=black,%font=\scshape
+      },
+    text=white,
+    elements/.style={concept color=red!50!black,faded/.style={concept color=red!50!black!50}},
+    math/.style={concept color=blue,faded/.style={concept color=blue!50}},
+    debug/.style={concept color=orange,faded/.style={concept color=orange!63}},
+    tikz/.style={concept color=green!50!black,faded/.style={concept color=green!50!black!50}},
+    chinese/.style={concept color=green!50!blue,faded/.style={concept color=green!50!blue!50}},
+    ref/.style={concept color=red!50!blue,faded/.style={concept color=red!50!blue!50}},
+    grow cyclic,
+    level 1/.append style={%level distance=4.5cm,
+    sibling angle=60,%font=\scshape
+    },
+    % level 2/.append style={level distance=3cm,sibling angle=45,font=\scriptsize
+    %}
+    ]
+  \node[root concept] (LaTeX) {{\Huge\LaTeX} \\{\Large 讨论主题}}% root
+    child[math] {node[yshift=-1cm] (Math) {公式定理}
+      child {node (AMS) {数学模式、AMS 宏集}}
+      child {node(Line) {行内、行间及多行公式} }
+      child[faded] {node(Sep) {公式间距、字体控制、定理环境} }
+      %child {node(Key Problems) {KeyProblems} }
+      }
+    child[tikz, faded] {node[yshift=-1cm] (TikZ) {Ti\emph{k}Z \\绘图}}
+    child[elements] {node[xshift=1cm,yshift=-1cm]  (Elements) {文档元素}
+      child {node(FigTab) {表格和图片} }
+      child {node(Sec) {章节、目录、标题、边脚注} }
+      child {node(List) {列表、引用、摘要环境} }
+      child {node(Cross ref) {交叉引用} }
+      child[faded] {node(Box) {盒子、浮动体} }
+      %child {node(Programming in Logic) {Programmingin Logic} }
+      }
+    child[ref] {node[yshift=0cm] (Ref) {文献索引}
+      child {node(bib) {bib 条目的获取、自动生成} }
+      child {node(biblatex) {biblatex/natbib} }
+      child[faded] {node(Index) {索引} }
+      %child[faded] {node(Describing Complexity) {DescribingComplexity} }
+      }
+    child[chinese] {node[yshift=0cm] (Chinese) {中文排版}}
+    child[debug] {node[yshift=0cm] (Debug) {简单排错和寻求帮助}
+      child[faded] {node (Log) {编译日志}}
+      child {node (MWE) {Minimal Working Example}}
+      child {node (Doc) {宏包文档阅读}}
+      child {node (Community) {\LaTeX 论坛社区群组}}
+    };
+\end{scope}
+
+\end{pgflowlevelscope}
+
+  \LARGE
+  \calendar[day list downward,
+            month text=\textcolor{blue!80!white}{\%mt}\ \%y0,
+            month yshift=1.5em,
+            name=cal,
+            at={(-.5\textwidth-5mm,.5\textheight-1cm)},
+            dates=2019-09-01 to 2019-11-last]
+    % \node at (0pt,1.5em)[anchor=base west][black] {\huge\tikzmonthtext}
+    if (Sunday)
+      [red!80!white]
+    % if (at least=2019-09-02, Sunday)
+    %   [black!25]
+    else [black!15]
+    if (day of month=1) {
+      \node at (0pt,1.5em)[anchor=base west][black] {\huge\tikzmonthtext};
+    };
+
+    \node [anchor=west] at (cal-2019-09-08.east) {%\textcolor{blue}
+    {\begin{tcolorbox}[leftrule=.3cm,width=10cm,
+      colback=brown!37!white,colframe=green!50!blue!50]
+      \textbf{UCAS \LaTeX er 主题讨论邀请会}
+    \end{tcolorbox}}
+    };
+
+    \draw [red] (cal-2019-09-08) circle (12pt);
+
+  \node[xshift=0cm,yshift=-25cm] (QR base) {};
+
+    % QR Code pictures
+  \node[block,xshift=-30cm,] (Invitation) at (QR base) {\includegraphics{qr-text}};
+  \node[block,xshift=-10cm,] (QQ) at (QR base) {\includegraphics[width=6.3cm]{qr-qq}};
+  \node[block,xshift=10cm,] (WeChat) at (QR base) {\includegraphics[width=6.3cm]{qr-wechat}};
+  \node[block,xshift=30cm,] (GitHub) at (QR base) {\includegraphics{qr-url}};
+
+  \node [title,anchor=south] at (Invitation.north) {活动邀请函};
+  \node [title,anchor=south] at (QQ.north) {活动 QQ 群};
+  \node [title,anchor=south] at (WeChat.north) {活动微信群};
+  \node [title,anchor=south] at (GitHub.north) {海报源码};
+
+  % Host
+  \node [very thick,scale=2,yshift=-3cm] at (QR base) {主办：$\qquad$ 玉泉图书馆 $\qquad$ 信息达人社};
+  \node [very thick,scale=2,yshift=-4cm] at (QR base) {\color{blue}Version: 31/09/2019 Gray A0paper};
+
+\end{tikzpicture}
+% }
+
+
+% \textbf{UCAS \LaTeX er},\\[.1\baselineskip]
+
+% 你好！我们诚挚地邀请你参加本次%“\textbf{UCAS \LaTeX er 主题讨论
+% 邀请会%}”
+% 及后续 ``\textbf{DIY \LaTeX}'' 的系列活动。\\[.1\baselineskip]
+
+% 邀请会将决定后续系列活动的%时间、地点、主题、报告人等
+% 执行细节。后续活动拟采取\textbf{轮流报告机制}%，
+% %即分配（给定或自选）主题到多个参与者，每次活动一个报告主题的机制
+% 。\\[.1\baselineskip]
+
+% %我们预期将根据各主题报告整理出一份面向国科大学生的 \LaTeX 入门或进阶使用的文档 ``\textbf{UCAS \LaTeX User Guide}'', 并在网络上公开。\\[.1\baselineskip]
+
+% 此次邀请对象包括但不限于——%日常问候
+% \LaTeX \textbf{高手}、%，初出茅庐的
+% \textbf{新手}，%，抑或无 \LaTeX 写作经验的\textbf{远观者}。%我们都期待您的参与！
+% %只要你对 
+% 及\textbf{无使用经验者}。
+% ``\textbf{DIY \LaTeX}'', % 感兴趣，我们都欢迎你的到来！
+% %需要你的热心参与！\\[.1\baselineskip]
+% 期待每一个你的参与！
+
+% \vbox{}
+
+% % \begin{itemize}
+% % \item 本邀请会
+% \begin{itemize}
+% \item 时间：\Time
+% \item 地点：\place
+% \end{itemize}
+% \item 后续系列活动时间地点待议
+%\begin{itemize}
+%\item 时间：后续每周六 10:00--10:30 AM （待议）
+%\item 地点：玉泉图书馆二层会议室（待议）
+%\end{itemize}
+% \end{itemize}
+
+}{
+%%%% Bottom space
+
+%% QR code
+% \qrcode{img/qrcode-eps-converted-to}{img/smartphoneWhite}{
+% \textbf{Take a picture} to
+% \\download the full paper
+% }
+% Smartphone icon
+% Author: Freepik
+% Retrieved from: https://www.flaticon.com/free-icon/smartphone_65680
+
+%% Compact QR code (comment the previous command and uncomment this one to switch)
+% \compactqrcode{img/qrcode-eps-converted-to}{
+% \textbf{Take a picture} to
+% \\download the full paper
+% % QR code for T
+% }TeX/
+% ~
+% \includegraphics{TeX/rotated-triangle.pdf}
+% ~
+% \includegraphics[page=3]{TeX/rotated-polygons.pdf}
+
+}
+}{
+%%%%%%%% LEFT COLUMN
+% Blank
+}{
+%%%%%%%% RIGHT COLUMN
+
+\title{%
+\begin{tabular}{rp{.35\linewidth}}
+UCAS & \multirow{3}{*}{\includegraphics[width=.6\textwidth]{invitation.pdf}} \\%[.1\baselineskip]
+\LaTeX er\\[.2\baselineskip]
+主题讨论 \\ %\\[\baselineskip]
+% · 
+% \includegraphics[width=.65\ccwd]{TeX/circular_glow.pdf}
+% 邀请会
+\end{tabular}
+}
+%\author{memcys@github.com}
+% \institution{玉泉图书馆二层会议室}
+% \date{2019-09-07}
+
+% \section{候补母主题}
+% %Here is an itemised list:
+% \begin{itemize}
+% \item 中文排版
+% \item 公式定理
+% \item 文档元素
+% \item 文献索引
+% \item TikZ 绘图
+% \item 宏包文档阅读
+% \item 简单排错和提问
+% \item ……
+% \end{itemize}
+%更多母主题及相应子主题将从邀请会得出。
+
+\section{\LaTeX 使用场景}
+\begin{multicols}{2}
+\begin{itemize}
+% \item arXiv/期刊/会议论文排版
+\item %毕业
+论文排版%（图片可放附件 模板使用说明.pdf 的首页截图）
+\item Beamer %（图片可放如 \url{https://hartwork.org/beamer-theme-matrix/all/beamer-default-Copenhagen-0.png}）
+\item 课程作业
+\item 建模报告
+\item 书籍排版
+\item 简历制作
+\item 海报制作
+\item ……
+\end{itemize}
+\end{multicols}
+
+\section{邀请会详情}
+% \begin{flushleft}
+
+\begin{tabular}{l@{\quad}p{.6\textwidth}}
+时间 & 10:00--10:45\\ & 9 月 8 日 \\ & 周日 \\[1ex]
+地点 & 玉泉图书馆\\ & 二层会议室 \\[1ex]
+建议 & 携带可编译\\ & \LaTeX 的工具 \\[1ex]
+提示 & 到场即可\\ & 领取小礼品 \\[5ex] 
+% \end{tabular}
+
+% \vbox{}
+% \\\hline
+% \begin{tabular}{l@{\quad}p{.6\textwidth}}
+主办 & 信息达人社\\
+& 玉泉图书馆
+\end{tabular}
+% \end{flushleft}
+% Some cute ducklings:
+% \begin{center}
+% % Picture of ducklings
+% % Author: Magda Ehlers, https://www.pexels.com/@magda-ehlers-pexels
+% % Retrieved from: https://www.pexels.com/photo/selective-focus-photo-of-flock-of-ducklings-perching-on-gray-concrete-pavement-1300355/
+% \includegraphics[width=\textwidth]{img/ducklings}
+% \end{center}
+}
+\end{document}

@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage[version=latest]{pgf}
+\usepackage{tikz}
+\usepackage[scheme=plain]{ctex}
+
+\usetikzlibrary{
+  shadows,
+}
+
+\usepackage{xxcolor}
+
+\begin{document}
+
+\newbox\mybox
+{
+%   \parindent0pt
+%   \null
+
+  \begin{tikzpicture}
+
+    \def\nodeshadowed[#1]#2;{
+        \node[scale=1,above,#1]{
+            \global\setbox\mybox=\hbox{#2}
+            \copy\mybox};
+        \node[scale=1,above,#1,yscale=-1,
+            scope fading=south,opacity=0.4]{\box\mybox};}
+
+    \nodeshadowed [at={(0,0  )},yslant=0] {\textbf{\textcolor{orange!50!white}{邀请}\textcolor{white}{会}}};
+\end{tikzpicture}
+}
+\end{document}
