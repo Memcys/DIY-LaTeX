@@ -1,5 +1,5 @@
 \documentclass{standalone}
-\usepackage[version=latest]{pgf}
+% \usepackage[version=latest]{pgf}
 \usepackage{tikz}
 \usepackage[scheme=plain]{ctex}
 
@@ -7,25 +7,35 @@
   shadows,
 }
 
-\usepackage{xxcolor}
-
 \begin{document}
 
 \newbox\mybox
 {
-%   \parindent0pt
-%   \null
+  \parindent0pt
+  \null
 
-  \begin{tikzpicture}
-
+  \begin{tikzpicture}[%
+    align=left,%
+    text=white,%
+    fill=black!20,%
+    very thick,%
+    ]
     \def\nodeshadowed[#1]#2;{
         \node[scale=1,above,#1]{
             \global\setbox\mybox=\hbox{#2}
             \copy\mybox};
-        \node[scale=1,above,#1,yscale=-1,
-            scope fading=south,opacity=0.4]{\box\mybox};}
+        \node[scale=1,above,#1,yscale=-1,xshift=2pt,
+            scope fading=south,opacity=0.6]{\box\mybox};}
 
-    \nodeshadowed [at={(0,0  )},yslant=0] {\textbf{\textcolor{orange!50!white}{邀请}\textcolor{white}{会}}};
+    \node (left table)
+      {\begin{tabular}{l}
+        \textbf{U\,\includegraphics[width=.45\ccwd]{circular_glow.pdf}\,CAS} \\%[.1\baselineskip]
+        \textbf{\textcolor{orange}{\LaTeX}\textcolor{white}{er}}\\%[.2\baselineskip]
+        \textbf{\textcolor{white}{主题讨论}}
+        \end{tabular}
+      };
+
+    \nodeshadowed [at={(left table.east)},yslant=0] {\textbf{\textcolor{orange}{邀请}\textcolor{white}{会}}};
 \end{tikzpicture}
 }
 \end{document}

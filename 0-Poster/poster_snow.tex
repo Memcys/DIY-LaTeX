@@ -13,6 +13,7 @@
 \usepackage{multirow}
 \usepackage{tcolorbox}
 \usepackage{multicol}
+\usepackage[export]{adjustbox}
 
 \usetikzlibrary{mindmap,calendar,shadows,fadings,backgrounds,
 decorations.footprints,shadings,%
@@ -47,7 +48,7 @@ decorations.pathmorphing,%
 
 %% Changing font sizes
 % Text font
-\renewcommand{\fontsizestandard}{\fontsize{58}{65} \selectfont}
+\renewcommand{\fontsizestandard}{\fontsize{50}{60} \selectfont}
 % Main column font
 \renewcommand{\fontsizemain}{\fontsize{68}{80} \selectfont}
 % Title font
@@ -121,9 +122,9 @@ decorations.pathmorphing,%
   \fill [black!25] (bottom -| left) rectangle ([yshift=-5mm]front -| right);
 
   % Snow
-  \foreach \i in {0.05,0.1,...,3}
+  \foreach \i in {0.05,0.075,...,3}
     \fill [white,decoration=Koch snowflake,opacity=.73]
-          [shift=(horizon),shift={(rand*75,rnd*55)},scale=\i]
+          [shift=(horizon),shift={(rand*80,rnd*65)},scale=\i]
           [double copy shadow={opacity=0.2,shadow xshift=-5pt,shadow
             yshift=15*\i pt,fill=blue!5,draw=none}]
       decorate {
@@ -155,18 +156,16 @@ decorations.pathmorphing,%
       ref/.style={concept color=red!50!blue,faded/.style={concept color=red!50!blue!50}},
       grow cyclic,
       level 1/.append style={%level distance=4.5cm,
-      sibling angle=60,%font=\scshape
+      sibling angle=60,font=\Large,
       },
       % level 2/.append style={level distance=3cm,sibling angle=45,font=\scriptsize
       %}
       ]
-    \node[root concept] (LaTeX) %at (center) 
-      {{\Huge\LaTeX} \\{\Large 讨论主题}}% root
+    \node[root concept] (LaTeX) {{\Huge\LaTeX} \\{\LARGE 讨论主题}}% root
       child[math] {node[yshift=-1cm] (Math) {公式定理}
         child {node (AMS) {数学模式、AMS 宏集}}
         child {node(Line) {行内、行间及多行公式} }
-        child[faded] {node(Sep) {公式间距、字体控制、定理环境} }
-        %child {node(Key Problems) {KeyProblems} }
+        child[faded] {node(Sep) {公式间距 字体控制 定理环境} }
         }
       child[tikz, faded] {node[yshift=-1cm] (TikZ) {Ti\emph{k}Z \\绘图}}
       child[elements] {node[xshift=1cm,yshift=-1cm]  (Elements) {文档元素}
@@ -175,20 +174,18 @@ decorations.pathmorphing,%
         child {node(List) {列表、引用、摘要环境} }
         child {node(Cross ref) {交叉引用} }
         child[faded] {node(Box) {盒子、浮动体} }
-        %child {node(Programming in Logic) {Programmingin Logic} }
         }
       child[ref] {node[yshift=0cm] (Ref) {文献索引}
         child {node(bib) {bib 条目的获取、自动生成} }
-        child {node(biblatex) {biblatex/natbib} }
+        child {node(biblatex) {biblatex natbib} }
         child[faded] {node(Index) {索引} }
-        %child[faded] {node(Describing Complexity) {DescribingComplexity} }
         }
       child[chinese] {node[yshift=0cm] (Chinese) {中文排版}}
-      child[debug] {node[yshift=0cm] (Debug) {简单排错和寻求帮助}
+      child[debug] {node[yshift=0cm] (Debug) {排错寻助}
         child[faded] {node (Log) {编译日志}}
         child {node (MWE) {Minimal Working Example}}
         child {node (Doc) {宏包文档阅读}}
-        child {node (Community) {\LaTeX 论坛社区群组}}
+        child {node (Community) {\TeX 论坛社区群组}}
       };
   \end{scope}
   \end{pgflowlevelscope}
@@ -219,19 +216,19 @@ decorations.pathmorphing,%
   \node[xshift=-32cm,yshift=-31cm] (QR base) {};
 
   % QR Code pictures
-  \node[block,xshift=-30cm,] (Invitation) at (QR base) {\includegraphics{qr-text}};
-  \node[block,xshift=-10cm,] (QQ) at (QR base) {\includegraphics[width=6.3cm]{qr-qq}};
-  \node[block,xshift=10cm,] (WeChat) at (QR base) {\includegraphics[width=6.3cm]{qr-wechat}};
-  \node[block,xshift=30cm,] (GitHub) at (QR base) {\includegraphics{qr-url}};
+  \node[xshift=-30cm,] (Invitation) at (QR base) {\includegraphics[width=8cm]{qr-text3.jpg}};
+  \node[block,xshift=-10cm,] (QQ) at (QR base) {\includegraphics[width=8cm]{qr-qq}};
+  \node[block,xshift=10cm,] (WeChat) at (QR base) {\includegraphics[width=8cm]{qr-wechat}};
+  \node[block,xshift=30cm,] (GitHub) at (QR base) {\includegraphics[width=8cm]{qr-url}};
 
-  \node [title,anchor=south] at (Invitation.north) {活动邀请函};
-  \node [title,anchor=south] at (QQ.north) {活动 QQ 群};
-  \node [title,anchor=south] at (WeChat.north) {活动微信群};
-  \node [title,anchor=south] at (GitHub.north) {海报源码};
+  \node [title,anchor=south] at (Invitation.north) {\Huge 活动邀请函};
+  \node [title,anchor=south] at (QQ.north) {\Huge 活动 QQ 群};
+  \node [title,anchor=south] at (WeChat.north) {\Huge 活动微信群};
+  \node [title,anchor=south] at (GitHub.north) {\Huge 海报源码};
 
   % Host
   \node [very thick,scale=2,yshift=-3cm] at (QR base) {主办：$\qquad$ 玉泉图书馆 $\qquad$ 信息达人社};
-  \node [very thick,scale=2,yshift=-4cm] at (QR base) {\color{blue!50!black!50}Version: 31/09/2019 Snow A0paper};
+  % \node [very thick,scale=2,yshift=-4cm] at (QR base) {\color{blue!50!black!50}Version: 01/09/2019 Snow A0paper};
 \end{tikzpicture}
 }{
 %%%% Bottom space
@@ -242,39 +239,44 @@ decorations.pathmorphing,%
 % Blank
 }{
 %%%%%%%% RIGHT COLUMN
-\title{%
-\begin{tabular}{rp{.35\linewidth}}
-UCAS & \multirow{3}{*}{\includegraphics[width=.6\textwidth]{invitation.pdf}} \\%[.1\baselineskip]
-\LaTeX er\\[.2\baselineskip]
-主题讨论 \\ %\\[\baselineskip]
-% · 
-% 邀请会
-\end{tabular}
-}
+\includegraphics[width=1.35\linewidth,center]{invitation.pdf}
+
+\section{\textcolor{orange}{DIY \LaTeX} 系列活动}
+一周一主题，轮流报告%\\
+%邀请会分配主题到人
+
 
 \section{\LaTeX 使用场景}
-\begin{multicols}{2}
-\begin{itemize}
-% \item arXiv/期刊/会议论文排版
-\item %毕业
-论文排版
-\item Beamer
-\item 课程作业
-\item 建模报告
-\item 书籍排版
-\item 简历制作
-\item 海报制作
-\item ……
-\end{itemize}
-\end{multicols}
+% \hskip-25pt
+% \begin{multicols}{2}
+% \begin{itemize}
+% \item 论文排版
+% \item 课程作业
+% \item 简历制作
+% \item Beamer
+% \item 书籍排版
+% \item 建模报告
+% \item 海报制作
+% \item ……
+% \end{itemize}
+% \end{multicols}
+% \begin{center}
+\begin{tabular}{c@{\qquad}c}
+论文排版 & 书籍排版\\
+课程作业 & 建模报告\\
+简历制作 & 海报制作\\
+Beamer & ……
+\end{tabular}
+% \end{center}
 
 \section{邀请会详情}
-\begin{tabular}{l@{\quad}p{.6\textwidth}}
-对象 & (U)CAS 学生\\ & \textbf{无视}基础 \\[1ex]
-时间 & 10:00--10:45\\ & 9 月 8 日 \\ & 周日 \\[1ex]
+\begin{tabular}{l@{\quad}p{.75\textwidth}}
+对象 & (U)CAS 学生\\ & \textcolor{orange}{\textbf{无视} \LaTeX 基础} \\[1ex]
+内容 & “一行代码”竞答\\ & 讨论\textbf{系列活动}详情\\ & 分配主题到人 \\[1ex]
+时间 & 10:00--10:45 AM\\ & 9 月 8 日，周日 \\[1ex]
 地点 & 玉泉图书馆\\ & 二层会议室 \\[1ex]
 建议 & 携带可编译\\ & \LaTeX 的工具 \\[1ex]
-提示 & 到场即可\\ & 领取小礼品 \\
+福利 & 到现场即可\\ & 领取小礼品 \\
 \end{tabular}
 }
 \end{document}

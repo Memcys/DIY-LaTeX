@@ -1,3 +1,4 @@
+%%%% Small modification of parameters for DIY-LaTeX.
 %%%% Better Poster latex template v1.0 (2019/04/04)
 %%%% GNU General Public License v3.0
 %%%% Rafael Bailo
