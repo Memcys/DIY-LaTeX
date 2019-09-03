@@ -1,0 +1,13 @@
+\documentclass{standalone}
+% See pp. 771 in pgfmanual.pdf
+\usepackage{tikz}
+
+\usetikzlibrary[shadows]
+
+\begin{document}
+\begin{tikzpicture}
+  \foreach \i in {1,...,8}
+  \node[circle,circular glow={fill=red!\i0}]
+    at (\i*45:1){$~$};
+\end{tikzpicture}
+\end{document}
