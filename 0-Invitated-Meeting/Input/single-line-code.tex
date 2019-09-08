@@ -1,0 +1,36 @@
+% Single-line codes that appear in the beamer.tex
+{\small
+请忽略每题的序号（序号仅作为标识）和空格符号 ``\verb*| |''（实现真正的空格即可）。仅考虑 \verb|\begin{document}| 与 \verb|\end{document}| 之间甚至是数学模式中的内容。除特殊声明外无需指出所用宏包。
+}
+
+\begin{equation}
+	C_n^m = \frac{n!}{m!(n-m)!}
+\end{equation}
+\begin{equation}
+	\forall x, x \in S \Rightarrow x \in T
+\end{equation}
+\begin{equation}
+    % Following https://texblog.org/2007/08/27/number-sets-prime-natural-integer-rational-real-and-complex-in-latex/
+	\mathbb{R}^2 = \mathbb{R} \times \mathbb{R}
+\end{equation}
+\begin{equation}
+	\int_a^b f(x) \mathrm{d} x \coloneqq \lim_{\lambda(P) \to 0} \sigma(f, P, \xi)
+\end{equation}
+\begin{equation}
+	\Delta_n = \prod_{1 \leqslant i < j \leqslant n} (x_j - x_i)
+\end{equation}
+\begin{equation}
+	\boxed{\lim_{x \to \infty} (1 + \frac{1}{x})^x = e.}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+        x_{1, 2} &= \frac{-b \pm \Delta}{2a} \\
+        \Delta &= \sqrt{b^2 - 4ac}
+    \end{aligned}
+\end{equation}
+
+Hello,\verb*| |\LaTeX\verb*| |user!
+
+CTEX $\neq$ \LaTeX
+
+有解的方程组叫作\textbf{相容的}。 \hspace{1cm} （注：请自行添加所需宏包）\\ % Need additional package (ctex or xeCJK) for Chinese characters!

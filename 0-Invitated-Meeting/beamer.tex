@@ -1,0 +1,247 @@
+\documentclass{beamer}
+
+\usepackage[scheme=plain]{ctex}
+\usepackage{enumerate}
+\usepackage{enumitem}   % [inline] option for inline enumerate, following https://tex.stackexchange.com/a/146311
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage[backend=biber]{biblatex}
+\usepackage{booktabs}
+% \usepackage{tikz}ctexctexctexcctexctexctexctexctexctexctexctextex
+% \usepackage[colorlinks]{hyperref} % Already loaded by previous package(s)
+
+\usefonttheme{serif} % using non standard fonts for beamer
+% Following https://tex.stackexchange.com/a/34267
+% \usefonttheme[onlymath]{serif}
+
+% \setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{title}{series=\bfseries}
+% '\mdseries' Follows from https://tex.stackexchange.com/a/320244
+\setbeamerfont{subtitle}{series=\mdseries}
+
+\usetheme{Luebeck}
+
+\addbibresource{ref.bib}
+
+\hypersetup{
+    colorlinks,
+    urlcolor=blue,
+    linkcolor=cyan,
+    citecolor=red,
+}
+
+\setitemize{label=\usebeamerfont*{itemize item}%
+  \usebeamercolor[fg]{itemize item}
+  \usebeamertemplate{itemize item}
+}
+
+\newcommand{\opt}[1]{{\color{gray} #1}}
+
+
+
+\begin{document}
+\title[UCAS \LaTeX er 邀请会]{%
+    \begin{tabular}{r@{~}c@{~}l}
+    \textbf{U\,$\heartsuit$\,CAS} &  & \textbf{\LaTeX er} \\[.5em]
+    主题讨论 & $\bullet$ & 邀请会
+    \end{tabular}%
+}
+\subtitle{
+\begin{flushright}
+暨 DIY \LaTeX 系列活动启动会 $\qquad$
+\end{flushright}
+}
+\author[DIY \LaTeX]{\textbf{DIY \LaTeX}\\ \small \url{https://github.com/Memcys/DIY-LaTeX.git}}
+\date{2019 年 9 月 8 日}
+
+\maketitle
+
+\frame{
+    \tableofcontents
+}
+\section[简介]{\LaTeX 简介}
+\subsection{\LaTeX 简介}
+\begin{frame}{\LaTeX 简介}
+\frametitle{\LaTeX 简介}
+The \LaTeX{} Project\cite{latex-project} 自称：
+\begin{quotation}
+LaTeX is a \textbf{high-quality} typesetting system.
+
+LaTeX is \textbf{free software} under the terms of the \href{https://www.latex-project.org/lppl/}{LaTeX Project Public License (LPPL)}.% LaTeX is distributed through CTAN servers or comes as part of many easily installable and usable TeX distributions provided by the TeX User Group (TUG) or third parties.
+\end{quotation}
+
+\LaTeX{} Wikibook\cite{latex-wikibook} 上称：
+\begin{quote}
+It is the \textbf{de-facto standard} for \emph{academic journals and books}, and provides some of the best typography free software has to offer. 
+\end{quote}
+\end{frame}
+
+\subsection{\LaTeX 优缺点}
+\begin{frame}{\LaTeX 优点}
+（优缺点均参考 \cite{lshort-cn}）：
+\begin{itemize}
+\item 专业的排版输出能力
+\item 方便而强大的数学公式排版能力，无出其右者
+\item 有专用模板时，用户只需专注于一些组织文档结构的基础命令，无需（或很少）操心文档版面设计
+\item 很容易生成复杂的专业排版元素，如脚注、交叉引用、参考文献、目录等
+\item 强大的可扩展性，拥有众多 \LaTeX 宏包
+\item 能够促使用户写出结构良好的文档
+\item 跨平台、免费、开源
+\end{itemize}
+\end{frame}
+
+\begin{frame}{\LaTeX 缺点}
+\begin{itemize}
+\item 入门门槛高
+\item 不易排查错误
+\item 不易定制样式
+\item 需编译后才能得到输出文档
+\end{itemize}
+\end{frame}
+
+\section[竞答]{“一行代码”竞答}
+\begin{frame}[allowframebreaks]{“一行代码”竞答}
+
+所有公式参考自 \cites{Zorich,Kostrikin}
+
+\input{Input/single-line-code.tex}
+\end{frame}
+
+\section[讨论]{讨论}
+\subsection{后续活动}
+\begin{frame}[allowframebreaks]{主题元素}
+\begin{Form}
+% Following https://tex.stackexchange.com/a/310574
+    \begin{itemize}[label = {\CheckBox[width=.12in,height=.12in,bordercolor=blue]{}}]
+    \item 排错寻助
+        \begin{itemize}[label = {\CheckBox[width=.1in,height=.1in,bordercolor=cyan]{}}]
+        \item \opt{*.log 编译日志}
+        \item MWE (Minimal Working Example)
+        \item 宏包文档阅读
+        \item \TeX 论坛社区群组
+        \end{itemize}
+    \item 公式定理
+        \begin{itemize}[label = {\CheckBox[width=.1in,height=.1in,bordercolor=cyan]{}}]
+        \item 数学模式、AMS 宏集
+        \item 行内、行间及多行公式
+        \item \opt{公式间距、字体控制、定理环境}
+        \end{itemize}
+    \item 中文排版（xeCJK 宏包，ctex 宏包和文档类）
+    \item 文献索引
+        \begin{itemize}[label = {\CheckBox[width=.1in,height=.1in,bordercolor=cyan]{}}]
+        \item biblatex / natbib
+        \item bib 条目的获取、自动生成
+        \item \opt{索引}
+        \end{itemize}
+    \item 文档元素
+        \begin{itemize}[label = {\CheckBox[width=.1in,height=.1in,bordercolor=cyan]{}}]
+        \item 表格和图片
+        \item 章节、目录、标题、边脚注
+        \item 列表、引用、摘要环境
+        \item 交叉引用
+        \item \opt{盒子、浮动体}
+        \end{itemize}
+    \item \opt{Beamer}
+    \item \opt{Ti\emph{k}Z 绘图}
+    \end{itemize}
+\end{Form}
+\end{frame}
+
+\subsection{时间地点}
+\begin{frame}{时间地点}
+\begin{tabular}{rl}
+时间 & 每周日上午 10:00\\
+地点 & 玉泉图书馆报告厅\\
+例外 & 中秋和国庆假期间活动暂停。 \\
+& 即 9 月 15 日和 10 月 6 日暂停活动。 \\
+\end{tabular}
+\end{frame}
+
+\subsection{活动机制}
+\begin{frame}{轮流主讲制}
+\begin{itemize}
+\item 后续系列活动每次活动围绕一个主题展开
+\item 每个主题由一至两人主讲
+\end{itemize}
+\end{frame}
+
+\begin{frame}{个人积分制}
+\begin{itemize}
+\item 个人在活动中的提问、发言等均增加积分
+\item 一次活动中同一人集中于同一话题的提问或发言计一分
+\item 若提问引起热烈讨论，或被公认具有一定价值；或发言正确，或被公认具有启发性，则再增加一分
+\item 最后一次活动现场公布积分最高的前几名
+\item 期间个人可向活动负责人询问自己的积分情况
+\end{itemize}
+\end{frame}
+
+\begin{frame}{奖励机制}
+\begin{itemize}
+\item 活动最后一期（或倒数第二期）公布获奖者
+\item 奖励对象为特定人数的主讲人和个人积分高的其他参与者
+\item 可获奖主讲人人数少于实际主讲人数时，在公布获奖前采取投票。票数高者可获奖
+\item 奖品内容待定
+\end{itemize}
+\end{frame}
+
+% \section{尾声}
+\subsection{\TeX 发行版安装及使用}
+\begin{frame}{\TeX 发行版}
+\begin{table}
+\caption{\TeX 发行版可列举如下（参考 \href{https://www.latex-project.org/get/\#tex-distributions}{The \LaTeX{} Project}）：}
+\centering
+\begin{tabular}{cccc}
+\toprule
+Linux & Mac OS & Windows & Online \\ \midrule
+\TeX Live & Mac\TeX & \TeX Live & Overleaf \\
+& & MiK\TeX & Papeeria \\
+& & pro\TeX t & Datazar \\
+& & & \dots \\ \bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+% \subsection[安装]{安装 \TeX 发行版}
+\begin{frame}{安装 \TeX 发行版}
+我们建议本地安装 CTAN\cite{CTAN} 的 \TeX 发行版。安装前请阅读 \href{https://www.tug.org/texlive/quickinstall.html}{\TeX{} Live -- Quick install} 或 \href{https://www.tug.org/texlive/doc/texlive-en/texlive-en.html\#x1-180003.1.3}{The \TeX{} Live Guide}. 此外，可参考 \cite{install-latex} 中的文档。建议 Windows 用户使用命令行安装。
+
+\begin{table}
+\caption{\TeX{} Live 两种安装方式。$\ast$nix 系统源安装方式未列出}
+\centering
+\begin{tabular}{c*{2}{p{.35\textwidth}}}
+\toprule
+& 在线安装 & 离线安装 \\ \midrule
+下载内容 & {安装器 17.8MB/4MB；按需下载宏包} & \href{http://mirror.ctan.org/systems/texlive/Images/}{完整程序包 iso} 3.3GB \\
+耗时 & \multicolumn{2}{c}{安装较多宏包时，离线安装耗时显著短于在线安装} \\ \bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+% \subsection{首次使用 \LaTeX}
+\begin{frame}{首次使用 \LaTeX}
+可参见 \cite{lshort-cn} 中 \S{}1.2 或 \cite{install-latex} 中相应内容。
+
+使用 \LaTeX 流程可概括如下：
+\begin{itemize}
+\item 撰写（需\textbf{编辑器}） .tex 文件并保存（如 filename.tex）。
+\item 编译（需\textbf{编译命令}） .tex 文件\emph{足够次数}，得到输出文件（例如 filename.pdf）。
+\end{itemize}
+接下来便可以打开浏览输出文件了。
+\end{frame}
+
+\subsection{结语}
+\begin{frame}{结语}
+\cite{Kostrikin} 末尾引用了 \emph{John} 16:12\cite{John-16}:
+\begin{quote}
+I have much more to say to you, more than you can now bear.
+\end{quote}
+
+当然，我也只不过是话中的 ``you''.
+\end{frame}
+
+\subsection{参考及推荐资料}
+\begin{frame}[t,allowframebreaks]
+\printbibliography[heading=none]
+\end{frame}
+\end{document}
