@@ -27,16 +27,16 @@
 \geometry{margin=0in}
 
 %% Font
-\RequirePackage{cmbright}
-\RequirePackage[default]{lato}
+%\RequirePackage{cmbright}
+%\RequirePackage[default]{lato}
 \RequirePackage[T1]{fontenc}
 
 %% Small separation on enumerate and itemize
-\RequirePackage{enumitem}
-\setlist{nolistsep}
-\setenumerate{noitemsep}
-\setitemize{noitemsep}
-\setlength{\parindent}{0pt}
+%\RequirePackage{enumitem}
+%\setlist{nolistsep}
+%\setenumerate{noitemsep}
+%\setitemize{noitemsep}
+%\setlength{\parindent}{0pt}
 
 %% Colours
 \RequirePackage{xcolor}
