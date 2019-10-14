@@ -23,3 +23,20 @@
 	organization={CTEX.ORG},
 	address={\href{https://www.ctan.org/pkg/ctex}{https://www.ctan.org/pkg/ctex}}
 }
+
+@MANUAL{esint,
+	title={Alternate Integral Signs with \LaTeX},
+	year={2019},
+	month={8},
+	organization={Eddie Saudrais},
+	address={\href{https://www.ctan.org/pkg/esint}{https://www.ctan.org/pkg/esint}}
+}
+
+@BOOK{无机化学,
+	title={无机化学},
+	publisher={高等教育出版社},
+	year={2002},
+	month={8},
+	author={北京师范大学、华中师范大学、南京师范大学无机化学教研室},
+%	editor={}
+}
