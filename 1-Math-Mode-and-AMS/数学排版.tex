@@ -1,5 +1,6 @@
 \documentclass[mathserif]{beamer}
 \usepackage[UTF8,noindent]{ctexcap}%noindent选项阻止ctex宏包引入的段前缩进（beamer的默认设置）
+% ctex warning: "deprecated-option". Option `noindent' is deprecated.
 \usetheme{Montpellier}
 \usepackage{texnames}%提供AMS标识符
 \usepackage{booktabs}%三线表
@@ -13,7 +14,7 @@
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{xeCJK}
+% \usepackage{xeCJK}
 \usepackage{upgreek}
 \usepackage{fancybox}
 \usepackage{extarrows}
@@ -57,8 +58,8 @@
 \date{\today}
 \subject{LaTeX的数学排版}
 \keywords{LaTeX、CTeX、数学模式}
-\logo{\includegraphics[height=24pt]{Z:/ucaslogo_small.jpg}}%把一个较小的图标放在幻灯片的角落里面，放置校徽、公司商标等
-\setCJKmainfont{楷体}
+% \logo{\includegraphics[height=24pt]{Z:/ucaslogo_small.jpg}}%把一个较小的图标放在幻灯片的角落里面，放置校徽、公司商标等
+% \setCJKmainfont{楷体}
 \bibliographystyle{unsrt}%按照引用的先后顺序排列
 \setbeamertemplate{items}[ball]%itemize的符号设置为ball
 
@@ -164,7 +165,7 @@
 \begin{instance}
 考察下面代码的输出效果：
 \begin{lstlisting}[numbers=none]
-	\sum\nolimits_{k = 1}^{n} \iint\limits_{x_{k}^{2} + y_{k}^{2} \leqslant 1} r^{2} \,\mathrm{d} S.
+\sum\nolimits_{k = 1}^{n} \iint\limits_{x_{k}^{2} + y_{k}^{2} \leqslant 1} r^{2} \,\mathrm{d} S.
 \end{lstlisting}%"\hspace{18bp}"
 \noindent
 \begin{equation*}
@@ -226,7 +227,7 @@
 \end{equation*}
 源代码如下：
 \begin{lstlisting}[numbers=none]
-	\varlimsup_{n \to +\infty} E_{n} \coloneqq \lim_{m \to +\infty} \bigcap_{k=1}^{m} \bigcup_{n \geqslant k} E_{n}.
+\varlimsup_{n \to +\infty} E_{n} \coloneqq \lim_{m \to +\infty} \bigcap_{k=1}^{m} \bigcup_{n \geqslant k} E_{n}.
 \end{lstlisting}
 \end{instance}
 \end{frame}
@@ -271,10 +272,10 @@
 \begin{instance}
 前文中的$\operatorname{lcm}$、$\operatorname{l.c.m.}$和$\operatorname{tg}$、$\operatorname{ctg}$：
 \begin{lstlisting}
-	\DeclareMathOperator*{\lcm}{lcm}
-	\DeclareMathOperator*{\lcmdot}{l.c.m.}
-	\DeclareMathOperator{\tg}{tg}
-	\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\lcmdot}{l.c.m.}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
 \end{lstlisting}
 \end{instance}
 
@@ -334,7 +335,7 @@
 \begin{frame}[fragile]{单字符算子}{$\mathrm{d}$}
 文献\cite{LaTeX入门}的方案：定义微分算子
 \begin{lstlisting}[numbers=none]
-	\DeclareMathOperator{\dif}{d\!}
+\DeclareMathOperator{\dif}{d\!}
 \end{lstlisting}
 满足了要求。仍有一点小问题，考察代码 \lstinline'\dif (\sin x)'，输出效果为$\dif (\sin x)$。补救措施是添加空分组，即 \lstinline'\dif{} (\sin x)'。
 
@@ -343,7 +344,7 @@
 	\int_{0}^{\uppi} \sin x \cos x \dif x = \int_{0}^{\uppi} \sin x \dif{} (\sin x) = \left. \frac{1}{2} \sin^{2} x \right|_{0}^{\uppi} = 0
 \end{equation*}
 \begin{lstlisting}[numbers=none]
-	\int_{0}^{\uppi} \sin x \cos x \dif x = \int_{0}^{\uppi} \sin x \dif{} (\sin x) = \left. \frac{1}{2} \sin^{2} x \right|_{0}^{\uppi} = 0
+\int_{0}^{\uppi} \sin x \cos x \dif x = \int_{0}^{\uppi} \sin x \dif{} (\sin x) = \left. \frac{1}{2} \sin^{2} x \right|_{0}^{\uppi} = 0
 \end{lstlisting}
 \end{instance}
 \end{frame}
@@ -423,11 +424,11 @@
 \begin{instance}
 	群$G$的$(H, K)$双陪集为$H \backslash G / K$。
 \begin{lstlisting}[numbers=none]
-	"群"$G$"的"$(H, K)$"双陪集为"$H \backslash G / K$"。"
+"群"$G$"的"$(H, K)$"双陪集为"$H \backslash G / K$"。"
 \end{lstlisting}
 子空间$A$的边界是$\partial A \coloneqq \bar{A} \setminus \mathring{A}$。
 \begin{lstlisting}[numbers=none]
-	"子空间"$A$"的边界是"$\partial A \coloneqq \bar{A} \setminus \mathring{A}$"。"
+"子空间"$A$"的边界是"$\partial A \coloneqq \bar{A} \setminus \mathring{A}$"。"
 \end{lstlisting}
 \end{instance}
 \end{frame}
@@ -496,7 +497,7 @@
 \end{equation*}
 相应的代码为
 \begin{lstlisting}[numbers=none]
-	x \not \in V \qquad y \notin U
+x \not \in V \qquad y \notin U
 \end{lstlisting}
 \lstinline'\not \in' 斜线位置机械，几乎偏离了$\in$的上半部分。
 \end{instance}
@@ -667,10 +668,10 @@
 	\end{gathered}
 \end{equation*}
 \begin{lstlisting}[numbers=none]
-	\ln x \coloneqq \log_{\mathrm{e}} x \\
-	\ln x \triangleq \log_{\mathrm{e}} x \\
-	\ln x \stackrel{\mathrm{d}}{=} \log_{\mathrm{e}} x \\
-	\ln x \xlongequal[]{\mathrm{def}} \log_{\mathrm{e}} x
+\ln x \coloneqq \log_{\mathrm{e}} x \\
+\ln x \triangleq \log_{\mathrm{e}} x \\
+\ln x \stackrel{\mathrm{d}}{=} \log_{\mathrm{e}} x \\
+\ln x \xlongequal[]{\mathrm{def}} \log_{\mathrm{e}} x
 \end{lstlisting}
 \end{instance}
 \end{frame}
@@ -724,9 +725,9 @@
 	\end{gathered}
 \end{equation*}
 \begin{lstlisting}[numbers=none]
-	x = y \implies x + z = y + z \\
-	x = y \impliedby x + z = y + z \\
-	x = y \iff x \leqslant y \And x \geqslant y
+x = y \implies x + z = y + z \\
+x = y \impliedby x + z = y + z \\
+x = y \iff x \leqslant y \And x \geqslant y
 \end{lstlisting}
 \end{instance}
 \end{frame}
@@ -808,9 +809,9 @@
 	\end{aligned}
 \end{equation*}
 \begin{lstlisting}[numbers=none]
-	I' \coloneqq \left[ 0, \frac{1}{2} \right]
-	\mathring{I'} = \left] 0, \frac{1}{2} \right[
-	I' \setminus \left\{ 0 \right\} = \left] 0, \frac{1}{2} \right]
+I' \coloneqq \left[ 0, \frac{1}{2} \right]
+\mathring{I'} = \left] 0, \frac{1}{2} \right[
+I' \setminus \left\{ 0 \right\} = \left] 0, \frac{1}{2} \right]
 \end{lstlisting}
 \end{instance}
 \end{frame}
@@ -829,7 +830,7 @@
 	\Pr \left( \tilde{B} \right) = \sum_{n} \Pr \left( \tilde{B} \middle\vert B_{n} \right) \Pr \left( B_{n} \right)
 \end{equation*}
 \begin{lstlisting}[numbers=none]
-	\Pr \left( \tilde{B} \right) = \sum_{n} \Pr \left( \tilde{B} \middle\vert B_{n} \right) \Pr \left( B_{n} \right)
+\Pr \left( \tilde{B} \right) = \sum_{n} \Pr \left( \tilde{B} \middle\vert B_{n} \right) \Pr \left( B_{n} \right)
 \end{lstlisting}
 \end{instance}
 问题：\lstinline'\middle|' 是否带来了\red{不合适的间距}？
@@ -842,7 +843,7 @@
 
 \item 若加入 \lstinline'\left{}'、\lstinline'\right{}' 调节？
 \begin{lstlisting}[numbers=none]
-	1 + \left( 2 - \left( 3 \times \left( 4 \div 5 \right) \right) \right)
+1 + \left( 2 - \left( 3 \times \left( 4 \div 5 \right) \right) \right)
 \end{lstlisting}
 尽管由上述代码生成，仍为$1 + \left( 2 - \left( 3 \times \left( 4 \div 5 \right) \right) \right)$
 
@@ -855,7 +856,7 @@
 	1 + \Bigl( 2 - \bigl( 3 \times ( 4 \div 5 ) \bigr) \Bigr)
 \end{equation*}
 \begin{lstlisting}[numbers=none]
-	1 + \Bigl( 2 - \bigl( 3 \times ( 4 \div 5 ) \bigr) \Bigr)
+1 + \Bigl( 2 - \bigl( 3 \times ( 4 \div 5 ) \bigr) \Bigr)
 \end{lstlisting}
 \end{instance}
 \end{frame}
@@ -901,7 +902,7 @@
 \end{itemize}
 在$y$前产生一个普通分数高度的盒子，但是没有宽度，即：
 \begin{lstlisting}[numbers=none]
-	\left. \vphantom{\frac{1}{2}} y \right\rvert_{x = 0} = \left. \left( \frac{x + 1}{x - 1} y' \right) \right\rvert_{x = 0}
+\left. \vphantom{\frac{1}{2}} y \right\rvert_{x = 0} = \left. \left( \frac{x + 1}{x - 1} y' \right) \right\rvert_{x = 0}
 \end{lstlisting}
 思考：等号右边是否可以使用 \lstinline'\middle)' 输出？
 \end{instance}
@@ -911,14 +912,14 @@
 \begin{instance}
 	考察下面代码的输出效果：
 \begin{lstlisting}[numbers=none]
-	\sum_{k} \left( \parti{f}{x_{k}} \middle\vert_{x_{k} = 0} \right)
+\sum_{k} \left( \parti{f}{x_{k}} \middle\vert_{x_{k} = 0} \right)
 \end{lstlisting}
 \begin{equation*}
 	\sum_{k} \left( \parti{f}{x_{k}} \middle\vert_{x_{k} = 0} \right)
 \end{equation*}
 下标位置同普通高度$\vert$的下标，可见 \lstinline'\middle{}' 不够完善，而闭符号对下标的处理是恰当的，因此修改代码为：
 \begin{lstlisting}[numbers=none]
-	\sum_{k} \left( \left. \parti{f}{x_{k}} \right\vert_{x_{k} = 0} \right)
+\sum_{k} \left( \left. \parti{f}{x_{k}} \right\vert_{x_{k} = 0} \right)
 \end{lstlisting}
 \begin{equation*}
 	\sum_{k} \left( \left. \parti{f}{x_{k}} \right\vert_{x_{k} = 0} \right)
@@ -995,10 +996,10 @@
 \begin{instance}
 	考察下面的代码输出的省略号：
 \begin{lstlisting}[numbers=none]
-	(x_{1} , \dots , x_{n})
-	5050 = 1 + \dots + n
-	x_{1} = \dots = x_{n}
-	\int \dots \int
+(x_{1} , \dots , x_{n})
+5050 = 1 + \dots + n
+x_{1} = \dots = x_{n}
+\int \dots \int
 \end{lstlisting}
 可见，连接积分号 \lstinline'\int' 的省略号高度不够合适，偏下。
 \begin{align*}
@@ -1026,8 +1027,8 @@
 \begin{instance}
 	考察下面的代码输出的省略号：
 \begin{lstlisting}[numbers=none]
-	\prod_{i=1}^{n} x_{i} \coloneqq x_{1} x_{2} \dotsm x_{n}
-	\int_{0}^{\infty} \int_{0}^{\infty} \dotsi \int_{0}^{1}
+\prod_{i=1}^{n} x_{i} \coloneqq x_{1} x_{2} \dotsm x_{n}
+\int_{0}^{\infty} \int_{0}^{\infty} \dotsi \int_{0}^{1}
 \end{lstlisting}
 \begin{align*}
 	\prod_{i=1}^{n} x_{i} \coloneqq x_{1} x_{2} \dotsm x_{n} &&
@@ -1066,7 +1067,7 @@
 \end{frame}
 
 \begin{frame}{参考文献}
-\bibliography{F:/参考文献昆明池}
+\bibliography{参考文献昆明池}
 \end{frame}
 
 \end{document}
