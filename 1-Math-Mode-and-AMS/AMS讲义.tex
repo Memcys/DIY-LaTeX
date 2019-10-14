@@ -1,0 +1,1874 @@
+\documentclass[hyperref,UTF8]{ctexart}
+
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[format=hang,font=small,textfont=it]{caption}%改变图表标题格式的caption宏包，设定所有图表标题格式使用悬挂对齐方式（即编号向左突出），整体使用小字号，而标题文本使用斜体（对汉字来说是楷书）
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb,bm,amsthm}
+\usepackage{esint}%二重环路积分
+\usepackage{cancel}%\cancel,\xcancel,\bcancel删除线
+\usepackage{mathtools}%\prescript加左上下标
+\usepackage{cases}%大括号编号
+%\usepackage{ulem}%使用改良的下划线\uline
+\usepackage{mathrsfs}%\mathscr使用花写的L
+\usepackage{upgreek}%直立体希腊字母
+\usepackage{enumitem}%输出一、二、三、
+\usepackage{mhchem}%\ce输入化学式
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{fontspec}
+\usepackage{xltxtra}%提供XeLaTeX标识符
+\usepackage{texnames}%提供AMS标识符
+\usepackage[nottoc]{tocbibind}%增加目录的项目的tocbibind宏包，默认在目录中加入目录项本身、参考文献、索引等项目。使用nottoc取消目录中显示目录本身
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{fancybox}%\shadowbox
+\usepackage{extarrows}
+\usepackage{mathdots}
+
+% \setmonofont{Consolas}
+
+\definecolor{codegreen}{rgb}{0, 0.6, 0}
+\definecolor{codegray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{codepurple}{rgb}{0.58, 0, 0.82}
+\definecolor{backcolor}{rgb}{0.95, 0.95, 0.92}
+%\definecolor{codered}{rgb}{0.647, 0.164, 0.164}
+\definecolor{codered}{rgb}{0.546875, 0, 0}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\codegreen}[1]{\textcolor{codegreen}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\lstset{
+	language=[AlLaTeX]TeX,
+%	frame=tb,
+	aboveskip=3mm,
+	belowskip=3mm,
+	morekeywords={subseteqq, coloneq, coloneqq, geometry, maketitle, zihao, command,leqslant, geqslant, XeLaTeX, AmS, AmSTeX, BibTeX, LuaTeX, CTeX, CCTeX, mathbb, prescript, indices, tensor, ce, underrightarrow, underleftarrow, overleftrightarrow, underleftrightarrow, text, overbracket, underbracket, dfrac, tfrac, cfrac, binom, dbinom, tbinom, mathnormal, mathcal, mathscr, mathfrak, varkappa, digamma, varGamma, varDelta, varTheta, varLambda, varXi, varPi, varSigma, varUpsilon, varPhi, varPsi, varOmega, upalpha, upbeta, upgamma, updelta, upepsilon, upzeta, upeta, uptheta, upiota, upkappa, uplambda, upmu, upnu, upxi, uppi, uprho, upsigma, uptau, upupsilon, upphi, upchi, uppsi, upomega, upvarepsilon, upvartheta, upvarpi, upvarrho, upvarsigma, upvarphi, dddot, ddddot, mathring, hslash, varnothing, square, blacksquare, lozenge, blacklozenge, bigstar, complement, mho, iint, iiint, idotsint, oiint, varoiint, iiiint, varlimsup, varliminf, injlim, projlim, varinjlim, varprojlim, UCASer, braOket, middle, derive, parti, quoset, providecommand, DeclareMathOperator, lcm, lcmdot, tg, ctg, operatorname, mod, pod, diff, dif, grad, rot, curl,allowdisplaybreaks, displaybreak, ltimes, rtimes, leftthreetimes, rightthreetimes, dotplus, circleddash, circledast, circledcirc, nless, ngtr, nleq, ngeq, nprec, nsucc, npreceq, nsucceq, precneqq, succneqq, nsim, ncong, nsubseteq, nsupseteq, subsetneq, supsetneq, varsubsetneq, varsupsetneq, leqq, nleqq, geqq, ngeqq, lneqq, gneqq, lvertneqq, gvertneqq, nleqslant, ngeqslant, lneq, gneq, nsubseteqq, nsupseteqq, supseteqq, subsetneqq, supsetneqq, varsubsetneqq, varsupsetneqq, because, therefore, blacktriangleleft, blacktriangleright, lll, ggg, risingdotseq, fallingdotseq, eqslantless, eqslantgtr, lessgtr, gtrless, lesseqgtr, gtreqless, lesseqqgtr, gtreqqless, doteqdot, triangleq, varpropto, backepsilon, nleftarrow, nrightarrow, nLeftarrow, nRightarrow, nleftrightarrow, nLeftrightarrow, leftleftarrows, rightrightarrows, leftrightarrows, rightleftarrows, Lleftarrow, Rrightarrow, twoheadleftarrow, twoheadrightarrow, leftarrowtail, rightarrowtail, looparrowleft, looparrowright, leftrightharpoons, curvearrowleft, curvearrowright, circlearrowleft, circlearrowright, Lsh, Rsh, upharpoonleft, upharpoonright, downharpoonleft, downharpoonright, multimap, rightsquigarrow, leftrightsquigarrow, shadowbox, xleftarrow, xrightarrow, xlongleftarrow, xlongrightarrow, xLongleftarrow, xLongrightarrow, xleftrightarrow, xLeftrightarrow, xlongleftrightarrow, xLongleftrightarrow, xlongequal, implies, impliedby, And, lvert, rvert, lVert, rVert, abs, norm, iddots, dotsc, dotsb, dotsm, dotsi, dotso, hdotsfor, substack, \@addtoreset, numberwithin, notag},
+	backgroundcolor=\color{backcolor},   
+	commentstyle=\color{red},
+	keywordstyle={\color{blue} },
+%	morekeywords={coloneq}
+%	basicstyle={\small\ttfamily},
+	basicstyle={\zihao{5}\ttfamily},
+	showstringspaces=false,
+	columns=flexible,
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=4,
+%	captionpos=b,
+	keepspaces=true,
+	numbers=left,                  
+	numbersep=5pt,
+	numberstyle=\tiny\color{codegray},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	xleftmargin=8pt,
+	escapechar="
+}
+
+\hypersetup{
+	colorlinks=false,
+	bookmarks=true,
+	bookmarksopen=ture,
+	bookmarksnumbered=ture,
+	pdfborder=0 0 1,
+%	pdfpagemode=FullScreen,
+	pdfstartview=FitH,
+	pdftitle={数学模式与AmS宏集},
+	pdfauthor={梁昊、樊兆兴},
+	pdfsubject={LaTeX},
+	pdfkeywords={数学模式、LaTeX、XeLaTeX}
+}
+
+\makeatletter
+\@addtoreset{equation}{section}
+\makeatother%使section后公式编号清零
+
+\title{\heiti 数学模式与 \AmS{} 宏集}
+\author{\kaishu 梁昊 \\ \kaishu 樊兆兴}
+\date{\today}
+
+\geometry{a4paper,centering,left=2cm,right=2cm,top=2cm,bottom=2cm}%scale=0.8
+\linespread{1.5}
+\numberwithin{equation}{section}
+\allowdisplaybreaks[4]
+
+\newtheorem{thm}{定理}[section]
+\newtheorem{lemma}{引理}%[section]
+\newtheorem{example}{例}[subsection]
+
+\newenvironment{prove}{\noindent\textbf{证明：\quad}\kaishu}{\hfill$\qed$\par}
+
+\bibliographystyle{unsrt}%按照引用的先后顺序排列
+
+%声明新算子
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\lcmdot}{l.c.m.}
+\DeclareMathOperator*{\tg}{tg}
+\DeclareMathOperator*{\ctg}{ctg}
+\DeclareMathOperator{\dif}{d\!}
+\providecommand{\grad}{\operatorname{grad}}
+\providecommand{\rot}{\operatorname{rot}}
+\providecommand{\curl}{\operatorname{curl}}
+\providecommand{\div}{\operatorname{div}}
+%定义新命令
+\newcommand{\degree}{^\circ}
+\newcommand{\units}[1]{\,\mathrm{#1}}
+%\newcommand{\diff}[1]{\,\mathrm d #1\!}
+\newcommand{\diff}[1]{\,\mathrm d #1}
+\newcommand{\md}{\mathrm d}
+\newcommand{\parti}[3][]{\frac{\partial^{#1} #2}{\partial {#3}^{#1} } }
+\newcommand{\dparti}[3]{\dfrac{\partial^{#3} #1}{\partial {#2}^{#3} } }
+\newcommand{\partii}[3]{\frac{\partial^{2} #1}{\partial #2 \partial #3} }
+\newcommand{\dpartii}[3]{\dfrac{\partial^{2} #1}{\partial #2 \partial #3} }
+\newcommand{\derive}[3][]{\frac{\mathrm{d}^{#1} #2}{\mathrm{d} {#3}^{#1} } }
+\newcommand{\dderive}[3]{\dfrac{\mathrm{d}^{#3} #1}{\mathrm{d} {#2}^{#3} } }
+\newcommand{\commu}[2]{\left[ #1, #2 \right]}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\mc}{\mathrm{c}}
+\newcommand{\ms}{\mathrm{s}}
+\newcommand{\diag}[1]{\operatorname{diag} \left( #1 \right)}
+\newcommand{\CCTeX}{$\mathbb{C}$\kern-.05em\TeX}
+\newcommand{\tensor}[3]{ {#1}_{\phantom{#3} #2}^{#3} }
+\newcommand{\UCASer}{\ensuremath{\mathbb{UCAS}\mathrm{er}}}
+\providecommand{\UCASer}{\ensuremath{\mathscr{UCAS}\mathrm{er}}}
+\newcommand{\quoset}[2][\mathord{\sim}]{#2 / #1}
+\newcommand{\varnotin}{\mathrel{\overline{\in}}}
+%定义数集符号
+\newcommand{\real}{\mathbb R}
+\newcommand{\ration}{\mathbb Q}
+\newcommand{\complex}{\mathbb C}
+\newcommand{\integer}{\mathbb Z}
+\newcommand{\natura}{\mathbb N}
+%狄拉克符号
+\newcommand{\braket}[1]{\left< #1 \right>}
+\newcommand{\bralket}[2]{\left< #1 \middle\vert #2 \right>}
+\newcommand{\braOket}[3]{\left< #1 \middle\vert #2 \middle\vert #3 \right>}
+\newcommand{\bra}[1]{\left< #1 \right\rvert}
+\newcommand{\ket}[1]{\left\lvert #1 \right>}
+\newcommand{\inn}[2]{\left< #1, #2 \right>}
+%自然常数
+\newcommand{\Boltz}{k_{\mathrm{B} } }
+\newcommand{\me}[1]{\mathrm{e}^{#1}}
+\newcommand{\mi}{\mathrm{i}}
+\newcommand{\mh}{\mathrm{h}}
+%定义几种矩阵群符号
+\newcommand{\Mn}[2]{M_{#1} \left( #2 \right)}
+\newcommand{\GL}[2]{\operatorname{GL}_{#1} \left( #2 \right)}
+\newcommand{\SL}[2]{\operatorname{SL}_{#1} \left( #2 \right)}
+\newcommand{\Ortho}[1]{\operatorname{O} \left( #1 \right)}
+\newcommand{\SO}[1]{\operatorname{SO} \left( #1 \right)}
+\newcommand{\Uni}[1]{\operatorname{U} \left( #1 \right)}
+\newcommand{\SU}[1]{\operatorname{SU} \left( #1 \right)}
+
+\begin{document}
+
+% \begin{figure}[t]%浮动体可以出现在环境周围的文本所在处（here）和第一页的顶部（top）
+% 	\centering%用声明\centering表示后面的内容居中
+% 	\includegraphics[width=\linewidth]{Z:/ucaslogo.pdf}%scale为放缩因子
+% 	%\caption命令给插图加上自动编号和标题
+% 	%\caption{}
+% 	%\label{fig:xiantu}%用\lable命令给图形定义一个标签，文章其它地方可以引用\caption产生的编号
+% \end{figure}
+
+\maketitle
+
+\begin{abstract}
+。
+\end{abstract}
+
+\thispagestyle{empty}
+
+\newpage
+
+\pagenumbering{roman}
+\tableofcontents%tableofcontents命令输出目录
+
+\newpage
+
+\pagenumbering{arabic}
+\zihao{-4}
+%\kaishu
+
+\section{\LaTeX{}的概述}
+
+在开始介绍数学环境排版之前，很有必要大概地介绍 \LaTeX{} 的基本内容。介绍仅仅是形式上的，不涉及\LaTeX{} 和 \TeX{} 之间复杂的原理。这篇文章的内容全部由 \XeLaTeX{} 引擎和 \BibTeX{} 引擎编译得到。
+
+\subsection{\LaTeX{}代码结构归纳}\label{subsec:结构}
+
+在本人的码字经验看来，源文件的结构一般是：
+\begin{lstlisting}
+\documentclass[hyperref,UTF8]{ctexart}%"\color{red} 声明文档类(documentclass)"
+
+%"\color{red} 调用的宏包(package)"
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts, amssymb, amsthm}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{upgreek}
+"$\dots\dots$"
+
+\title{"这次的讲义"}
+\author{D.E.D \and "芋圆公式"}
+\date{\today}
+
+%"\color{red} 定义页面使用A4纸大小，版心居中，四个方向缩进2厘米"
+\geometry{a4paper, centering, left=2cm, right=2cm, top=2cm, bottom=2cm}
+\linespread{1.5}%"\color{red} 设置行距为1.5倍"
+"$\dots\dots$"
+
+\begin{document}
+
+\maketitle%"\color{red} 产生标题"
+
+\zihao{-4}%"\color{red} 正文内容开始使用小四字号"
+"$\dots\dots$"
+
+\end{document}%"\color{red} \verb!\end{document}! 后的内容都不参与编译。"
+\end{lstlisting}
+首先暂时无视这些命令具体的意义，随即将要介绍命令的基本构成。\lstinline!\begin{document}! 和 \lstinline!\end{document}! 开始和结束的是 \verb!document! 环境（22--29行），是直接输出的正文。\verb!document! 环境之前的内容（1--21行）称为\textbf{\songti 导言区}(preamble)，用来设置文档的性质和自定义命令。\verb!document! 环境之后的所有内容都会被 \LaTeX{} 忽略。
+
+导言区第一行 \lstinline!\documentclass[hyperref,UTF8]{ctexart}! 使用了文档类 \verb?ctexart? ，并用选项 \verb-[UTF8]- 说明了编码。4--11行为调用的宏包(package)，列出的宏包支持了文章里所有数学排版。13--20行设置了文档的全局性质，例如 \lstinline'\title{}'、 \lstinline'\author{}' 和 \lstinline'\date{}' 声明了文章的标题、作者和写作日期，这些信息不会马上出现在编译得到的PDF中；\lstinline'\geometry{}' 设定了页面大小；\lstinline'\linespread{}' 设置了行距。
+
+在导言区声明过的文章的标题、作者和写作日期需要通过 \lstinline'\maketitle' 输出到PDF中。\lstinline!\zihao{-4}! 声明这之后的正文内容都采用小四字号。正文部分还有更多复杂的章节划分和文本环境等待后面的同学讲解。
+
+\subsection{命令}
+
+\LaTeX{} 中的命令全部以反斜杠(``\lstinline!\!", backslash)开头，因此``\lstinline!\!"被称为\textbf{\songti 命令前导符}，左端带有``\lstinline!\!"的字符串都被认为是命令。命令的形式无非
+\begin{enumerate}[label=(\arabic*)]
+
+\item ``\lstinline!\!"紧跟一串大、小写英文字母。例如：\lstinline!\documentclass[hyperref,UTF8]{ctexart}! 、\lstinline!\zihao{-4}! 以及 \lstinline!\maketitle!。
+
+\item ``\lstinline!\!"紧跟一个非字母符号。例如：\lstinline!\!\textvisiblespace
+\protect\footnote{
+	本人尝试解释清楚所有的内容：表示命令前导符紧跟一个空格，它产生的效果也确实是输出一个空格。
+}
+、\lstinline!\%!
+\protect\footnote{
+	输出注释符，也就是百分号。
+}和 \lstinline!\\!
+\protect\footnote{
+	并不会输出命令前导符反斜杠，这里整体表示一个换行符。
+}
+。
+
+\end{enumerate}
+这两种。很容易归纳得到命令具有以下的基本形式：
+\begin{lstlisting}[numbers=none]
+	\command["可选参数1", "可选参数2"...]{"必要参数1"}...{"必要参数$n$"}
+\end{lstlisting}
+，即命令前导符后紧跟命令名称、可选参数列表和$n$个必要参数。
+\begin{enumerate}[label=(\arabic*)]
+
+\item $n$个必要参数分别由 \lstinline!{}! 包括，其中$n = 0, 1, 2, \dots$。必要参数如果缺少，编译时会报错。
+
+\item 可选参数列表由 \lstinline![]! 包括，可选参数的个数不定，可以是0。多个可选参数彼此用 \lstinline!,! 分隔。例如：\lstinline!\documentclass[hyperref,UTF8]{ctexart}!。
+
+\end{enumerate}
+
+\subsection{文档类}
+
+\LaTeXe{} 基本的文档类有 \verb'article'、 \verb'report' 和 \verb'book' 三个，分别用来编写小篇幅的文章、中篇幅的报告和长篇幅的书籍。\CCTeX{} 组织编写了 \verb-ctex- 文档类，是 \LaTeXe{} 基本文档类的中文对应物。\verb-ctex- 宏包提供三个文档类有 \verb'ctexart'、 \verb'ctexrep' 和 \verb'ctexbook' 分别对应上述三个文档类，用来编写中文短文、中文报告和中文书籍。另外还有 \verb'beamer' 文档类用以制作论文陈述演示文稿，例如这次的演示文稿。
+\footnote{
+	一点补充内容：中文 \LaTeX{} 常用 \CCTeX{} 套装——由中国科学院数学与系统科学研究院的吴凌云研究员维护。中国科学院大学学位论文 \LaTeX{} 模板(\LaTeX{} Thesis Template for the University of Chinese Academy of Sciences)得到了国科大本科部陆晴老师、本科部学位办丁云云老师和中科院数学与系统科学研究院吴凌云研究员的支持。这一模板基于中科院数学与系统科学研究院吴凌云研究员的CASthesis模板发展而来。\href{https://github.com/mohuangrui/ucasthesis}{https://github.com/mohuangrui/ucasthesis}
+}
+
+\subsection{宏包}
+
+基础 \TeX{} 命令和 \LaTeX{} 命令组合为宏(macro)，宏是一种抽象，它根据一系列预定义的规则替换一定的文本模式。宏包储存这些宏。宏包按照以下格式在导言区调用：
+\begin{lstlisting}[numbers=none]
+	\usepackage["可选参数1", "可选参数2"...]{"宏包名称"}
+\end{lstlisting}
+。例如，调用宏包 \verb'amsmath'，则命令 \lstinline!\leqslant! 和 \lstinline!\geqslant! 已经定义并可以使用，它们分别输出$\leqslant$和$\geqslant$。再比如 \lstinline!\usepackage[nottoc]{tocbibind}! 调用了 \verb'tocbibind' 宏包增加目录的项目，默认在目录中加入目录项本身、参考文献、索引等项目。使用选项 \lstinline![nottoc]! 取消目录中显示目录本身。
+
+\ref{subsec:结构} 小节中导言区有两种调用宏包的方式：
+\begin{lstlisting}
+	\usepackage{amsmath}
+	\usepackage{amsfonts, amssymb, amsthm}
+\end{lstlisting}
+。显然，需要设置可选参数的宏包需要采用第1行的调用方式，其它默认选项的宏包可以采用第2行的方式统一调用。
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cl|cl}
+	\toprule
+	名称 & \multicolumn{1}{c|}{作用简介} & 名称 & \multicolumn{1}{c}{作用简介} \\
+	\midrule
+	\verb'amsmath' & 支持大量数学公式环境和数学符号 & \verb'amsfonts' & 支持了黑板粗体（例如：$\mathbb{R}$）等 \\
+	\verb'amssymb' & 支持哥特体（例如：$\mathfrak{S}$）等 & \verb'amsthm' & 定制定理类环境 \\
+	\verb'bm' & 输出粗斜体，例如：$\bm{a} \times \bm{b} = \bm{0}$ & \verb'geometry' & 页面尺寸的设置 \\
+	\verb'graphicx' & 处理插图的各种格式 & \verb'float' & 提供容纳插图表格的浮动体 \\
+	\verb'caption' & 改变图表的标题格式 & \verb'color' & 自定义和预定义各种颜色 \\
+	\verb'esint' & 支持美观的二重环路积分符号等 & \verb'cancel' & 产生各种取向的删除线 \\
+	\verb'mathtools' & 排版复杂的上下标，例如张量 & \verb'mathrsfs' & 支持数学花体，例如：$\mathscr{F}$ \\
+	\verb'upgreek' & 独立地支持直体希腊字母输出 & \verb'enumitem' & 定制列表环境，产生中文序号 \\
+	\verb'hyperref' & 产生超链接和PDF书签 & \verb'listings' & 改良的抄录代码环境 \\
+	\verb'xltxtra' & 产生标识符 \XeLaTeX & \verb'texnames' & 产生多种标识符，例如 \AmS{} \\
+	\verb'tocbibind' & 增加目录的项目 & \verb'booktabs' & 绘制三线表并控制表线 \\
+	\bottomrule
+\end{tabular}
+\caption{常用宏包和作用列表}
+\label{table:常用宏包}
+\end{table}
+本人平常经常使用的宏包如表 \ref{table:常用宏包} 所示。
+
+\subsection{模式}
+
+模式(mode)是处理源文件的方式，有左右模式(left-to-right mode, LR mode)、段落模式(paragraph mode)和数学模式(math mode)。左右模式中的内容不换行，比如在各种盒子(box)中的内容。常规的文本默认遵循段落模式排版，系统自动分行、分段和分页。数学模式将是 \ref{sec:AMS} 节的重点。
+
+\subsection{符号}
+
+符号分为专用符号、文本符号和数学符号。
+
+专用符号是指10个被 \LaTeX{} 赋予了特殊用途的符号，它们的用途和名称如表 \ref{table:专用符号} 所示。
+\begin{table}[H]
+\centering
+\begin{tabular}{ccc|l}
+	\toprule
+	符号 & 名称 & 在文本中的输出方式 & \multicolumn{1}{c}{用途} \\
+	\midrule
+	\lstinline'%' & 注释符 & \lstinline'\%' & 注释符之后的内容都在编译时被忽略 \\
+	\lstinline'\' & 命令前导符 & \lstinline'\textbackslash' & 开启一个 \LaTeX{} 命令 \\
+	\lstinline'{}' & brace & \lstinline'\{\}' & 标志必要参数或组合 \\
+	\lstinline'$' & 数学模式符 & \lstinline'\$' \lstinline'\textdollar' & 成对的 \lstinline'$' 标志了数学模式 \\
+	\lstinline'&' & 分列符 & \lstinline'\&' & 在各种表格环境中表示列之间的分隔 \\
+	\lstinline'^' & 上标符 & \lstinline'\^{}' \lstinline'\textasciicircum' & 在数学模式中将 \lstinline'^' 后的参数变为上标 \\
+	\lstinline'_' & 下标符 & \lstinline'\_' & 在数学模式中将 \lstinline'_' 后的参数变为下标 \\
+	\lstinline'#' & 参数符 & \lstinline'\#' & 自定义命令时标志参数 \\
+	\lstinline'~' & 空格符 & \lstinline'\~{}' \lstinline'\textasciitilde' & 产生一个不可换行的空格 \\
+	\bottomrule
+\end{tabular}
+\caption{专用符号的名称、在文本中的输出方式和用途}
+\label{table:专用符号}
+\end{table}
+\noindent 命令前导符的输出方式与众不同的原因是显然的。brace亦可通过命令 \lstinline'\textbraceleft' 和 \lstinline'\textbraceright' 输出。\lstinline'|'、\lstinline'<' 和 \lstinline'>' 这三个符号被直接定义为数学符号，只能出现在数学模式中，在文本中可以用 \lstinline'\textbar'、\lstinline'\textless' 和 \lstinline'\textgreater' 分别输出。
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccc|ccc}
+	\toprule
+	符号 & 生成命令 & 所需调用的宏包 & 符号 & 生成命令 & 所需调用的宏包 \\
+	\midrule
+	\TeX & \lstinline'\TeX' & ~ & \LaTeX & \lstinline'\LaTeX' & ~ \\
+	\LaTeXe & \lstinline'\LaTeXe' & ~ & \XeLaTeX & \lstinline'\XeLaTeX' & \verb'xltxtra' \\
+	\AmS & \lstinline'\AmS' & \verb'texnames' & \AmSTeX & \lstinline'\AmSTeX' & \verb'texnames' \\
+	\BibTeX & \lstinline'\BibTeX' & \verb'texnames' & \LuaTeX & \lstinline'\LuaTeX' & \verb'texnames' \\
+	\CTeX & \lstinline'\CTeX' & \verb'ctex' & \CCTeX & \lstinline'\CCTeX' & 自定义命令 \\
+	\bottomrule
+\end{tabular}
+\caption{\TeX{} 家族及相关的标识符}
+\label{table:TeX}
+\end{table}
+文本符号仅仅介绍 \TeX{} 家族及相关的标识符，如表 \ref{table:TeX} 所示。表 \ref{table:TeX} 中\lstinline!\CCTeX! 命令这样定义\cite{CTeX宏集手册}：
+\begin{lstlisting}[numbers=none]
+	\newcommand{\CCTeX}{$\mathbb{C}$\kern-.05em\TeX}
+\end{lstlisting}
+。考虑到大多数文档中 \lstinline!\mathbb{}! 未必有定义，就不采用 \CCTeX{} 了，只定义最简单的形式 \CTeX{} 。
+
+\LaTeX{} 的概述还应包含距离、盒子、计数器、交叉引用、环境、四则运算、条件判断、注释与提示和颜色。这些使得 \LaTeX{} 成为了Turing完备的语言。
+
+\section{\texorpdfstring{\AmS{} 宏集}{AMS宏集}}\label{sec:AMS}
+
+现在来到 \LaTeX{} 的“顶尖级成就”——数学排版。
+
+\verb'amsmath' 宏包由美国数学会(American Mathematical Society, AMS)设计开发，连同 \verb'amsthm' 等宏包和美国数学会文档类一起构成 \AmS-\LaTeX{} 套件，本人认为这就是 \AmS{} 宏集。
+
+\AmS{} 涉及到数学模式的方方面面，考虑到 \LaTeX{} 知识的系统性，最好还是通过系统地介绍数学模式来探究 \AmS{} 宏集。
+
+\subsection{简单的数学环境}
+
+在介绍 \AmS{} 宏集之前，需要一些基本的数学环境来实现这些内容。详细的数学环境将在下周日(2019.09.29)介绍。
+
+\TeX{} 有两种数学公式环境：
+\begin{enumerate}[label=(\arabic*)]
+
+\item \textbf{\songti 行内公式} (inline math)，夹杂在行文段落之中。例如：Euler公式$\me{\mi \uppi} + 1 = 0$。
+
+\item \textbf{\songti 行间公式} (display math)，单独占据一行，与上下文有一定间距。例如：在$0 < p < 1$时，成立余元公式(the complement formula)
+\begin{equation}
+	\mathrm{B} \left( p, 1 - p \right) = \Gamma \left( p \right) \Gamma \left( 1 - p \right) = \frac{\uppi}{\sin p \uppi}.
+\end{equation}
+这里的大写希腊字母$\mathrm{B}$和$\Gamma$属于特殊函数的函数名符号，根据排版规范使用了直立罗马体。
+
+\end{enumerate}
+
+\subsubsection{行内公式}\label{subsubsec:行内公式}
+
+\LaTeX{} 提供了三种行内公式环境：
+\begin{enumerate}[label=(\roman*)]
+
+\item \lstinline'$ ... $'；
+
+\item \lstinline'\( ... \)'；
+
+\item \lstinline'\begin{math} ... \end{math}'。
+
+\end{enumerate}
+编译结果是完全相同的，例如：
+\begin{lstlisting}
+	$$a^{2} + b^{2} \geqslant 2 a b$$
+	\(
+		a^{2} + b^{2} \geqslant 2 a b
+	\)
+	\begin{math}
+		a^{2} + b^{2} \geqslant 2 a b
+	\end{math}
+\end{lstlisting}
+均会得到基本不等式$a^{2} + b^{2} \geqslant 2 a b$。但是本人强烈建议使用 \lstinline'$ ... $' 环境，不仅因为简便，还因为它不像另外两种环境是\textbf{\songti “脆弱”命令} (fragile command)，在特定条件下会出错。
+
+\subsubsection{行间公式}
+
+\LaTeX{} 提供了三种行间公式环境：
+\begin{enumerate}[label=(\roman*)]
+
+\item \lstinline'$$ ... $$'；
+
+\item \lstinline'\[ ... \]'；
+
+\item \lstinline'\begin{displaymath} ... \end{displaymath}'。
+
+\end{enumerate}
+编译结果是完全相同的，例如：
+\begin{lstlisting}
+	$$ x_{n + 1} = \frac{1}{2} \left( x_{n} + \frac{a}{x_{n}} \right). $$
+	\[
+		x_{n + 1} = \frac{1}{2} \left( x_{n} + \frac{a}{x_{n}} \right).
+	\]
+	\begin{displaymath}
+		x_{n + 1} = \frac{1}{2} \left( x_{n} + \frac{a}{x_{n}} \right).
+	\end{displaymath}
+\end{lstlisting}
+均会得到
+\[
+	x_{n + 1} = \frac{1}{2} \left( x_{n} + \frac{a}{x_{n}} \right).
+\]
+\lstinline'$$ ... $$' 会产生不良的间距，\lstinline'\[ ... \]' 也同为“脆弱”命令，因此最好使用 \verb'displaymath' 环境。
+
+然而考虑到 \LaTeX{} 提供了自动编号的单行行间公式环境 \verb'equation'，而 \verb'amsmath' 宏包提供了去掉编号的 \verb'equation*' 环境，是比 \verb'displaymath' 环境更好的选择。
+
+\subsection{基本数学结构}
+
+纸面上数学公式复杂的结构是如何通过线性的字符串表达的呢？
+
+\subsubsection{上标与下标}
+
+这些绿色与红色的部分都可以归纳为上标与下标：
+\begin{equation*}
+	\begin{aligned}
+		90^{\codegreen{\circ}} && x_{\red{1}} && y^{\codegreen{\prime}} && z^{\color{codegreen} 2} && \mathrm{C}_{\red{n}}^{\codegreen{m}} && \sup_{\red{x \in I}} && \int_{\red{0}}^{\codegreen{1}} && \int_{\red{D}} && \oint\limits_{\red{|z| = 1}} && \prod_{\red{k = 1}}^{\codegreen{n}} && \sum_{\red{1 \leqslant i < j \leqslant m}} && \tensor{T}{\red{\nu_{1} \nu_{2} \cdots \nu_{l}}}{\codegreen{\mu_{\red{1}} \mu_{\red{2}} \cdots \mu_{\red{k}}}}
+	\end{aligned}
+\end{equation*}
+可以看到上标可以在正上方或者右上方、下标可以在正下方或者右下方。
+
+上标和下标分别利用 \lstinline'^{}' 和 \lstinline'_{}' 输出，强烈建议将 \lstinline'^' 和 \lstinline'_' 看作带有一个必要参数的命令，可以避免很多麻烦，而且可以发现上标和下标的相互嵌套也变得容易理解了，比如命令 \lstinline'2^{n_{i}}' 输出$2^{n_{i}}$。上下标可以同时存在，可能在代码上涉及顺序问题，但是可以看到命令 \lstinline'x_{1}^{2}' 和 \lstinline'x^{2}_{1}' 都可以输出$x^{2}_{1}$，由于多种考虑建议使用前者。
+
+其中一种关系不大的考虑是特殊的上标 \lstinline!'! 的存在
+\footnote{
+	英文的引号`和'分别位于标准键盘的tab键上方和enter键左方。
+}
+。举一个例子来说明 \lstinline!'! 的特殊：\lstinline!y_{0}'! 和 \lstinline!y_{0}^{\prime}! 都可以输出$y_{0}^{\prime}$，\lstinline!y_{0}''! 和 \lstinline!y_{0}^{\prime \prime}! 都可以输出$y_{0}^{\prime \prime}$。\lstinline!'! 可以连续使用，而普通上标连续使用会收到系统报错：\verb'! Double superscript.'
+\footnote{
+	报错命令的具体形式依赖于编辑器，这里的编辑器是 \TeX works。
+}
+，普通上标和 \lstinline!'! 的混用亦是如此。因此若是需要${s'}^{2}$的排版效果，需要分组 \lstinline!{}! 的介入，也就是代码 \lstinline!{s'}^{2}!。
+
+这一小小节开头的各个公式是在行间公式环境内的，若是将它们放入行内公式环境中，
+\begin{equation*}\setcounter{MaxMatrixCols}{12}
+	\begin{matrix}
+		90^{\codegreen{\circ}} & x_{\red{1}} & y^{\codegreen{\prime}} & z^{\color{codegreen} 2} & \mathrm{C}_{\red{n}}^{\codegreen{m}} & \sup_{\red{x \in I}} & \int_{\red{0}}^{\codegreen{1}} & \int_{\red{D}} & \oint_{\red{|z| = 1}} & \prod_{\red{k = 1}}^{\codegreen{n}} & \sum_{\red{1 \leqslant i < j \leqslant m}} & \tensor{T}{\red{\nu_{1} \nu_{2} \cdots \nu_{l}}}{\codegreen{\mu_{\red{1}} \mu_{\red{2}} \cdots \mu_{\red{k}}}}
+	\end{matrix}
+\end{equation*}
+会发现，原本在字符正上、下方的内容移到了右侧的上、下方，原本就在右上、右下的内容相对字符的位置也发生了改变，甚至积分号等等的字符本身就缩小了，这是因为行内公式为了避免产生拥挤而自动作出的调整，可以在环境前用 \lstinline!\displaystyle! 恢复之前的排版效果。公式的字号暂时不宜做深入的讨论。
+
+很自然的想法，如何在符号的左上、左下方增加角标？这里只给出本人认为最合适的解决方法：使用 \verb'mathtools' 宏包给出的
+\begin{lstlisting}[numbers=none]
+	\prescript{"上标"}{"下标"}{"元素"}
+\end{lstlisting}
+命令。例如：分子轨道理论解释了氢分子离子$\prescript{1}{1}{\mathrm{H}}_{2}^{+}$的存在，相应的代码为 \lstinline!\prescript{1}{1}! \lstinline!{\mathrm{H}}_{2}^{+}! 。
+
+$\red{\bigstar}$这里探讨一个和$\mathbb{UCAS}$er们关系很大的问题：如何排版矩阵$M$（或者是$\bm{M}$）的转置？
+\begin{equation*}
+	\begin{aligned}
+		\prescript{t}{}{M} && \prescript{\mathrm{t}}{}{M} && M' && M^{\top} && M^{T} && M^{\mathrm{T}}
+	\end{aligned}
+\end{equation*}
+输出它们的代码分别为：\lstinline!\prescript{t}{}{M}!、\lstinline!\prescript{\mathrm{t}}{}{M}!、\lstinline!M'!、\lstinline!M^{\top}!、\lstinline!M^{T}! 和 \lstinline!M^{\mathrm{T}}!。根据\href{http://www.cnki.com.cn/Article/CJFDTotal-BJHK199001004.htm}{《中国高等学校自然科学学报编排规范（修订版）》}或是\href{http:2//qks.yangtzeu.edu.cn/info/1045/1982.htm}{《长江大学社会科学类学报编排规范（2015年修订版）》}，转置标记属于“量符号中为区别于其他量而加的具有特定含义的非量符号”，故应使用正体T或t。使用制表符 \lstinline!\top! 是令人迷惑的，就像用量子力学文献中用 \lstinline!+! 替代 \lstinline!\dagger! 一样。
+
+在张量分析中，上下标不再是$A_{m}^{n}$而是$\tensor{A}{m}{n}$或是$A_{m}^{\phantom{m} n}$，此时最佳的解决方案是利用“幻影”命令 \lstinline!\phantom{}!，这一命令产生一个和参数一样大小的盒子，没有任何内容，起到占位作用。例如：
+\begin{lstlisting}[numbers=none]
+	A_{m}^{\phantom{m} n}
+\end{lstlisting}
+输出$A_{m}^{\phantom{m} n}$。但是如果上、下标是连续的、复杂的，代码会变得格外笨重，不如调用 \verb'tensor' 宏包。这里照搬刘海洋书上的例子\cite{LaTeX入门}：
+\begin{lstlisting}[numbers=none]
+	$M \indices{^a_b^{cd}_e}$ \qquad $\tensor[^a_b^c_d]{M}{^a_b^c_d}$
+\end{lstlisting}
+输出得到$M_{\phantom{a} b \phantom{c d} e}^{a \phantom{b} c d}$ \qquad ${}^{a \phantom{b} c}_{\phantom{a} b \phantom{c} d} M_{\phantom{a} b \phantom{c} d}^{a \phantom{b} c}$。
+
+化学式中经常出现上、下标，例如硫代硫酸氢根离子 \ce{HS2O3-}。利用数学模式也可以实现这一化学式的输出：
+\begin{lstlisting}[numbers=none]
+	HS$_{2}$O$_{3}^{-}$
+\end{lstlisting}
+，效果为HS$_{2}$O$_{3}^{-}$，但是减号的形状不一样，而且代码很复杂。化学宏包 \verb"mhchem" 提供的命令 \lstinline'\ce{}' 可以简化代码。例如：\lstinline'\ce{HS2O3-}'。最后照搬刘海洋书上的反应方程式例子\cite{LaTeX入门}：
+\begin{equation}
+	\ce{2H2 + O2 ->[\text{燃烧}] 2H2O},
+\end{equation}
+相应的代码为
+\begin{lstlisting}
+	\begin{equation}
+		\ce{2H2 + O2 ->[\text{"燃烧"}] 2H2O},
+	\end{equation}
+\end{lstlisting}
+
+补充说明一点：\LaTeX{} 中没有角度符号，刘海洋的处理方法是借用映射复合的二元运算符$\circ$，将其置于上标表示角度。因此代码 \lstinline!90^{\circ}! 输出$90^{\circ}$。
+
+\subsubsection{划线、箭头和花括号}
+
+这里都是指在字符上、下的划线、箭头和花括号。
+
+\lstinline!\overline{}! 和 \lstinline!\underline{}! 命令生成上划线和下划线，例如：表示量子数$m$的上界和下界，即$\underline{m} \leqslant m \leqslant \overline{m}$，相应的代码为 \lstinline!\underline{m} \leqslant m \leqslant \overline{m}!；平面几何中线段表示为$\overline{OP}$，相应的代码为 \lstinline!\overline{OP}!。
+
+上、下箭头的命令及输出效果列于表 \ref{table:上下箭头} 中。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+	命令 & 输出效果 & 命令 & 输出效果 \\
+	\midrule
+	\lstinline!\overrightarrow{OP}! & $\overrightarrow{OP}$ & \lstinline!\underrightarrow{OP}! & $\underrightarrow{OP}$ \\
+	\lstinline!\overleftarrow{OP}! & $\overleftarrow{OP}$ & \lstinline!\underleftarrow{OP}! & $\underleftarrow{OP}$ \\
+	\lstinline!\overleftrightarrow{OP}! & $\overleftrightarrow{OP}$ & \lstinline!\underleftrightarrow{OP}! & $\underleftrightarrow{OP}$ \\
+	\bottomrule
+\end{tabular}
+\caption{上、下箭头的命令及输出效果}
+\label{table:上下箭头}
+\end{table}
+
+\lstinline!\overbrace! 和 \lstinline!\underbrace! 命令生成上花括号和下花括号，它们本身可以加上、下标，效果例如：对于本原勾股数$\left( x, y, z \right)$，有
+\begin{equation}
+	\left( x^{2} z^{2} + y^{4} \right)^{2} = \underbrace{\left( x y \right)^{2} + \left( y z \right)^{2} + \left( x z \right)^{2}}_{\text{3项}}
+\end{equation}
+相应的代码为
+\begin{lstlisting}[numbers=none]
+	\left( x^{2} z^{2} + y^{4} \right)^{2} = \underbrace{\left( x y \right)^{2} + \left( y z \right)^{2} + \left( x z \right)^{2}}_{\text{3"项"}}
+\end{lstlisting}
+，其中在数学模式中用 \lstinline'\text{}' 输入了中文，中文直接在数学模式中是不能正常输入显示的。
+
+\verb'mathtools' 宏包提供了产生上、下方括号的命令：
+\begin{lstlisting}
+	\overbracket["线宽"]["伸出高度"]{"加括号内容"}
+	\underbracket["线宽"]["伸出高度"]{"加括号内容"}
+\end{lstlisting}
+
+刘海洋的书\cite{LaTeX入门}中有一道有趣的习题：考虑如何排版下列交错的花括号？
+\begin{equation}
+	a + \rlap{$\overbrace{\phantom{b + c + d}}^{m}$} b + \underbrace{c + d + e}_{n} + f
+\end{equation}
+
+\subsubsection{分式}
+
+最基本的分式(fraction)由
+\begin{lstlisting}[numbers=none]
+	\frac{"分子内容"}{"分母内容"}
+\end{lstlisting}
+生成。观察以下的例子：
+\begin{align*}
+%	\begin{aligned}
+		\frac{1}{2} && \text{文本中的$\textstyle \red{\frac{1}{2}}$} && \frac{1}{1 + \red{\frac{1}{2}}} && \frac{\red{\frac{1}{2}}}{1 + \red{\frac{1}{2}}}
+%	\end{aligned}
+\end{align*}
+发现分式在行内公式、分子和分母中的大小是被压缩的。这不是偶然，以后会详细介绍公式的大小控制，包括 \lstinline'\displaystyle' 和 \lstinline'\textstyle'。可以用 \lstinline'\dfrac{}{}' 和 \lstinline'\tfrac{}{}' 生成不受环境影响的行间和行内公式大小的分式。被压缩的分数式最好改为带有括号的横式，例如将$\frac{1}{ab}$改为$1/(ab)$。
+
+设黄金分割比(the golden ratio)为$g$，则有
+\begin{equation}
+	g = \cfrac{1}{1 + \cfrac{1}{1 + \cdots}},
+\end{equation}
+这一连分数形式的排版由 \verb'amsmath' 提供的 \lstinline!\cfrac[]{}{}! 完成，其中的可选参数可以为 \lstinline!l!、\lstinline!c! 和 \lstinline!r!，分别设置分子左对齐、居中和右对齐，默认居中。源代码为：
+\begin{lstlisting}[numbers=none]
+	g = \cfrac{1}{1 + \cfrac{1}{1 + \cdots}},
+\end{lstlisting}
+
+二项式系数 \lstinline!\binom{n}{k}! 的用法和分式很像，例如根据二项式定理展开$\left( a + b \right)^{3}$有
+\begin{equation}
+	\left( a + b \right)^{3} = \binom{3}{0} a^{3} + \binom{3}{1} a^{2} b + \binom{3}{2} a b^{2} + \binom{3}{3} b^{3},
+\end{equation}
+这个代码就不写出来了。同理有命令 \lstinline'\dbinom{}{}' 和 \lstinline'\tbinom{}{}'。
+
+\subsubsection{根式}
+
+根式由
+\begin{lstlisting}[numbers=none]
+	\sqrt["根式次数"]{"根式内容"}
+\end{lstlisting}
+生成。现在仍然不适合涉及根式的精细调整。
+
+\subsection{符号与类型}
+
+数学符号庞杂，但是可以系统地分为普通符号和字母、算子、二元关系符和二元运算符、括号和定界符以及数学标点。不同类别的处理方法是不一样的。
+
+\subsubsection{普通符号和字母}
+
+数字和字母的字体有很多，这里仅仅罗列常用的 \LaTeX{} 提供的数学字体于表 \ref{table:常用数学字体} 中。详细的内容由高然同学负责，他对字体的研究很深刻。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|l}
+	\toprule
+	类别 & 命令 & \multicolumn{1}{c}{输出效果} \\
+	\midrule
+	默认字体 & \lstinline'\mathnormal{}' & $\mathnormal{ABCDHIJKWXYZabcdhijkwxyz0123}$ \\
+	意大利体 & \lstinline'\mathit{}' & $\mathit{ABCDHIJKWXYZabcdhijkwxyz0123}$ \\
+	罗马体 & \lstinline'\mathrm{}' & $\mathrm{ABCDHIJKWXYZabcdhijkwxyz0123}$ \\
+	手写体（花体） & \lstinline'\mathcal{}' & $\mathcal{ABCDHIJKWXYZ}$ \\
+	\bottomrule
+\end{tabular}
+\caption{常用的 \LaTeX{} 提供的数学字体}
+\label{table:常用数学字体}
+\end{table}
+
+按照排版规范，数学公式变量需要使用意大利体，常数需要使用罗马体。例如：自然常数$\mathrm{e}$、虚数单位$\mathrm{i}$和光速$\mathrm{c}$。
+
+常用的数学字体和字体包如表 \ref{table:常用宏包字体} 所示。
+\begin{table}[H]
+\centering
+\begin{tabular}{ccc|l}
+	\toprule
+	类别 & 命令 & 宏包 & \multicolumn{1}{c}{输出效果} \\
+	\midrule
+	黑板粗体 & \lstinline'\mathbb{}' & \verb'amssymb' & $\mathbb{ABCDHIJKWXYZ}$（仅大写字母） \\
+	花体 & \lstinline'\mathscr{}' & \verb'mathrsfs' & $\mathscr{ABCDHIJKWXYZ}$（仅大写字母） \\
+	哥特体 & \lstinline'\mathfrak{}' & \verb'amssymb' & $\mathfrak{ABCDHIJKWXYZabcdhijkwxyz0123}$ \\
+	\bottomrule
+\end{tabular}
+\caption{常用的数学字体和字体包}
+\label{table:常用宏包字体}
+\end{table}
+\noindent 这里只列举本人使用过很多次的字体。
+
+希腊字母是这一小节的核心，首先是24个希腊字母的大写和小写的输出如表 \ref{table:希腊} 所示。除了$\mathrm{o}$外其他23个小写希腊字母都有定义，而仅有11个大写希腊字母有定义。显然，那些和拉丁字母形状完全一样的希腊字母无需重复定义。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc||cc|cc}
+	\toprule
+	小写字母 & 命令 & 小写字母 & 命令 & 大写字母 & 命令 & 大写字母 & 命令 \\
+	\midrule
+	$\alpha$ & \lstinline'\alpha' & $\nu$ & \lstinline'\nu' & $\mathrm{A}$ & \lstinline'\mathrm{A}' & $\mathrm{N}$ & \lstinline'\mathrm{N}' \\
+	$\beta$ & \lstinline'\beta' & $\xi$ & \lstinline'\xi' & $\mathrm{B}$ & \lstinline'\mathrm{B}' & $\Xi$ & \lstinline'\Xi' \\
+	$\gamma$ & \lstinline'\gamma' & $o$ & \lstinline'o' & $\Gamma$ & \lstinline'\Gamma' & $\mathrm{O}$ & \lstinline'\mathrm{O}' \\
+	$\delta$ & \lstinline'\delta' & $\pi$ & \lstinline'\pi' & $\Delta$ & \lstinline'\Delta' & $\Pi$ & \lstinline'\Pi' \\
+	$\epsilon$ & \lstinline'\epsilon' & $\rho$ & \lstinline'\rho' & $\mathrm{E}$ & \lstinline'\mathrm{E}' & $\mathrm{P}$ & \lstinline'\mathrm{P}' \\
+	$\zeta$ & \lstinline'\zeta' & $\sigma$ & \lstinline'\sigma' & $\mathrm{Z}$ & \lstinline'\mathrm{Z}' & $\Sigma$ & \lstinline'\Sigma' \\
+	$\eta$ & \lstinline'\eta' & $\tau$ & \lstinline'\tau' & $\mathrm{H}$ & \lstinline'\mathrm{H}' & $\mathrm{T}$ & \lstinline'\mathrm{T}' \\
+	$\theta$ & \lstinline'\theta' & $\upsilon$ & \lstinline'\upsilon' & $\Theta$ & \lstinline'\Theta' & $\Upsilon$ & \lstinline'\Upsilon' \\
+	$\iota$ & \lstinline'\iota' & $\phi$ & \lstinline'\phi' & $\mathrm{I}$ & \lstinline'\mathrm{I}' & $\Phi$ & \lstinline'\Phi' \\
+	$\kappa$ & \lstinline'\kappa' & $\chi$ & \lstinline'\chi' & $\mathrm{K}$ & \lstinline'\mathrm{K}' & $\mathrm{X}$ & \lstinline'\mathrm{X}' \\
+	$\lambda$ & \lstinline'\lambda' & $\psi$ & \lstinline'\psi' & $\Lambda$ & \lstinline'\Lambda' & $\Psi$ & \lstinline'\Psi' \\
+	$\mu$ & \lstinline'\mu' & $\omega$ & \lstinline'\omega' & $\mathrm{M}$ & \lstinline'\mathrm{M}' & $\Omega$ & \lstinline'\Omega' \\
+	\bottomrule
+\end{tabular}
+\caption{24个希腊字母的大写和小写的输出}
+\label{table:希腊}
+\end{table}
+\noindent 有8个小写希腊字母存在变体，如表 \ref{table:小写变体} 所示。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	小写字母 & 命令 & 小写字母 & 命令 & 小写字母 & 命令 & 小写字母 & 命令 \\
+	\midrule
+	$\varepsilon$ & \lstinline'\varepsilon' & $\vartheta$ & \lstinline'\vartheta' & $\varkappa$ & \lstinline'\varkappa' & $\varpi$ & \lstinline'\varpi' \\
+	$\varrho$ & \lstinline'\varrho' & $\varsigma$ & \lstinline'\varsigma' & $\varphi$ & \lstinline'\varphi' & $\digamma$ & \lstinline'\digamma' \\
+	\bottomrule
+\end{tabular}
+\caption{8个变体小写希腊字母}
+\label{table:小写变体}
+\end{table}
+\noindent 其中$\varkappa$和$\digamma$是 \AmS{} 符号，需要调用 \verb'amssymb' 等宏包。11个已经定义的大写希腊字母也存在变体，如表 \ref{table:大写变体} 所示，它们和13个拉丁字母的斜体构成了斜体的大写希腊字母全体。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	大写字母 & 命令 & 大写字母 & 命令 & 大写字母 & 命令 & 大写字母 & 命令 \\
+	\midrule
+	$\varGamma$ & \lstinline'\varGamma' & $\varDelta$ & \lstinline'\varDelta' & $\varTheta$ & \lstinline'\varTheta' & $\varLambda$ & \lstinline'\varLambda' \\
+	$\varXi$ & \lstinline'\varXi' & $\varPi$ & \lstinline'\varPi' & $\varSigma$ & \lstinline'\varSigma' & $\varUpsilon$ & \lstinline'\varUpsilon' \\
+	$\varPhi$ & \lstinline'\varPhi' & $\varPsi$ & \lstinline'\varPsi' & $\varOmega$ & \lstinline'\varOmega' & ~ & ~ \\
+	\bottomrule
+\end{tabular}
+\caption{11个变体大写希腊字母}
+\label{table:大写变体}
+\end{table}
+\noindent 很自然的考虑，是否可以输出直体的小写希腊字母呢？\verb'upgreek' 宏包应当是最好的解决方案。24个直立小写希腊字母和6个直立变体小写希腊字母如表 \ref{table:小写直体} 所示。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	大写字母 & 命令 & 大写字母 & 命令 & 大写字母 & 命令 & 大写字母 & 命令 \\
+	\midrule
+	$\upalpha$ & \lstinline'\upalpha' & $\upbeta$ & \lstinline'\upbeta' & $\upgamma$ & \lstinline'\upgamma' & $\updelta$ & \lstinline'\updelta' \\
+	$\upepsilon$ & \lstinline'\upepsilon' & $\upzeta$ & \lstinline'\upzeta' & $\upeta$ & \lstinline'\upeta' & $\uptheta$ & \lstinline'\uptheta' \\
+	$\upiota$ & \lstinline'\upiota' & $\upkappa$ & \lstinline'\upkappa' & $\uplambda$ & \lstinline'\uplambda' & $\upmu$ & \lstinline'\upmu' \\
+	$\upnu$ & \lstinline'\upnu' & $\upxi$ & \lstinline'\upxi' & $\mathrm{o}$ & \lstinline'\mathrm{o}' & $\uppi$ & \lstinline'\uppi' \\
+	$\uprho$ & \lstinline'\uprho' & $\upsigma$ & \lstinline'\upsigma' & $\uptau$ & \lstinline'\uptau' & $\upupsilon$ & \lstinline'\upupsilon' \\
+	$\upphi$ & \lstinline'\upphi' & $\upchi$ & \lstinline'\upchi' & $\uppsi$ & \lstinline'\uppsi' & $\upomega$ & \lstinline'\upomega' \\
+	\bottomrule
+\end{tabular}
+\begin{tabular}{cc|cc|cc}
+	\toprule
+	大写字母 & 命令 & 大写字母 & 命令 & 大写字母 & 命令 \\
+	\midrule
+	$\upvarepsilon$ & \lstinline'\upvarepsilon' & $\upvartheta$ & \lstinline'\upvartheta' & $\upvarpi$ & \lstinline'\upvarpi' \\
+	$\upvarrho$ & \lstinline'\upvarrho' & $\upvarsigma$ & \lstinline'\upvarsigma' & $\upvarphi$ & \lstinline'\upvarphi' \\
+	\bottomrule
+\end{tabular}
+\caption{24个直立小写希腊字母和6个直立变体小写希腊字母}
+\label{table:小写直体}
+\end{table}
+\noindent 这样一来，圆周率可以用$\uppi$表示，变分算符用$\updelta$表示，$\mathrm{o}$表示高阶无穷小函数。例如：在$x = 0$附近有Taylor公式
+\begin{equation}
+	f \left( x \right) = f \left( 0 \right) + f' \left( 0 \right) x + \frac{f'' \left( 0 \right)}{2!} x^{2} + \frac{f''' \left( 0 \right)}{3!} x^{3} + \frac{f^{(4)} \left( 0 \right)}{4!} x^{4} + \mathrm{o} \left( x^{4} \right)
+\end{equation}
+
+此外补充一个希伯来字母 \lstinline'\aleph'。例如，连续统假设：$\aleph_{1} = 2^{\aleph_{0}}$。
+
+数学重音(math accents)是给字符加上重音符号。表 \ref{table:accents} 列举了常用的几个数学重音。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	重音 & 命令 & 重音 & 命令 & 重音 & 命令 & 重音 & 命令 \\
+	\midrule
+	$\dot{q}$ & \lstinline'\dot{}' & $\ddot{q}$ & \lstinline'\ddot{}' & $\dddot{q}$ & \lstinline'\dddot{}' & $\ddddot{q}$ & \lstinline'\ddddot{}' \\
+	$\hat{q}$ & \lstinline'\hat{}' & $\vec{q}$ & \lstinline'\vec{}' & $\mathring{q}$ & \lstinline'\mathring{}' & $\tilde{q}$ & \lstinline'\tilde{}' \\
+	$\bar{q}$ & \lstinline'\bar{}' & $\widetilde{AB}$ & \lstinline'\widetilde{}' & $\widehat{AB}$ & \lstinline'\widehat{}' & ~ & ~ \\
+	\bottomrule
+\end{tabular}
+\caption{常用的数学重音}
+\label{table:accents}
+\end{table}
+\noindent 其中 \lstinline'\dddot{}' 和 \lstinline'\ddddot{}' 需要调用 \verb'amsmath' 宏包。表 \ref{table:accents} 的第2行内容常用于表示对时间参数或是弧长参数的导数。\lstinline'\hat{}' 一般用于表示量子力学中的一个算符。\lstinline'\mathring{}' 可以和字母A组合得到长度单位$\mathring{\mathrm{A}}$，$1 \,\mathring{\mathrm{A}} = 10^{-10} \,\mathrm{m}$。假设已知偏微分算符$\partial$的命令，就可以排版Euler-Lagrange方程：
+\begin{equation}
+	\derive{}{t} \left( \parti{L}{\dot{q}} \right) - \parti{L}{q} = 0
+\end{equation}
+源代码如下：
+\begin{lstlisting}[numbers=none]
+	\frac{\mathrm{d}}{\mathrm{d} t} \left( \frac{\partial L}{\partial \dot{q}} \right) - \frac{\partial L}{\partial q} = 0
+\end{lstlisting}
+
+还有许多没有照面的符号，诸如约化普朗克常量$\hbar$和表示无穷的$\infty$等等。这些符号称为数学环境的普通符号(ordinary symbols)，如表 \ref{table:ordinary} ，它们的字体不会轻易改变，产生的间距与字母相同。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\hbar$ & \lstinline'\hbar' & $\ell$ & \lstinline'\ell' & $\Re$ & \lstinline'\Re' & $\Im$ & \lstinline'\Im' \\
+	$\infty$ & \lstinline'\infty' & $\prime$ & \lstinline'\prime' & $\emptyset$ & \lstinline'\emptyset' & $\nabla$ & \lstinline'\nabla' \\
+	$\partial$ & \lstinline'\partial' & $\angle$ & \lstinline'\angle' & $\triangle$ & \lstinline'\triangle' & $\forall$ & \lstinline'\forall' \\
+	$\clubsuit$ & \lstinline'\clubsuit' & $\diamondsuit$ & \lstinline'\diamondsuit' & $\heartsuit$ & \lstinline'\heartsuit' & $\spadesuit$ & \lstinline'\spadesuit' \\
+	$\backslash$ & \lstinline'\backslash' & $\hslash$ & \lstinline'\hslash' & $\varnothing$ & \lstinline'\varnothing' & $\square$ & \lstinline'\square' \\
+	$\blacksquare$ & \lstinline'\blacksquare' & $\lozenge$ & \lstinline'\lozenge' & $\blacklozenge$ & \lstinline'\blacklozenge' & $\bigstar$ & \lstinline'\bigstar' \\
+	$\complement$ & \lstinline'\complement' & $\mho$ & \lstinline'\mho' & ~ & ~ & ~ & ~ \\
+	\bottomrule
+\end{tabular}
+\caption{常用的数学普通符号}
+\label{table:ordinary}
+\end{table}
+\noindent 最后3行除了 \lstinline'\backslash' 以外均为 \AmS{} 符号。\lstinline'\backslash' 再次出现，后面还会有它的踪迹。补充几个在文本模式和数学模式中通用的符号：$\S$和$\dag$，它们的命令分别为 \lstinline'\S' 和 \lstinline'\dag'。$\dag$常用于量子力学中表示Hermite共轭，例如酉算子$\mathcal{U}$满足$\mathcal{U} \mathcal{U}^{\dagger} = \mathcal{U}^{\dagger} \mathcal{U} = 1$。命令 \lstinline'\dagger' 和 \lstinline'\dag' 一样都会在数学模式中输出$\dag$，目前本人唯一知道的区别是 \lstinline'\dagger' 只能用于数学模式。
+
+\subsubsection{算子}
+
+之前和同学讨论，对方简单地认为形如$\sin$和$\sup$等的符号是常量，故使用直体。但是它们不可以视为常量，而成为算子(operator)。算子会在前后自动留出合适的间距，例如：正弦函数$\sin x$。
+
+算子分为
+\footnote{
+	阶乘$!$似乎被忘记归类了。
+}
+\begin{enumerate}[label=(\arabic*)]
+
+\item 巨算符(large operator)，大小随着行间和行内公式变化而变化。例如：
+\begin{equation*}
+	\begin{aligned}
+		\sum && \prod && \bigcup && \bigcap && \bigvee && \bigwedge && \bigsqcup && \bigoplus && \bigotimes && \int && \oint && \iint && \varoiint && \iiint
+	\end{aligned}
+\end{equation*}
+前面几个不可以和它们相似的字母或二元运算符$\Sigma$、$\Pi$、$\cup$、$\cap$、$\vee$、$\wedge$、$\sqcup$、$\oplus$和$\otimes$混用。
+
+\item 文字名称的算子，用直立罗马体排印。例如：$\log$和$\lim$等。
+
+\item 单字符算子，例如：$\mathrm{d}$、$\nabla$、$\partial$和$\square$等。
+
+\end{enumerate}
+
+巨算子一览表见表 \ref{table:large} 。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\displaystyle \sum \textstyle \sum$ & \lstinline'\sum' & $\displaystyle \prod \textstyle \prod$ & \lstinline'\prod' & $\displaystyle \coprod \textstyle \coprod$ & \lstinline'\coprod' & $\displaystyle \bigcup \textstyle \bigcup$ & \lstinline'\bigcup' \\
+	$\displaystyle \bigcap \textstyle \bigcap$ & \lstinline'\bigcap' & $\displaystyle \biguplus \textstyle \biguplus$ & \lstinline'\biguplus' & $\displaystyle \bigsqcup \textstyle \bigsqcup$ & \lstinline'\bigsqcup' & $\displaystyle \bigvee \textstyle \bigvee$ & \lstinline'\bigvee' \\
+	$\displaystyle \bigwedge \textstyle \bigwedge$ & \lstinline'\bigwedge' & $\displaystyle \bigodot \textstyle \bigodot$ & \lstinline'\bigodot' & $\displaystyle \bigoplus \textstyle \bigoplus$ & \lstinline'\bigoplus' & $\displaystyle \bigotimes \textstyle \bigotimes$ & \lstinline'\bigotimes' \\
+	$\displaystyle \int \textstyle \int$ & \lstinline'\int' & $\displaystyle \oint \textstyle \oint$ & \lstinline'\oint' & $\displaystyle \iint \textstyle \iint$ & \lstinline'\iint' & $\displaystyle \iiint \textstyle \iiint$ & \lstinline'\iiint' \\
+	$\displaystyle \iiiint \textstyle \iiiint$ & \lstinline'\iiiint' & $\displaystyle \idotsint \textstyle \idotsint$ & \lstinline'\idotsint' & $\displaystyle \oiint \textstyle \oiint$ & \lstinline'\oiint' & $\displaystyle \varoiint \textstyle \varoiint$ & \lstinline'\varoiint' \\
+	\bottomrule
+\end{tabular}
+\caption{巨算子一览表}
+\label{table:large}
+\end{table}
+\noindent 从 \lstinline'\iint' 开始的命令需要调用 \verb'amsmath' 宏包，从 \lstinline'\oiint' 开始它们需要调用 \verb'esint' 宏包。它们都可以带有上、下标。积分号的上、下标都默认在角标位置，而其他巨算符则在本身上、下方。\lstinline'\limits' 和 \lstinline'\nolimits' 命令可以用来手工调整巨算符上、下标的位置，例如：考察式 \eqref{eq:手工调整巨算符}，
+\begin{equation}\label{eq:手工调整巨算符}
+	\sum\nolimits_{k = 1}^{n} \iint\limits_{x_{k}^{2} + y_{k}^{2} \leqslant 1} r^{2} \,\mathrm{d} S.
+\end{equation}
+源代码如下：
+\begin{lstlisting}[numbers=none]
+	\sum\nolimits_{k = 1}^{n} \iint\limits_{x_{k}^{2} + y_{k}^{2} \leqslant 1} r^{2} \,\mathrm{d} S.
+\end{lstlisting}
+
+文子名称的算子又可以细分为两类：
+\begin{enumerate}[label=(\Roman*), listparindent=24pt]
+
+\item 带上、下限的算子，上、下标风格风格和巨算符类似，如表 \ref{table:带上、下限}。从 \lstinline'\varlimsup' 开始需要 \verb'amsmath' 宏包。
+
+\begin{example}[集合列$\left\{ E_{n} \right\}_{n \geqslant 1}$的上极限]
+对于样本空间$\varOmega$中的事件列$E_{n}$其上极限为
+\begin{equation}\label{eq:limsup}
+	\varlimsup_{n \to +\infty} E_{n} \coloneqq \lim_{m \to +\infty} \bigcap_{k=1}^{m} \bigcup_{n \geqslant k} E_{n}.
+\end{equation}
+源代码如下：{\rm
+\begin{lstlisting}[numbers=none]
+	\varlimsup_{n \to +\infty} E_{n} \coloneqq \lim_{m \to +\infty} \bigcap_{k=1}^{m} \bigcup_{n \geqslant k} E_{n}.
+\end{lstlisting}}
+\end{example}
+$\Pr$可以表示概率(probability)，也可以表示投影(projection)。注意到$\gcd$表示最大公因数(greatest common divisor)，但不存在相应的表示最小公倍数(least/lowest common multiple)的算子，稍后可以自行定义得到$\operatorname{lcm}$或是$\operatorname{l.c.m.}$。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\max$ & \lstinline'\max' & $\min$ & \lstinline'\min' & $\sup$ & \lstinline'\sup' & $\inf$ & \lstinline'\inf' \\
+	$\lim$ & \lstinline'\lim' & $\det$ & \lstinline'\det' & $\gcd$ & \lstinline'\gcd' & $\Pr$ & \lstinline'\Pr' \\
+	$\limsup$ & \lstinline'\limsup' & $\liminf$ & \lstinline'\liminf' & $\varlimsup$ & \lstinline'\varlimsup' & $\varliminf$ & \lstinline'\varliminf' \\
+	$\injlim$ & \lstinline'\injlim' & $\projlim$ & \lstinline'\projlim' & $\varinjlim$ & \lstinline'\varinjlim' & $\varprojlim$ & \lstinline'\varprojlim' \\
+	\bottomrule
+\end{tabular}
+\caption{带上、下限的算子}
+\label{table:带上、下限}
+\end{table}
+
+\item 不带上、下限的算子，上、下标风格风格和普通符类似，如表 \ref{table:不带上、下限} 。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\log$ & \lstinline'\log' & $\ln$ & \lstinline'\ln' & $\lg$ & \lstinline'\lg' & $\sin$ & \lstinline'\sin' & $\arcsin$ & \lstinline'\arcsin' \\
+	$\cos$ & \lstinline'\cos' & $\arccos$ & \lstinline'\arccos' & $\tan$ & \lstinline'\tan' & $\arctan$ & \lstinline'\arctan' & $\cot$ & \lstinline'\cot' \\
+	$\sinh$ & \lstinline'\sinh' & $\cosh$ & \lstinline'\cosh' & $\tanh$ & \lstinline'\tanh' & $\coth$ & \lstinline'\coth' & $\sec$ & \lstinline'\sec' \\
+	$\csc$ & \lstinline'\csc' & $\arg$ & \lstinline'\arg' & $\ker$ & \lstinline'\ker' & $\dim$ & \lstinline'\dim' & $\hom$ & \lstinline'\hom' \\
+	$\exp$ & \lstinline'\exp' & $\deg$ & \lstinline'\deg' & ~ & ~ & ~ & ~ & ~ \\
+	\bottomrule
+\end{tabular}
+\caption{不带上、下限的算子}
+\label{table:不带上、下限}
+\end{table}
+
+不带上、下限的算子仍然可以加上、下标，例如：$\sin^{-1} = \arcsin$、$\log_{2} 5$表示以2为底的5的对数、$\ker_{\varphi}$可以表示映射$\varphi$的核、$\dim_{\real} \complex = 2$表示复数域$\complex$在实数域$\real$上是2维的。比较古老的记法如$\operatorname{tg}$和$\operatorname{ctg}$也仍需自定义。
+
+\end{enumerate}
+
+\verb^amsmath^ 宏包提供命令 \lstinline'\DeclareMathOperator{}{}' 和 \lstinline'\DeclareMathOperator*{}{}' 在导言区声明不带和带上、下限的文字名称算子。例如：前面提到的$\operatorname{lcm}$、$\operatorname{l.c.m.}$和$\operatorname{tg}$、$\operatorname{ctg}$：
+\begin{lstlisting}
+	\DeclareMathOperator*{\lcm}{lcm}
+	\DeclareMathOperator*{\lcmdot}{l.c.m.}
+	\DeclareMathOperator{\tg}{tg}
+	\DeclareMathOperator{\ctg}{ctg}
+\end{lstlisting}
+有全局定义的命令一般就有针对局部的命令，\lstinline'\operatorname{}' 可以将参数转变为算子。例如：\lstinline'\operatorname{Prob}' 就可以得到$\operatorname{Prob}$，可以避免与投影混淆。再比如：留数可以用 \lstinline'\operatorname{Res}' 来表达。
+\begin{example}[模与同余]
+	数论记号$\operatorname{mod}$是特殊的、类似算子的，在数学模式中如何输出？\LaTeX{} 内本身带有命令\ {\rm\lstinline'\bmod'} 和\ {\rm\lstinline'\pmod{}'}，前者是二元运算符，后者带有一个参数。\verb^amsmath^ 宏包提供\ {\rm\lstinline'\mod'} 和\ {\rm\lstinline'\pod{}'}，效果如下：
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$(-1)^{99} = (-1) \bmod n$ & \lstinline'(-1)^{99} = (-1) \bmod n' & $r \equiv m \pmod{n}$ & \lstinline'r \equiv m \pmod{n}' \\
+	$r \equiv m \mod{n}$ & \lstinline'r \equiv m \mod{n}' & $r \equiv m \pod{n}$ & \lstinline'r \equiv m \pod{n}' \\
+	\bottomrule
+\end{tabular}
+%\caption{}
+%\label{table:}
+\end{table}
+\end{example}
+刘海洋书\cite{LaTeX入门}上的习题很有教益：
+\begin{example}
+	排版离散分布随机变量的方差公式，注意概率、期望和方差几个数学算子：
+\begin{equation}
+	\begin{aligned}
+	\operatorname{Var}(X) = \operatorname{E} (X - \mu)^{2} = \sum_{j=1}^{\infty} (x_{j} - \mu)^{2} \Pr(X = x_{j}), &&
+	\text{其中$\mu = \operatorname{E} X$.}
+	\end{aligned}
+\end{equation}
+\end{example}
+
+单字符算子中$\mathrm{d}$最特殊，需要在积分表达式中与前面内容隔开一定的距离，例如：留数定理
+\begin{equation}
+	\oint_{\varGamma} f(z) \,\mathrm{d} z = 2 \uppi \mi \sum_{j} n \left( \varGamma, b_{j} \right) \operatorname{Res} f(b_{j}),
+\end{equation}
+甚至会在重积分、累次积分等表达式中连用
+\begin{equation}
+	\iint_{\varOmega} f(x, y) \dif x \dif y = \int_{0}^{1} \int_{I_{x}} f(x, y) \dif x \dif y.
+\end{equation}
+此时只需在$\md$前手工加入 \lstinline'\,' 即可。自定义命令 \lstinline'\newcommand{\diff}{\,\mathrm{d}}' 可以简化这一操作。但是在分数的分子、分母中这一命令又会产生多余的间距，算子可以根据前面的情况自动调整间距，故 \lstinline'\newcommand{\diff}{\operatorname{d}}' 可以解决这一问题。但是又会造成这样的效果：$\operatorname{d} x$，习惯上并不会在$\md$与$x$间空开。\cite{LaTeX入门}综上，这样定义微分算子：
+\begin{lstlisting}[numbers=none]
+	\DeclareMathOperator{\dif}{d\!}
+\end{lstlisting}
+调和了这两种需求。还有一点小问题，当算子作用在$\sin x$这样的函数上时仍然会出现不好的间距：$\dif (\sin x)$，对此本人并没有想出方法，想到的补救措施是在 \lstinline'\dif' 后添加空分组 \lstinline'{}'，例如：
+\begin{equation}\label{eq:dif}
+	\int_{0}^{\uppi} \sin x \cos x \dif x = \int_{0}^{\uppi} \sin x \dif{} (\sin x) = \left. \frac{1}{2} \sin^{2} x \right|_{0}^{\uppi} = 0
+\end{equation}
+\begin{lstlisting}[numbers=none]
+	\int_{0}^{\uppi} \sin x \cos x \dif x = \int_{0}^{\uppi} \sin x \dif{} (\sin x) = \left. \frac{1}{2} \sin^{2} x \right|_{0}^{\uppi} = 0
+\end{lstlisting}
+
+\subsubsection{二元关系符和二元运算符}
+\begin{example}
+	这个例子
+\footnote{
+	这部分刘海洋的书写得非常精彩，故本小小节内容和例子基本来自文献\cite{LaTeX入门}的启发。
+}有助于理解二元运算符、二元关系符和普通符号的关系：
+\begin{equation}
+	0 - 2 = -2
+\end{equation}
+``$=$''是一个二元关系符，两个``$-$''同为二元运算符，但是所处的环境不一样，左边的``$-$''处于两个普通符号之间，而右边的``$-$''左边是一个二元关系符，故 \LaTeX{} 对两边的间距处理也不一样。
+\end{example}
+
+二元运算符与二元关系符也是行内公式折行的位置，并且倾向于在二元关系符处折行：$\operatorname{det} \left( R - \lambda I_{3} \right) = -\lambda^{3} + (\operatorname{Tr} R) \lambda^{2} - (\operatorname{Tr} R) \lambda + \operatorname{det} R = -\lambda^{3} + (2 \cos\omega + 1) \lambda^{2} - (2 \cos\omega + 1) \lambda + 1 = - (\lambda - 1) \left( \lambda - \me{\mi \omega} \right) \left( \lambda - \me{-\mi \omega} \right)=0$，这是上学期在群论作业中遇到的超长表达式。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\pm$ & \lstinline'\pm' & $\mp$ & \lstinline'\mp' & $\cdot$ & \lstinline'\cdot' & $\times$ & \lstinline'\times' \\
+	$\ast$ & \lstinline'\ast' & $\star$ & \lstinline'\star' & $\bullet$ & \lstinline'\bullet' & $\diamond$ & \lstinline'\diamond' \\
+	$\circ$ & \lstinline'\circ' & $\bigcirc$ & \lstinline'\bigcirc' & $\div$ & \lstinline'\div' & $\setminus$ & \lstinline'\setminus' \\
+	$\oplus$ & \lstinline'\oplus' & $\otimes$ & \lstinline'\otimes' & $\odot$ & \lstinline'\odot' & $\oslash$ & \lstinline'\oslash' \\
+	$\cap$ & \lstinline'\cap' & $\cup$ & \lstinline'\cup' & $\land$ & \lstinline'\wedge' 或 \lstinline'\land' & $\lor$ & \lstinline'\vee' 或 \lstinline'\lor' \\
+	$\sqcap$ & \lstinline'\sqcap' & $\sqcup$ & \lstinline'\sqcup' & $\dagger$ & \lstinline'\dagger' & $\ddagger$ & \lstinline'\ddagger' \\
+	~ & ~ & ~ & ~ & $\triangleleft$ & \lstinline'\triangleleft' & $\triangleright$ & \lstinline'\triangleright' \\
+	~ & ~ & ~ & ~ & $\bigtriangleup$ & \lstinline'\bigtriangleup' & $\bigtriangledown$ & \lstinline'\bigtriangledown' \\
+	\bottomrule
+\end{tabular}
+\caption{常用的 \LaTeX{} 提供的二元运算符}
+\label{table:LaTeX二元运算符}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\lhd$ & \lstinline'\lhd' & $\rhd$ & \lstinline'\rhd' & $\unlhd$ & \lstinline'\unlhd' & $\unrhd$ & \lstinline'\unrhd' \\
+	$\ltimes$ & \lstinline'\ltimes' & $\rtimes$ & \lstinline'\rtimes' & $\leftthreetimes$ & \lstinline'\leftthreetimes' & $\rightthreetimes$ & \lstinline'\rightthreetimes' \\
+	$\dotplus$ & \lstinline'\dotplus' & $\circleddash$ & \lstinline'\circleddash' & $\circledast$ & \lstinline'\circledast' & $\circledcirc$ & \lstinline'\circledcirc' \\
+	\bottomrule
+\end{tabular}
+\caption{常用的 \AmS{} 提供的二元运算符}
+\label{table:AMS二元运算符}
+\end{table}
+常用的 \LaTeX{} 提供的、\AmS{} 提供的二元运算符分别如表 \ref{table:LaTeX二元运算符}、\ref{table:AMS二元运算符} 所示。除此之外，键盘上可以利用 \lstinline'+'、\lstinline'-' 和 \lstinline'*' 直接输入二元运算符$+$、$-$和$*$。注意：
+\begin{itemize}
+
+\item 区分开 \lstinline'\bullet' 和 \lstinline'\textbullet'，前者$\bullet$只可以用于数学模式，而后者 \textbullet 可以存在于文本中，比如：在 \verb'itemize' 环境中标记条目。
+
+\item 键盘上 \lstinline'/' 输入得到的``$/$''不是二元运算符，仅仅是普通符号。在下一小小节可以看到 \lstinline'/' 也是大小可变的定界符。
+
+\item 数学模式中 \lstinline'\setminus' 和 \lstinline'\backslash' 都可以得到字符``$\setminus$''，但是前者是二元运算符，表示集合的减法，后者仅仅是普通符号。
+
+\end{itemize}
+\begin{example}
+	群$G$的$(H, K)$双陪集为$H \backslash G / K$。{\rm
+\begin{lstlisting}[numbers=none]
+	"群"$G$"的"$(H, K)$"双陪集为"$H \backslash G / K$"。"
+\end{lstlisting}}
+子空间$A$的边界是$\partial A \coloneqq \bar{A} \setminus \mathring{A}$。{\rm
+\begin{lstlisting}[numbers=none]
+	"子空间"$A$"的边界是"$\partial A \coloneqq \bar{A} \setminus \mathring{A}$"。"
+\end{lstlisting}}
+\end{example}
+
+二元关系符数量巨大，且相当多一部分具有否定形式。二元关系符中箭头被单独多列为一类。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	符号 & 命令 & 否定形式 & 命令 & 符号 & 命令 & 否定形式 & 命令 \\
+	\midrule
+	$=$ & \lstinline'=' & $\ne$ & \lstinline'\neq' 或 \lstinline'\ne' & $:$ & \lstinline':' & ~ & ~ \\
+	$<$ & \lstinline'<' & $\nless$ & \lstinline'\nless'$^{\dagger}$ & $>$ & \lstinline'>' & $\ngtr$ & \lstinline'\ngtr'$^{\dagger}$ \\
+	$\le$ & \lstinline'\le' 或 \lstinline'\leq' & $\nleq$ & \lstinline'\nleq'$^{\dagger}$ & $\ge$ & \lstinline'\ge' 或 \lstinline'\geq' & $\ngeq$ & \lstinline'\ngeq'$^{\dagger}$ \\
+	$\in$ & \lstinline'\in' & $\notin$ & \lstinline'\notin' & $\ni$ & \lstinline'\ni' 或 \lstinline'\owns' & ~ & ~ \\
+	$\ll$ & \lstinline'\ll' & ~ & ~ & $\gg$ & \lstinline'\gg' & ~ & ~ \\
+	$\prec$ & \lstinline'\prec' & $\nprec$ & \lstinline'\nprec'$^{\dagger}$ & $\succ$ & \lstinline'\succ' & $\nsucc$ & \lstinline'\nsucc'$^{\dagger}$ \\
+	$\preceq$ & \lstinline'\preceq' & $\npreceq$ & \lstinline'\npreceq'$^{\dagger}$ & $\succeq$ & \lstinline'\succeq' & $\nsucceq$ & \lstinline'\nsucceq'$^{\dagger}$ \\
+	~ & ~ & $\precneqq$ & \lstinline'\precneqq'$^{\dagger}$ & ~ & ~ & $\succneqq$ & \lstinline'\succneqq'$^{\dagger}$ \\
+	$\sim$ & \lstinline'\sim' & $\nsim$ & \lstinline'\nsim'$^{\dagger}$ & $\approx$ & \lstinline'\approx' & ~ & ~ \\
+	$\simeq$ & \lstinline'\simeq' & ~ & ~ & $\cong$ & \lstinline'\cong' & $\ncong$ & \lstinline'\ncong'$^{\dagger}$ \\
+	$\equiv$ & \lstinline'\equiv' & ~ & ~ & $\doteq$ & \lstinline'\doteq' & ~ & ~ \\
+	$\subset$ & \lstinline'\subset' & ~ & ~ & $\supset$ & \lstinline'\supset' & ~ & ~ \\
+	$\subseteq$ & \lstinline'\subseteq' & $\nsubseteq$ & \lstinline'\nsubseteq'$^{\dagger}$ & $\supseteq$ & \lstinline'\supseteq' & $\nsupseteq$ & \lstinline'\nsupseteq'$^{\dagger}$ \\
+	~ & ~ & $\subsetneq$ & \lstinline'\subsetneq'$^{\dagger}$ & ~ & ~ & $\supsetneq$ & \lstinline'\supsetneq'$^{\dagger}$ \\
+	~ & ~ & $\varsubsetneq$ & \lstinline'\varsubsetneq'$^{\dagger}$ & ~ & ~ & $\varsupsetneq$ & \lstinline'\varsupsetneq'$^{\dagger}$ \\
+	$\parallel$ & \lstinline'\parallel' & ~ & ~ & $\perp$ & \lstinline'\perp' & ~ & ~ \\
+	$\mid$ & \lstinline'\mid' & ~ & ~ & $\propto$ & \lstinline'\propto' & ~ & ~ \\
+	\bottomrule
+\end{tabular}
+\caption{常用的 \LaTeX{} 二元关系符及其否定形式，$\prescript{\dagger}{}{}$为 \AmS{}符号}
+\label{table:二元关系符及其否定形式}
+\end{table}
+常用的二元关系符及其否定形式列于表 \ref{table:二元关系符及其否定形式} 中。键盘上的 \lstinline'='、\lstinline'>'、\lstinline'<' 和``\lstinline':'''可以直接输入得到二元关系符$=$、$>$、$<$和$:$。注意：``$:$''作为二元关系符不应当用于$f \colon \real \to \real$的场合当中，可以看到这其中的``$:$''左右距离并不相等，不是一个二元关系符。
+
+在Invited Meeting中已经有同学利用在 \lstinline'=' 前加 \lstinline'\not' 来得到否定形式了，考察下面的例子（来自第一分离性公理）：
+\begin{example}
+	考察\ {\rm\lstinline'\not \in'} 和\ {\rm\lstinline'\notin'} 得到的符号的差别，可以看到，前者的斜线位置更加机械，几乎偏离了$\in$的上半部分。因此，二元关系符否定形式存在的时候尽量使用否定形式。
+\begin{equation}
+	x \not \in V \qquad y \notin U
+\end{equation}
+{\rm\begin{lstlisting}[numbers=none]
+	x \not \in V \qquad y \notin U
+\end{lstlisting}}
+\end{example}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	符号 & 命令 & 否定形式 & 命令 & 符号 & 命令 & 否定形式 & 命令 \\
+	\midrule
+	$\leqq$ & \lstinline'\leqq' & $\nleqq$ & \lstinline'\nleqq' & $\geqq$ & \lstinline'\geqq' & $\ngeqq$ & \lstinline'\ngeqq' \\
+	~ & ~ & $\lneqq$ & \lstinline'\lneqq' & ~ & ~ & $\gneqq$ & \lstinline'\gneqq' \\
+	~ & ~ & $\lvertneqq$ & \lstinline'\lvertneqq' & ~ & ~ & $\gvertneqq$ & \lstinline'\gvertneqq' \\
+	$\leqslant$ & \lstinline'\leqslant' & $\nleqslant$ & \lstinline'\nleqslant' & $\geqslant$ & \lstinline'\geqslant' & $\ngeqslant$ & \lstinline'\ngeqslant' \\
+	~ & ~ & $\lneq$ & \lstinline'\lneq' & ~ & ~ & $\gneq$ & \lstinline'\gneq' \\
+	$\subseteqq$ & \lstinline'\subseteqq' & $\nsubseteqq$ & \lstinline'\nsubseteqq' & $\supseteqq$ & \lstinline'\supseteqq' & $\nsupseteqq$ & \lstinline'\nsupseteqq' \\
+	~ & ~ & $\subsetneqq$ & \lstinline'\subsetneqq' & ~ & ~ & $\supsetneqq$ & \lstinline'\supsetneqq' \\
+	~ & ~ & $\varsubsetneqq$ & \lstinline'\varsubsetneqq' & ~ & ~ & $\varsupsetneqq$ & \lstinline'\varsupsetneqq' \\
+	\bottomrule
+\end{tabular}
+\caption{常用的 \AmS{} 二元关系符及其否定形式}
+\label{table:AMS二元关系符及其否定形式}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\because$ & \lstinline'\because' & $\therefore$ & \lstinline'\therefore' \\
+	$\blacktriangleleft$ & \lstinline'\blacktriangleleft' & $\blacktriangleright$ & \lstinline'\blacktriangleright' \\
+	$\lll$ & \lstinline'\lll' & $\ggg$ & \lstinline'\ggg' \\
+	$\risingdotseq$ & \lstinline'\risingdotseq' & $\fallingdotseq$ & \lstinline'\fallingdotseq' \\
+	$\eqslantless$ & \lstinline'\eqslantless' & $\eqslantgtr$ & \lstinline'\eqslantgtr' \\
+	$\lessgtr$ & \lstinline'\lessgtr' & $\gtrless$ & \lstinline'\gtrless' \\
+	$\lesseqgtr$ & \lstinline'\lesseqgtr' & $\gtreqless$ & \lstinline'\gtreqless' \\
+	$\lesseqqgtr$ & \lstinline'\lesseqqgtr' & $\gtreqqless$ & \lstinline'\gtreqqless' \\
+	$\doteqdot$ & \lstinline'\doteqdot' & $\triangleq$ & \lstinline'\triangleq' \\
+	$\varpropto$ & \lstinline'\varpropto' & $\backepsilon$ & \lstinline'\backepsilon' \\
+	\bottomrule
+\end{tabular}
+\caption{没有否定形式的 \AmS{} 二元关系符}
+\label{table:没有否定形式的AMS二元关系符}
+\end{table}
+数学物理方法中的Laplace变换用到了$\risingdotseq$和$\fallingdotseq$。
+\footnote{
+	高怡泓研究员上课时还吐槽他找这个符号找了很久。
+}
+\begin{example}
+	\cite{无机化学}利用平衡常数的概念，对比$J$和$K$的大小，可以判断系统中的反应混合物是否达到平衡，……为帮助记忆，可缩写为（这里排版带有阴影边框的数学公式需要额外调用宏包 \verb'fancybox'，利用其中的命令\ {\rm\lstinline'\shadowbox{}'}）：
+\begin{equation}
+	\shadowbox{$\displaystyle J \gtreqqless K$} \tag{6-8}
+\end{equation}
+{\rm\begin{lstlisting}[numbers=none]
+	\shadowbox{$\displaystyle J \gtreqqless K$} \tag{6-8}
+\end{lstlisting}}
+\end{example}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\gets$ & \lstinline'\leftarrow' 或 \lstinline'\gets' & $\nleftarrow$ & \lstinline'\nleftarrow'$^{\dagger}$ \\
+	$\to$ & \lstinline'\rightarrow' 或 \lstinline'\to' & $\nrightarrow$ & \lstinline'\nrightarrow'$^{\dagger}$ \\
+	$\Leftarrow$ & \lstinline'\Leftarrow' & $\nLeftarrow$ & \lstinline'\nLeftarrow'$^{\dagger}$ \\
+	$\Rightarrow$ & \lstinline'\Rightarrow' & $\nRightarrow$ & \lstinline'\nRightarrow'$^{\dagger}$ \\
+	$\leftrightarrow$ & \lstinline'\leftrightarrow' & $\nleftrightarrow$ & \lstinline'\nleftrightarrow'$^{\dagger}$ \\
+	$\Leftrightarrow$ & \lstinline'\Leftrightarrow' & $\nLeftrightarrow$ & \lstinline'\nLeftrightarrow'$^{\dagger}$ \\
+	$\longleftarrow$ & \lstinline'\longleftarrow' & $\longrightarrow$ & \lstinline'\longrightarrow' \\
+	$\Longleftarrow$ & \lstinline'\Longleftarrow' & $\Longrightarrow$ & \lstinline'\Longrightarrow' \\
+	$\longleftrightarrow$ & \lstinline'\longleftrightarrow' & $\Longleftrightarrow$ & \lstinline'\Longleftrightarrow' \\
+	$\mapsto$ & \lstinline'\mapsto' & $\longmapsto$ & \lstinline'\longmapsto' \\
+	$\hookleftarrow$ & \lstinline'\hookleftarrow' & $\hookrightarrow$ & \lstinline'\hookrightarrow' \\
+	$\leftharpoonup$ & \lstinline'\leftharpoonup' & $\rightharpoonup$ & \lstinline'\rightharpoonup' \\
+	$\leftharpoondown$ & \lstinline'\leftharpoondown' & $\rightharpoondown$ & \lstinline'\rightharpoondown' \\
+	~ & ~ & $\rightleftharpoons$ & \lstinline'\rightleftharpoons' \\
+	$\nearrow$ & \lstinline'\nearrow' & $\searrow$ & \lstinline'\searrow' \\
+	$\swarrow$ & \lstinline'\swarrow' & $\nwarrow$ & \lstinline'\nwarrow' \\
+	$\uparrow$ & \lstinline'\uparrow' & $\Uparrow$ & \lstinline'\Uparrow' \\
+	$\downarrow$ & \lstinline'\downarrow' & $\Downarrow$ & \lstinline'\Downarrow' \\
+	$\updownarrow$ & \lstinline'\updownarrow' & $\Updownarrow$ & \lstinline'\Updownarrow' \\
+	\bottomrule
+\end{tabular}
+\caption{\LaTeX{} 提供的箭头符号，$^{\dagger}$为 \AmS{} 否定箭头}
+\label{table:LaTeX提供的箭头符号}
+\end{table}
+\LaTeX{} 提供的箭头符号如表 \ref{table:LaTeX提供的箭头符号} 所示，\AmS{} 提供的箭头符号如表 \ref{table:AMS提供的箭头符号} 所示。这些箭头的命名都很有规律，是描述箭头形状和箭头方向的单词的组合。例如：形如$\to$的箭头命令中都带有单词arrow，意思是箭；形如$\rightharpoonup$的箭头名称中都带有harpoon，意思是是鱼叉。注意区别单、复数，同一个符号中有2个箭头时，命令中会包含arrows或harpoons。表 \ref{table:LaTeX提供的箭头符号} 中倾斜箭头的命令前两个字母表示的是4个中间方位，例如：$\nearrow$的命令 \lstinline'\nearrow' 的前两个字母表示东北(northeast)方向。表 \ref{table:AMS提供的箭头符号} 中的 \lstinline'\Lsh' 和 \lstinline'\Rsh' 命令的是如何得到的本人并不清楚，咨询了英语系的同学的答复：``I guess it's Left/Right-shift.''。命令 \lstinline'\rightsquigarrow' 中的构词语素``squig''很可能来自于单词squiggly，意思是（线条）不规则的、波形的。
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\leftleftarrows$ & \lstinline'\leftleftarrows' & $\rightrightarrows$ & \lstinline'\rightrightarrows' \\
+	$\leftrightarrows$ & \lstinline'\leftrightarrows' & $\leftrightarrows$ & \lstinline'\leftrightarrows' \\
+	$\Lleftarrow$ & \lstinline'\Lleftarrow' & $\Rrightarrow$ & \lstinline'\Rrightarrow' \\
+	$\twoheadleftarrow$ & \lstinline'\twoheadleftarrow' & $\twoheadrightarrow$ & \lstinline'\twoheadrightarrow' \\
+	$\leftarrowtail$ & \lstinline'\leftarrowtail' & $\rightarrowtail$ & \lstinline'\rightarrowtail' \\
+	$\looparrowleft$ & \lstinline'\looparrowleft' & $\looparrowright$ & \lstinline'\looparrowright' \\
+	$\leftrightharpoons$ & \lstinline'\leftrightharpoons' & $\rightleftharpoons$ & \lstinline'\rightleftharpoons'(重定义) \\
+	$\curvearrowleft$ & \lstinline'\curvearrowleft' & $\curvearrowright$ & \lstinline'\curvearrowright' \\
+	$\circlearrowleft$ & \lstinline'\circlearrowleft' & $\circlearrowright$ & \lstinline'\circlearrowright' \\
+	$\Lsh$ & \lstinline'\Lsh' & $\Rsh$ & \lstinline'\Rsh' \\
+	$\upharpoonleft$ & \lstinline'\upharpoonleft' & $\upharpoonright$ & \lstinline'\upharpoonright' \\
+	$\downharpoonleft$ & \lstinline'\downharpoonleft' & $\downharpoonright$ & \lstinline'\downharpoonright' \\
+	$\leftrightsquigarrow$ & \lstinline'\leftrightsquigarrow' & $\rightsquigarrow$ & \lstinline'\rightsquigarrow' \\
+	$\multimap$ & \lstinline'\multimap' & $\leadsto$ & \lstinline'\leadsto' \\
+	\bottomrule
+\end{tabular}
+\caption{\AmS{} 提供的箭头符号}
+\label{table:AMS提供的箭头符号}
+\end{table}
+
+\begin{example}[定义]
+	现在有很多种表达定义的方式，包括一种新的方式，希望以此来引出另一套新的箭头类：
+\begin{equation}
+	\begin{gathered}
+		\ln x \coloneqq \log_{\mathrm{e}} x \\
+		\ln x \triangleq \log_{\mathrm{e}} x \\
+		\ln x \stackrel{\mathrm{d}}{=} \log_{\mathrm{e}} x \\
+		\ln x \xlongequal[]{\mathrm{def}} \log_{\mathrm{e}} x
+	\end{gathered}
+\end{equation}
+{\rm\begin{lstlisting}[numbers=none]
+	\ln x \coloneqq \log_{\mathrm{e}} x \\
+	\ln x \triangleq \log_{\mathrm{e}} x \\
+	\ln x \stackrel{\mathrm{d}}{=} \log_{\mathrm{e}} x \\
+	\ln x \xlongequal[]{\mathrm{def}} \log_{\mathrm{e}} x
+\end{lstlisting}}
+\end{example}
+命令 \lstinline'\stackrel{\mathrm{d}}{=}' 将$\md$堆叠在$=$上，但是等号的长度并不会随着堆叠的内容长度增加而增加。\verb'extarrows' 宏包提供了可以延长的等号 \lstinline'\xlongequal[]{}'，多出的可选参数可以在等号下方增加内容。\verb'amsmath' 宏包本身也提供了 \lstinline'\xleftarrow[]{}' 和 \lstinline'\xleftarrow[]{}' 输出可以延长的箭头。这样一类箭头如表 \ref{table:可延长的箭头符号} 所示。其中上下方内容较短的时候，带单词long的命令得到的符号更长一些。
+
+补充4个专门的逻辑符号命令：\lstinline'\implies'、\lstinline'\impliedby'、\lstinline'\iff' 和 \lstinline'\And' 分别输出$\implies$、$\impliedby$、$\iff$和$\And$，其中 \lstinline'\And' 需要调用 \verb'amsmath' 宏包。它们比一般的二元运算符和二元关系符间距更大，意义更明显，推荐代替相应的\lstinline'\Leftarrow'、\lstinline'\Rightarrow'、\lstinline'\Leftrightarrow' 和 \lstinline'\&'。
+\begin{example}[逻辑符号]
+\begin{equation}
+	\begin{gathered}
+		x = y \implies x + z = y + z \\
+		x = y \impliedby x + z = y + z \\
+		x = y \iff x \leqslant y \And x \geqslant y
+	\end{gathered}
+\end{equation}
+{\rm\begin{lstlisting}[numbers=none]
+	x = y \implies x + z = y + z \\
+	x = y \impliedby x + z = y + z \\
+	x = y \iff x \leqslant y \And x \geqslant y
+\end{lstlisting}}
+\end{example}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\real \xleftarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xleftarrow[]{}' & $\real \xrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xrightarrow[]{}' \\
+	$\real \xlongleftarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xlongleftarrow[]{}' & $\real \xlongrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xlongrightarrow[]{}' \\
+	$\real \xLongleftarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xLongleftarrow[]{}' & $\real \xLongrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xLongrightarrow[]{}' \\
+	$\real \xleftrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xleftrightarrow[]{}' & $\real \xLeftrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xLeftrightarrow[]{}' \\
+	$\real \xlongleftrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xlongleftrightarrow[]{}' & $\real \xLongleftrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xLongleftrightarrow[]{}' \\
+	$\real \xlongequal[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xlongequal[]{}' & ~ & ~ \\
+	\bottomrule
+\end{tabular}
+\caption{可延长的箭头符号}
+\label{table:可延长的箭头符号}
+\end{table}
+
+\subsubsection{括号和定界符}\label{subsubsec:括号和定界符}
+
+先前已经接触过 \lstinline'\left(' 和 \lstinline'\right)' 命令，使得圆括号(parenthesis)根据包括的内容自动调整大小。这一小小节将具有这样性质的符号推广为\textbf{\songti 定界符}(delimiter)。分为
+\begin{itemize}
+
+\item 括号定界符。例如：$()$、$[]$和$\{\}$，如表 \ref{table:括号定界符} 所示。沿用文献\cite{LaTeX入门}的概念，称左括号为开符号，右括号为闭符号。
+
+\item 非括号定界符。例如：$|$和$\|$，如表 \ref{table:非括号定界符} 所示。最后三行符号同样也作为二元关系符出现在表 \ref{table:LaTeX提供的箭头符号} 中，而 \lstinline'\backslash' 之前也作为一个普通符号出现过。
+
+\end{itemize}
+
+\verb'amsmath' 定义了 \lstinline'\lvert' 与 \lstinline'\rvert'、\lstinline'\lVert' 与 \lstinline'\rVert' 命令，使得$|$、$\|$具有了括号定界符一样具有一对开符号与闭符号，在表达绝对值、模和范数时具有更明确的意义，替代传统的 \lstinline'|'、\lstinline'\|'。直接使用这些命令会让代码变得复杂，例 \ref{ex:norm} 定义专门输出绝对值、模和范数的命令作简化。
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|l}
+	\toprule
+	开符号 & 命令 & 闭符号 & 命令 & \multicolumn{1}{c}{备注} \\
+	\midrule
+	$($ & \lstinline'(' & $)$ & \lstinline')' & 小/圆括号(parenthesis) \\
+	$[$ & \lstinline'[' & $]$ & \lstinline']' & 中/方括号(brackets) \\
+	$\lbrace$ & \lstinline'\{' 或 \lstinline'\lbrace' & $\rbrace$ & \lstinline'\}' 或 \lstinline'\rbrace' & 大/花括号(braces) \\
+	$\langle$ & \lstinline'\langle' & $\rangle$ & \lstinline'\rangle' & 尖括号(angle brackets) \\
+	$\lfloor$ & \lstinline'\lfloor' & $\rfloor$ & \lstinline'\rfloor' & 向下取整，暂时称为floors \\
+	$\lceil$ & \lstinline'\lceil' & $\rceil$ & \lstinline'\rceil' & 向上取整，暂时称为ceils \\
+	\bottomrule
+\end{tabular}
+\caption{\LaTeX{} 的括号定界符}
+\label{table:括号定界符}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$/$ & \lstinline'/' & $\vert$ & \lstinline'\vert' 或 \lstinline'|' & ~ & ~ \\
+	$\backslash$ & \lstinline'\backslash' 或 \lstinline'\' & $\Vert$ & \lstinline'\Vert' 或 \lstinline'\|' & ~ & ~ \\
+	$\uparrow$ & \lstinline'\uparrow' & $\downarrow$ & \lstinline'\downarrow' & $\updownarrow$ & \lstinline'\updownarrow' \\
+	$\Uparrow$ & \lstinline'\Uparrow' & $\Downarrow$ & \lstinline'\Downarrow' & $\Updownarrow$ & \lstinline'\Updownarrow' \\
+	\bottomrule
+\end{tabular}
+\caption{\LaTeX{} 的非括号定界符}
+\label{table:非括号定界符}
+\end{table}
+
+命令 \lstinline'\left{}' 和 \lstinline'\right{}' 将 \lstinline'{}' 中的定界符转化为开符号和闭符号（匹配合适的间距），并根据中间内容的高度自动调整大小。也就是说，定界符作为开符号或闭符号输出最终由命令 \lstinline'\left{}' 和 \lstinline'\right{}' 决定，因此这两个定界符可以不是一对括号，甚至可以是空定界符 \lstinline'.'（式 \eqref{eq:dif}）。\lstinline'\left{}' 和 \lstinline'\right{}' 只能存在于同一行，即中间不可以存在换行的命令（例 \ref{ex:norm}）。
+\begin{example}[开区间]
+	《数学分析》上的开区间可以这样输出：
+\begin{equation}
+	\begin{aligned}
+	I' \coloneqq \left[ 0, \frac{1}{2} \right] &&
+	\mathring{I'} = \left] 0, \frac{1}{2} \right[ &&
+	I' \setminus \left\{ 0 \right\} = \left] 0, \frac{1}{2} \right]
+	\end{aligned}
+\end{equation}{\rm
+\begin{lstlisting}[numbers=none]
+	I' \coloneqq \left[ 0, \frac{1}{2} \right]
+	\mathring{I'} = \left] 0, \frac{1}{2} \right[
+	I' \setminus \left\{ 0 \right\} = \left] 0, \frac{1}{2} \right]
+\end{lstlisting}}
+\end{example}
+
+命令 \lstinline'\left{}' 和 \lstinline'\right{}' 还可以匹配 \lstinline'\middle{}' 命令，使得二者中间加入多个定界符，这样插入的定界符实质上按照普通符号处理。
+\begin{example}
+	对于完备事件群$\left\{ B_{n} \right\}$和事件$\tilde{B}$，成立Bayes公式：
+\begin{equation}
+	\Pr \left( \tilde{B} \right) = \sum_{n} \Pr \left( \tilde{B} \middle\vert B_{n} \right) \Pr \left( B_{n} \right)
+\end{equation}{\rm
+\begin{lstlisting}[numbers=none]
+	\Pr \left( \tilde{B} \right) = \sum_{n} \Pr \left( \tilde{B} \middle\vert B_{n} \right) \Pr \left( B_{n} \right)
+\end{lstlisting}}
+\end{example}
+
+考虑这样一串运算$1 + \left( 2 - \left( 3 \times \left( 4 \div 5 \right) \right) \right)$，尽管它由下面代码生成，但是括号的大小仍然看起来不合适，这时需要手工调整定界符大小的命令，如表 \ref{table:手工调节定界符} 所示。
+\begin{lstlisting}[numbers=none]
+	1 + \left( 2 - \left( 3 \times \left( 4 \div 5 \right) \right) \right)
+\end{lstlisting}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cccccccccc|cccc}
+	\toprule
+	\multicolumn{10}{c|}{符号} & \multicolumn{4}{c}{命令} \\
+	\midrule
+	$($ & $|$ & $)$ & $[$ & $\|$ & $]$ & $\{$ & $\}$ & $\langle$ & $\rangle$ & ~ & ~ & ~ & ~ \\
+	$\big($ & $\big|$ & $\big)$ & $\big[$ & $\big\|$ & $\big]$ & $\big\{$ & $\big\}$ & $\big<$ & $\big>$ & \lstinline'\big' & \lstinline'\bigl' & \lstinline'\bigr' & \lstinline'\bigm' \\[1ex]
+	$\Big($ & $\Big|$ & $\Big)$ & $\Big[$ & $\Big\|$ & $\Big]$ & $\Big\{$ & $\Big\}$ & $\Big<$ & $\Big>$ & \lstinline'\Big' & \lstinline'\Bigl' & \lstinline'\Bigr' & \lstinline'\Bigm' \\[2ex]
+	$\bigg($ & $\bigg|$ & $\bigg)$ & $\bigg[$ & $\bigg\|$ & $\bigg]$ & $\bigg\{$ & $\bigg\}$ & $\bigg<$ & $\bigg>$ & \lstinline'\bigg' & \lstinline'\biggl' & \lstinline'\biggr' & \lstinline'\biggm' \\[3ex]
+	$\Bigg($ & $\Bigg|$ & $\Bigg)$ & $\Bigg[$ & $\Bigg\|$ & $\Bigg]$ & $\Bigg\{$ & $\Bigg\}$ & $\Bigg<$ & $\Bigg>$ & \lstinline'\Bigg' & \lstinline'\Biggl' & \lstinline'\Biggr' & \lstinline'\Biggm' \\
+	\bottomrule
+\end{tabular}
+\caption{手工调节定界符大小的命令}
+\label{table:手工调节定界符}
+\end{table}
+
+命令中的字母l、r、m分别表示将定界符按照开符号、闭符号、二元关系符处理。
+\begin{example}
+	改良运算$1 + \left( 2 - \left( 3 \times \left( 4 \div 5 \right) \right) \right)$的排版：
+\begin{equation}
+	1 + \Bigl( 2 - \bigl( 3 \times ( 4 \div 5 ) \bigr) \Bigr)
+\end{equation}{\rm
+\begin{lstlisting}[numbers=none]
+	1 + \Bigl( 2 - \bigl( 3 \times ( 4 \div 5 ) \bigr) \Bigr)
+\end{lstlisting}}
+\end{example}
+在表 \ref{table:手工调节定界符} 中的命令和 \lstinline'\left{}'、\lstinline'\right{}' 的作用下，\lstinline'<' 和 \lstinline'>' 也认为是定界符，并输出相应大小的$\langle$和$\rangle$。
+
+很自然地发现手工调整定界符的大小过于僵硬，如何任意放大定界符呢？
+\begin{example}
+	实现这样的排版效果：
+\begin{equation}
+	\left. \vphantom{\frac{1}{2}} y \right\rvert_{x = 0} = \left. \left( \frac{x + 1}{x - 1} y' \right) \right\rvert_{x = 0}
+\end{equation}
+	之前已经接触过\ {\rm\lstinline'\phantom{}'} 命令产生一个与参数内容一样长、宽的空盒子。相应地，也有\ {\rm\lstinline'\hphantom{}'} 或\ {\rm\lstinline'\vphantom{}'} 命令得到没有高度或宽度的盒子。因此可以在$y$前产生一个普通分数高度的盒子，但是没有宽度，即：{\rm
+\begin{lstlisting}[numbers=none]
+	\left. \vphantom{\frac{1}{2}} y \right\rvert_{x = 0} = \left. \left( \frac{x + 1}{x - 1} y' \right) \right\rvert_{x = 0}
+\end{lstlisting}}
+\end{example}
+
+\begin{example}
+	有时会碰到这样的上、下标错位的情况，考察代码{\rm
+\begin{lstlisting}[numbers=none]
+	\sum_{k} \left( \parti{f}{x_{k}} \middle\vert_{x_{k} = 0} \right)
+\end{lstlisting}}
+\noindent 的输出效果：
+\begin{equation*}
+	\sum_{k} \left( \parti{f}{x_{k}} \middle\vert_{x_{k} = 0} \right)
+\end{equation*}
+可以看到下标出现在了过高的位置，就好像是对普通高度的$\vert$加了下标，这应当是定义命令\ {\rm\lstinline'\middle{}'} 时不够完善的地方，看来闭符号对下标的处理是恰当的，因此将\ {\rm\lstinline'\middle\vert'} 更换为\ {\rm\lstinline'\right\vert'}，并加入\ {\rm\lstinline'\left.'} 以保证配对。
+\begin{equation}
+	\sum_{k} \left( \left. \parti{f}{x_{k}} \right\vert_{x_{k} = 0} \right)
+\end{equation}{\rm
+\begin{lstlisting}[numbers=none]
+	\sum_{k} \left( \left. \parti{f}{x_{k}} \right\vert_{x_{k} = 0} \right)
+\end{lstlisting}}
+\noindent 思考：如果交换\ {\rm\lstinline'\left.'} 和\ {\rm\lstinline'\left('} 顺序会有怎样的效果？
+\end{example}
+
+\subsubsection{数学标点与数学省略号}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|l}
+	\toprule
+	名称 & 命令 & \multicolumn{1}{c}{示例} \\
+	\midrule
+	逗号(comma) & \lstinline',' & $\bm{r}(u, v) = \big( u, v, f(u, v) \big)$ \\
+	分号(semicolon) & \lstinline';' & $\big\{ \bm{r}(s); \bm{t}(s), \bm{n}(s), \bm{b}(s) \big\}$ \\
+	叹号(exclamation mark) & \lstinline'!' & $\forall s \in \natura$, $\Gamma(s) = (s-1)!$ \\
+	问号(question mark) & \lstinline'?' & $\forall \integer \owns n > 2$, $\exists (x, y, z)$, $x^{n} + y^{n} = z^{n}?$ \\
+	冒号(colon) & \lstinline'\colon' & $\bm{r} \colon s \mapsto \bm{r}(s)$ \\
+	\bottomrule
+\end{tabular}
+\caption{数学标点符号}
+\label{table:punc}
+\end{table}
+经典意义下的数学标点(punctuation)如表 \ref{table:punc} 所示。直接从键盘上键入``\lstinline':'''将会得到一个二元关系符，例如：在集合中表示集合关系，有$\operatorname{supp} \varphi(x) = \overline{\left\{ x : \varphi(x) = 0 \right\}}$，对间距的处理显然和标点 \lstinline'\colon' 是不一样的。$:$还可以表示比例和张量的双点积，这时需要一个同样形状的二元运算符，需要用命令 \lstinline'\mathbin{:}' 处理，稍后会集中讨论类似 \lstinline'\mathbin{}' 的命令。
+
+``\lstinline'.'''本身是普通符号，也可以作为数学公式中的句号。
+
+行内公式中，标点符号后不允许换行，并且考虑到数学模式中``$,$''后留出的间隔过小，因此输出$x$, $y$, $z$可以考虑 \lstinline'$x$,'\textvisiblespace\lstinline'$y$,'\textvisiblespace\lstinline'$z$'。当需要输出的内容形如$1$, $2$, \ldots\ 时可以考虑命令 \lstinline'$1$,'\textvisiblespace\lstinline'$2$,'\textvisiblespace\lstinline'\ldots'。注意到命令 \lstinline'\ldots' 在数学模式内外都可以使用，但是效果是完全不一样的。
+
+数学省略号如表 \ref{table:dots} 所示，其中命令 \lstinline'\iddots' 需要调用 \verb'mathdots' 宏包，第二行命令均由 \verb'amsmath' 提供。不在水平方向的省略号大多在矩阵中使用，水平方向的省略号大致有2类：
+\begin{itemize}
+
+\item 形如``$\ldots$''的省略号，位置在基线，可以用在逗号之间，比如$\natura = \left\{ 1, 2, \ldots, n \right\}$；
+
+\item 形如``$\cdots$''的省略号，位置在中间，一般用于连接二元运算符、二元关系符等等，例如：$5050 = 1 + 2 +\dots+ n$。
+
+\end{itemize}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc|cc}
+	\toprule
+	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+	\midrule
+	$\ldots$ & \lstinline'\ldots' & $\cdots$ & \lstinline'\cdots' & $\vdots$ & \lstinline'\vdots' & $\ddots$ & \lstinline'\ddots' & $\iddots$ & \lstinline'\iddots' \\
+	$\dotsc$ & \lstinline'\dotsc' & $\dotsb$ & \lstinline'\dotsb' & $\dotsm$ & \lstinline'\dotsm' & $\dotsi$ & \lstinline'\dotsi' & $\dotso$ & \lstinline'\dotso' \\
+	\bottomrule
+\end{tabular}
+\caption{数学省略号}
+\label{table:dots}
+\end{table}
+
+可以看到，省略号的位置和它连接的字符的中心高度保持了一致。\verb'amsmath' 提供了命令 \lstinline'\dots' 可以自动选择正确的省略号。
+\begin{example}
+	考察下面的代码输出的省略号：{\rm
+\begin{lstlisting}[numbers=none]
+	(x_{1} , \dots , x_{n})
+	5050 = 1 + \dots + n
+	x_{1} = \dots = x_{n}
+	\int \dots \int
+\end{lstlisting}}
+\noindent 可以看到，前三种情况下\ {\rm\lstinline'\dots'} 正确地处理了省略号的高度，但是连接积分号\ {\rm\lstinline'\int'} 的省略号高度不够合适。
+\begin{align}
+%	\begin{aligned}
+	(x_{1} , \dots , x_{n}) &&
+	5050 = 1 + \dots + n &&
+	x_{1} = \dots = x_{n} &&
+	\int \dots \int
+%	\end{aligned}
+\end{align}
+\end{example}
+\verb'amsmath' 提供表 \ref{table:dots} 最后一行的命令，分别对应于上、下文是逗号(comma)、二元运算或关系符(binary)、乘法运算(multiplication)、积分(integral)和其它情形(other)，这些命令仔细定义了位置和间距，在 \lstinline'\dots' 失效时使用。
+\begin{example}
+	考察下面的代码输出的省略号：{\rm
+\begin{lstlisting}[numbers=none]
+	\prod_{i=1}^{n} x_{i} \coloneqq x_{1} x_{2} \dotsm x_{n}
+	\int_{0}^{\infty} \int_{0}^{\infty} \dotsi \int_{0}^{1}
+\end{lstlisting}}
+\noindent 
+\begin{align}
+	\prod_{i=1}^{n} x_{i} \coloneqq x_{1} x_{2} \dotsm x_{n} &&
+	\int_{0}^{\infty} \int_{0}^{\infty} \dotsi \int_{0}^{\infty}
+\end{align}
+\end{example}
+
+\subsubsection{数学距离专题}
+
+前面已经接触到了利用 \lstinline'\mathbin{:}' 将二元关系符``$:$''转化为同样形状的二元运算符，\lstinline'\mathbin{}' 将其中的参数赋予二元关系符应有的间距，这样的命令一共有：\lstinline'\mathrel{}'、\lstinline'\mathbin{}'、\lstinline'\mathop{}'、\lstinline'\mathord{}'、\lstinline'\mathopen{}'、\lstinline'\mathclose{}' 和 \lstinline'\mathpunct{}' 这么些。
+\begin{itemize}[listparindent=24pt, leftmargin=12pt]
+
+\item 命令 \lstinline'\mathrel{}' 名称取自关系的单词relationship，将其参数内容看作是二元关系符。例如：已知 \lstinline'\phantom{=}' 产生一个和$=$一样大小的空白，再利用 \lstinline'\mathrel{\phantom{=}}' 使其等效为透明的$=$，这在多行公式环境 \verb'align' 和 \verb'aligned' 等的对齐起了重要的作用。
+
+\item 命令 \lstinline'\mathbin{}' 名称取自二元的单词binary，将其参数内容看作是二元运算符。顺便提一下，二元关系符的间距比二元运算符多出$1/18$ em，也就是当前字号下字母``m''的水平宽度的十八分之一。
+\begin{example}[对称差]
+	定义集合$S$和$T$的对称差为
+\footnote{
+	这个例子来自徐晓平研究员的线性代数作业。
+}
+\begin{equation*}
+	S \Delta T = \left( S \setminus T \right) \cup \left( T \setminus S \right).
+\end{equation*}
+这样的排版不尽人意，看起来就像是$S$、$\Delta$和$T$这三个量直接相乘，\LaTeX{} 绝不是符号的直接堆砌。利用命令\ {\rm\lstinline'\mathbin{\Delta}'} 使得$\Delta$成为一个新的二元运算符，即
+\begin{equation*}
+	S \mathbin{\Delta} T = \left( S \setminus T \right) \cup \left( T \setminus S \right).
+\end{equation*}
+\end{example}
+
+\item 命令 \lstinline'\mathop{}' 名称取自算子的单词operator，将其参数内容看作是算子。\lstinline'\operatorname{}' 是更高级的命令，它的定义用到了 \lstinline'\mathop{}'。
+
+\item 命令 \lstinline'\mathord{}' 名称取自普通的单词ordinary，将其参数内容看作是普通符号。
+
+\item 命令 \lstinline'\mathopen{}' 和 \lstinline'\mathclose{}' 分别将其参数视为开符号和闭符号。
+
+\item 命令 \lstinline'\mathpunct{}' 名称取自标点符号的单词punctuation，将参数内容看成一个数学标点，但是 \lstinline'x \mathpunct{:} 1' 和 \lstinline'x \colon 1' 的输出效果却不一样。（$x \mathpunct{:} 1$和$x \colon 1$）
+
+\end{itemize}
+
+\subsection{自定义命令}
+
+利用以下格式自定义新命令：
+\begin{lstlisting}[numbers=none]
+	\newcommand{"新命令名称"}["新命令参数数量"]["可选参数的默认值"]{"新命令内容"}
+\end{lstlisting}
+新命令的名称需要命令前导符开头，且不可以 \lstinline'\end' 开头。参数数量可以是$0 \sim 9$中的一个整数。所有参数中只有第一个可以设定为可选参数，如果这样，需要紧接着给出可选参数的默认值，默认值可以为空，即 \lstinline'[]'。新命令的内容中用 \lstinline'#1'、\lstinline'#2'、……、\lstinline'#9' 指代参数。
+\begin{example}\label{ex:UCASer}
+	定义一个没有参数的命令输出$\UCASer$：{\rm
+\begin{lstlisting}[numbers=none]
+	\newcommand{\UCASer}{\mathbb{UCAS}\mathrm{er}}
+\end{lstlisting}}
+\end{example}
+\noindent 这个命令暂时只能在数学模式中使用。
+
+\begin{example}[Dirac符号]
+	定义带有3个必要参数的bra-ket符号$\braOket{\cdot}{\cdot}{\cdot}$，三个参数分别表示左矢、算符、右矢：{\rm
+\begin{lstlisting}[numbers=none]
+	\newcommand[3]{\braOket}{\left\langle #1 \middle\vert #2 \middle\vert #3 \right\rangle}
+\end{lstlisting}}
+\end{example}
+\noindent 这样一来角动量算符$\hat{J}$的矩阵元$\braOket{m}{\hat{J}}{n}$就可以用 \lstinline"\braOket{m}{\hat{J}}{n}" 简便地输出。
+
+\begin{example}[偏导数]
+	定义带有2个必要参数和1个可选参数的偏导数符号，其中可选参数是导数的阶，默认为空：{\rm
+\begin{lstlisting}[numbers=none]
+	\newcommand{\parti}[3][]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\end{lstlisting}
+}\noindent 类似地可以定义全导数为：{\rm
+\begin{lstlisting}[numbers=none]
+	\newcommand{\derive}[3][]{\frac{\mathrm{d}^{#1} #2}{\mathrm{d} {#3}^{#1}}}
+\end{lstlisting}}
+\end{example}
+\noindent 这样一来热传导方程
+\begin{equation}
+	\parti{u}{t} - a^{2} \left( \parti[2]{u}{x} + \parti[2]{u}{y} + \parti[2]{u}{z} \right) = 0
+\end{equation}
+可以这样输出：{\rm
+\begin{lstlisting}[numbers=none]
+	\parti{u}{t} - a^{2} \left( \parti[2]{u}{x} + \parti[2]{u}{y} + \parti[2]{u}{z} \right) = 0
+\end{lstlisting}
+}\noindent 相比之前的代码有巨大地简化。{\rm
+\begin{lstlisting}[numbers=none]
+	\frac{\partial u}{\partial t} - a^{2} \left( \frac{\partial^{2} u}{\partial x^{2}} + \frac{\partial^{2} u}{\partial y^{2}} + \frac{\partial^{2} u}{\partial z^{2}} \right) = 0
+\end{lstlisting}}
+
+\begin{example}[商集]
+	定义带有1个必要参数和1个可选参数的商集符号，使得可选参数为等价关系，默认为遵循普通符号间距的$\sim$：{\rm
+\begin{lstlisting}[numbers=none]
+	\newcommand{\quoset}[2][\mathord{\sim}]{#2 / #1}
+\end{lstlisting}}
+\end{example}
+\noindent 利用 \lstinline'\quoset{G}' 输出$\quoset{G}$，得到合适的间距，例如：$\quoset{G} = G'$。如果没有利用 \lstinline'\mathord{}' 处理$\sim$将会得到什么样的间距效果呢？$\left( G / \sim = G' \right)$
+
+以上的定义都只可以存在于数学模式中，如果在文本模式中使用会报错。在自定义的命令很多时可以考虑命令 \lstinline'\ensuremath{}' 以保证自定义命令在所有模式中通用。\lstinline'\ensuremath{}' 的参数在数学模式中不变，在文本模式中自动被放入一个行内公式环境。
+\begin{example}
+	重新定义例 \ref{ex:UCASer} 中的命令使得它可以在文本模式中正常显示：{\rm
+\begin{lstlisting}[numbers=none]
+	\renewcommand{\UCASer}{\ensuremath{\mathbb{UCAS}\mathrm{er}}}
+\end{lstlisting}}
+\end{example}
+\noindent 直接在文本使用 \lstinline'\UCASer' 要注意和前文的间距，需要额外加一个空格。即 \textvisiblespace\lstinline'\UCASer'。这里用到了
+\begin{lstlisting}[numbers=none]
+	\renewcommand{"已有命令名称"}["新命令参数数量"]["可选参数的默认值"]{"新命令内容"}
+\end{lstlisting}
+修改已经定义过的命令 \lstinline'\UCASer'，使用方法和 \lstinline'\newcommand{}{}' 完全一样，仅适用于已经定义过的命令，未定义的命令会报错。然而在大量代码的情况下不一定可以准确判断命令是否已经定义，可以考虑预防命令
+\begin{lstlisting}[numbers=none]
+	\providecommand{"新命令名称"}["新命令参数数量"]["可选参数的默认值"]{"新命令内容"}
+\end{lstlisting}
+当命令已经定义时，会仅将定义的内容保存，如果命令未被定义则定义的内容生效。
+\begin{example}[场论算子]
+	定义梯度、旋度和散度的算子$\operatorname{grad}$、$\operatorname{rot}$、$\operatorname{curl}$和$\operatorname{div}$。{\rm
+\begin{lstlisting}
+	\providecommand{\grad}{\operatorname{grad}}
+	\providecommand{\rot}{\operatorname{rot}}
+	\providecommand{\curl}{\operatorname{curl}}
+	\providecommand{\div}{\operatorname{div}}
+\end{lstlisting}}
+\noindent 分别输出得到$\grad$、$\rot$、$\curl$和$\div$。{\rm\lstinline'\div'} 已经被系统预定义为二元运算符$\div$，取自除法的英文division。
+\end{example}
+
+\lstinline'\newcommand{}{}'、\lstinline'\renewcommand{}{}' 和 \lstinline'\providecommand{}{}' 均存在带 \lstinline'*' 的形式，即 \lstinline'\newcommand*{}{}'、\lstinline'\renewcommand*{}{}' 和 \lstinline'\providecommand*{}{}'，使得命令定义的内容不可带有分段 \lstinline'\par{}' 或分行 \lstinline'\\' 命令，否则报错。
+
+\begin{example}[绝对值、模和范数]\label{ex:norm}
+	直接使用小小节 \ref{subsubsec:括号和定界符} 中的命令\ {\rm\lstinline'\lvert'} 和\ {\rm\lstinline'\rvert'}、{\rm\lstinline'\lVert'} 和\ {\rm\lstinline'\rVert'} 会让代码变得复杂，可以定义专门输出绝对值、模和范数的命令作简化：{\rm
+\begin{lstlisting}
+	\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+	\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\end{lstlisting}}
+\end{example}
+
+\subsection{矩阵}
+
+这一小节的内容本来属于基本数学结构，但是用来给多行公式开头是很值得的。
+
+\subsubsection{\texorpdfstring{\AmS-\LaTeX{} 的简单矩阵}{AMS-LaTeX的简单矩阵}}
+
+\AmS-\LaTeX{} 提供了下面的矩阵环境，区别仅仅是在于外面的括号。
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc}
+	\toprule
+	环境 & 名称 & 环境 & 名称 & 环境 & 名称 \\
+	\midrule
+	$\begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix}$ & \verb'matrix' & $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ & \verb'bmatrix' & $\begin{vmatrix} 1 & 0 \\ 0 & 1 \end{vmatrix}$ & \verb'vmatrix' \\[4ex]
+	$\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ & \verb'pmatrix' & $\begin{Bmatrix} 1 & 0 \\ 0 & 1 \end{Bmatrix}$ & \verb'Bmatrix' & $\begin{Vmatrix} 1 & 0 \\ 0 & 1 \end{Vmatrix}$ & \verb'Vmatrix' \\
+	\bottomrule
+\end{tabular}
+\caption{\AmS-\LaTeX{} 的矩阵环境}
+\label{table:矩阵环境}
+\end{table}
+前面提到过，数学省略号多用于矩阵环境中，例如排版Vandermonde行列式
+\begin{equation}
+	D \left( x_{1}, x_{2}, \dots, x_{n} \right) =
+	\begin{vmatrix}
+		1 & 1 & \cdots & 1 \\
+		x_{1} & x_{2} & \cdots & x_{n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		x_{1}^{n-1} & x_{2}^{n-1} & \cdots & x_{n}^{n-1}
+	\end{vmatrix}
+	= \prod_{1 \leqslant i < j \leqslant n} \left( x_{j} - x_{i} \right)
+\end{equation}
+\begin{lstlisting}[numbers=none]
+	D \left( x_{1}, x_{2}, \dots, x_{n} \right) =
+	\begin{vmatrix}
+		1 & 1 & \cdots & 1 \\
+		x_{1} & x_{2} & \cdots & x_{n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		x_{1}^{n-1} & x_{2}^{n-1} & \cdots & x_{n}^{n-1}
+	\end{vmatrix}
+	= \prod_{1 \leqslant i < j \leqslant n} \left( x_{j} - x_{i} \right)
+\end{lstlisting}
+其中分列符 \lstinline!\&! 分隔不同的列，\lstinline!\\! 开启新的一行，矩阵环境的元素都是居中对齐的。第三行也可以改成横跨若干行的连续省略号，利用 \verb'amsmath' 的 \lstinline!\hdotsfor{}! 实现，参数填写行数。
+
+矩阵环境可以嵌套，这样可以排版分块儿矩阵，譬如：Jordan标准型是由Jordan块儿直和得到，即
+\begin{equation}
+	\begin{pmatrix}
+		\begin{matrix} 1 & 1 \\ 0 & 1 \end{matrix} & \text{\zihao{-2} 0} \\
+		\text{\zihao{-2} 0} & \begin{matrix} 1 & 1 \\ 0 & 1 \end{matrix}
+	\end{pmatrix}
+\end{equation}
+\begin{lstlisting}[numbers=none]
+	\begin{pmatrix}
+		\begin{matrix} 1 & 1 \\ 0 & 1 \end{matrix} & \text{\zihao{-2} 0} \\
+		\text{\zihao{-2} 0} & \begin{matrix} 1 & 1 \\ 0 & 1 \end{matrix}
+	\end{pmatrix}
+\end{lstlisting}
+其中利用 \lstinline!\text{}! 将0先视为文本，然后声明字号为小二的命令 \lstinline!\zihao{-2}! 才能在文本环境中起作用。
+
+置换的排版也常用矩阵环境，有时会用到超长矩阵，即其列数超出了默认的10，会产生错误。这时需要利用 \lstinline!\setcounter{}{}! 等计数器命令，对限制矩阵最大列数的计数器 \verb'MaxMatrixCols' 作调整。
+\begin{example}
+	求置换$\sigma$的阶。\footnote{这个例子同样来自徐晓平研究员的线性代数作业。}
+\begin{equation}
+	\setcounter{MaxMatrixCols}{13}
+	\begin{pmatrix}
+		1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 \\
+		8 & 4 & 6 & 7 & 2 & 9 & 1 & 3 & 5 & 11 & 12 & 13 & 10
+	\end{pmatrix}
+\end{equation}{\rm
+\begin{lstlisting}[numbers=none]
+	\setcounter{MaxMatrixCols}{13}
+	\begin{pmatrix}
+		1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 \\
+		8 & 4 & 6 & 7 & 2 & 9 & 1 & 3 & 5 & 11 & 12 & 13 & 10
+	\end{pmatrix}
+\end{lstlisting}}
+\end{example}
+其它的矩阵环境：
+\begin{itemize}
+
+\item \verb'mathtools' 宏包突破了矩阵元素居中的默认，提供 \verb'matrix*' 和 \verb'pmatrix*' 等环境，指定矩阵的列对齐方式。
+
+\item 左、上边缘有边注的矩阵可以通过原始的 \LaTeX{} 命令 \lstinline'\bordermatrix' 实现，但是语法不完全一样。例如：
+\begin{equation}
+	\bordermatrix{
+		~ & 1 & 2 & 3 \cr
+		1 & r_{u}^{1} & r_{u}^{2} & r_{u}^{3} \cr
+		2 & r_{v}^{1} & r_{v}^{2} & r_{v}^{3} \cr}.
+\end{equation}
+\begin{lstlisting}[numbers=none]
+	\bordermatrix{
+		~ & 1 & 2 & 3 \cr
+		1 & r_{u}^{1} & r_{u}^{2} & r_{u}^{3} \cr
+		2 & r_{v}^{1} & r_{v}^{2} & r_{v}^{3} \cr}.
+\end{lstlisting}
+然而上边缘并不总是必需的，\lstinline'\bordermatrix' 无法回避上边缘，及时没有内容也会留出相应的间距。解决方案是继续使用 \verb'pmatrix' 环境，在前面直接放置 \verb]matrix] 容纳行注，例如：Lorentz变换
+\begin{equation}
+	\begin{matrix} 0 \\ 1 \\ 2 \\ 3 \end{matrix}
+	\begin{pmatrix} \mc t' \\ x' \\ y' \\ z' \end{pmatrix} =
+	\begin{pmatrix}
+		\gamma & -\beta\gamma & 0 & 0 \\
+		-\beta\gamma & \gamma & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & 1
+	\end{pmatrix}
+	\begin{pmatrix} \mc t \\ x \\ y \\ z \end{pmatrix}.
+\end{equation}
+
+\end{itemize}
+
+下面介绍的矩阵环境都控制输出“小矩阵”。矩阵环境不会因为处于行内公式环境而压缩自己的尺寸，反而保持原来的大小撑开行间距。因此，\verb'amsmath' 提供 \verb.smallmatrix. 环境输出很小的矩阵，语法和 \verb'matrix' 环境一致，但是不带任何括号。
+\begin{example}
+	Pauli矩阵$\sigma_{x} = \left( \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix} \right)$, $\sigma_{y} = \left( \begin{smallmatrix} 0 & -\mi \\ \mi & 0 \end{smallmatrix} \right)$, $\sigma_{z} = \left( \begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix} \right)$以物理学家Wolfgang E. Pauli命名。
+\end{example}
+
+排版Lagrange插值定理：已知确定点$\left\{ (x_{i}, y_{i}) \mathrel{\vert} i = 1, 2, \dots, n \right\}$，多项式函数为
+\begin{equation}
+	f(x) = \sum_{i=1}^{n} y_{i} \prod_{\substack{1 \leqslant j \leqslant n \\ i \neq j}} \frac{x - x_{i}}{x_{j} - x_{i}}.
+\end{equation}
+其中求和下标的分行利用了命令 \lstinline!\substack{1 \leqslant j \leqslant n \\ i \neq j}!，效果相当于是嵌入了一个单列矩阵，这一命令由 \verb.amsmath. 提供。更灵活的方式是将下标内容放入 \verb'subarray' 环境中，并在环境的必要参数内指定左对齐 \lstinline'l'、居中 \lstinline'c' 或右对齐 \lstinline'r'。
+
+\subsubsection{复杂矩阵（一种环境）}
+
+复杂的矩阵需要通过 \verb'array' 环境实现，它实际上是一种表格，甚至也可以认为是多行公式一部分。\verb'array' 环境换行和分列的语法都和普通的矩阵环境一样。
+
+\verb'array' 环境带有一个可选参数和一个必要参数，前者设定元素的垂直对齐格式，后者说明列的格式。这里只部分地介绍列格式的说明符：
+\begin{itemize}[listparindent=24pt, leftmargin=12pt]
+
+\item \lstinline'l' 使得本列左对齐。
+
+\item \lstinline'c' 使得本列居中。
+
+\item \lstinline'r' 使得本列右对齐。
+
+\item \lstinline'p{}' 使得本列具有固定宽度，宽度是必要参数，且支持自动换行。
+
+\item \lstinline'|' 画一条竖线，不产生新的一列。
+
+\item \lstinline'@{}' 添加必要参数为内容，不产生新的一列，但是去掉当前的列间距。
+
+\item \lstinline'*{}{}' 说明特定列格式要重复若干次，它的第一个必要参数为重复次数，第二个必要参数为被重复的列格式。比如：\lstinline'*{2}{|c|}' 等效于 \lstinline'|c||c|'。
+
+\end{itemize}
+\begin{example}[增广矩阵]
+	排版$3 \times 3$线性方程组
+\begin{equation}
+	\left\{
+	\begin{gathered}
+		a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{3} = b_{1} \\
+		a_{21} x_{1} + a_{22} x_{2} + a_{23} x_{3} = b_{2} \\
+		a_{31} x_{1} + a_{32} x_{2} + a_{33} x_{3} = b_{3}
+	\end{gathered}
+	\right.
+\end{equation}
+的增广矩阵
+\begin{equation}
+	\left(
+	\begin{array}{@{}*{3}{c}|c@{}}
+		a_{11} & a_{12} & a_{13} & b_{1} \\
+		a_{21} & a_{22} & a_{23} & b_{2} \\
+		a_{31} & a_{32} & a_{33} & b_{3}
+	\end{array}
+	\right).
+\end{equation}{\rm
+\begin{lstlisting}[numbers=none]
+	\left(
+	\begin{array}{@{}*{3}{c}|c@{}}
+		a_{11} & a_{12} & a_{13} & b_{1} \\
+		a_{21} & a_{22} & a_{23} & b_{2} \\
+		a_{31} & a_{32} & a_{33} & b_{3}
+	\end{array}
+	\right).
+\end{lstlisting}}
+\noindent 注意：矩阵最外层的括号需要额外添加。列格式说明在开头和末尾使用\ {\rm\lstinline'@{}'} 去除了和括号的间距。
+\end{example}
+
+\section{多行公式}
+
+多行公式大多出现在行间公式环境，这一节虽然不包含于在节 \ref{sec:AMS} 中，但是出现的环境基本由 \verb'amsmath' 提供。在小小节 \ref{subsubsec:行内公式} 中已经简要地介绍了 \verb'equation' 和 \verb'equation*' 环境，它们只在能否提供自动编号上存在区别，都只能居中输出一行公式。
+
+这里对公式的自动编号设置作极其简要的说明。含有 \lstinline'@' 的命令是系统内部的核心命令，修改核心命令时需要首先将 \lstinline'@' 视为普通字符，完成修改后再恢复 \lstinline'@' 的地位，这正是第1--3行代码做的事情，第2行代码使得公式编号在每一节(\verb'section')后清零。最后一行使得公式按节编号。\verb'section' 的位置很自然地可以替换为 \verb'subsection' 或是 \verb'subsubsection' 等文档层次。
+\begin{lstlisting}
+\makeatletter
+\@addtoreset{equation}{section}
+\makeatother
+
+\numberwithin{equation}{section}
+\end{lstlisting}
+
+\subsection{罗列多个公式}
+
+\verb'equation' 和 \verb'equation*' 环境功能的延拓是自然的，即使得换行命令 \lstinline'\\' 有效，而公式仍然简单地居中罗列。\verb'gather' 和 \verb'gather*' 环境便是这一延拓的实现，这里就不举例子了。
+
+再扩展居中对齐的功能，则得到 \verb'align' 和 \verb'align*' 环境，使得多行公式按照其中某几个符号对齐，并使用分列符 \lstinline'&' 标记。分列符划分的列中奇数列右对齐，偶数列左对齐，形成列对。这样一来，既可以拆分一个长公式，也可以分多列对齐公式。
+\begin{example}
+	分三列按等号对齐变量代换：
+\begin{align}
+	f_{1} (x) &= \frac{1}{\sqrt{1 - x^{2}}} & f_{2} (x) &= \frac{1}{1 + x^{2}} & f_{3} (x) &= \frac{1}{\sqrt{x^{2} - 1}} \label{eq:代换1} \\
+	x &= \sin\theta & x &= \tan\theta & x &= \cosh z \label{eq:代换2}
+\end{align}{\rm
+\begin{lstlisting}
+\begin{align}
+	f_{1} (x) &= \frac{1}{\sqrt{1 - x^{2}}} & f_{2} (x) &= \frac{1}{1 + x^{2}} & f_{3} (x) &= \frac{1}{\sqrt{x^{2} - 1}} \\
+	x &= \sin\theta & x &= \tan\theta & x &= \cosh z
+\end{align}
+\end{lstlisting}}
+\end{example}
+\begin{example}
+	前面提到\ {\rm\lstinline'\mathrel{\phantom{=}}'} 在对齐多行公式会有重要作用，这种排版效果便是：
+\begin{align}
+	&\mathrel{\phantom{=}} \left( a - b \right) \left( a^{2} + a b + b^{2} \right) \notag \\
+	&= a^{3} + a^{2} b + a b^{2} - a^{2} b - a b^{2} - b^{3} \\
+	&= a^{3} - b^{3} \notag
+\end{align}{\rm
+\begin{lstlisting}
+\begin{align}
+	&\mathrel{\phantom{=}} \left( a - b \right) \left( a^{2} + a b + b^{2} \right) \notag \\
+	&= a^{3} + a^{2} b + a b^{2} - a^{2} b - a b^{2} - b^{3} \\
+	&= a^{3} - b^{3} \notag
+\end{align}
+\end{lstlisting}}
+\noindent 注意：这里用\ {\rm\lstinline'\notag'} 取消了当前行公式的自动编号。
+\end{example}
+
+\verb'flalign' 和 \verb'flalign*' 环境和 \verb'align' 环境十分相似，只不过它的列对之间的长度是可以无限延伸的弹性距离，使得公式占满当前宽度。重新排版式 \eqref{eq:代换1} 和式 \eqref{eq:代换2} 可以发现这一区别。
+\begin{flalign}
+	f_{1} (x) &= \frac{1}{\sqrt{1 - x^{2}}} & f_{2} (x) &= \frac{1}{1 + x^{2}} & f_{3} (x) &= \frac{1}{\sqrt{x^{2} - 1}} \\
+	x &= \sin\theta & x &= \tan\theta & x &= \cosh z
+\end{flalign}
+
+\verb'alignat' 和 \verb'flalignat*' 环境和 \verb'align' 环境也十分相似，但是列对之间默认没有距离，且多了一个必要参数设置列对的个数。这一数目至少要大于实际的列对数目。
+
+\subsection{拆分单个公式}
+
+\subsection{将公式组合成块}
+
+\lstinline'\allowdisplaybreaks' 和 \lstinline'\displaybreak'
+
+关于中文标点符号的使用，在中文论文中也会用到很多英文，如专业词汇和数学式等，在中、英文混排的时候应该如何使用标点呢？胡伟\cite{LaTeX完全学习手册}认为
+\begin{quotation}\kaishu
+	在这方面并没有统一的规定。……
+
+	……根据中国大百科全书数学卷的排版格式，所有文本段落都使用全角逗号和空心句号，只有在数学式之中的逗号为半角，例如：“$f \left( x, y \right) = 0$。”，公式中的两个变量用半角逗号分隔，而在公式结尾处使用全角空心句号。
+\end{quotation}
+而刘海洋\cite{LaTeX入门}认为
+\begin{quotation}\kaishu
+	值得注意的是，显示公式后面如果有标点符号，应该放在数学环境内部，紧接着公式。而且因为数学模式下不能使用汉字，所以一般就使用西文的半角标点。
+\end{quotation}
+两人的观点有点矛盾。个人认为：在行内公式执行胡伟的主张，在行间公式执行刘海洋的主张更为合适。例如
+\begin{quotation}\kaishu
+	在$n$维时空中，共有$n$个基矢$\mathrm{d} x^{0}, \mathrm{d} x^{1}, \dots, \mathrm{d} x^{n-1}$，它们也是1形式空间的基矢。2形式空间的坐标基矢记作
+\begin{equation}
+	\mathrm{d} x^{\mu} \wedge \mathrm{d} x^{\nu} = \mathrm{d} x^{\mu} \otimes \mathrm{d} x^{\nu} - \mathrm{d} x^{\nu} \otimes \mathrm{d} x^{\mu} = \tensor{\delta}{\kappa \lambda}{\mu \nu} \,\mathrm{d} x^{\kappa} \otimes \mathrm{d} x^{\lambda}.
+\end{equation}
+\end{quotation}
+
+%\subsection{自定义命令}
+
+\bibliography{参考文献昆明池}%打印参考文献列表
+
+\end{document}
+
+\subsection{\LaTeX{}命令派生法}
+
+考虑这三个命令
+\begin{table}[H]
+\centering
+\begin{tabular}{cccccc}
+	\hline
+	\lstinline!\subset! & $\subset$ & \lstinline!\subseteq! & $\subseteq$ & \lstinline!\subseteqq! & $\subseteqq$ \\
+	\lstinline!\colon! & $\colon$ & \lstinline!\coloneq! & $\coloneq$ & \lstinline!\coloneqq! & $\coloneqq$ \\
+	\lstinline!\sim! & $\sim$ & \lstinline!\simeq! & $\simeq$ & \lstinline!\cong! & $\cong$ \\
+	\hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+\lstinline!\wedge!，和楔积、矢积
+
+\verb"align" 的 \verb"\\" 后跟 \verb"[" 会报错。
+
+黄吉鸿学弟提供的多行公式排版的例子，以及线性方程组
+
+\begin{longtable}{cc|cc||cc|cc}
+	\hline
+	\endfirsthead
+	\multicolumn{2}{c}{（续表）} \\
+	\hline
+	\endhead
+	\hline
+	\multicolumn{2}{c}{接下一页表格……}
+	\endfoot
+	\hline
+	\endlastfoot
+	小写字母 & 命令 & 小写字母 & 命令 & 大写字母 & 命令 & 大写字母 & 命令 \\
+	$\alpha$ & \lstinline'\alpha' & 小写字母 & 命令 & 大写字母 & 命令 & 大写字母 & 命令 \\
+	$\beta$ & \lstinline'\beta' & 小写字母 & 命令 & 大写字母 & 命令 & 大写字母 & 命令 \\
+\end{longtable}
+
+例如Green公式。
+\begin{lstlisting}
+\begin{equation}%"\textcolor{red}{Green 公式}"
+	\oint_{\partial D} P \,\mathrm{d} x + Q \,\mathrm{d} y = \iint_{D} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \mathrm{d} x \mathrm{d} y
+\end{equation}
+\end{lstlisting}
+\begin{equation}
+	\oint_{\partial D} P \,\mathrm{d} x + Q \,\mathrm{d} y = \iint_{D} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \mathrm{d} x \mathrm{d} y 
+\end{equation}

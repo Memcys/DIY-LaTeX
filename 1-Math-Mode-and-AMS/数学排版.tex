@@ -1,0 +1,1093 @@
+\documentclass[mathserif]{beamer}
+\usepackage[UTF8,noindent]{ctexcap}%noindent选项阻止ctex宏包引入的段前缩进（beamer的默认设置）
+% ctex warning: "deprecated-option". Option `noindent' is deprecated.
+\usetheme{Montpellier}
+\usepackage{texnames}%提供AMS标识符
+\usepackage{booktabs}%三线表
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb,bm,amsthm}
+\usepackage{mathtools}%\prescript\coloneqq
+\usepackage{esint}%二重环路积分
+%\usepackage{enumitem}%输出一、二、三、
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+% \usepackage{xeCJK}
+\usepackage{upgreek}
+\usepackage{fancybox}
+\usepackage{extarrows}
+\usepackage{mathdots}
+
+
+%\setmonofont{Consolas}
+\lstset{
+	language=[AlLaTeX]TeX,
+%	frame=tb,
+	aboveskip=3mm,
+	belowskip=3mm,
+	morekeywords={subseteqq, coloneq, coloneqq, geometry, maketitle, zihao, command,leqslant, geqslant, XeLaTeX, AmS, AmSTeX, BibTeX, LuaTeX, CTeX, CCTeX, mathbb, prescript, indices, tensor, ce, underrightarrow, underleftarrow, overleftrightarrow, underleftrightarrow, text, overbracket, underbracket, dfrac, tfrac, cfrac, binom, dbinom, tbinom, mathnormal, mathcal, mathscr, mathfrak, varkappa, digamma, varGamma, varDelta, varTheta, varLambda, varXi, varPi, varSigma, varUpsilon, varPhi, varPsi, varOmega, upalpha, upbeta, upgamma, updelta, upepsilon, upzeta, upeta, uptheta, upiota, upkappa, uplambda, upmu, upnu, upxi, uppi, uprho, upsigma, uptau, upupsilon, upphi, upchi, uppsi, upomega, upvarepsilon, upvartheta, upvarpi, upvarrho, upvarsigma, upvarphi, dddot, ddddot, mathring, hslash, varnothing, square, blacksquare, lozenge, blacklozenge, bigstar, complement, mho, iint, iiint, idotsint, oiint, varoiint, iiiint, varlimsup, varliminf, injlim, projlim, varinjlim, varprojlim, UCASer, braOket, middle, derive, parti, quoset, providecommand, DeclareMathOperator, lcm, lcmdot, tg, ctg, operatorname, mod, pod, diff, dif, grad, rot, curl,allowdisplaybreaks, displaybreak, ltimes, rtimes, leftthreetimes, rightthreetimes, dotplus, circleddash, circledast, circledcirc, nless, ngtr, nleq, ngeq, nprec, nsucc, npreceq, nsucceq, precneqq, succneqq, nsim, ncong, nsubseteq, nsupseteq, subsetneq, supsetneq, varsubsetneq, varsupsetneq, leqq, nleqq, geqq, ngeqq, lneqq, gneqq, lvertneqq, gvertneqq, nleqslant, ngeqslant, lneq, gneq, nsubseteqq, nsupseteqq, supseteqq, subsetneqq, supsetneqq, varsubsetneqq, varsupsetneqq, because, therefore, blacktriangleleft, blacktriangleright, lll, ggg, risingdotseq, fallingdotseq, eqslantless, eqslantgtr, lessgtr, gtrless, lesseqgtr, gtreqless, lesseqqgtr, gtreqqless, doteqdot, triangleq, varpropto, backepsilon, nleftarrow, nrightarrow, nLeftarrow, nRightarrow, nleftrightarrow, nLeftrightarrow, leftleftarrows, rightrightarrows, leftrightarrows, rightleftarrows, Lleftarrow, Rrightarrow, twoheadleftarrow, twoheadrightarrow, leftarrowtail, rightarrowtail, looparrowleft, looparrowright, leftrightharpoons, curvearrowleft, curvearrowright, circlearrowleft, circlearrowright, Lsh, Rsh, upharpoonleft, upharpoonright, downharpoonleft, downharpoonright, multimap, rightsquigarrow, leftrightsquigarrow, shadowbox, xleftarrow, xrightarrow, xlongleftarrow, xlongrightarrow, xLongleftarrow, xLongrightarrow, xleftrightarrow, xLeftrightarrow, xlongleftrightarrow, xLongleftrightarrow, xlongequal, implies, impliedby, And, lvert, rvert, lVert, rVert, abs, norm, iddots, dotsc, dotsb, dotsm, dotsi, dotso, sqint, sqiint, ointctrclockwise, ointclockwise, fint, dotsint, landupint, landdownint},
+	backgroundcolor=\color{backcolor},   
+	commentstyle=\color{red},
+	keywordstyle={\color{blue} },
+%	morekeywords={coloneq}
+%	basicstyle={\small\ttfamily},
+	basicstyle={\zihao{6}\ttfamily},
+	showstringspaces=false,
+	columns=flexible,
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=4,
+%	captionpos=b,
+	keepspaces=true,
+	numbers=left,                  
+	numbersep=5pt,
+	numberstyle=\tiny\color{codegray},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	xleftmargin=8pt,
+	escapechar="
+}
+
+\title[数学排版]{\textbf{\songti \LaTeX{} 的数学排版}}
+\subtitle{\AmS{} 宏集、多行公式、定理类环境}
+\institute{中国科学院大学}
+\author{\kaishu 樊兆兴}
+\date{\today}
+\subject{LaTeX的数学排版}
+\keywords{LaTeX、CTeX、数学模式}
+% \logo{\includegraphics[height=24pt]{Z:/ucaslogo_small.jpg}}%把一个较小的图标放在幻灯片的角落里面，放置校徽、公司商标等
+% \setCJKmainfont{楷体}
+\bibliographystyle{unsrt}%按照引用的先后顺序排列
+\setbeamertemplate{items}[ball]%itemize的符号设置为ball
+
+\definecolor{backcolor}{rgb}{0.95, 0.95, 0.92}
+\definecolor{codegreen}{rgb}{0, 0.6, 0}
+\definecolor{codegray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{lightgray}{rgb}{0.7, 0.7, 0.7}
+\providecommand{\gray}[2][0.5]{\textcolor[gray]{#1}{#2}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\codegreen}[1]{\textcolor{codegreen}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+%定义数集符号
+\newcommand{\real}{\mathbb R}
+\newcommand{\ration}{\mathbb Q}
+\newcommand{\complex}{\mathbb C}
+\newcommand{\integer}{\mathbb Z}
+\newcommand{\natura}{\mathbb N}
+%声明文字名称算子
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\dif}{d\!}
+%自然常数
+\newcommand{\me}[1]{\mathrm{e}^{#1}}
+\newcommand{\mi}{\mathrm{i}}
+\newcommand{\md}{\mathrm{d}}
+%
+\newcommand{\parti}[3][]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+
+%\newtheorem*{instance}{\zihao{-5}\textbf{\songti \codegreen{例：}}}
+\newenvironment{instance}{\zihao{-5}\textbf{\songti \codegreen{例.}}}{\hfill\par}
+
+\begin{document}
+
+\zihao{-5}
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}
+	\tableofcontents
+\end{frame}
+
+\section{\texorpdfstring{\AmS{} 宏集}{AMS宏集}}
+
+\subsection{符号与类型}
+
+\begin{frame}{算子}{算子的分类}
+
+算子(operator)会在前后自动留出合适的间距，例如：正弦函数$\sin x$。算子分为
+\begin{enumerate}[(1)]%[label=(\arabic*)]
+
+\item 巨算子(large operator)，大小可变。例如：
+\begin{equation*}
+	\begin{aligned}
+		\sum && \prod && \bigcup && \bigcap && \bigvee && \bigwedge && \bigsqcup && \bigoplus && \bigotimes && \int && \oint && \iint && \varoiint && \iiint
+	\end{aligned}
+\end{equation*}
+不可与$\Sigma$、$\Pi$、$\cup$、$\cap$、$\vee$、$\wedge$、$\sqcup$、$\oplus$和$\otimes$混淆。
+
+\item 文字名称的算子，用直立罗马体排印。例如：$\log$和$\lim$等。
+
+\item 单字符算子，例如：$\mathrm{d}$、$\nabla$、$\partial$和$\square$等。
+
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{巨算子}{巨算子一览表}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\displaystyle \sum \textstyle \sum$ & \lstinline'\sum' & $\displaystyle \prod \textstyle \prod$ & \lstinline'\prod' \\
+	$\displaystyle \coprod \textstyle \coprod$ & \lstinline'\coprod' & $\displaystyle \bigcup \textstyle \bigcup$ & \lstinline'\bigcup' \\
+	$\displaystyle \bigcap \textstyle \bigcap$ & \lstinline'\bigcap' & $\displaystyle \biguplus \textstyle \biguplus$ & \lstinline'\biguplus' \\
+	$\displaystyle \bigsqcup \textstyle \bigsqcup$ & \lstinline'\bigsqcup' & $\displaystyle \bigvee \textstyle \bigvee$ & \lstinline'\bigvee' \\
+	$\displaystyle \bigwedge \textstyle \bigwedge$ & \lstinline'\bigwedge' & $\displaystyle \bigodot \textstyle \bigodot$ & \lstinline'\bigodot' \\
+	$\displaystyle \bigoplus \textstyle \bigoplus$ & \lstinline'\bigoplus' & $\displaystyle \bigotimes \textstyle \bigotimes$ & \lstinline'\bigotimes' \\
+	$\displaystyle \int \textstyle \int$ & \lstinline'\int' & $\displaystyle \oint \textstyle \oint$ & \lstinline'\oint' \\
+	$\displaystyle \iint \textstyle \iint$ & \lstinline'\iint' & $\displaystyle \iiint \textstyle \iiint$ & \lstinline'\iiint' \\
+	$\displaystyle \iiiint \textstyle \iiiint$ & \lstinline'\iiiint' & $\displaystyle \idotsint \textstyle \idotsint$ & \lstinline'\idotsint' \\
+	$\displaystyle \oiint \textstyle \oiint$ & \lstinline'\oiint' & $\displaystyle \varoiint \textstyle \varoiint$ & \lstinline'\varoiint' \\
+	\bottomrule
+\end{tabular}
+%\caption{巨算子一览表}
+%\label{table:large}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{巨算子}{巨算子的上、下标}
+\begin{itemize}
+
+\item 从 \lstinline'\iint' 开始需要 \verb'amsmath' 宏包，从 \lstinline'\oiint' 开始需 \verb'esint' 宏包。
+
+\item 都带有上、下标。积分号的上、下标默认在角标位置，其他巨算符默认在自身上、下方。
+
+\item \lstinline'\limits' 和 \lstinline'\nolimits' 命令用来手工调整巨算符上、下标的位置。
+
+\end{itemize}
+
+\begin{instance}
+考察下面代码的输出效果：
+\begin{lstlisting}[numbers=none]
+\sum\nolimits_{k = 1}^{n} \iint\limits_{x_{k}^{2} + y_{k}^{2} \leqslant 1} r^{2} \,\mathrm{d} S.
+\end{lstlisting}%"\hspace{18bp}"
+\noindent
+\begin{equation*}
+	\sum\nolimits_{k = 1}^{n} \iint\limits_{x_{k}^{2} + y_{k}^{2} \leqslant 1} r^{2} \,\mathrm{d} S.
+\end{equation*}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{Computer Modern系列字体的扩展积分算子集合}{Extended Set of Integrals for Computer Modern}
+\verb'esint' 宏包补充了Computer Modern字体丢失的一系列积分算子，比如：\lstinline'\varoiint'。{\color{red}\verb'esint' 宏包必须在 \AmS-\LaTeX{} 系列宏包之后加载。}宏包提供 \lstinline'[intlimits]' 和 \lstinline'[nointlimits]'（默认）两个选项，作用相当于 \lstinline'\limits' 和 \lstinline'\nolimits'。\cite{esint}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\displaystyle \oiint \textstyle \oiint$ & \lstinline'\oiint' & $\displaystyle \varoiint \textstyle \varoiint$ & \lstinline'\varoiint' \\
+	$\displaystyle \sqint \textstyle \sqint$ & \lstinline'\sqint' & $\displaystyle \sqiint \textstyle \sqiint$ & \lstinline'\sqiint' \\
+	$\displaystyle \ointctrclockwise \textstyle \ointctrclockwise$ & \lstinline'\ointctrclockwise' & $\displaystyle \ointclockwise \textstyle \ointclockwise$ & \lstinline'\ointclockwise' \\
+	$\displaystyle \fint \textstyle \fint$ & \lstinline'\fint' & $\displaystyle \dotsint \textstyle \dotsint$ & \lstinline'\dotsint' \\
+	$\displaystyle \landupint \textstyle \landupint$ & \lstinline'\landupint' & $\displaystyle \landdownint \textstyle \landdownint$ & \lstinline'\landdownint' \\
+	\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{文字名称的算子}{带上、下限的算子}
+上、下标风格风格和巨算符类似。从 \lstinline'\varlimsup' 开始需要 \verb'amsmath' 宏包。
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\max$ & \lstinline'\max' & $\min$ & \lstinline'\min' & $\sup$ & \lstinline'\sup' & $\inf$ & \lstinline'\inf' \\
+	$\lim$ & \lstinline'\lim' & $\det$ & \lstinline'\det' & $\gcd$ & \lstinline'\gcd' & $\Pr$ & \lstinline'\Pr' \\
+	$\limsup$ & \lstinline'\limsup' & $\liminf$ & \lstinline'\liminf' & $\varlimsup$ & \lstinline'\varlimsup' & $\varliminf$ & \lstinline'\varliminf' \\
+	$\injlim$ & \lstinline'\injlim' & $\projlim$ & \lstinline'\projlim' & $\varinjlim$ & \lstinline'\varinjlim' & $\varprojlim$ & \lstinline'\varprojlim' \\
+	\bottomrule
+\end{tabular}
+%\caption{带上、下限的算子}
+%\label{table:带上、下限}
+\end{table}
+\begin{itemize}
+
+\item $\Pr$也可解释为投影(projection)，但是似乎$\operatorname{proj}$更合适。
+
+\item $\gcd$表示最大公因数(greatest common divisor)，但不存在表示最小公倍数(least/lowest common multiple)的算子$\operatorname{lcm}$或$\operatorname{l.c.m.}$。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{文字名称的算子}{带上、下限的算子}
+\begin{instance}（集合列$\left\{ E_{n} \right\}_{n \geqslant 1}$的上极限）
+对于样本空间$\varOmega$中的事件列$E_{n}$其上极限为
+\begin{equation*}\label{eq:limsup}
+	\varlimsup_{n \to +\infty} E_{n} \coloneqq \lim_{m \to +\infty} \bigcap_{k=1}^{m} \bigcup_{n \geqslant k} E_{n}.
+\end{equation*}
+源代码如下：
+\begin{lstlisting}[numbers=none]
+\varlimsup_{n \to +\infty} E_{n} \coloneqq \lim_{m \to +\infty} \bigcap_{k=1}^{m} \bigcup_{n \geqslant k} E_{n}.
+\end{lstlisting}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{文字名称的算子}{不带上、下限的算子}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\log$ & \lstinline'\log' & $\ln$ & \lstinline'\ln' & $\lg$ & \lstinline'\lg' & $\sin$ & \lstinline'\sin' \\
+	$\arcsin$ & \lstinline'\arcsin' & $\cos$ & \lstinline'\cos' & $\arccos$ & \lstinline'\arccos' & $\tan$ & \lstinline'\tan' \\
+	$\arctan$ & \lstinline'\arctan' & $\cot$ & \lstinline'\cot' & $\sinh$ & \lstinline'\sinh' & $\cosh$ & \lstinline'\cosh' \\
+	$\tanh$ & \lstinline'\tanh' & $\coth$ & \lstinline'\coth' & $\sec$ & \lstinline'\sec' & $\csc$ & \lstinline'\csc' \\
+	$\exp$ & \lstinline'\exp' & $\deg$ & \lstinline'\deg' & $\arg$ & \lstinline'\arg' & $\ker$ & \lstinline'\ker' \\
+	$\dim$ & \lstinline'\dim' & $\hom$ & \lstinline'\hom' & ~ & ~ & ~ & ~ \\
+	\bottomrule
+\end{tabular}
+%\caption{不带上、下限的算子}
+%\label{table:不带上、下限}
+\end{table}
+\begin{itemize}
+
+\item 不带上、下限的算子的上、下标，例如：
+\begin{equation*}
+	\begin{aligned}
+	\sin^{-1} = \arcsin && \log_{2} 5 && \ker_{\varphi} && \dim_{\real} \complex = 2
+	\end{aligned}
+\end{equation*}
+
+\item 古老的记法如$\tg$和$\ctg$仍需自定义。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{文字名称的算子}{自定义算子}
+\begin{itemize}
+
+\item \verb^amsmath^ 宏包提供 \lstinline'\DeclareMathOperator{}{}' 和 \lstinline'\DeclareMathOperator*{}{}' 在导言区（全局地）声明不带和带上、下限的文字名称算子。
+
+\begin{instance}
+前文中的$\operatorname{lcm}$、$\operatorname{l.c.m.}$和$\operatorname{tg}$、$\operatorname{ctg}$：
+\begin{lstlisting}
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\lcmdot}{l.c.m.}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\end{lstlisting}
+\end{instance}
+
+\item （局部地）\lstinline'\operatorname{}' 可以将参数转变为算子。例如：\lstinline'\operatorname{proj}' 和 \lstinline'\operatorname{Res}' 可以得到$\operatorname{proj}$和$\operatorname{Res}$。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{文字名称的算子}{特例}
+\begin{instance}（模与同余）
+	\LaTeX{} 内本身带有命令\ {\rm\lstinline'\bmod'} 和\ {\rm\lstinline'\pmod{}'}。\verb^amsmath^ 宏包提供\ {\rm\lstinline'\mod'} 和\ {\rm\lstinline'\pod{}'}：
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+	\toprule
+%	符号 & 命令 \\
+%	\midrule
+	$(-1)^{99} = (-1) \bmod n$ & \rm\lstinline'(-1)^{99} = (-1) \bmod n' \\
+	$r \equiv m \pmod{n}$ & \rm\lstinline'r \equiv m \pmod{n}' \\
+	$r \equiv m \mod{n}$ & \rm\lstinline'r \equiv m \mod{n}' \\
+	$r \equiv m \pod{n}$ & \rm\lstinline'r \equiv m \pod{n}' \\
+	\bottomrule
+\end{tabular}
+%\caption{}
+%\label{table:}
+\end{table}
+\end{instance}
+\begin{instance}
+	排版离散分布随机变量的方差公式，注意概率、期望和方差几个数学算子：\cite{LaTeX入门}
+\begin{equation*}
+	\begin{aligned}
+	\operatorname{Var} \left( X \right) = \operatorname{E} (X - \mu)^{2} = \sum_{j=1}^{\infty} (x_{j} - \mu)^{2} \Pr(X = x_{j}), &&
+	\text{其中$\mu = \operatorname{E} X$.}
+	\end{aligned}
+\end{equation*}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{单字符算子}{$\mathrm{d}$}
+留数定理
+\begin{equation*}
+	\oint_{\varGamma} f \left( z \right) \,\mathrm{d} z = 2 \uppi \mi \sum_{j} n \left( \varGamma, b_{j} \right) \operatorname{Res} f \left( b_{j} \right),
+\end{equation*}
+重积分、累次积分
+\begin{equation*}
+	\iint_{\varOmega} f \left( x, y \right) \dif x \dif y = \int_{0}^{1} \int_{I_{x}} f \left( x, y \right) \dif x \dif y.
+\end{equation*}
+\begin{itemize}
+
+\item 自定义 \lstinline'\newcommand{\diff}{\,\mathrm{d}}'。分数的分子、分母中产生多余间距；
+
+\item 自定义 \lstinline'\renewcommand{\diff}{\operatorname{d}}'。算子自动调整间距，但是 \lstinline'\diff x' 得到$\operatorname{d} x$，习惯上并不会在$\md$与$x$间空开。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{单字符算子}{$\mathrm{d}$}
+文献\cite{LaTeX入门}的方案：定义微分算子
+\begin{lstlisting}[numbers=none]
+\DeclareMathOperator{\dif}{d\!}
+\end{lstlisting}
+满足了要求。仍有一点小问题，考察代码 \lstinline'\dif (\sin x)'，输出效果为$\dif (\sin x)$。补救措施是添加空分组，即 \lstinline'\dif{} (\sin x)'。
+
+\begin{instance}
+\begin{equation*}
+	\int_{0}^{\uppi} \sin x \cos x \dif x = \int_{0}^{\uppi} \sin x \dif{} (\sin x) = \left. \frac{1}{2} \sin^{2} x \right|_{0}^{\uppi} = 0
+\end{equation*}
+\begin{lstlisting}[numbers=none]
+\int_{0}^{\uppi} \sin x \cos x \dif x = \int_{0}^{\uppi} \sin x \dif{} (\sin x) = \left. \frac{1}{2} \sin^{2} x \right|_{0}^{\uppi} = 0
+\end{lstlisting}
+\end{instance}
+\end{frame}
+
+\begin{frame}{二元运算符和二元关系符}{整体性质}
+\begin{itemize}
+
+\item 理解二元运算符、二元关系符和普通符号：
+
+\begin{instance}
+	``$=$''是一个二元关系符；两个``$-$''同为二元运算符，但是所处的环境不一样。
+\begin{equation*}
+	0 - 2 = -2
+\end{equation*}
+\end{instance}
+
+\item 行内公式于二元运算符与二元关系符处折行，倾向于二元关系符处折行。
+
+\begin{instance}
+	在群论作业中遇到的超长表达式：$\operatorname{det} \left( R - \lambda I_{3} \right) = -\lambda^{3} + (\operatorname{Tr} R) \lambda^{2} - (\operatorname{Tr} R) \lambda + \operatorname{det} R = -\lambda^{3} + (2 \cos\omega + 1) \lambda^{2} - (2 \cos\omega + 1) \lambda + 1 = - (\lambda - 1) \left( \lambda - \me{\mi \omega} \right) \left( \lambda - \me{-\mi \omega} \right)=0$。
+\end{instance}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{二元运算符}{\LaTeX{} 提供的二元运算符}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\pm$ & \lstinline'\pm' & $\mp$ & \lstinline'\mp' & $\cdot$ & \lstinline'\cdot' & $\times$ & \lstinline'\times' \\
+	$\ast$ & \lstinline'\ast' & $\star$ & \lstinline'\star' & $\bullet$ & \lstinline'\bullet' & $\diamond$ & \lstinline'\diamond' \\
+	$\circ$ & \lstinline'\circ' & $\bigcirc$ & \lstinline'\bigcirc' & $\div$ & \lstinline'\div' & $\setminus$ & \lstinline'\setminus' \\
+	$\oplus$ & \lstinline'\oplus' & $\otimes$ & \lstinline'\otimes' & $\odot$ & \lstinline'\odot' & $\oslash$ & \lstinline'\oslash' \\
+	$\cap$ & \lstinline'\cap' & $\cup$ & \lstinline'\cup' & $\land$ & \lstinline'\wedge' 或 \lstinline'\land' & $\lor$ & \lstinline'\vee' 或 \lstinline'\lor' \\
+	$\sqcap$ & \lstinline'\sqcap' & $\sqcup$ & \lstinline'\sqcup' & $\dagger$ & \lstinline'\dagger' & $\ddagger$ & \lstinline'\ddagger' \\
+	~ & ~ & ~ & ~ & $\triangleleft$ & \lstinline'\triangleleft' & $\triangleright$ & \lstinline'\triangleright' \\
+	~ & ~ & ~ & ~ & $\bigtriangleup$ & \lstinline'\bigtriangleup' & $\bigtriangledown$ & \lstinline'\bigtriangledown' \\
+	\bottomrule
+\end{tabular}
+%\caption{常用的 \LaTeX{} 提供的二元运算符}
+%\label{table:LaTeX二元运算符}
+\end{table}
+\begin{itemize}
+
+\item 键盘上利用 \lstinline'+'、\lstinline'-' 和 \lstinline'*' 直接输入二元运算符$+$、$-$和$*$。
+
+\item 区分 \lstinline'\bullet' 和 \lstinline'\textbullet'。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{二元运算符}{\AmS{} 提供的二元运算符}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\lhd$ & \lstinline'\lhd' & $\rhd$ & \lstinline'\rhd' & $\unlhd$ & \lstinline'\unlhd' & $\unrhd$ & \lstinline'\unrhd' \\
+	$\ltimes$ & \lstinline'\ltimes' & $\rtimes$ & \lstinline'\rtimes' & $\leftthreetimes$ & \lstinline'\leftthreetimes' & $\rightthreetimes$ & \lstinline'\rightthreetimes' \\
+	$\dotplus$ & \lstinline'\dotplus' & $\circleddash$ & \lstinline'\circleddash' & $\circledast$ & \lstinline'\circledast' & $\circledcirc$ & \lstinline'\circledcirc' \\
+	\bottomrule
+\end{tabular}
+%\caption{常用的 \AmS{} 提供的二元运算符}
+%\label{table:AMS二元运算符}
+\end{table}
+\begin{itemize}
+
+\item 键盘上 \lstinline'/' 输入的``$/$''仅是普通符号。
+
+\item 区分数学模式中 \lstinline'\setminus' 和 \lstinline'\backslash'。
+
+\end{itemize}
+\begin{instance}
+	群$G$的$(H, K)$双陪集为$H \backslash G / K$。
+\begin{lstlisting}[numbers=none]
+"群"$G$"的"$(H, K)$"双陪集为"$H \backslash G / K$"。"
+\end{lstlisting}
+子空间$A$的边界是$\partial A \coloneqq \bar{A} \setminus \mathring{A}$。
+\begin{lstlisting}[numbers=none]
+"子空间"$A$"的边界是"$\partial A \coloneqq \bar{A} \setminus \mathring{A}$"。"
+\end{lstlisting}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{常用的 \LaTeX{} 二元关系符及其否定形式，$\prescript{\dagger}{}{}$为 \AmS{} 符号}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+%	符号 & 命令 & 否定形式 & 命令 & 符号 & 命令 & 否定形式 & 命令 \\
+%	\midrule
+	$=$ & \lstinline'=' & $\ne$ & \lstinline'\neq' 或 \lstinline'\ne' & $:$ & \lstinline':' & ~ & ~ \\
+	$<$ & \lstinline'<' & $\nless$ & \lstinline'\nless'$^{\dagger}$ & $>$ & \lstinline'>' & $\ngtr$ & \lstinline'\ngtr'$^{\dagger}$ \\
+	$\le$ & \lstinline'\le' 或 \lstinline'\leq' & $\nleq$ & \lstinline'\nleq'$^{\dagger}$ & $\ge$ & \lstinline'\ge' 或 \lstinline'\geq' & $\ngeq$ & \lstinline'\ngeq'$^{\dagger}$ \\
+	$\in$ & \lstinline'\in' & $\notin$ & \lstinline'\notin' & $\ni$ & \lstinline'\ni' 或 \lstinline'\owns' & ~ & ~ \\
+	$\ll$ & \lstinline'\ll' & ~ & ~ & $\gg$ & \lstinline'\gg' & ~ & ~ \\
+	$\prec$ & \lstinline'\prec' & $\nprec$ & \lstinline'\nprec'$^{\dagger}$ & $\succ$ & \lstinline'\succ' & $\nsucc$ & \lstinline'\nsucc'$^{\dagger}$ \\
+	$\preceq$ & \lstinline'\preceq' & $\npreceq$ & \lstinline'\npreceq'$^{\dagger}$ & $\succeq$ & \lstinline'\succeq' & $\nsucceq$ & \lstinline'\nsucceq'$^{\dagger}$ \\
+	~ & ~ & $\precneqq$ & \lstinline'\precneqq'$^{\dagger}$ & ~ & ~ & $\succneqq$ & \lstinline'\succneqq'$^{\dagger}$ \\
+	$\sim$ & \lstinline'\sim' & $\nsim$ & \lstinline'\nsim'$^{\dagger}$ & $\approx$ & \lstinline'\approx' & ~ & ~ \\
+	$\simeq$ & \lstinline'\simeq' & ~ & ~ & $\cong$ & \lstinline'\cong' & $\ncong$ & \lstinline'\ncong'$^{\dagger}$ \\
+	$\equiv$ & \lstinline'\equiv' & ~ & ~ & $\doteq$ & \lstinline'\doteq' & ~ & ~ \\
+	\bottomrule
+\end{tabular}
+%\caption{常用的二元关系符及其否定形式，$\prescript{\dagger}{}{}$为 \AmS{} 符号}
+%\label{table:二元关系符及其否定形式}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{常用的 \LaTeX{} 二元关系符及其否定形式，$\prescript{\dagger}{}{}$为 \AmS{} 符号}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+%	符号 & 命令 & 否定形式 & 命令 & 符号 & 命令 & 否定形式 & 命令 \\
+%	\midrule
+	$\subset$ & \lstinline'\subset' & ~ & ~ & $\supset$ & \lstinline'\supset' & ~ & ~ \\
+	$\subseteq$ & \lstinline'\subseteq' & $\nsubseteq$ & \lstinline'\nsubseteq'$^{\dagger}$ & $\supseteq$ & \lstinline'\supseteq' & $\nsupseteq$ & \lstinline'\nsupseteq'$^{\dagger}$ \\
+	~ & ~ & $\subsetneq$ & \lstinline'\subsetneq'$^{\dagger}$ & ~ & ~ & $\supsetneq$ & \lstinline'\supsetneq'$^{\dagger}$ \\
+	~ & ~ & $\varsubsetneq$ & \lstinline'\varsubsetneq'$^{\dagger}$ & ~ & ~ & $\varsupsetneq$ & \lstinline'\varsupsetneq'$^{\dagger}$ \\
+	$\parallel$ & \lstinline'\parallel' & ~ & ~ & $\perp$ & \lstinline'\perp' & ~ & ~ \\
+	$\mid$ & \lstinline'\mid' & ~ & ~ & $\propto$ & \lstinline'\propto' & ~ & ~ \\
+	\bottomrule
+\end{tabular}
+\end{table}
+\begin{itemize}
+
+\item 键盘上 \lstinline'='、\lstinline'>'、\lstinline'<' 和 \lstinline':' 直接输入得到二元关系符$=$、$>$、$<$和$:$。
+
+\item 二元关系符$:$不应用于$f \colon \real \to \real$的场合中，其中$:$左右距离不等，不是一个二元关系符。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{否定形式}
+\begin{itemize}
+
+\item Invited Meeting中已有同学利用 \lstinline'=' 前加 \lstinline'\not' 得到否定形式$\not =$。
+
+\item 考察下面的例子（来自第一分离性公理）：
+
+\begin{instance}
+	考察 \lstinline'\not \in' 和 \lstinline'\notin' 得到的符号的差别，
+\begin{equation*}
+	x \not \in V \qquad y \notin U
+\end{equation*}
+相应的代码为
+\begin{lstlisting}[numbers=none]
+x \not \in V \qquad y \notin U
+\end{lstlisting}
+\lstinline'\not \in' 斜线位置机械，几乎偏离了$\in$的上半部分。
+\end{instance}
+
+\item 二元关系符否定形式存在的时，优先使用否定形式。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{常用的 \AmS{} 二元关系符及其否定形式}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+%	符号 & 命令 & 否定形式 & 命令 & 符号 & 命令 & 否定形式 & 命令 \\
+%	\midrule
+	$\leqq$ & \lstinline'\leqq' & $\nleqq$ & \lstinline'\nleqq' & $\geqq$ & \lstinline'\geqq' & $\ngeqq$ & \lstinline'\ngeqq' \\
+	~ & ~ & $\lneqq$ & \lstinline'\lneqq' & ~ & ~ & $\gneqq$ & \lstinline'\gneqq' \\
+	~ & ~ & $\lvertneqq$ & \lstinline'\lvertneqq' & ~ & ~ & $\gvertneqq$ & \lstinline'\gvertneqq' \\
+	$\leqslant$ & \lstinline'\leqslant' & $\nleqslant$ & \lstinline'\nleqslant' & $\geqslant$ & \lstinline'\geqslant' & $\ngeqslant$ & \lstinline'\ngeqslant' \\
+	~ & ~ & $\lneq$ & \lstinline'\lneq' & ~ & ~ & $\gneq$ & \lstinline'\gneq' \\
+	$\subseteqq$ & \lstinline'\subseteqq' & $\nsubseteqq$ & \lstinline'\nsubseteqq' & $\supseteqq$ & \lstinline'\supseteqq' & $\nsupseteqq$ & \lstinline'\nsupseteqq' \\
+	~ & ~ & $\subsetneqq$ & \lstinline'\subsetneqq' & ~ & ~ & $\supsetneqq$ & \lstinline'\supsetneqq' \\
+	~ & ~ & $\varsubsetneqq$ & \lstinline'\varsubsetneqq' & ~ & ~ & $\varsupsetneqq$ & \lstinline'\varsupsetneqq' \\
+	\bottomrule
+\end{tabular}
+%\caption{常用的 \AmS{} 二元关系符及其否定形式}
+%\label{table:AMS二元关系符及其否定形式}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{没有否定形式的 \AmS{} 二元关系符}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\because$ & \lstinline'\because' & $\therefore$ & \lstinline'\therefore' \\
+	$\blacktriangleleft$ & \lstinline'\blacktriangleleft' & $\blacktriangleright$ & \lstinline'\blacktriangleright' \\
+	$\lll$ & \lstinline'\lll' & $\ggg$ & \lstinline'\ggg' \\
+	$\risingdotseq$ & \lstinline'\risingdotseq' & $\fallingdotseq$ & \lstinline'\fallingdotseq' \\
+	$\eqslantless$ & \lstinline'\eqslantless' & $\eqslantgtr$ & \lstinline'\eqslantgtr' \\
+	$\lessgtr$ & \lstinline'\lessgtr' & $\gtrless$ & \lstinline'\gtrless' \\
+	$\lesseqgtr$ & \lstinline'\lesseqgtr' & $\gtreqless$ & \lstinline'\gtreqless' \\
+	$\lesseqqgtr$ & \lstinline'\lesseqqgtr' & $\gtreqqless$ & \lstinline'\gtreqqless' \\
+	$\doteqdot$ & \lstinline'\doteqdot' & $\triangleq$ & \lstinline'\triangleq' \\
+	$\varpropto$ & \lstinline'\varpropto' & $\backepsilon$ & \lstinline'\backepsilon' \\
+	\bottomrule
+\end{tabular}
+%\caption{没有否定形式的 \AmS{} 二元关系符}
+%\label{table:没有否定形式的AMS二元关系符}
+\end{table}
+数学物理方法中的Laplace变换用到了$\risingdotseq$和$\fallingdotseq$。
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{\LaTeX{} 提供的箭头符号，$^{\dagger}$为 \AmS{} 否定箭头}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\gets$ & \lstinline'\leftarrow' 或 \lstinline'\gets' & $\nleftarrow$ & \lstinline'\nleftarrow'$^{\dagger}$ \\
+	$\to$ & \lstinline'\rightarrow' 或 \lstinline'\to' & $\nrightarrow$ & \lstinline'\nrightarrow'$^{\dagger}$ \\
+	$\Leftarrow$ & \lstinline'\Leftarrow' & $\nLeftarrow$ & \lstinline'\nLeftarrow'$^{\dagger}$ \\
+	$\Rightarrow$ & \lstinline'\Rightarrow' & $\nRightarrow$ & \lstinline'\nRightarrow'$^{\dagger}$ \\
+	$\leftrightarrow$ & \lstinline'\leftrightarrow' & $\nleftrightarrow$ & \lstinline'\nleftrightarrow'$^{\dagger}$ \\
+	$\Leftrightarrow$ & \lstinline'\Leftrightarrow' & $\nLeftrightarrow$ & \lstinline'\nLeftrightarrow'$^{\dagger}$ \\
+	$\longleftarrow$ & \lstinline'\longleftarrow' & $\longrightarrow$ & \lstinline'\longrightarrow' \\
+	\bottomrule
+\end{tabular}
+\end{table}
+\begin{instance}
+	\cite{无机化学}利用平衡常数的概念，对比$J$和$K$的大小，可以判断系统中的反应混合物是否达到平衡，……为帮助记忆，可缩写为（排版带有阴影边框的数学公式需要额外调用宏包 \verb'fancybox'，利用其中的命令 \lstinline'\shadowbox{}'）：
+\begin{equation*}
+	\shadowbox{$\displaystyle J \gtreqqless K$} \tag{6-8}
+\end{equation*}
+%\begin{lstlisting}[numbers=none]
+%	\shadowbox{$\displaystyle J \gtreqqless K$} \tag{6-8}
+%\end{lstlisting}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{\LaTeX{} 提供的箭头符号，$^{\dagger}$为 \AmS{} 否定箭头}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+	$\Longleftarrow$ & \lstinline'\Longleftarrow' & $\Longrightarrow$ & \lstinline'\Longrightarrow' \\
+	$\longleftrightarrow$ & \lstinline'\longleftrightarrow' & $\Longleftrightarrow$ & \lstinline'\Longleftrightarrow' \\
+	$\mapsto$ & \lstinline'\mapsto' & $\longmapsto$ & \lstinline'\longmapsto' \\
+	$\hookleftarrow$ & \lstinline'\hookleftarrow' & $\hookrightarrow$ & \lstinline'\hookrightarrow' \\
+	$\leftharpoonup$ & \lstinline'\leftharpoonup' & $\rightharpoonup$ & \lstinline'\rightharpoonup' \\
+	$\leftharpoondown$ & \lstinline'\leftharpoondown' & $\rightharpoondown$ & \lstinline'\rightharpoondown' \\
+	~ & ~ & $\rightleftharpoons$ & \lstinline'\rightleftharpoons' \\
+	$\nearrow$ & \lstinline'\nearrow' & $\searrow$ & \lstinline'\searrow' \\
+	$\swarrow$ & \lstinline'\swarrow' & $\nwarrow$ & \lstinline'\nwarrow' \\
+	$\uparrow$ & \lstinline'\uparrow' & $\Uparrow$ & \lstinline'\Uparrow' \\
+	$\downarrow$ & \lstinline'\downarrow' & $\Downarrow$ & \lstinline'\Downarrow' \\
+	$\updownarrow$ & \lstinline'\updownarrow' & $\Updownarrow$ & \lstinline'\Updownarrow' \\
+	\bottomrule
+\end{tabular}
+%\caption{\LaTeX{} 提供的箭头符号，$^{\dagger}$为 \AmS{} 否定箭头}
+%\label{table:LaTeX提供的箭头符号}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{\AmS{} 提供的箭头符号}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\leftleftarrows$ & \lstinline'\leftleftarrows' & $\rightrightarrows$ & \lstinline'\rightrightarrows' \\
+	$\leftrightarrows$ & \lstinline'\leftrightarrows' & $\leftrightarrows$ & \lstinline'\leftrightarrows' \\
+	$\Lleftarrow$ & \lstinline'\Lleftarrow' & $\Rrightarrow$ & \lstinline'\Rrightarrow' \\
+	$\twoheadleftarrow$ & \lstinline'\twoheadleftarrow' & $\twoheadrightarrow$ & \lstinline'\twoheadrightarrow' \\
+	$\leftarrowtail$ & \lstinline'\leftarrowtail' & $\rightarrowtail$ & \lstinline'\rightarrowtail' \\
+	$\looparrowleft$ & \lstinline'\looparrowleft' & $\looparrowright$ & \lstinline'\looparrowright' \\
+	$\leftrightharpoons$ & \lstinline'\leftrightharpoons' & $\rightleftharpoons$ & \lstinline'\rightleftharpoons'(重定义) \\
+	$\curvearrowleft$ & \lstinline'\curvearrowleft' & $\curvearrowright$ & \lstinline'\curvearrowright' \\
+	$\circlearrowleft$ & \lstinline'\circlearrowleft' & $\circlearrowright$ & \lstinline'\circlearrowright' \\
+	$\Lsh$ & \lstinline'\Lsh' & $\Rsh$ & \lstinline'\Rsh' \\
+	$\upharpoonleft$ & \lstinline'\upharpoonleft' & $\upharpoonright$ & \lstinline'\upharpoonright' \\
+	$\downharpoonleft$ & \lstinline'\downharpoonleft' & $\downharpoonright$ & \lstinline'\downharpoonright' \\
+	\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{\AmS{} 提供的箭头符号}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+	$\leftrightsquigarrow$ & \lstinline'\leftrightsquigarrow' & $\rightsquigarrow$ & \lstinline'\rightsquigarrow' \\
+	$\multimap$ & \lstinline'\multimap' & $\leadsto$ & \lstinline'\leadsto' \\
+	\bottomrule
+\end{tabular}
+%\caption{\AmS{} 提供的箭头符号}
+%\label{table:AMS提供的箭头符号}
+\end{table}
+\begin{itemize}
+
+\item 形如$\to$的箭头命令中带有单词arrow；形如$\rightharpoonup$的箭头名称中带有harpoon。
+
+\item 区别单、复数，同一个符号中有2个箭头时，命令中包含arrows或harpoons。
+
+\item $\nearrow$的命令 \lstinline'\nearrow' 的前两个字母表示东北(northeast)方向。
+
+\item  \lstinline'\Lsh' 和 \lstinline'\Rsh' 命令：``I guess it's Left/Right-shift.''。
+
+\item \lstinline'\rightsquigarrow' 与单词squiggly，意思是（线条）不规则的、波形的。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{定义的表达}
+\begin{instance}（定义）
+	以下4种表达定义的方式，包括一种新的方式，由此引出另一套新的箭头类：
+\begin{equation*}
+	\begin{gathered}
+		\ln x \coloneqq \log_{\mathrm{e}} x \\
+		\ln x \triangleq \log_{\mathrm{e}} x \\
+		\ln x \stackrel{\mathrm{d}}{=} \log_{\mathrm{e}} x \\
+		\ln x \xlongequal[]{\mathrm{def}} \log_{\mathrm{e}} x
+	\end{gathered}
+\end{equation*}
+\begin{lstlisting}[numbers=none]
+\ln x \coloneqq \log_{\mathrm{e}} x \\
+\ln x \triangleq \log_{\mathrm{e}} x \\
+\ln x \stackrel{\mathrm{d}}{=} \log_{\mathrm{e}} x \\
+\ln x \xlongequal[]{\mathrm{def}} \log_{\mathrm{e}} x
+\end{lstlisting}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{可延长的箭头符号}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\real \xleftarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xleftarrow[]{}' & $\real \xrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xrightarrow[]{}' \\
+	$\real \xlongleftarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xlongleftarrow[]{}' & $\real \xlongrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xlongrightarrow[]{}' \\
+	$\real \xLongleftarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xLongleftarrow[]{}' & $\real \xLongrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xLongrightarrow[]{}' \\
+	$\real \xleftrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xleftrightarrow[]{}' & $\real \xLeftrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xLeftrightarrow[]{}' \\
+	$\real \xlongleftrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xlongleftrightarrow[]{}' & $\real \xLongleftrightarrow[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xLongleftrightarrow[]{}' \\
+	$\real \xlongequal[\mathcal{B}]{\text{whatever}} \complex$ & \lstinline'\xlongequal[]{}' & ~ & ~ \\
+	\bottomrule
+\end{tabular}
+%\caption{可延长的箭头符号}
+%\label{table:可延长的箭头符号}
+\end{table}
+\begin{itemize}
+
+\item \lstinline'\stackrel{\mathrm{d}}{=}' 将$\md$堆叠在$=$上，等号长度保持不变。
+
+\item \verb'extarrows' 宏包提供可延长的等号 \lstinline'\xlongequal[]{}'，可选参数为等号下方内容。
+
+\item \verb'amsmath' 宏包提供 \lstinline'\xleftarrow[]{}' 和 \lstinline'\xleftarrow[]{}' 输出可延长箭头。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{二元关系符}{逻辑符号}
+补充4个专门的逻辑符号命令。思考：\lstinline'\And' 为何大写？
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc}
+	\toprule
+	$\implies$ & \lstinline'\implies' & $\impliedby$ & \lstinline'\impliedby' & $\iff$ & \lstinline'\iff'& $\And$  & \lstinline'\And' \\
+	$\gray{\Leftarrow}$ & \lstinline'\Leftarrow' & $\gray{\Rightarrow}$ & \lstinline'\Rightarrow' & $\gray{\Leftrightarrow}$ & \lstinline'\Leftrightarrow' & $\gray{\&}$  & \lstinline'\&' \\
+	\bottomrule
+\end{tabular}
+\end{table}
+\begin{instance}（逻辑符号）
+\begin{equation*}
+	\begin{gathered}
+		x = y \implies x + z = y + z \\
+		x = y \impliedby x + z = y + z \\
+		x = y \iff x \leqslant y \And x \geqslant y
+	\end{gathered}
+\end{equation*}
+\begin{lstlisting}[numbers=none]
+x = y \implies x + z = y + z \\
+x = y \impliedby x + z = y + z \\
+x = y \iff x \leqslant y \And x \geqslant y
+\end{lstlisting}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{括号和定界符}{分类}
+\begin{itemize}
+
+\item 已知 \lstinline'\left(' 和 \lstinline'\right)' 使得圆括号(parenthesis)自动调整大小。具有这样性质的符号统称为\textbf{\songti 定界符}(delimiter)。分为
+	\begin{enumerate}[(1)]\zihao{-5}
+
+	\item 括号定界符。例如：$()$、$[]$和$\{\}$。称左括号为开符号，右括号为闭符号\cite{LaTeX入门}，匹配不同间距。
+
+	\item 非括号定界符。例如：$|$和$\|$。
+
+\end{enumerate}
+
+\item \verb'amsmath' 定义 \lstinline'\lvert' 与 \lstinline'\rvert'、\lstinline'\lVert' 与 \lstinline'\rVert' 命令，使得$|$、$\|$具有开符号与闭符号，更明确地表达绝对值、模和范数。
+
+\item 代码因此变得复杂，可自定义专门输出绝对值、模和范数的命令。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{括号与定界符}{\LaTeX{} 的括号定界符与非括号定界符}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|l}
+	\toprule
+%	开符号 & 命令 & 闭符号 & 命令 & \multicolumn{1}{c}{备注} \\
+%	\midrule
+	$($ & \lstinline'(' & $)$ & \lstinline')' & 小/圆括号(parenthesis) \\
+	$[$ & \lstinline'[' & $]$ & \lstinline']' & 中/方括号(brackets) \\
+	$\lbrace$ & \lstinline'\{' 或 \lstinline'\lbrace' & $\rbrace$ & \lstinline'\}' 或 \lstinline'\rbrace' & 大/花括号(braces) \\
+	$\langle$ & \lstinline'\langle' & $\rangle$ & \lstinline'\rangle' & 尖括号(angle brackets) \\
+	$\lfloor$ & \lstinline'\lfloor' & $\rfloor$ & \lstinline'\rfloor' & 向下取整，暂时称为floors \\
+	$\lceil$ & \lstinline'\lceil' & $\rceil$ & \lstinline'\rceil' & 向上取整，暂时称为ceils \\
+	\bottomrule
+\end{tabular}
+%\caption{\LaTeX{} 的括号定界符}
+%\label{table:括号定界符}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$/$ & \lstinline'/' & $\vert$ & \lstinline'\vert' 或 \lstinline'|' & ~ & ~ \\
+	$\backslash$ & \lstinline'\backslash' 或 \lstinline'\' & $\Vert$ & \lstinline'\Vert' 或 \lstinline'\|' & ~ & ~ \\
+	$\uparrow$ & \lstinline'\uparrow' & $\downarrow$ & \lstinline'\downarrow' & $\updownarrow$ & \lstinline'\updownarrow' \\
+	$\Uparrow$ & \lstinline'\Uparrow' & $\Downarrow$ & \lstinline'\Downarrow' & $\Updownarrow$ & \lstinline'\Updownarrow' \\
+	\bottomrule
+\end{tabular}
+%\caption{\LaTeX{} 的非括号定界符}
+%\label{table:非括号定界符}
+\end{table}
+最后三行符号亦为二元关系符，\lstinline'\backslash' 亦为普通符号。
+\end{frame}
+
+\begin{frame}[fragile]{括号与定界符}{大小的自动调整}
+\begin{itemize}
+
+\item \lstinline'\left{}' 和 \lstinline'\right{}' 将 \lstinline'{}' 中的定界符识别为开符号和闭符号，并根据高度自动调整大小。
+
+\item 开符号或闭符号最终由 \lstinline'\left{}' 和 \lstinline'\right{}' 决定，定界符可以不匹配，可以是空定界符 \lstinline'.'。
+
+\item \lstinline'\left{}' 和 \lstinline'\right{}' 只能存在于同一行，即中间不可换行。
+
+\end{itemize}
+
+\begin{instance}（开区间）
+	《数学分析》上的开区间可以这样输出：
+\begin{equation*}
+	\begin{aligned}
+	I' \coloneqq \left[ 0, \frac{1}{2} \right] &&
+	\mathring{I'} = \left] 0, \frac{1}{2} \right[ &&
+	I' \setminus \left\{ 0 \right\} = \left] 0, \frac{1}{2} \right]
+	\end{aligned}
+\end{equation*}
+\begin{lstlisting}[numbers=none]
+I' \coloneqq \left[ 0, \frac{1}{2} \right]
+\mathring{I'} = \left] 0, \frac{1}{2} \right[
+I' \setminus \left\{ 0 \right\} = \left] 0, \frac{1}{2} \right]
+\end{lstlisting}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{括号与定界符}{大小的自动调整}
+\begin{itemize}
+
+\item \lstinline'\left{}' 和 \lstinline'\right{}' 还可匹配 \lstinline'\middle{}'，使得二者中插入多个定界符。
+
+\item 这样插入的定界符实质上按照普通符号处理。
+
+\end{itemize}
+\begin{instance}
+	对于完备事件群$\left\{ B_{n} \right\}$和事件$\tilde{B}$，成立Bayes公式：
+\begin{equation*}
+	\Pr \left( \tilde{B} \right) = \sum_{n} \Pr \left( \tilde{B} \middle\vert B_{n} \right) \Pr \left( B_{n} \right)
+\end{equation*}
+\begin{lstlisting}[numbers=none]
+\Pr \left( \tilde{B} \right) = \sum_{n} \Pr \left( \tilde{B} \middle\vert B_{n} \right) \Pr \left( B_{n} \right)
+\end{lstlisting}
+\end{instance}
+问题：\lstinline'\middle|' 是否带来了\red{不合适的间距}？
+\end{frame}
+
+\begin{frame}[fragile]{括号与定界符}{大小的手工调整}
+\begin{itemize}
+
+\item 考虑一串运算$1 + \left( 2 - \left( 3 \times \left( 4 \div 5 \right) \right) \right)$，但括号的大小没有层次。
+
+\item 若加入 \lstinline'\left{}'、\lstinline'\right{}' 调节？
+\begin{lstlisting}[numbers=none]
+1 + \left( 2 - \left( 3 \times \left( 4 \div 5 \right) \right) \right)
+\end{lstlisting}
+尽管由上述代码生成，仍为$1 + \left( 2 - \left( 3 \times \left( 4 \div 5 \right) \right) \right)$
+
+\item 这时需要手工调整定界符大小的命令。
+
+\end{itemize}
+\begin{instance}
+	改良运算$1 + \left( 2 - \left( 3 \times \left( 4 \div 5 \right) \right) \right)$的排版：
+\begin{equation*}
+	1 + \Bigl( 2 - \bigl( 3 \times ( 4 \div 5 ) \bigr) \Bigr)
+\end{equation*}
+\begin{lstlisting}[numbers=none]
+1 + \Bigl( 2 - \bigl( 3 \times ( 4 \div 5 ) \bigr) \Bigr)
+\end{lstlisting}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{括号与定界符}{大小的手工调整——手工调节定界符大小的命令}
+\begin{table}[H]
+\centering
+\begin{tabular}{cccccccccc|cccc}
+	\toprule
+%	\multicolumn{10}{c|}{符号} & \multicolumn{4}{c}{命令} \\
+%	\midrule
+	$($ & $|$ & $)$ & $[$ & $\|$ & $]$ & $\{$ & $\}$ & $\langle$ & $\rangle$ & ~ & ~ & ~ & ~ \\
+	$\big($ & $\big|$ & $\big)$ & $\big[$ & $\big\|$ & $\big]$ & $\big\{$ & $\big\}$ & $\big<$ & $\big>$ & \lstinline'\big' & \lstinline'\bigl' & \lstinline'\bigr' & \lstinline'\bigm' \\[1ex]
+	$\Big($ & $\Big|$ & $\Big)$ & $\Big[$ & $\Big\|$ & $\Big]$ & $\Big\{$ & $\Big\}$ & $\Big<$ & $\Big>$ & \lstinline'\Big' & \lstinline'\Bigl' & \lstinline'\Bigr' & \lstinline'\Bigm' \\[2ex]
+	$\bigg($ & $\bigg|$ & $\bigg)$ & $\bigg[$ & $\bigg\|$ & $\bigg]$ & $\bigg\{$ & $\bigg\}$ & $\bigg<$ & $\bigg>$ & \lstinline'\bigg' & \lstinline'\biggl' & \lstinline'\biggr' & \lstinline'\biggm' \\[3ex]
+	$\Bigg($ & $\Bigg|$ & $\Bigg)$ & $\Bigg[$ & $\Bigg\|$ & $\Bigg]$ & $\Bigg\{$ & $\Bigg\}$ & $\Bigg<$ & $\Bigg>$ & \lstinline'\Bigg' & \lstinline'\Biggl' & \lstinline'\Biggr' & \lstinline'\Biggm' \\
+	\bottomrule
+\end{tabular}
+%\caption{手工调节定界符大小的命令}
+%\label{table:手工调节定界符}
+\end{table}
+\begin{itemize}
+
+\item 字母l、r、m表示将定界符按开符号、闭符号、二元关系符处理。
+
+\item 表格中命令的作用下，\lstinline'<' 和 \lstinline'>' 被识别为 \lstinline'\langle' 和 \lstinline'\rangle'，亦可得到$\langle$和$\rangle$。\lstinline'\left{}'、\lstinline'\right{}' 同理。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{括号与定界符}{大小的手工调整——任意放大定界符}
+\begin{instance}
+	实现这样的排版效果：
+\begin{equation*}
+	\left. \vphantom{\frac{1}{2}} y \right\rvert_{x = 0} = \left. \left( \frac{x + 1}{x - 1} y' \right) \right\rvert_{x = 0}
+\end{equation*}
+\begin{itemize}
+
+\item 回忆：\lstinline'\phantom{}' 产生一个与参数一样尺寸的空盒子。
+
+\item 相应地，\lstinline'\hphantom{}' 或 \lstinline'\vphantom{}' 得到只没有宽度或高度的盒子。
+
+\end{itemize}
+在$y$前产生一个普通分数高度的盒子，但是没有宽度，即：
+\begin{lstlisting}[numbers=none]
+\left. \vphantom{\frac{1}{2}} y \right\rvert_{x = 0} = \left. \left( \frac{x + 1}{x - 1} y' \right) \right\rvert_{x = 0}
+\end{lstlisting}
+思考：等号右边是否可以使用 \lstinline'\middle)' 输出？
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{括号与定界符}{上、下标错位的调整}
+\begin{instance}
+	考察下面代码的输出效果：
+\begin{lstlisting}[numbers=none]
+\sum_{k} \left( \parti{f}{x_{k}} \middle\vert_{x_{k} = 0} \right)
+\end{lstlisting}
+\begin{equation*}
+	\sum_{k} \left( \parti{f}{x_{k}} \middle\vert_{x_{k} = 0} \right)
+\end{equation*}
+下标位置同普通高度$\vert$的下标，可见 \lstinline'\middle{}' 不够完善，而闭符号对下标的处理是恰当的，因此修改代码为：
+\begin{lstlisting}[numbers=none]
+\sum_{k} \left( \left. \parti{f}{x_{k}} \right\vert_{x_{k} = 0} \right)
+\end{lstlisting}
+\begin{equation*}
+	\sum_{k} \left( \left. \parti{f}{x_{k}} \right\vert_{x_{k} = 0} \right)
+\end{equation*}
+思考：如果交换 \lstinline'\left.' 和 \lstinline'\left(' 顺序会有怎样的效果？
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{数学标点和数学省略号}{数学标点符号}
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|l}
+	\toprule
+%	名称 & 命令 & \multicolumn{1}{c}{示例} \\
+%	\midrule
+	逗号(comma) & \lstinline',' & $\bm{r}(u, v) = \big( u, v, f(u, v) \big)$ \\
+	分号(semicolon) & \lstinline';' & $\big\{ \bm{r}(s); \bm{t}(s), \bm{n}(s), \bm{b}(s) \big\}$ \\
+	叹号(exclamation mark) & \lstinline'!' & $\forall s \in \natura$, $\Gamma(s) = (s-1)!$ \\
+	问号(question mark) & \lstinline'?' & $\forall \integer \owns n > 2$, $\exists (x, y, z)$, $x^{n} + y^{n} = z^{n}?$ \\
+	冒号(colon) & \lstinline'\colon' & $\bm{r} \colon s \mapsto \bm{r}(s)$ \\
+	\bottomrule
+\end{tabular}
+%\caption{数学标点符号}
+%\label{table:punc}
+\end{table}
+\begin{itemize}
+
+\item 直接键入``\lstinline':'''得到二元关系符，例如：$\operatorname{supp} \varphi(x) = \overline{\left\{ x : \varphi(x) = 0 \right\}}$。
+
+%\item $:$表示比例和张量的双点积的运算需同形二元运算符，需要用命令 \lstinline'\mathbin{:}' 处理，稍后集中讨论类似 \lstinline'\mathbin{}' 的命令。
+
+\item ``\lstinline'.'''本身是普通符号，可视作数学公式中的句号。
+
+\item 行内公式标点符号后不允许换行，同时考虑到数学模式中``$,$''后留出的间隔过小，用 \lstinline'$x$,'\textvisiblespace\lstinline'$y$,'\textvisiblespace\lstinline'$z$' 输出$x$, $y$, $z$，用 \lstinline'$1$,'\textvisiblespace\lstinline'$2$,'\textvisiblespace\lstinline'\ldots' 输出$1$, $2$, \ldots。
+
+\item \lstinline'\ldots' 在数学模式内外均可使用，但效果完全不同。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{数学标点和数学省略号}{数学省略号}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc|cc}
+	\toprule
+%	符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 & 符号 & 命令 \\
+%	\midrule
+	$\ldots$ & \lstinline'\ldots' & $\cdots$ & \lstinline'\cdots' & $\vdots$ & \lstinline'\vdots' & $\ddots$ & \lstinline'\ddots' & $\iddots$ & \lstinline'\iddots' \\
+	$\dotsc$ & \lstinline'\dotsc' & $\dotsb$ & \lstinline'\dotsb' & $\dotsm$ & \lstinline'\dotsm' & $\dotsi$ & \lstinline'\dotsi' & $\dotso$ & \lstinline'\dotso' \\
+	\bottomrule
+\end{tabular}
+%\caption{数学省略号}
+%\label{table:dots}
+\end{table}
+\begin{itemize}
+
+\item \lstinline'\iddots' 需调用 \verb'mathdots' 宏包，第二行均由 \verb'amsmath' 提供。
+
+\item 不在水平方向的省略号在矩阵中使用，水平方向的省略号大致有2类：
+\begin{enumerate}[(1)]\zihao{-5}
+
+\item 形如``$\ldots$''的省略号，位置在基线，比如：用在逗号之间，$\natura = \left\{ 1, 2, \ldots, n \right\}$；
+
+\item 形如``$\cdots$''的省略号，位置居中，比如：用在加号之间，$5050 = 1 + 2 +\dots+ n$。
+
+\end{enumerate}
+
+\item 可见省略号的位置和它连接的字符的中心高度保持一致。\verb'amsmath' 提供 \lstinline'\dots'，自动选择正确的省略号。
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{数学省略号}{高度的调整}
+\begin{instance}
+	考察下面的代码输出的省略号：
+\begin{lstlisting}[numbers=none]
+(x_{1} , \dots , x_{n})
+5050 = 1 + \dots + n
+x_{1} = \dots = x_{n}
+\int \dots \int
+\end{lstlisting}
+可见，连接积分号 \lstinline'\int' 的省略号高度不够合适，偏下。
+\begin{align*}
+%	\begin{aligned}
+	(x_{1} , \dots , x_{n}) &&
+	5050 = 1 + \dots + n &&
+	x_{1} = \dots = x_{n} &&
+	\int \dots \int
+%	\end{aligned}
+\end{align*}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{数学省略号}{高度的调整}
+\begin{table}[H]
+\centering
+\begin{tabular}{cc|cc|cc|cc|cc}
+	\toprule
+	$\dotsc$ & \lstinline'\dotsc' & $\dotsb$ & \lstinline'\dotsb' & $\dotsm$ & \lstinline'\dotsm' & $\dotsi$ & \lstinline'\dotsi' & $\dotso$ & \lstinline'\dotso' \\
+	\bottomrule
+\end{tabular}
+\end{table}
+\verb'amsmath' 提供的最后一行的命令，分别对应于上、下文是逗号(comma)、二元运算或关系符(binary)、乘法运算(multiplication)、积分(integral)和其它情形(other)，仔细定义位置和间距，在 \lstinline'\dots' 失效时使用。
+
+\begin{instance}
+	考察下面的代码输出的省略号：
+\begin{lstlisting}[numbers=none]
+\prod_{i=1}^{n} x_{i} \coloneqq x_{1} x_{2} \dotsm x_{n}
+\int_{0}^{\infty} \int_{0}^{\infty} \dotsi \int_{0}^{1}
+\end{lstlisting}
+\begin{align*}
+	\prod_{i=1}^{n} x_{i} \coloneqq x_{1} x_{2} \dotsm x_{n} &&
+	\int_{0}^{\infty} \int_{0}^{\infty} \dotsi \int_{0}^{\infty}
+\end{align*}
+\end{instance}
+\end{frame}
+
+\begin{frame}[fragile]{数学距离专题}
+相关命令：\lstinline'\mathrel{}'、\lstinline'\mathbin{}'、\lstinline'\mathop{}'、\lstinline'\mathord{}'、\lstinline'\mathopen{}'、\lstinline'\mathclose{}' 和 \lstinline'\mathpunct{}' 。
+\begin{itemize}
+
+\item \lstinline'\mathrel{}' 取自relationship。例如 \lstinline'\phantom{=}' 产生透明的$=$。
+
+\item \lstinline'\mathbin{}' 取自binary。二元关系符的间距比二元运算符多出$1/18$ em。
+
+\item \lstinline'\mathop{}' 取自单词operator。\lstinline'\operatorname{}' 的定义用到 \lstinline'\mathop{}'。
+
+%\item \lstinline'\mathord{}' 取自ordinary。
+
+%\item 命令 \lstinline'\mathopen{}' 和 \lstinline'\mathclose{}' 分别将其参数视为开符号和闭符号。
+
+\item \lstinline'\mathpunct{}' 取自punctuation。但是 \lstinline'x \mathpunct{:} 1' 和 \lstinline'x \colon 1' 的输出不同。（$x \mathpunct{:} 1$和$x \colon 1$）
+
+\end{itemize}
+\begin{instance}（对称差）
+	定义集合$S$和$T$的对称差为
+\begin{equation*}
+	S \Delta T = \left( S \setminus T \right) \cup \left( T \setminus S \right).
+\end{equation*}
+\LaTeX{} 绝不是符号的直接堆砌。利用命令 \lstinline'\mathbin{\Delta}' 使得$\Delta$成为一个新的二元运算符，即
+\begin{equation*}
+	S \mathbin{\Delta} T = \left( S \setminus T \right) \cup \left( T \setminus S \right).
+\end{equation*}
+\end{instance}
+\end{frame}
+
+\begin{frame}{参考文献}
+\bibliography{参考文献昆明池}
+\end{frame}
+
+\end{document}
+
+\begin{frame}[fragile]
+增加大小可变的 \lstinline'\mid' 的解决方案，自定义 \lstinline'\bigmid'。
+\end{frame}
+
+\begin{frame}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{标题}
+	\framesubtitle{小标题}
+这是简单的一帧。
+
+\[\mathrm
+	\oint_\Gamma P\mathrm{d}x+Q\mathrm{d}y=\iint_\Omega \left( \frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} \right)\mathrm{d}x\mathrm{d}y
+\]
+
+帧里的内容是垂直居中的。
+\end{frame}
