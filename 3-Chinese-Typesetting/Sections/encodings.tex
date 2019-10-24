@@ -1,0 +1,15 @@
+这里对编码稍作提及。包含中文的常见编码方式有 UTF-8 和 GBK.
+
+GBK 编码常见于 Windows 中文版操作系统。当前版本的 Win 10 系统已经支持修改默认编码 (encoding) 为 Unicode UTF-8.
+
+至于为什么我推崇 UTF-8 而舍弃 GBK，这里我只说一点：使用 \hologo{XeLaTeX}、\hologo{LuaLaTeX}、up\LaTeX 引擎编译时， C\TeX 宏集只支持 UTF-8 编码（见文档 \cite{ctex} \S 4.1 编译方式一节）。其余方面请自行了解（如有兴趣）。
+
+使用 UTF-8 和 \hologo{XeLaTeX}/\hologo{LuaLaTeX} 引擎时，所有 Unicode 字符均可以直接输入。例如，所有中文标点，包括单/双引号 ‘’“” 均直接输入。但仍建议英文单双引号以 \verb|`'| 或 \verb|``''| 的形式输入。
+
+\begin{Ex}{编码转换}{encoding}
+请尝试将一 GBK 编码的文件以 UTF-8 编码打开并保存。然后将新文件再次以 GBK 编码打开并保存。
+\end{Ex}
+
+\begin{mybox}{强烈建议}
+将源代码文件（包括但不限于 \LaTeX 相关源代码文件）以 UTF-8 编码保存。
+\end{mybox}

@@ -1,5 +1,8 @@
 ## Temperoriry ignored files
 */Ignored/*
+*.py
+__*
+__*/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

@@ -1,0 +1,55 @@
+\CTeX 宏集手册\cite{ctex} 中写道：“\CTeX 宏集是由 \href{http://bbs.ctex.org/}{\CTeX 社区}发起并维护的 \LaTeX 宏包和文档类的集合。社区另有发布名为 \CTeX 套装的 \TeX 发行版，与本文档所述的 \CTeX 宏集并非是同一事物。“
+
+该文档中 \S 4.1 编译方式一节写道：“\CTeX 宏集会根据用户使用的编译方式，在底层选择不同的中文支持方式“（见表 \ref{tb:ctex}）。现在我们可以说，目前使用 \LaTeX 排版中文，推荐的方案是调用 xeCJK/ctex 宏包，并相应使用 \hologo{XeLaTeX} 或 \hologo{LuaLaTeX} 引擎编译生成 PDF 文件。当使用 latexmk 工具（可参见附录 \ref{ap:latexmk}）自动编译时，相应添加参数 `-xelatex' 或 `-lualatex'.
+
+\begin{table}
+\caption{\CTeX 宏集的中文支持方式}
+\label{tb:ctex}
+\centering
+\begin{tabular}{*{5}{c}}
+\toprule
+编译方式 & (pdf)\LaTeX & \hologo{XeLaTeX} & \hologo{LuaLaTeX} & up\LaTeX \\ \midrule
+支持宏包 & CJK & xeCJK & LuaTeX-ja & 原生 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{ctex 文档类和宏包}
+ctex 文档类包括 ctexart, ctexrep, ctexbook 和 ctexbeamer 分别是对标准文档类 article, report, book 和 beamer 的封装。ctex 文档类调用了 ctex 宏包。
+
+一个最简单的 ctexart 文档类实例可以是如下这样的：
+\texinputlst[label=lst:demo-ctex]{Demos/demo-ctex.tex}
+% \begin{texlst}[caption=demo-ctex.tex]
+% \documentclass{ctexart}
+
+% \begin{document}
+% 中文 \LaTeX{} 排版。
+% \end{document}
+% \end{texlst}
+
+该宏集中现提供宏包 ctex.sty, ctexsize.sty, ctexheading.sty.
+
+\begin{Ex}{使用 ctex 宏包}{ctex-package}
+请在任一英文 \TeX 文档中调用 ctex 宏包，并在正文中插入中文。编译得到 PDF 文档。
+\end{Ex}
+
+\subsection{\textbackslash ctexset\{\}}
+下面简单介绍导言区设置 \verb|\ctexset{(键值列表)}| 中的一部分键值 （见 \cite{ctex} 中 \S 5.3, 6.1）.
+\begin{itemize}
+\item scheme = (\textbf{chinese}|\emph{plain})
+\begin{description}
+  \item[chinese] 调整默认字号；汉化标题名字（如“表”等）；在 heading = true 时，将章节标题修改为中文样式。
+  \item[plain] 仅提供中文支持功能，而不对文章版式进行任何修改。 
+  \end{description}
+\item linespread = (数值)\\
+设置行距倍数（接受浮点值）。初始值依赖于 scheme.
+\item today = (\textbf{small}|\emph{big}|\emph{old})
+\begin{description}
+  \item[small] 效果为“2019 年 10 月 27 日”
+  \item[big] 效果为“二〇一九年十月二十四日”
+  \item[old] 效果为原本的（英文） 日期格式 
+\end{description}
+\end{itemize}
+
+\begin{Ex}{查阅 ctex 宏集手册}{ctex}
+请查阅《ctex 宏集手册》中任一感兴趣内容。
+\end{Ex}

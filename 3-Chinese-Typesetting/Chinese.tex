@@ -1,0 +1,46 @@
+\documentclass{ctexart}
+
+% Custom settings
+\usepackage{mysettings}
+
+\title{常用中文 \LaTeX 简介}
+\author{李明阳}
+% \date{}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{-1}
+
+\section{回顾：数学和提问相关}
+\input{Sections/reflection.tex}
+
+\tableofcontents
+
+\section{ctex 宏包 + xelatex 编译}
+\input{Sections/introduction.tex}
+
+\section{xeCJK 宏包}
+\input{Sections/xeCJK.tex}
+
+\section{ctex 宏集}
+\input{Sections/ctex.tex}
+
+% \section{\LaTeX 中的字符}
+
+\appendix
+\section{关于字符编码 (encoding)}
+\input{Sections/encodings.tex}
+
+\section{latexmk 工具}\label{ap:latexmk}
+\input{Sections/latexmk.tex}
+
+\section{多文件文档}
+\input{Sections/multi-files.tex}
+
+\listoftables
+\lstlistoflistings
+\tcblistof[\section]{exercise}{List of Exercises}\label{lstof:exercises}
+
+\printbibliography
+\end{document}

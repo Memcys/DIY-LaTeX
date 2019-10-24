@@ -1,0 +1,25 @@
+待输出的 PDF 文档中包含中文时，我们推荐调用 xeCJK 宏包，并相应使用 \hologo{XeLaTeX} 编译\footnote{后文有进一步的补充方案}。
+
+% 文件 \href{run:demo-xeCJK.tex}{demo-xeCJK.tex} 展示了 xeCJK 宏包的一种可能的使用场景。
+\texinputlst[label=lst:demo-xecjk]{Demos/demo-xeCJK.tex}
+% \begin{texlst}[caption=demo-xeCJK.tex. 参考 \cite{xecjk},label=lst:demo-xecjk]
+% \documentclass{article}
+% \usepackage{xeCJK}
+
+% % For Windows
+% % \setCJKmainfont{SimSun}
+% % For Linux
+% \setCJKmainfont{FandolSong}
+
+% \begin{document}
+% 中文 LaTeX{} 排版。
+% \end{document}
+% \end{texlst}
+
+Listing \ref{lst:demo-xecjk} 中使用了 `\verb|\setCJKmainfont{|\textit{font name}\verb|}|'. 这里 `SimSun' `FandolSong' 均为字体名称。\href{http://mirrors.ctan.org/macros/xetex/latex/xecjk/xeCJK.pdf#6}{xeCJK 文档 \S 3.2.1} 一节指出了通过 `fc-list' 命令查看当前系统下的已安装字体名称的方法。
+
+推荐显式调用 xeCJK 宏包的情景：文档主体不为中文，仅局部插入中文。
+
+\begin{Ex}{设置全局中文字体}{setCJKmainfont}
+请从自己系统已安装的中文字体中，寻找一款自己喜欢的字体，利用 Listing \ref{lst:demo-xecjk} 中方式，设置成一个文档的全局中文字体。
+\end{Ex}

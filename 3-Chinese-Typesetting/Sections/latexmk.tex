@@ -1,0 +1,29 @@
+latexmk 的手册 (manual)\cite{latexmk} 中第一句话写道：`\emph{Latexmk} completely automates the process of compiling a \LaTeX document.'
+
+以编译当前的文档 Chinese.tex 为例。可使用的编译方式为
+\begin{bashlst}
+latexmk -xelatex Chinese
+\end{bashlst}
+其中 Chinese 为 Chinese.tex 的文件名省略了后缀 `.tex'. 也可补全成 `Chinese.tex'. 实际中依次运行了 `xelatex', `biber', `xelatex' ($\times 3$)，即
+\begin{bashlst}
+xelatex Chinese
+biber Chinese
+xelatex Chinese
+xelatex Chinese
+xelatex Chinese
+\end{bashlst}
+值得一提的是，引擎所需的调用次数因文件而变化。
+
+把上述 `-xelatex' 替换为 `-lualatex' 即可通过 latexmk 自动调用 lualatex （和 biber）完成相应编译。
+
+latexmk 还有很多可选参数（调用时，只要可选参数出现 `latexmk' 之后，利用空格隔开即可，无顺序要求）。这里仅举两例：
+\begin{description}
+\item[-f] `Force latexmk to continue document processing despite errors.' 即无视报错，强制执行。
+\item[-pv] `Run file previewer.' 即预览输出文件。
+\end{description}
+
+\begin{Ex}{利用 latexmk 自动编译}
+请分别手动和使用 latexmk 完成 Chinese.tex 文件的编译。
+
+提示：生成的 PDF 文档中仅参考文献的标题中有一个 `?'. 可以搜索自己手动编译生成的 PDF 文档中是否有多于一个 `?' 初步判断编译步骤是否全部完成。此外，还可通过编译日志 Chines.log 文件及编译器的输出查询编译步骤是否欠缺。
+\end{Ex}
