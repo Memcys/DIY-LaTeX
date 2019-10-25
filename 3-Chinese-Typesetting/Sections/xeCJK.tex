@@ -2,23 +2,24 @@
 
 % 文件 \href{run:demo-xeCJK.tex}{demo-xeCJK.tex} 展示了 xeCJK 宏包的一种可能的使用场景。
 \texinputlst[label=lst:demo-xecjk]{Demos/demo-xeCJK.tex}
-% \begin{texlst}[caption=demo-xeCJK.tex. 参考 \cite{xecjk},label=lst:demo-xecjk]
-% \documentclass{article}
-% \usepackage{xeCJK}
 
-% % For Windows
-% % \setCJKmainfont{SimSun}
-% % For Linux
-% \setCJKmainfont{FandolSong}
+\subsection{xeCJK 宏包选项选讲}
+xeCJK 宏包手册 \cite{xecjk} 中写道：“xeCJK 以 ⟨key⟩=⟨var⟩ 的形式提供宏包选项，你可以在调用宏包的时候直接设置这些选项，也可以在调用宏包之后使用 \verb|\xeCJKsetup| 来设置这些选项。”
 
-% \begin{document}
-% 中文 LaTeX{} 排版。
-% \end{document}
-% \end{texlst}
+以下列举几例（见 \cite{xecjk} \S 3.1）：
+\begin{itemize}
+\item xeCJKactive = (\textit{true}|\textbf{false}) \\
+缺省状态下, xeCJK 会忽略 CJK 文字之间的空格,使用这一选项来保留它们之间的空格。
+\item CJKmath = (\textit{true}|\textbf{false}) \\
+是否支持在数学环境中直接输入 CJK 字符。使用这个选项后,可以直接在数学环境中输出
+CJK 字符。url 宏包将一个 URL 放在一个特殊的数学环境中排版,所以如果在 \verb|\path| 等命令的路径参数中含有汉字,则需要启用这个选项,路径中的汉字才能显示。
+\item AutoFallBack = (\textit{true}|\textbf{false}) \\
+当文档中有个别生僻字时,可以使用这个选项,自动使用预先设置好的后备字体来输出这些生僻字。后备字体的设置方法在 3.2 节中有介绍。
+\end{itemize}
 
 Listing \ref{lst:demo-xecjk} 中使用了 `\verb|\setCJKmainfont{|\textit{font name}\verb|}|'. 这里 `SimSun' `FandolSong' 均为字体名称。\href{http://mirrors.ctan.org/macros/xetex/latex/xecjk/xeCJK.pdf#6}{xeCJK 文档 \S 3.2.1} 一节指出了通过 `fc-list' 命令查看当前系统下的已安装字体名称的方法。
 
-推荐显式调用 xeCJK 宏包的情景：文档主体不为中文，仅局部插入中文。
+推荐手动调用 xeCJK 宏包的情景：文档主体不为中文，仅局部插入中文。
 
 \begin{Ex}{设置全局中文字体}{setCJKmainfont}
 请从自己系统已安装的中文字体中，寻找一款自己喜欢的字体，利用 Listing \ref{lst:demo-xecjk} 中方式，设置成一个文档的全局中文字体。

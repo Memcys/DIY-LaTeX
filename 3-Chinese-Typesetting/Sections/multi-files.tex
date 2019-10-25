@@ -1,22 +1,10 @@
 \LaTeX 源代码可以存放在多个文件中。这对于较长篇幅的代码的管理是有益的。这在对长文件 debug 时作用尤为突出。
 
 实际上，这篇文章就将所有正文内容分散在了 `Sections' 文件夹中，并在主文件 `Chinese.tex' 中以 \verb|\input{Sections/filename.tex}| 调用。
-% \lstinputlisting[%
-%   language=bash,
-%   numbers=none,
-%   numberstyle=\scriptsize,
-%   frame=TB,
-%   rulesep=.7pt,
-%   rulesepcolor=\color{\framecolor},
-%   backgroundcolor=\color{bgcolor},
-%   breaklines,
-%   breakautoindent=true,
-%   basicstyle=\small\ttfamily,
-%   commentstyle=\small,]%
-%   {Sections/ls.txt}
-\bashinputlst[caption=文档结构,label=lst:documents]{Sections/ls.txt}
+\bashinputlst[caption=本文档结构,label=lst:documents]{Sections/ls.txt}
+\texinputlst[label=lst:main]{Chinese.tex}
 
-标准用法中，常通过 \verb|\input{filename}| 或 \verb|\include{filename}| 来引用其他文件（包括但不限于 .tex 文件）。
+可以通过 \verb|\input{filename}| 或 \verb|\include{filename}| 来引用其他文件（包括但不限于 .tex 文件）。
 
 根据总结 \cite{input-include-tex}：
 \begin{itemize}
@@ -25,14 +13,14 @@
 \end{itemize}
 另外，如果使用注释功能（行首加 \verb|%|），\verb|\input{}| 也可以方便地控制只编译所需的那部分内容。
 
-\verb|\input{}| \verb|\include{}| 均能在导言区使用。但是，根据 \cite{input-include-overleaf}, 对于写在分开的文件中的导言区的用户自定义的命令、定义等，“正确” (The right way) 的方法是创建一个自定义的包 (package), 并保存成 `\emph{pkgname}.sty' 文件。该文件的首行为
+\verb|\input{}| \verb|\include{}| 均能在导言区使用。但是，根据 \cite{input-include-overleaf}, 对于写在分开的文件中的导言区的用户自定义的命令、定义等，“正确” (The right way) 的方法是创建一个自定义的包 (package), 并保存成 `\emph{pkgname}.sty' 文件存放在主文件 .tex 所在文件夹下。该文件的首行应为
 \begin{texlst}
-% pkgname.sty
+% File pkgname.sty
 \ProvidesPackage{pkgname}
 \end{texlst}
 并在主文件中引用：
 \begin{texlst}[numbers=none]
-% main.tex
+% File main.tex
 \usepackage{pkgname}
 \end{texlst}
 注意自命名的 `pkgname' 保持一致。
@@ -40,3 +28,7 @@
 文档 \cite{input-include-overleaf} 中提到，`import' 宏包提供的 \verb|\import{path/to/directory}{file}| 命令允许嵌套使用。
 
 嵌套使用时，可能用到 \verb|\subimport{path/to/directory}{file}|. 此时文件夹路径（第一个 \verb|{}| 中的路径）是相对于被引用的文件所在目录的。而 \verb|\import| 则相对于主文件所在目录。
+
+\begin{Ex}{多文件文档}{multi-files}
+请自己完成一个多文件文档。
+\end{Ex}

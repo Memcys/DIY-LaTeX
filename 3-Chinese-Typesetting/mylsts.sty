@@ -1,14 +1,10 @@
-\ProvidesPackage{mysettings}
+\ProvidesPackage{mylsts}
+% Define several listing environments
 
 % Packages loading
-\usepackage{booktabs} % Providing \top/mid/bottom-rule
-\usepackage{hologo}   % Providing Xe/Lua-LaTeX logos
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{amsmath,amssymb}
-\usepackage{tcolorbox}
-\usepackage[backend=biber,]{biblatex}
-\usepackage[colorlinks,runcolor=green!50!black,citecolor=cyan!75!black,urlcolor=blue]{hyperref}
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+\RequirePackage{tcolorbox}
 
 % tcb settings
 \tcbuselibrary{listings,skins,theorems,xparse}
@@ -16,13 +12,10 @@
 % Default lst loading languages
 \lstloadlanguages{tex,bash}
 
-% Bibliography file
-\addbibresource{Sections/ref.bib}
-
-% Math definitions
-% Following https://tex.stackexchange.com/a/86498
-\newcommand{\iu}{{\mathrm{i}\mkern1mu}}
-\newcommand{\e}{\mathrm{e}}
+% Color definitions
+\definecolor{bgcolor}{rgb}{.9,1,.9}
+\definecolor{framecolor}{rgb}{0,.35,0}%green!35!black}
+\definecolor{titlecolor}{named}{white}%{red!25!yellow}
 
 % Code listing definitions using lstlisting and lstinputlisting
 \newcommand{\inputlst}[3][]{
@@ -30,10 +23,10 @@
     #2,
     numberstyle=\scriptsize,
     frame=TB,
-    xleftmargin=1.5cm,
-    xrightmargin=1.5cm,
+    xleftmargin=1cm,
+    xrightmargin=1cm,
     rulesep=.7pt,
-    rulesepcolor=\color{\framecolor},
+    rulesepcolor=\color{framecolor},
     backgroundcolor=\color{bgcolor},
     breaklines,
     breakautoindent=true,
@@ -44,7 +37,10 @@
 }
 
 \newcommand{\texinputlst}[2][]{
-  \inputlst[caption=\href{run:#2}{#2},#1]{language=tex,numbers=left}{#2}
+  \inputlst[%
+    caption=\href{run:#2}{#2},%
+    #1,]%
+    {language=tex,numbers=left}{#2}
 }
 
 \newcommand{\bashinputlst}[2][]{
@@ -54,25 +50,27 @@
 % Code listing definitions using tcblisting
 \newtcblisting[]{sidelst}{%
   colback=bgcolor,
-  colframe=\framecolor,
+  colframe=framecolor,
+  sharpish corners,
   bicolor,colbacklower=white,
   listing side text,
   listing options={
+    % style=tcblatex,
     breaklines,
     basicstyle=\small\ttfamily,
     },
-  compilable listing,
 }
 
 \newtcblisting[]{vertlst}{%
   colback=bgcolor,
-  colframe=\framecolor,
+  colframe=framecolor,
+  sharpish corners,
   bicolor,colbacklower=white,
   listing options={
+    % style=tcblatex,
     breaklines,
     basicstyle=\small\ttfamily,
     },
-  compilable listing,
 }
 
 \lstnewenvironment{texlst}[1][]{
@@ -84,7 +82,7 @@
     xleftmargin=1.5cm,
     xrightmargin=1.5cm,
     rulesep=.7pt,
-    rulesepcolor=\color{\framecolor},
+    rulesepcolor=\color{framecolor},
     backgroundcolor=\color{bgcolor},
     breaklines,
     breakautoindent=true,
@@ -94,38 +92,36 @@
   }
 }{}
 
-\lstnewenvironment{bashlst}{
+\lstnewenvironment{bashlst}[1][]{
   \lstset{
     language=bash,
-    numbers=none,
+    % numbers=none,
     numberstyle=\scriptsize,
     frame=TB,
+    xleftmargin=1.5cm,
+    xrightmargin=1.5cm,
     rulesep=.7pt,
-    rulesepcolor=\color{\framecolor},
+    rulesepcolor=\color{framecolor},
     backgroundcolor=\color{bgcolor},
     breaklines,
     breakautoindent=true,
     basicstyle=\small\ttfamily,
     commentstyle=\small,
+    #1,
   }
 }{}
-
-% Color definitions
-\definecolor{bgcolor}{rgb}{.9,1,.9}
-\newcommand{\framecolor}{green!35!black}
-\newcommand{\titlecolor}{red!25!yellow}
 
 % Exercise definition
 \newtcbtheorem[list inside=exercise,]{Ex}{Exercise}{
   colback=bgcolor,
-  colframe=\framecolor,
+  colframe=framecolor,
   fonttitle=\bfseries,
   separator sign={\ $\blacktriangleright$},
-  description color=\titlecolor,
+  description color=titlecolor,
 }{ex}
 
 % Bullet board definition
-\newtcolorbox{mybox}[2][]{colback=red!5!white,
+\newtcolorbox{notice}[2][]{colback=red!5!white,
 colframe=red!75!black,fonttitle=\bfseries,
 colbacktitle=red!85!black,enhanced,
 attach boxed title to top center={yshift=-2mm},

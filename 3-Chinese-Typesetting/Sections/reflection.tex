@@ -1,9 +1,9 @@
 \subsection{数学相关}
-前两次报告中，FZX、LH、GR 三位同学详细地介绍了数学环境、AMS 宏集、字体等。请回忆相关内容。
+前两次报告中，FZX、LH、GR 三位同学详细地介绍了 \LaTeX 概述、数学环境、AMS 宏集、字体等。请回忆相关内容。
 
 我在此仅就由 amsmath 宏包提供的三个功能作一点补充：
 \begin{itemize}
-\item \verb|\boxed{}| \verb|\framebox[]{}| 带框数学环境。以 \verb|\boxed{}| 为例，效果如下：
+\item 带框数学环境 \verb|\boxed{}| \verb|\framebox[]{}|. 以 \verb|\boxed{}| 为例：
 \begin{vertlst}
 % \usepackage{amsmath}
 % \newcommand{\iu}{{\mathrm{i}\mkern1mu}}
@@ -11,11 +11,10 @@
 
 \boxed{\e^{\iu \theta} = \cos{\theta} + \iu \sin{\theta}}
 \end{vertlst}
-\item \textsf{gathered}, \textsf{aligned}, \textsf{alignedat} 嵌套数学环境。以 aligned 为例，效果如下：
+\item \textsf{gathered}, \textsf{aligned}, \textsf{alignedat} 嵌套数学环境。以 aligned 为例：
 \begin{vertlst}
 % \usepackage{amsmath}
 
-\small
 \begin{equation}
 \begin{gathered}[]
   [f, f] = 0, \\
@@ -24,13 +23,6 @@
 \end{gathered}
 \end{equation} 
 \end{vertlst}
-% \begin{equation}
-%   \begin{gathered}[]
-%     \left[ f, f \right] = 0, \\ % '[]' would be treated as brackets for optional parameters.
-%     [f, g] + [g, f] = 0, \\
-%     [f, [g, h]] + [g, [h, f]] + [h, [f, g]] = 0.
-%   \end{gathered}
-% \end{equation}
 \item cases 环境。效果如下：
 \begin{sidelst}
 \begin{equation}
@@ -44,4 +36,4 @@
 \end{itemize}
 
 \subsection{提问相关}
-LFZ 同学就提问相关内容作了生动有趣的介绍。总地来说，遇到问题可先查阅宏包文档或网页已有资源。准备提问前应首先整理好最小工作示例 (Minimal Working Example, MWE)，以他人能够复现问题为标准。提问的途径很多，比如 \TeX 相关的问答网站、论坛，以及多人群组，还可以向身边的人提问。
+LFZ 同学就提问相关内容作了生动有趣的介绍。总地来说，遇到问题可先查阅宏包文档或网页已有资源。准备提问前应首先整理好最小工作示例 (Minimal Working Example, \emph{MWE})，以简洁且他人能够复现问题为标准。提问的途径很多，比如 \TeX 相关的问答网站、论坛，以及多人群组，还可以向身边的人提问。

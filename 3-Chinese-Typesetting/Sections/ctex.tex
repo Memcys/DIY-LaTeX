@@ -16,15 +16,10 @@
 \subsection{ctex 文档类和宏包}
 ctex 文档类包括 ctexart, ctexrep, ctexbook 和 ctexbeamer 分别是对标准文档类 article, report, book 和 beamer 的封装。ctex 文档类调用了 ctex 宏包。
 
+推荐使用 ctex 文档类的情景：文档主体为中文。
+
 一个最简单的 ctexart 文档类实例可以是如下这样的：
 \texinputlst[label=lst:demo-ctex]{Demos/demo-ctex.tex}
-% \begin{texlst}[caption=demo-ctex.tex]
-% \documentclass{ctexart}
-
-% \begin{document}
-% 中文 \LaTeX{} 排版。
-% \end{document}
-% \end{texlst}
 
 该宏集中现提供宏包 ctex.sty, ctexsize.sty, ctexheading.sty.
 
@@ -45,7 +40,7 @@ ctex 文档类包括 ctexart, ctexrep, ctexbook 和 ctexbeamer 分别是对标�
 \item today = (\textbf{small}|\emph{big}|\emph{old})
 \begin{description}
   \item[small] 效果为“2019 年 10 月 27 日”
-  \item[big] 效果为“二〇一九年十月二十四日”
+  \item[big] 效果为“二〇一九年十月二十七日”
   \item[old] 效果为原本的（英文） 日期格式 
 \end{description}
 \end{itemize}
