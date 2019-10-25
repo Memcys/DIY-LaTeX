@@ -1,14 +1,12 @@
-\texinputlst[caption=\href{run:Demos/demo-hello.tex}{Demos/demo-hello.tex},label=lst:hello]{Demos/demo-hello.tex}
-% \begin{texlst}[caption=demo-helloworld.tex,label=lst:hello]
-% \documentclass{article}
-
-% \begin{document}
-% Hello, world!
-% 你好，世界！
-% \end{document}
-% \end{texlst}
+\texinputlst[label=lst:hello]{Demos/demo-hello.tex}
 没想到 helloworld 这样一款编程入门标配的程序，在要求中文输入时，却成了我四个月没能跨过去的槛。
 
 我利用 Google, 百度搜遍关键词，得到的解决方案包括调用 xeCJK 或 ctex 宏包这样接近正确答案的搜索结果。但我那时只知道用 pdflatex 编译。我现在所读的东西似乎告诉我，Linux 操作系统下， “xeCJK/ctex 宏包 + \textbf{pdflatex} 编译”似乎不可能得到中文\footnote{但在 Windows 系统下该方案应该能够得到中文}。
 
 我终于注意到，“ctex 宏包 + \textbf{xelatex} 编译”中的后者 xelatex. 从此，几乎\footnote{当然，我自己也写过必须使用 lualatex 编译引擎的特殊 .tex 文件。但这实在为极少数}对于任何原始英文文档，这一套解决方案几乎都能完美解决插入中文的问题。
+
+\begin{Ex}{编译中文文档}{Chinese-helloworld}
+请对 Listing \ref{lst:hello} 作必要的修改，编译得到含有中文的 PDF.
+
+你可以先跳过，随后回头解决。也可以当即尝试解决。
+\end{Ex}

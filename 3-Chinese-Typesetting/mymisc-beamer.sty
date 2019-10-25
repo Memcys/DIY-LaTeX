@@ -1,0 +1,31 @@
+\ProvidesPackage{mymisc-beamer}
+% Miscellaneous in preamble specific to Chinese-beamer.tex
+
+\RequirePackage{booktabs} % Providing \top/mid/bottom-rule
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{hologo}   % Providing Xe/Lua-LaTeX logos
+\RequirePackage{pgfornament}
+\RequirePackage[backend=biber,]{biblatex}
+
+% Bibliography file
+\addbibresource{Sections/ref.bib}
+% Bibliography font size
+\renewcommand*{\bibfont}{\small}
+
+% Math definitions
+\newcommand{\e}{\ensuremath{\mathrm{e}}}
+% Following https://tex.stackexchange.com/a/86498
+\newcommand{\iu}{{\ensuremath{\mathrm{i}\mkern1mu}}}
+
+% Beamer settings
+\usetheme{Xiaoshan}
+\usefonttheme{serif}
+\setbeamersize{
+  description width = 3\ccwd,
+}
+
+% Set CJK main fonts
+\setCJKmainfont{Noto Serif CJK SC}
+
+% Title info
+\titlegraphic{\includegraphics[width=.37\linewidth]{../1-Math-Mode-and-AMS/ucaslogo}}

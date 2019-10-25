@@ -1,0 +1,24 @@
+\ProvidesPackage{mymisc-art}
+% Miscellaneous in preamble specific to Chinese.tex
+
+\RequirePackage{booktabs} % Providing \top/mid/bottom-rule
+\RequirePackage{hologo}   % Providing Xe/Lua-LaTeX logos
+\RequirePackage{amsmath,amssymb}
+\RequirePackage[backend=biber,]{biblatex}
+\RequirePackage{hyperref}
+\RequirePackage[left=3.5cm,right=3.5cm]{geometry}
+
+\hypersetup{
+  colorlinks,
+  runcolor=green!50!black,
+  citecolor=cyan!65!black,
+  urlcolor=blue,
+}
+
+% Bibliography file
+\addbibresource{Sections/ref.bib}
+
+% Math definitions
+\newcommand{\e}{\ensuremath{\mathrm{e}}}
+% Following https://tex.stackexchange.com/a/86498
+\newcommand{\iu}{{\ensuremath{\mathrm{i}\mkern1mu}}}

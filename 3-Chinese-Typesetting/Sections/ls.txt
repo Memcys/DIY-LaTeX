@@ -1,5 +1,10 @@
+Chinese-beamer.pdf
+Chinese-beamer.tex
+Chinese.pdf
 Chinese.tex
-mysettings.sty
+mylsts.sty
+mymisc-art.sty
+mymisc-beamer.sty
 
 Demos:
 demo-ctex.tex

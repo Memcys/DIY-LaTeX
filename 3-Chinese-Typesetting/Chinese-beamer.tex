@@ -1,0 +1,284 @@
+\documentclass[final,aspectratio=32]{ctexbeamer}
+
+% Custom package providing several listing environments
+\usepackage{mylsts}
+% Miscellaneous in preamble specific to Chinese-beamer.tex
+\usepackage{mymisc-beamer} 
+% \usepackage{syntonly}
+% \syntaxonly
+
+% Title info
+\title{常用中文 \LaTeX 简介}
+\subtitle{\textbf{DIY \LaTeX} $4$th Report}
+\author[Memcys]{Memcys \\ \url{https://github.com/Memcys/DIY-LaTeX}}
+\institute[UCAS]{University of Chinese Academy of Sciences}
+% \date{}
+
+\begin{document}
+\frame{\titlepage}
+
+\setcounter{section}{-1}
+
+\section[回顾]{回顾：数学和提问相关}
+\subsection{回顾}
+\begin{frame}{前三次报告回顾}
+前三次报告中，FZX、LH、GR、LFZ （姓名首字母缩写） 就
+\begin{enumerate}
+\item \LaTeX 概述
+\item 数学环境
+\item AMS 宏集
+\item 字体
+\item 提问
+\end{enumerate}
+等主题作了详细的介绍。请回忆相关内容。
+\end{frame}
+
+\subsection{补充}
+\begin{frame}[fragile]{补充}
+以下谨以 amsmath 宏包提供的三个功能作一点补充：
+\begin{itemize}
+  \item 带框数学环境 \verb|\boxed{}, \framebox{}|
+  \item gathered, aligned, alignedat 嵌套数学环境
+  \item cases 环境
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{带框数学环境}
+带框数学环境 \verb|\boxed{}, \framebox{}|. 以 \verb|\boxed{}| 为例：
+\begin{vertlst}
+% \usepackage{amsmath}
+% \newcommand{\iu}{{\mathrm{i}\mkern1mu}}
+% \newcommand{\e}{\mathrm{e}}
+
+\boxed{\e^{\iu \theta} = \cos{\theta} + \iu \sin{\theta}}
+\end{vertlst}
+\end{frame}
+
+\begin{frame}[fragile]{嵌套数学环境}
+gathered, aligned, alignedat 嵌套数学环境。以 aligned 为例：
+\begin{vertlst}
+% \usepackage{amsmath}
+\footnotesize
+\begin{equation}
+\begin{gathered}[]
+  [f, f] = 0, \\
+  [f, g] + [g, f] = 0, \\
+  [f, [g, h]] + [g, [h, f]] + [h, [f, g]] = 0.
+\end{gathered}
+\end{equation} 
+\end{vertlst}
+\end{frame}
+
+\begin{frame}[fragile]{cases 环境}
+cases 环境。效果如下：
+\begin{sidelst}
+\begin{equation}
+  \delta_{ij} =
+  \begin{cases}
+    0, \, & i \ne j \\
+    1, & 1 = j
+  \end{cases}
+\end{equation}
+\end{sidelst}
+\end{frame}
+
+\section*{目录}
+\begin{frame}{目录}
+\begin{columns}
+\begin{column}{.4\linewidth}
+\small
+\tableofcontents[hideallsubsections]
+\end{column}
+\begin{column}{.5\linewidth}
+\pgfornament[width=.6\linewidth,color=blue!40!green!60,opacity=.2]{74}
+\pgfornament[width=.6\linewidth,color=blue!10,opacity=.15]{133}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{ctex 宏包 + xelatex 编译}
+\begin{frame}[fragile]{中文输入困境}
+\texinputlst[label=lst:hello]{Demos/demo-hello.tex}
+一个入门级别的 helloworld 程序。我用了四个月才解决中文的问题。
+\end{frame}
+
+
+\section{xeCJK 宏包}
+\subsection[示例]{调用 xeCJK 宏包示例}
+\begin{frame}[fragile]{xeCJK 宏包}
+需要输出中文时，我们推荐调用 xeCJK 宏包，并相应使用 \hologo{XeLaTeX} 引擎编译。后文有更多的解决方案。
+\texinputlst[label=lst:demo-xecjk]{Demos/demo-xeCJK.tex}
+\end{frame}
+
+\subsection[宏包选项]{xcCJK 宏包选项选讲}
+\begin{frame}[fragile]{xcCJK 宏包选项选讲}
+见 \cite{xecjk} \S 3.1:
+\begin{itemize}
+  \item xeCJKactive = (\textit{true}|\textbf{false}) \\
+  xeCJK 默认忽略 CJK 文字间的空格,使用这一选项来保留这些空格。
+  \item CJKmath = (\textit{true}|\textbf{false}) \\
+  是否支持在数学环境中直接输入 CJK 字符。 \\
+  url 宏包将一个 URL 放在一个特殊的数学环境中排版。启用该选项，\verb|\path| 等命令的路径中的汉字才能显示。
+  \item AutoFallBack = (\textit{true}|\textbf{false}) \\
+  当文档中有主字体不包含的字时,自动使用预设的后备字体来输出这些生僻字。
+\end{itemize}
+\end{frame}
+
+
+\section{ctex 宏集}
+\subsection{\CTeX 宏集的中文支持}
+\begin{frame}
+\frametitle{宏包 + 编译方式}
+\begin{table}
+\caption{\CTeX 宏集的中文支持方式}
+\label{tb:ctex}
+\centering
+\begin{tabular}{*{5}{c}}
+\toprule
+编译方式 & (pdf)\LaTeX & \hologo{XeLaTeX} & \hologo{LuaLaTeX} & up\LaTeX \\ \midrule
+支持宏包 & CJK & xeCJK & LuaTeX-ja & 原生 \\ \bottomrule
+\end{tabular}
+\end{table}
+\CTeX 宏集会根据用户使用的编译
+方式，在底层选择不同的中文支持方式。
+\end{frame}
+
+\subsection{ctex 文档类和宏包}
+\begin{frame}
+\frametitle{ctex 文档类和宏包}
+\begin{table}
+\caption{ctex 文档类和宏包}
+\centering
+\begin{tabular}{*{5}{c}}
+\toprule
+ctex 文档类 & ctexart & ctexrep & ctexbook & ctexbeamer \\ \midrule
+对应标准文档类 & article & report & book & beamer \\ \bottomrule
+\end{tabular}
+\end{table}
+ctex 宏集中现提供宏包 ctex.sty, ctexsize.sty, ctexheading.sty. ctex 文档类调用了 ctex 宏包。
+\end{frame}
+
+\subsection{\textbackslash ctexset\{\}}
+\begin{frame}
+\frametitle{\textbackslash ctexset\{\} 选讲}
+\begin{itemize}
+  \item scheme = (\textbf{chinese}|\emph{plain})
+  \begin{description}
+    \item[chinese] 调整默认字号；汉化标题名字（如“表”等）；在 heading = true 时，将章节标题修改为中文样式。
+    \item[plain] 仅提供中文支持功能，而不对文章版式进行任何修改。
+  \end{description}
+\item linespread = (数值)\\
+设置行距倍数。初始值依赖于 scheme.
+\item today = (\textbf{small}|\emph{big}|\emph{old})
+\begin{description}
+  \item[small] 效果为“2019 年 10 月 27 日”
+  \item[big] 效果为“二〇一九年十月二十七日”
+  \item[old] 效果为原本的（英文） 日期格式 
+\end{description}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{练习}
+\begin{Ex}{编译中文 \LaTeX}{compile}
+请修改 Listing \ref{lst:hello} ， 给出一种能够输出中文的解决方案。
+\end{Ex}
+\end{frame}
+
+% \appendix
+\section{关于字符编码}
+\begin{frame}
+\frametitle{字符编码 (encoding)}
+包含中文的常见编码方式有 UTF-8 和 GBK.
+
+GBK 编码常见于 Windows 中文版操作系统。当前版本的 Win 10 系统已经支持修改默认编码 (encoding) 为 UTF-8.
+
+使用 \hologo{XeLaTeX}、\hologo{LuaLaTeX}、up\LaTeX 引擎编译时， \CTeX 宏集只支持 UTF-8 编码（见文档 \cite{ctex} \S 4.1 编译方式一节）。
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{注记}
+使用 UTF-8 和 \hologo{XeLaTeX}/\hologo{LuaLaTeX} 引擎时，所有 Unicode 字符均可以直接输入。例如，所有中文标点，包括单/双引号 ‘\, ’ “\, ” 均直接输入。但仍建议英文单双引号以 \verb|`'| 或 \verb|``''| 的形式输入。
+
+\begin{Ex}{编码转换}{encoding}
+请尝试将一 GBK 编码的文件以 UTF-8 编码打开并保存。然后将新文件再次以 GBK 编码打开并保存。
+\end{Ex}
+\begin{block}{强烈建议}
+请将源代码文件以 UTF-8 编码保存。
+\end{block}
+\end{frame}
+
+
+\section{latexmk 工具}\label{ap:latexmk}
+\begin{frame}[fragile]
+\frametitle{latexmk 工具}
+\begin{quote}
+Latexmk completely automates the process of compiling a LaTeX document.
+\end{quote}
+以编译当前的文档 Chinese-beamer.tex 为例。可使用的编译方式为
+\begin{bashlst}
+latexmk -xelatex Chinese-beamer
+\end{bashlst}
+实际中依次运行了 `xelatex', `biber', `xelatex' ($\times 3$)，即
+\begin{bashlst}[numbers=left]
+xelatex Chinese-beamer
+biber Chinese-beamer
+xelatex Chinese-beamer
+xelatex Chinese-beamer
+xelatex Chinese-beamer
+\end{bashlst}
+\end{frame}
+
+\subsection{latexmk 命令参数}
+\begin{frame}
+\frametitle[命令参数]{latexmk 命令参数}
+\textbf{latexmk} 有很多可选参数（空格隔开，无顺序要求）。这里仅举几例：
+\begin{description}
+\item[-f] 即无视报错，强制 (force) 执行。
+\item[-pv] 预览 (preview) 输出文件。
+\item[-c] 删除 (clean up) 生成的中间文件，除了少数例外。
+\item[-C] 删除包括 PDF 在内的生成文件。（有例外。）
+\end{description}
+\end{frame}
+
+\begin{frame}
+\frametitle{练习}
+\begin{Ex}{利用 latexmk 自动编译}{latexmk}
+请分别手动和使用 \textbf{latexmk} 编译 Chinese-beamer.tex.
+
+提示：生成的 PDF 文档中有两个 `?'. 可以搜索自己手动编译生成的 PDF 文档中问号的数量是否多于两个初步判断编译步骤是否全部完成。此外，还可通过编译日志 Chines-beamer.log 文件及编译器的输出查询编译步骤是否欠缺。
+\end{Ex}
+\end{frame}
+
+
+\section{多文件文档}
+\subsection{标准方式}
+\begin{frame}[fragile]
+\frametitle{文件引用标准方式}
+\verb|\input{filename}| 或 \verb|\include{filename}| 来引用纯文本文件
+
+根据总结 \cite{input-include-tex}：
+\begin{itemize}
+\item \verb|\input{|\emph{filename}\verb|}| 相当于直接把文件 \emph{filename} 中的内容复制粘贴到插入该引用命令的位置。
+\item \verb|\include{filename}| 可认为是在添加 \verb|\clearpage| 后再 `input'. \\
+\verb|\clearpage| 强制换页。\verb|\include{}| 可以配合导言区中的 \verb|\includeonly{}| 使用。\verb|\include{}| 不能嵌套使用。
+\end{itemize}
+利用注释，\verb|\input{}| 也可控制只编译所需内容。
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{文件引用扩展方式}
+文档 \cite{input-include-overleaf} 中提到，`import' 宏包提供的 \verb|\import{directory}{file}| 命令允许嵌套使用。
+
+嵌套使用时，可能用到 \verb|\subimport{directory}{file}|. 此时文件夹路径（directory）是相对于被引用的文件所在目录的。而 \verb|\import| 则相对于主文件所在目录。
+
+\begin{Ex}{多文件文档}{multi-files}
+请自己完成一个多文件文档，并编译得到 PDF.
+\end{Ex}
+\end{frame}
+
+% \section*{参考资料}
+\begin{frame}[allowframebreaks]{参考资料}
+\printbibliography[heading=none]
+\end{frame}
+\end{document}
