@@ -1,23 +1,13 @@
-Chinese-beamer.pdf
-Chinese-beamer.tex
-Chinese.pdf
-Chinese.tex
-mylsts.sty
-mymisc-art.sty
-mymisc-beamer.sty
+Chinese-beamer.tex	Chinese.tex		mylsts.sty
+mymisc-art.sty		mymisc-beamer.sty	README.md
+.latexmkrc
 
 Demos:
-demo-ctex.tex
-demo-hello.tex
-demo-xeCJK.tex
+demo-chapter-34.tex	demo-chapter-4.tex	demo-ctex.tex
+demo-hello.tex		demo-xeCJK.tex
 
 Sections:
-ctex.tex
-encodings.tex
-introduction.tex
-latexmk.tex
-ls.txt
-multi-files.tex
-ref.bib
-reflection.tex
+ctex.tex		deprecated.tex		encodings.tex
+introduction.tex	latexmk.tex		ls.txt
+multi-files.tex		ref.bib			reflection.tex
 xeCJK.tex

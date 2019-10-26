@@ -4,6 +4,8 @@
 \RequirePackage{booktabs} % Providing \top/mid/bottom-rule
 \RequirePackage{amsmath,amssymb}
 \RequirePackage{hologo}   % Providing Xe/Lua-LaTeX logos
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
 \RequirePackage{pgfornament}
 \RequirePackage[backend=biber,]{biblatex}
 
@@ -17,8 +19,11 @@
 % Following https://tex.stackexchange.com/a/86498
 \newcommand{\iu}{{\ensuremath{\mathrm{i}\mkern1mu}}}
 
+% Define \codesize
+\newcommand{\codesize}{\scriptsize}
+
 % Beamer settings
-\usetheme{Xiaoshan}
+\usetheme{EastLansing}
 \usefonttheme{serif}
 \setbeamersize{
   description width = 3\ccwd,
@@ -27,5 +32,17 @@
 % Set CJK main fonts
 \setCJKmainfont{Noto Serif CJK SC}
 
+% Set mono fonts
+\setmonofont{Liberation Mono}
+
+% Beamer inner theme
+\useinnertheme{rectangles}
+
+% Block style
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+% Set line space. Following https://tex.stackexchange.com/a/157173
+\setlength{\parskip}{\baselineskip}
+
 % Title info
-\titlegraphic{\includegraphics[width=.37\linewidth]{../1-Math-Mode-and-AMS/ucaslogo}}
+\titlegraphic{\includegraphics[width=.4\linewidth]{../1-Math-Mode-and-AMS/ucaslogo}}

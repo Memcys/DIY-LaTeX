@@ -1,6 +1,12 @@
-\CTeX 宏集手册\cite{ctex} 中写道：“\CTeX 宏集是由 \href{http://bbs.ctex.org/}{\CTeX 社区}发起并维护的 \LaTeX 宏包和文档类的集合。社区另有发布名为 \CTeX 套装的 \TeX 发行版，与本文档所述的 \CTeX 宏集并非是同一事物。“
+\CTeX 宏集手册\cite{ctex} 中写道：
+\begin{quote}
+\CTeX 宏集是由 \href{http://bbs.ctex.org/}{\CTeX 社区}发起并维护的 \LaTeX 宏包和文档类的集合。社区另有发布名为 \CTeX 套装的 \TeX 发行版，与本文档所述的 \CTeX 宏集并非是同一事物。
+\end{quote}
 
-该文档中 \S 4.1 编译方式一节写道：“\CTeX 宏集会根据用户使用的编译方式，在底层选择不同的中文支持方式“（见表 \ref{tb:ctex}）。现在我们可以说，目前使用 \LaTeX 排版中文，推荐的方案是调用 xeCJK/ctex 宏包，并相应使用 \hologo{XeLaTeX} 引擎编译生成 PDF 文件。当使用 latexmk 工具（可参见附录 \ref{ap:latexmk}）自动编译时，相应添加参数 `-xelatex'.
+该文档中 \S 4.1 编译方式一节写道：\begin{quote}
+  \CTeX 宏集会根据用户使用的编译方式，在底层选择不同的中文支持方式
+\end{quote}
+（见表 \ref{tb:ctex}）。现在我们可以说，目前使用 \LaTeX 排版中文，推荐的方案是调用 xeCJK/ctex 宏包，并相应使用 \hologo{XeLaTeX} 引擎编译生成 PDF 文件。当使用 latexmk 工具（可参见附录 \ref{ap:latexmk}）自动编译时，相应添加参数 `-xelatex'.
 
 \begin{table}
 \caption{\CTeX 宏集的中文支持方式}
@@ -24,7 +30,7 @@ ctex 文档类包括 ctexart, ctexrep, ctexbook 和 ctexbeamer 分别是对标�
 该宏集中现提供宏包 ctex.sty, ctexsize.sty, ctexheading.sty.
 
 \begin{Ex}{使用 ctex 宏包}{ctex-package}
-请在任一英文 \TeX 文档中调用 ctex 宏包，并在正文中插入中文。编译得到 PDF 文档。
+请将 Listing \ref{lst:hello} 中的文档类修改为 ctexart, 利用 xelatex 或 latexmk -xelatex 编译得到 PDF 文档。
 \end{Ex}
 
 \subsection{\textbackslash ctexset\{\}}
@@ -45,6 +51,49 @@ ctex 文档类包括 ctexart, ctexrep, ctexbook 和 ctexbeamer 分别是对标�
 \end{description}
 \end{itemize}
 
+\subsection{实用命令选讲}
+参见 \cite{ctex} 第 8 节 实用命令。
+\begin{itemize}
+\item \verb|\zihao{(字号)}| \\
+字号 $n$ 可为 -6--8 间的整数 ($-6 \leq n \leq 8, n \in \mathbb{Z}$), 0 和正整数分别表示初（零）号，一号，……，八号。而 -0 和负整数 $-n$ 则表示小 $n$ 号 ($0 \leq n \leq 6$).
+\item 中文数字转换 \\
+通过调用 \href{http://mirrors.ctan.org/macros/latex/contrib/zhnumber/zhnumber.pdf}{zhnumber 宏包}实现。\verb|\zhnumber{(number)}| 以中文格式输出数字。这里的 number 可以是整数、小数和分数。\verb|\zhdigits {⟨number⟩}| 将阿拉伯数字转换为中文数字串。
+\begin{sidelst}
+\zhnumber{201.5} \\
+\zhnumber{1/2} \\
+\zhdigits{012345} \\
+\zhdigits*{012345}
+\end{sidelst}
+\verb|\chinese{(counter)}| 用法与 \verb|\roman| 等命令用法类似，作用在一个 \LaTeX 计数器上。
+\end{itemize}
+
+\subsection{章节标题}
+\CTeX 宏集手册 \cite{ctex} 第 7 节 “章节标题格式设置” 写道：
+\begin{quote}
+章节标题名包括 part, chapter, section, subsection, subsubsection,
+paragraph, subparagraph;而可用的格式包括 numbering, name, number, format, nameformat, numberformat, aftername, titleformat, aftertitle, runin, afterindent, beforeskip, afterskip, fixskip, lotskip, lofskip, indent, hang, pagestyle, break, tocline 等。
+\end{quote}
+以上所有选项使用 \verb|\ctexset| 命令设置。
+
+由于章节标题格式设置等属于“文档元素”主题，后续将由 ZSN 同学报告。这里仅举两例而不作具体说明。
+\texinputlst[label=lst:chapter4]{Demos/demo-chapter-4.tex}
+\texinputlst[label=lst:chapter34]{Demos/demo-chapter-34.tex}
+
+\begin{figure}
+\centering
+% trim=left bottom right top
+\frame{\includegraphics[trim={9.5cm 19.8cm 9.5cm 6.6cm},clip]{demo-chapter-4}}
+\caption{Listing \ref{lst:chapter4} 效果}
+\label{img:4}
+\end{figure}
+\begin{figure}
+\centering
+\frame{\includegraphics[trim={4.3cm 20.5cm 5.5cm 7cm},clip]{demo-chapter-34}}
+\caption{Listing \ref{lst:chapter34} 效果}
+\label{img:34}
+\end{figure}
+
+
 \begin{Ex}{查阅 ctex 宏集手册}{ctex}
-请查阅《ctex 宏集手册》中任一感兴趣内容。
+请查阅\href{http://mirrors.ctan.org/language/chinese/ctex/ctex.pdf}{ctex 宏集手册}中任一感兴趣内容。
 \end{Ex}

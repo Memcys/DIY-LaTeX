@@ -4,8 +4,9 @@
 \RequirePackage{booktabs} % Providing \top/mid/bottom-rule
 \RequirePackage{hologo}   % Providing Xe/Lua-LaTeX logos
 \RequirePackage{amsmath,amssymb}
-\RequirePackage[backend=biber,]{biblatex}
+\RequirePackage{graphicx}
 \RequirePackage{hyperref}
+\RequirePackage[backend=biber,]{biblatex}
 \RequirePackage[left=3.5cm,right=3.5cm]{geometry}
 
 \hypersetup{
@@ -15,10 +16,23 @@
   urlcolor=blue,
 }
 
+\ctexset{
+  today=small,
+}
+
 % Bibliography file
 \addbibresource{Sections/ref.bib}
+
+% Graphics path
+\graphicspath{{Demos/}}
 
 % Math definitions
 \newcommand{\e}{\ensuremath{\mathrm{e}}}
 % Following https://tex.stackexchange.com/a/86498
 \newcommand{\iu}{{\ensuremath{\mathrm{i}\mkern1mu}}}
+
+% Define \codesize
+\newcommand{\codesize}{\small}
+
+% Horizontal rule
+\newcommand{\myhrule}{\rule[2.5pt]{\textwidth}{.2pt}}

@@ -8,11 +8,11 @@
 % \syntaxonly
 
 % Title info
-\title{常用中文 \LaTeX 简介}
+\title{中文 \LaTeX 简介}
 \subtitle{\textbf{DIY \LaTeX} $4$th Report}
 \author[Memcys]{Memcys \\ \url{https://github.com/Memcys/DIY-LaTeX}}
 \institute[UCAS]{University of Chinese Academy of Sciences}
-% \date{}
+\date{\zhganzhinian{2019} \zhdate{2019/10/27} \zhweekday{2019/10/27}}
 
 \begin{document}
 \frame{\titlepage}
@@ -47,7 +47,7 @@
 带框数学环境 \verb|\boxed{}, \framebox{}|. 以 \verb|\boxed{}| 为例：
 \begin{vertlst}
 % \usepackage{amsmath}
-% \newcommand{\iu}{{\mathrm{i}\mkern1mu}}
+% \newcommand{\iu}{\mathrm{i}\mkern1mu}
 % \newcommand{\e}{\mathrm{e}}
 
 \boxed{\e^{\iu \theta} = \cos{\theta} + \iu \sin{\theta}}
@@ -55,14 +55,13 @@
 \end{frame}
 
 \begin{frame}[fragile]{嵌套数学环境}
-gathered, aligned, alignedat 嵌套数学环境。以 aligned 为例：
+gathered, aligned, alignedat 嵌套数学环境。以 gathered 为例：
 \begin{vertlst}
 % \usepackage{amsmath}
-\footnotesize
+
 \begin{equation}
 \begin{gathered}[]
-  [f, f] = 0, \\
-  [f, g] + [g, f] = 0, \\
+  [f, f] = 0, \\ [f, g] + [g, f] = 0, \\
   [f, [g, h]] + [g, [h, f]] + [h, [f, g]] = 0.
 \end{gathered}
 \end{equation} 
@@ -85,14 +84,13 @@ cases 环境。效果如下：
 \section*{目录}
 \begin{frame}{目录}
 \begin{columns}
-\begin{column}{.4\linewidth}
-\small
-\tableofcontents[hideallsubsections]
-\end{column}
-\begin{column}{.5\linewidth}
-\pgfornament[width=.6\linewidth,color=blue!40!green!60,opacity=.2]{74}
-\pgfornament[width=.6\linewidth,color=blue!10,opacity=.15]{133}
-\end{column}
+  \begin{column}{.6\linewidth}
+  \tableofcontents[hideallsubsections]
+  \end{column}
+  \begin{column}{.4\linewidth}
+  \pgfornament[width=.7\linewidth,color=blue!40!green!60,opacity=.2]{74}
+  \pgfornament[width=.7\linewidth,color=blue!10,opacity=.25]{133}
+  \end{column}
 \end{columns}
 \end{frame}
 
@@ -178,15 +176,51 @@ ctex 宏集中现提供宏包 ctex.sty, ctexsize.sty, ctexheading.sty. ctex 文�
 \end{itemize}
 \end{frame}
 
+\subsection{实用命令选讲}
+\begin{frame}[fragile]
+\frametitle{实用命令选讲}
+\begin{itemize}
+\item \verb|\zihao{(字号)}| 字号 $n$ 可为 -6--8 间的整数 ($-6 \leq n \leq 8, n \in \mathbb{Z}$), 0 和正整数分别表示初（零）号，一号，……，八号。而 -0 和负整数 $-n$ 则表示小 $n$ 号 ($0 \leq n \leq 6$).
+\item 中文数字转换（调用 zhnumber 宏包实现） %\\
+% \verb|\zhnumber{(number)}| 以中文格式输出数字。这里的 number 可以是整数、小数和分数。\verb|\zhdigits {⟨number⟩}| 将阿拉伯数字转换为中文数字串。
+\begin{sidelst}
+\zhnumber{201.5} \\
+\zhnumber{1/2} \\
+\zhdigits{12345}
+\end{sidelst}
+另有 \verb|\chinese{(counter)}|, 用法与 \verb|\roman| 等命令用法类似，作用在一个 \LaTeX 计数器 (counter) 上。
+\end{itemize}
+\end{frame}
+
 \begin{frame}
 \frametitle{练习}
 \begin{Ex}{编译中文 \LaTeX}{compile}
-请修改 Listing \ref{lst:hello} ， 给出一种能够输出中文的解决方案。
+请修改 Listing \ref{lst:hello}， 给出一种能够输出中文的解决方案。
 \end{Ex}
 \end{frame}
 
 % \appendix
-\section{关于字符编码}
+\section{补充}
+\subsection[过时的中文方案]{过时的中文 \LaTeX 解决方案}
+\begin{frame}
+\frametitle{CTeX 套装}
+\href{http://www.ctex.org/CTeX}{CTeX 套装}基于 MiKTeX 发行版，“支持 CJK, xeCJK, CCT, TY 等多种中文 \TeX 处理方式。”
+
+\href{http://www.ctex.org/CTeXReleaseNotes}{CTeX Release Notes} 中最新版本为 v2.9.2.164 --- 2012.03.22.
+
+\alert{一款停止维护更新的软件注定不能适应新的时代。}
+\end{frame}
+
+\begin{frame}
+\frametitle{其他方案}
+\begin{description}
+\item[CJK 宏包] CTAN 上最后一个 \href{https://www.ctan.org/pkg/cjk}{CJK 宏包}发布版本为 4.8.4 2015-04-18. 而 \href{https://www.ctan.org/pkg/xecjk}{xeCJK 宏包}最后更新于 2018-05-01, 且当前仍有两位活跃的维护者 (Qing Lee, Leo Liu)。
+\item[CCT 模板] 博文《\href{https://liam.page/2013/10/15/LaTeX-CCT-template/}{【LaTeX Tips】国内期刊 CCT 模板编译经验}》对过时的 \href{ftp://ftp.cc.ac.cn/pub/cct/}{CCT} 模板的使用有所讨论。
+\item[TY] 可能过于老旧，我搜索不到相关信息。
+\end{description}
+\end{frame}
+
+\subsection{关于字符编码}
 \begin{frame}
 \frametitle{字符编码 (encoding)}
 包含中文的常见编码方式有 UTF-8 和 GBK.
@@ -198,18 +232,20 @@ GBK 编码常见于 Windows 中文版操作系统。当前版本的 Win 10 系�
 
 \begin{frame}[fragile]
 \frametitle{注记}
-使用 UTF-8 和 \hologo{XeLaTeX}/\hologo{LuaLaTeX} 引擎时，所有 Unicode 字符均可以直接输入。例如，所有中文标点，包括单/双引号 ‘\, ’ “\, ” 均直接输入。但仍建议英文单双引号以 \verb|`'| 或 \verb|``''| 的形式输入。
+使用 \hologo{XeLaTeX}/\hologo{LuaLaTeX} 引擎时，所有 Unicode 字符均可直接输入。
+
+例如，所有中文标点，包括单/双引号 ‘\, ’ “\, ” 均直接输入。但建议英文单双引号以 \verb|`'| 或 \verb|``''| 的形式输入。
 
 \begin{Ex}{编码转换}{encoding}
 请尝试将一 GBK 编码的文件以 UTF-8 编码打开并保存。然后将新文件再次以 GBK 编码打开并保存。
 \end{Ex}
-\begin{block}{强烈建议}
+\begin{alertblock}{强烈建议}
 请将源代码文件以 UTF-8 编码保存。
-\end{block}
+\end{alertblock}
 \end{frame}
 
 
-\section{latexmk 工具}\label{ap:latexmk}
+\subsection{latexmk 工具}\label{ap:latexmk}
 \begin{frame}[fragile]
 \frametitle{latexmk 工具}
 \begin{quote}
@@ -229,7 +265,7 @@ xelatex Chinese-beamer
 \end{bashlst}
 \end{frame}
 
-\subsection{latexmk 命令参数}
+\subsubsection{latexmk 命令参数}
 \begin{frame}
 \frametitle[命令参数]{latexmk 命令参数}
 \textbf{latexmk} 有很多可选参数（空格隔开，无顺序要求）。这里仅举几例：
@@ -246,13 +282,13 @@ xelatex Chinese-beamer
 \begin{Ex}{利用 latexmk 自动编译}{latexmk}
 请分别手动和使用 \textbf{latexmk} 编译 Chinese-beamer.tex.
 
-提示：生成的 PDF 文档中有两个 `?'. 可以搜索自己手动编译生成的 PDF 文档中问号的数量是否多于两个初步判断编译步骤是否全部完成。此外，还可通过编译日志 Chines-beamer.log 文件及编译器的输出查询编译步骤是否欠缺。
+提示：生成的 PDF 文档中有两个半角符号 `?'. 可以搜索自己手动编译生成的 PDF 文档中问号的数量是否多于两个初步判断编译步骤是否全部完成。此外，还可通过编译日志 Chines-beamer.log 文件及编译器的输出查询编译步骤是否欠缺。
 \end{Ex}
 \end{frame}
 
 
-\section{多文件文档}
-\subsection{标准方式}
+\subsection{多文件文档}
+\subsubsection{标准方式}
 \begin{frame}[fragile]
 \frametitle{文件引用标准方式}
 \verb|\input{filename}| 或 \verb|\include{filename}| 来引用纯文本文件
@@ -277,8 +313,15 @@ xelatex Chinese-beamer
 \end{Ex}
 \end{frame}
 
-% \section*{参考资料}
+\subsection*{结语}
+\begin{frame}
+\frametitle{鸣谢}
+感谢 FZX、LFZ、SCJ 三位同学帮我审阅初稿并指出错误和不足。
+\end{frame}
+  
+% \subsection*{参考资料}
 \begin{frame}[allowframebreaks]{参考资料}
 \printbibliography[heading=none]
 \end{frame}
+
 \end{document}

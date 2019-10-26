@@ -1,0 +1,18 @@
+\documentclass{ctexbook}
+\setcounter{chapter}{33}
+
+% 以下内容来自 CTeX 宏集手册第 7 节 章节标题格式设置 19 页例 18
+\usepackage{varwidth} %% 提供 varwidth 环境
+\ctexset{
+  chapter/name = {第,回},
+  chapter/titleformat = \chaptertitleformat
+}
+\newcommand\chaptertitleformat[1]{%% 以标题内容为参数
+  \begin{varwidth}[t]{.7\linewidth}
+  #1
+  \end{varwidth}
+}
+
+\begin{document}
+\chapter{情中情因情感妹妹\\错里错以错劝哥哥}
+\end{document}
