@@ -1,6 +1,12 @@
 ##Compile
 ###With *latexmk*
-This time we recommend using the tool **latexmk** with option -xelatex or -lualatex, i.e., given a .tex file (e.g., beamer.tex), running
+We recommend using the tool **latexmk**
+#### The recommended way
+without any options, (by virtue of '.latexmkrc',) simply type
+
+    latexmk
+#### Custom way
+With option -xelatex or -lualatex, i.e., given a .tex file (e.g., beamer.tex), running
 
     latexmk -xelatex beamer
 or

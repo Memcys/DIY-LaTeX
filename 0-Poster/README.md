@@ -4,6 +4,11 @@ These poster*.tex use as the TeX class file the *modified* **betterposter.cls** 
 ## Compile
 Please use **xelatex** or **lualatex**.
 
+### Recommended way
+
+    latexmk
+
+### Custom way
 First, compile invitation.tex (and also circular_glow.tex for poster_snow.tex):
 
     xelatex invitation
