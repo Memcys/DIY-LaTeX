@@ -7,6 +7,9 @@ $pdf_mode = 5;
 # Default files
 @default_files = ('Demos/demo-chapter-4', 'Demos/demo-chapter-34', 'Chinese', 'Chinese-beamer');
 
+# Put all generated files (including auxillary files) to the given directory
+# $out_dir = "Out";
+
 # Additional auxillary files to clean up
 $clean_ext = "listing vrb nav exercise run.xml snm lol xdv";
 

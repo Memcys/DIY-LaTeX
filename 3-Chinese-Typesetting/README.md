@@ -16,7 +16,7 @@ Then you can feel free to compile the main .tex files: *Chinese.tex* and *Chines
 By virtue of the .latexmkrc file, you can simply type
 
     latexmk
-and then take coffee and have a rest; it took 29.81 seconds for the first compilation in my Linux machine.
+and then take coffee and have a rest; it took 31.13 seconds for the first compilation in my Linux machine.
 
 #### Clean up
 To keep .pdf files, please type

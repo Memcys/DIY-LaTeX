@@ -1,4 +1,4 @@
-\documentclass[final,aspectratio=32]{ctexbeamer}
+\documentclass[final,aspectratio=169]{ctexbeamer}
 
 % Custom package providing several listing environments
 \usepackage{mylsts}
@@ -12,7 +12,7 @@
 \subtitle{\textbf{DIY \LaTeX} $4$th Report}
 \author[Memcys]{Memcys \\ \url{https://github.com/Memcys/DIY-LaTeX}}
 \institute[UCAS]{University of Chinese Academy of Sciences}
-\date{\zhganzhinian{2019} \zhdate{2019/10/27} \zhweekday{2019/10/27}}
+\date{（\zhganzhinian{2019}） \zhdate{2019/10/27} \zhweekday{2019/10/27}}
 
 \begin{document}
 \frame{\titlepage}
@@ -35,11 +35,13 @@
 
 \subsection{补充}
 \begin{frame}[fragile]{补充}
-以下谨以 amsmath 宏包提供的三个功能作一点补充：
 \begin{itemize}
   \item 带框数学环境 \verb|\boxed{}, \framebox{}|
   \item gathered, aligned, alignedat 嵌套数学环境
   \item cases 环境
+  \item QQ/ 微信 \TeX 群组
+  \item 中文问答网站 \url{https://wenda.latexstudio.net/}
+  \item 命令行工具 texdoc
 \end{itemize}
 \end{frame}
 
@@ -81,6 +83,19 @@ cases 环境。效果如下：
 \end{sidelst}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{问答相关}
+\begin{itemize}
+\item QQ 或微信有不少 \TeX 用户群组。其中有些群组有活跃开发 \TeX 项目的人员，回答质量高，且群组里有较好的问答氛围。
+\item \url{https://wenda.latexstudio.net/} 是一个新成立（至少基于一个五千人 QQ 群）但活跃的问答社区。一些优秀的 \TeX 开发人员也常在此回答问题。
+\item 查看宏包的另一种方式是使用命令行工具 \textbf{texdoc}:
+\begin{bashlst}
+texdoc packagename
+\end{bashlst}
+当然，它实际上是已经介绍的 TeXDoc GUI 的底层实现。
+\end{itemize}
+\end{frame}
+
 \section*{目录}
 \begin{frame}{目录}
 \begin{columns}
@@ -110,7 +125,7 @@ cases 环境。效果如下：
 
 \subsection[宏包选项]{xcCJK 宏包选项选讲}
 \begin{frame}[fragile]{xcCJK 宏包选项选讲}
-见 \cite{xecjk} \S 3.1:
+见 xeCJK 宏包 \cite{xecjk} \S 3.1:
 \begin{itemize}
   \item xeCJKactive = (\textit{true}|\textbf{false}) \\
   xeCJK 默认忽略 CJK 文字间的空格,使用这一选项来保留这些空格。
@@ -176,7 +191,7 @@ ctex 宏集中现提供宏包 ctex.sty, ctexsize.sty, ctexheading.sty. ctex 文�
 \end{itemize}
 \end{frame}
 
-\subsection{实用命令选讲}
+\subsection{实用命令选讲}\label{sec:practical-options}
 \begin{frame}[fragile]
 \frametitle{实用命令选讲}
 \begin{itemize}
@@ -186,10 +201,46 @@ ctex 宏集中现提供宏包 ctex.sty, ctexsize.sty, ctexheading.sty. ctex 文�
 \begin{sidelst}
 \zhnumber{201.5} \\
 \zhnumber{1/2} \\
-\zhdigits{12345}
+\zhdigits{012345} \\
+\zhdigits*{012345}
 \end{sidelst}
 另有 \verb|\chinese{(counter)}|, 用法与 \verb|\roman| 等命令用法类似，作用在一个 \LaTeX 计数器 (counter) 上。
 \end{itemize}
+\end{frame}
+
+
+\subsection{章节标题选讲}\label{sec:section-title}
+\frame{
+章节标题格式设置等属于“文档元素”主题，后续将由 ZSN 同学报告。
+
+这里仅举两例而不作具体说明。
+}
+
+\begin{frame}
+\frametitle{章节标题示例一}
+\texinputlst[label=lst:chapter4]{Demos/demo-chapter-4.tex}
+\end{frame}
+
+\begin{frame}
+\frametitle{章节标题示例效果图}
+\begin{figure}
+\centering
+% trim=left bottom right top
+\frame{\includegraphics[trim={9.5cm 19.8cm 9.5cm 6.6cm},clip]{demo-chapter-4}}
+\caption{Listing \ref{lst:chapter4} 效果}
+\label{img:4}
+\end{figure}
+\begin{figure}
+\centering
+\frame{\includegraphics[trim={4.3cm 20.5cm 5.5cm 7cm},clip]{demo-chapter-34}}
+\caption{Listing \ref{lst:chapter34} 效果}
+\label{img:34}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{章节标题示例二}
+\texinputlst[label=lst:chapter34]{Demos/demo-chapter-34.tex}
 \end{frame}
 
 \begin{frame}
@@ -265,6 +316,25 @@ xelatex Chinese-beamer
 \end{bashlst}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{latexmkrc}
+配合配置文件 latexmkrc, latexmk 的功能更加强大。
+
+例如，编译当前报告（配合文档），如果只利用 latexmk 工具，至少需要
+\begin{bashlst}[numbers=left]
+cd Demos
+xelatex demo-chapter-4
+xelatex demo-chapter-34
+cd ../
+latexmk -xelatex Chinese
+latexmk -xelatex Chinese-beamer
+\end{bashlst}
+如果同时利用项目中的 `.latexmkrc' 文件，则只需
+\begin{bashlst}
+latexmk
+\end{bashlst}
+\end{frame}
+
 \subsubsection{latexmk 命令参数}
 \begin{frame}
 \frametitle[命令参数]{latexmk 命令参数}
@@ -280,7 +350,7 @@ xelatex Chinese-beamer
 \begin{frame}
 \frametitle{练习}
 \begin{Ex}{利用 latexmk 自动编译}{latexmk}
-请分别手动和使用 \textbf{latexmk} 编译 Chinese-beamer.tex.
+请分别手动和使用 \textbf{latexmk} 编译 Chinese-beamer.tex 和 Chinese.tex. \\ \myhrule
 
 提示：生成的 PDF 文档中有两个半角符号 `?'. 可以搜索自己手动编译生成的 PDF 文档中问号的数量是否多于两个初步判断编译步骤是否全部完成。此外，还可通过编译日志 Chines-beamer.log 文件及编译器的输出查询编译步骤是否欠缺。
 \end{Ex}
@@ -316,7 +386,7 @@ xelatex Chinese-beamer
 \subsection*{结语}
 \begin{frame}
 \frametitle{鸣谢}
-感谢 FZX、LFZ、SCJ 三位同学帮我审阅初稿并指出错误和不足。
+\input{Sections/thanks.tex}
 \end{frame}
   
 % \subsection*{参考资料}

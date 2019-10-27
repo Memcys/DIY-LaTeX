@@ -3,6 +3,7 @@
 *.py
 __*
 __*/
+*.pdfpc
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

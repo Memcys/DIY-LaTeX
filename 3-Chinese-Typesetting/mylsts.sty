@@ -21,6 +21,7 @@
 \newcommand{\inputlst}[3][]{
   \lstinputlisting[
     #2,
+    numbers=left,
     numberstyle=\tiny,
     frame=TB,
     xleftmargin=1cm,
@@ -30,21 +31,23 @@
     backgroundcolor=\color{bgcolor},
     breaklines,
     breakautoindent=true,
+    showstringspaces=false,
     basicstyle=\codesize\ttfamily,
     commentstyle=\codesize,
+    caption=\href{run:#3}{#3},
     #1,
   ]{#3}
 }
 
 \newcommand{\texinputlst}[2][]{
   \inputlst[%
-    caption=\href{run:#2}{#2},%
+    % caption=\href{run:#2}{#2},%
     #1,]%
-    {language=tex,numbers=left}{#2}
+    {language=tex}{#2}
 }
 
 \newcommand{\bashinputlst}[2][]{
-  \inputlst[#1]{language=bash,numbers=none}{#2}
+  \inputlst[#1]{language=bash}{#2}
 }
 
 % Code listing definitions using tcblisting
