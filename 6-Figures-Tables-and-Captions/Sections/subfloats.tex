@@ -30,36 +30,4 @@
   \includegraphics[trim=7.5cm 21.cm 7.cm 3.8cm, clip]{demo-continuedfloat}
   \caption{ContinuedFloat 示例}
   \label{demo-continuedfloat}
-\end{figure}利用 \href{http://www.ctan.org/pkg/subcaption}{subcaption 宏包} \cite{subcaption}，在 figure 环境中嵌入 subfigure 环境插入子图。
-\texinputlst{Demos/demo-subcaption.tex}
-\begin{figure}[]
-  \centering
-  \includegraphics[trim=4.4cm 11.8cm 4.4cm 12.cm, clip]{demo-subcaption}
-  \caption{subcaption 宏包示例}
-  \label{demo-subcaption}
-\end{figure}
-同样地，在 table 环境中嵌入 subtable 环境插入子表格。以下为用法示例：
-\begin{texlst}
-\begin{table}[<placement specifier>]
-  \begin{subtable}[<placement specifier>]{<width>}
-      \centering
-      ... table 1 ...
-  \caption{<sub caption>}
-  \end{subtable}
-  ~
-  \begin{subtable}[<placement specifier>]{<width>}
-      \centering
-      ... table 2 ...
-      \caption{<sub caption>}
-  \end{subtable}
-\end{table}
-\end{texlst}
-
-如果需要将图拆分成多个部分，例如
-\texinputlst{Demos/demo-continuedfloat.tex}
-\begin{figure}[]
-  \centering
-  \includegraphics[trim=7.5cm 21.cm 7.cm 3.8cm, clip]{demo-continuedfloat}
-  \caption{ContinuedFloat 示例}
-  \label{demo-continuedfloat}
 \end{figure}

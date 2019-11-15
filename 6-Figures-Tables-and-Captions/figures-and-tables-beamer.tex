@@ -1,0 +1,550 @@
+\documentclass[]{ctexbeamer}
+
+\usepackage{myfloatpkgs}
+\usepackage{mymisc-beamer}
+\usepackage{mylsts}
+
+\usetheme{EastLansing}
+\usefonttheme{serif}
+
+\setCJKmainfont[FallBack=Noto Serif CJK TC]{Noto Serif CJK SC}
+\setCJKmonofont{Source Han Mono SC}
+
+\title{图表和标注}
+\subtitle{Figures, Tables and Captions}
+\author[Memcys]{Memcys \\ https://github.com/Memcys/DIY-LaTeX}
+\institute[UCAS]{University of Chinese Academy of Sciences}
+
+\begin{document}
+\titlepage
+
+\setcounter{section}{-1}
+\section{回顾及补充}
+% \input{Sections/review-and-complement.tex}
+% \subsection{\cnen[Indentation]{缩进}}
+% \verb+\indent+ 表示段落缩进；\verb+\noindent+ 表示取消段落缩进。
+
+\subsection{\cnen[Floats]{浮动体}}
+\begin{frame}{浮动体}
+除了 ``table'' 和 ``figure''，\LaTeX 还支持自定义浮动体。
+
+\cite{wiki:floats} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions\#Floats}{Floats} 一节中写道：
+\begin{quote}
+  Floats are there to deal with the problem of the object that won't fit on the present page, and to help when you really don't want the object here just now. 
+\end{quote}
+\end{frame}
+
+\begin{frame}[fragile]{修改浮动体参数}
+\begin{bashlst}
+! LaTeX Error: Too many unprocessed floats.
+\end{bashlst}
+报错：待放置的浮动体数量超过了上限（默认为 18 个）。宏包 morefloats 可提升该上限。
+
+浮动体在每页中的数量、在页面部分的占比也受限制。可通过下列命令修改默认值：
+\begin{texlst}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.7}
+\end{texlst}
+具体请参见 \cite{placement} 或其他资料。
+\end{frame}
+
+
+\subsection{\cnen[Bibliography]{参考文献}}
+\begin{frame}[fragile]{biblatex + biber}
+我个人常用 biblatex 宏包并结合 biber 编译工具。用法示例如下：
+\begin{texlst}
+% Preamble
+\usepackage[]{biblatex}
+\addbibresource{bib-filename.bib}
+
+% Bibliography in the document
+\printbibliography[]
+\end{texlst}
+编译时，根据提示，需使用 biber （或 bibtex）编译。当然，latexmk 工具可自动完成相应编译。
+\begin{bashlst}
+biber tex-filename
+# or bibtex tex-filename
+\end{bashlst}
+\end{frame}
+
+
+\section{\cnen[Figures]{图}}
+% \input{Sections/figures.tex}
+\subsection{插图}
+\begin{frame}[fragile,allowframebreaks]{行内插图}
+正文中通过可以通过如下方式插入图片：
+\begin{vertlst}
+% \usepackage{graphicx} % Provide \includegraphics[]{}
+% \usepackage{mwe}      % Provide example images.
+行 \includegraphics[height=2\ccwd]{example-image-c}
+内 \includegraphics[height=2\ccwd,angle=45]{example-image-c}
+图 \includegraphics[totalheight=2\ccwd,angle=90]{example-image-c}
+片 \reflectbox{\includegraphics[totalheight=2\ccwd]{example-image-c}}
+\end{vertlst}
+\end{frame}
+
+\begin{frame}[fragile]{行间插图}
+\begin{vertlst}
+行间 \\ \includegraphics[scale=.5]{example-image} \\ 图片
+\end{vertlst}
+\end{frame}
+
+
+\begin{frame}[fragile]{includegraphics 可选参数}
+\verb+\includegraphics+ 有不少可选参数。常用的可能有
+\begin{description}
+  \item[angle] 指定旋转角度 ($^\circ$)。
+  \item[width] 指定图片宽度。例如， width=5cm; 或者， width=.5\verb+\linewidth+ 等。
+  \item[height] 指定图片高度。例如， height=.35\verb+\textheight+.
+  \item[totalheight] 制定图片全高。当图片旋转时，效果不同于 height.
+  \item[scale] 放缩。如 scale=.5 表示缩小为 0.5 倍。 
+  \item[trim] 选定矩形区域。例如 trim = 1 2 3 4 选定图片区域为距左部 1bp, 距下部 2bp, 距右部 3bp, 距上部 4bp 的矩形区域。 可自行指定单位。
+  \item[clip] 按选定的区域裁减。
+  \item[keepaspectratio] 保持长宽比例。可设置为 true 或 false. 
+  \item[page] 指定插入的 PDF 页面。 
+\end{description}
+\end{frame}
+
+
+\begin{frame}[fragile]{graphicspath}
+如果在导言区添加
+\begin{texlst}
+\graphicspath{{Demos/}{Images/}}
+\end{texlst}
+则将在插入图片时在上述两个文件夹下搜索图片（注意 \verb+/+ 不可缺少）。
+\end{frame}
+
+
+\subsection{\cnen[figure]{浮动体环境}}
+\begin{frame}[fragile]{figure 环境}
+在装有 LaTeX Workshop 插件的 VS Code 编辑器中，键入 `figure' 可通过回车键得到如下自动补全的模板内容：
+\begin{texlst}
+\begin{figure}[]
+  \centering
+  
+  \caption{}
+  \label{}
+\end{figure}
+\end{texlst}
+在第 3 行添加
+\begin{texlst}
+\includegraphics[]{path/to/figure}
+\end{texlst}
+则可插入指定的图片。
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{itemize}
+  \item \verb+\begin{figure}+ 和 \verb+\end{figure}+ 是一个 figure 浮动体环境。其后的 \verb+[]+ 中为位置参数：h，t，b，p，!，H 或它们的组合（H 依赖于宏包 float 且将覆盖其余选项）。位置参数已在“盒子、浮动体”的主题报告中介绍。值得一提的是，\LaTeX 中 \verb+[]+ 内的参数均为可选参数。
+  \item \verb+\centering+ 指定水平中心对齐。也可使用 center 环境 \\
+    \begin{texlst}[numbers=none]
+    \begin{center}
+    ...
+    \end{center}
+    \end{texlst}
+    代替。需要注意二者的作用域不同。
+  \item \verb+\includegraphics[]{}+ 插入图片
+  \item \verb+\caption+ 添加图注
+  \item \verb+\label{}+ 添加标签。可通过 \verb+\ref{}+ 引用。\verb+\label{}+ 须在 \verb+\caption{}+ 后
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{添加边框}
+可通过 float 宏包给图片添加边框。
+\texinputlst{Demos/demo-boxed.tex}
+\end{frame}
+
+
+\begin{frame}
+% 效果如图 \ref{demo-boxed}.
+\begin{figure}[]
+  \centering
+  \includegraphics[width=\linewidth,trim=4.6cm 11cm 4.6cm 11cm, clip]{demo-boxed}
+  \caption{demo-boxed}
+  \label{demo-boxed}
+\end{figure}
+\end{frame}
+
+
+
+\section{\cnen[Tables]{表格}}
+% \input{Sections/tables.tex}
+\subsection{tabular 环境}
+\begin{frame}[fragile]{tabular}
+tabular 环境是我常用的表格环境。它本身不是浮动体。
+\begin{sidelst}
+\begin{tabular}{|r|c|l|}
+\cline{1-1} \cline{3-3}
+1 & & 321 \\ \hline
+12 & 2 \\[.5cm] \hline
+123 & 123 & 3 \\ \hline
+\end{tabular}
+\end{sidelst}
+另有 tabu, tableau 等表格环境。这里不作介绍。
+\end{frame}
+
+
+\begin{frame}[fragile]{表格示例}
+表格环境多且复杂。以下参考 \cite{wiki:tables} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Tables\#Floating\_with\_table}{Floating with table} 一节。
+\begin{sidelst}
+\centering     % center the following objects
+\begin{tabular}{r | l c}  % alignment: {r: right; l: left; c: center}
+1 & 2 & 3 \\              % &: new column; \\: new row
+4 & 5 & 6 \\
+7 & 8 & 9 \\ \hline       % hline: horizontal line
+\end{tabular}
+\end{sidelst}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{sidelst}
+\begin{tabular}{|r|l|}    % | vertical line
+\hline
+7C0 & hexadecimal \\
+3700 & octal \\ \cline{2-2} % horizontal line from i to j
+11111000000 & binary \\
+\hline \hline
+1984 & decimal \\ \hline
+\end{tabular}
+\end{sidelst}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{sidelst}
+\begin{tabular}{cc}
+\hline % \parbox: paragraph box; automatically wrap the paragraph
+cell content & \parbox[t]{2.cm}{rather long par\\new par}
+\\ \hline
+\end{tabular}
+\\[1cm]
+\begin{tabular}{r@{.}l} % @{} seperation between columns
+\hline
+3   & 14159 \\
+16  & 2     \\
+123 & 456   \\ \hline
+\end{tabular}
+\end{sidelst}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{vertlst}
+% \usepackage{dcolumn}
+\newcolumntype{d}[1]{D{.}{\cdot}{#1} }
+%the argument for d specifies the maximum number of decimal places
+\begin{tabular}{l r c d{1} }
+\toprule
+L & R & C & \multicolumn{1}{c}{Decimal} \\ \midrule
+1 & 2 & 3 & 4 \\
+11 & 22 & 33 & 44 \\
+1.1 & 2.2 & 3.3 & 4.4 \\ \bottomrule
+\end{tabular}
+\end{vertlst}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{vertlst}
+\begin{tabular}{ |l|l|l| }
+\hline
+\multicolumn{3}{ |c| }{Team sheet} \\ \hline
+Goalkeeper & GK & Paul Robinson \\ \hline
+\multirow{4}{*}{Defenders} & LB & Lucas Radebe \\
+  & DC & Michael Duburry \\
+  & DC & Dominic Matteo \\
+  & RB & Didier Domi \\ \hline
+\end{tabular}
+\end{vertlst}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{vertlst}
+\begin{tabular}{ *{3}{| c} | p{3.5cm} |}
+\hline
+Day & Min Temp & Max Temp & Summary \\ \hline
+Monday & 11C & 22C & A clear day with lots of sunshine. \\ \hline
+\end{tabular}
+\end{vertlst}
+\end{frame}
+
+
+\subsection{长表格}
+\begin{frame}[fragile,allowframebreaks]{landscape}
+有的图表等可能过长或过宽。可缩小字体大小、列间距，横向 (landscape) 放置或跨页放置。
+
+横向放置可使用 landscape 环境。多个宏包 (geometry, lscape, pdflscape) 提供了 landscape 相关选项。甚至可以直接在文档类选项中指定 landscape. 请参见 \cite{texblog-table}.
+\end{frame}
+
+\begin{frame}[fragile]{pdflscape}
+以 pdflscape 宏包为例。
+\texinputlst{Demos/demo-pdflscape.tex}
+\end{frame}
+
+
+\begin{frame}{longtable}
+前页代码效果见文件 \href{run:Demos/demo-pdflscape.pdf}{Demos/demo-pdflscape.pdf}.
+
+宏包 longtable 可以产生跨页的表格。具体请参见其\href{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}{宏包文档} \cite{longtable}.
+\end{frame}
+
+
+\section{\cnen[Captions]{标注}}
+% \input{Sections/floats.tex}
+\begin{frame}[fragile]{caption}
+% 在浮动体环境中，添加 \verb+\caption{}+ 即得到标注。
+\texinputlst{Demos/demo-caption.tex}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}[]
+  \centering
+  \includegraphics[trim=7.5cm 3.7cm 7.5cm 4.2cm, clip,height=\textheight]{demo-caption}
+  \caption{图表的标柱示例}
+  \label{demo-caption}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\texinputlst{Demos/demo-sidecap.tex}
+\end{frame}
+
+\captionsetup[figure]{name=边注图}
+
+\begin{frame}
+\begin{figure}[]
+  \centering
+  \includegraphics[trim=6.8cm 12.5cm 6.8cm 9.5cm, clip]{demo-sidecap}
+  \caption{sidecap 示例}
+  \label{demo-sidecap}
+\end{figure}
+\end{frame}
+
+\captionsetup[figure]{name=图}
+
+% \subsection{标注样式}
+\begin{frame}[fragile]{caption 样式}
+\href{http://www.ctan.org/pkg/caption}{caption 宏包} \cite{caption} 提供了标注样式的修改命令。
+\begin{texlst}[numbers=none]
+\usepackage{caption}
+\captionsetup[figure]{name=边注图}
+\end{texlst}
+修改标号样式：
+\begin{texlst}[numbers=none]
+\renewcommand{\thefigure}{\arabic{section}.\roman{figure}}
+\end{texlst}
+\end{frame}
+
+
+
+\section{图表效果控制}
+\subsection{图表目录}
+% \input{Sections/listof.tex}
+\begin{frame}[fragile]{图表目录}
+\begin{texlst}[numbers=none]
+\listoffigures
+\listoftables
+\end{texlst}
+分别列出添加了 \verb+\caption{}+ 或 \verb+\captionof{}{}+ 的图表。
+\end{frame}
+
+
+% \begin{frame}[fragile]
+% \listoftables
+% \listoffigures
+% \end{frame}
+
+
+
+\subsection{图表嵌入文段}
+% \input{Sections/wrapping.tex}
+\begin{frame}[fragile]{wrapfig}
+参考 \cite{wiki:floats} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions\#Wrapping\_text\_around\_figures}{Wrapping text around figures} 一节。
+\begin{vertlst}
+% \usepackage{wrapfig,ctex}
+\small\zhlipsum[2][name=nanshanjing]
+\begin{wrapfigure}{r}{.4\textwidth}
+  \vspace{-12pt}\centering
+  \includegraphics[width=.3\textwidth]{example-image}
+  \caption{图片嵌入文段示例}
+\end{wrapfigure}
+\zhlipsum[3][name=nanshanjing]
+\end{vertlst}
+\end{frame}
+
+
+\subsection{\cnen[Subfloats]{子浮动体}}\label{sec:subfloats}
+% \input{Sections/subfloats.tex}
+\begin{frame}[fragile]{subfigure}
+\href{http://www.ctan.org/pkg/subcaption}{subcaption 宏包} \cite{subcaption} 提高 figure 中的子环境 subfigure.
+\texinputlst{Demos/demo-subcaption.tex}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}[]
+  \centering
+  \includegraphics[width=\linewidth,trim=4.4cm 11.8cm 4.4cm 12.cm, clip]{demo-subcaption}
+  \caption{subcaption 宏包示例}
+  \label{demo-subcaption}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]{subtable}
+同样地，在 table 环境中嵌入 subtable 环境插入子表格。
+\begin{texlst}
+\begin{table}[<placement specifier>]
+  \begin{subtable}[<placement specifier>]{<width>}
+      \centering
+      ... table 1 ...
+  \caption{<sub caption>}
+  \end{subtable}
+  ~
+  \begin{subtable}[<placement specifier>]{<width>}
+      \centering
+      ... table 2 ...
+      \caption{<sub caption>}
+  \end{subtable}
+\end{table}
+\end{texlst}
+\end{frame}
+
+
+\begin{frame}[fragile]{ContinuedFloat}
+% 如果需要将图拆分成多个部分，例如
+\texinputlst{Demos/demo-continuedfloat.tex}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}[]
+  \centering
+  \includegraphics[trim=7.5cm 21.cm 7.cm 3.8cm, clip]{demo-continuedfloat}
+  \caption{ContinuedFloat 示例}
+  \label{demo-continuedfloat}
+\end{figure}
+\end{frame}
+
+
+
+\subsection{图中标注}
+% \input{Sections/pinlabel.tex}
+\begin{frame}[fragile]{pinlabel}
+参考 \cite{wiki:floats} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions\#Labels\_in\_the\_figures}{Labels in the figures}一节 和 \href{http://mirrors.ctan.org/macros/latex/contrib/pinlabel/pinlabdoc.pdf}{pinlabel 宏包文档} \cite{pinlabel}.
+\begin{vertlst}
+% \usepackage{pinlabel}
+\labellist \small\hair 2pt
+\pinlabel $A$ [bl] at 255 200
+\pinlabel B [r] at 75 30
+\endlabellist
+\centering
+\includegraphics[scale=.25]{example-image}
+\end{vertlst}
+更复杂的图中标注，请使用 Ti\emph{k}Z.
+\end{frame}
+
+
+
+\subsection{阻止浮动体浮动}
+% \input{Sections/resist-floats.tex}
+\begin{frame}[fragile]{阻止浮动体浮动}
+参考 \cite{wiki:floats} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions\#Keeping\_floats\_in\_their\_place}{Keeping floats in their place} 一节。
+\begin{itemize}
+  \item\label{FloatBarrier} placeins 宏包提供的 \verb+\FloatBarrier+ 阻止浮动体越过其所在位置。
+  \item\label{endfloat} endfloat 宏包将所有浮动体放置在文末。
+  \item caption 宏包提供命令 \verb+\captionof{type}{caption content}+, 为不在浮动体环境中的对象提供标注。
+\end{itemize}
+\begin{sidelst}
+请见图 \ref{captionof}.
+
+\includegraphics[width=.5\linewidth]{example-image}
+\captionof{figure}{captionof 示例}
+\label{captionof}
+\end{sidelst}
+\end{frame}
+
+
+\begin{frame}[fragile]{讨论：关于图表的浮动}
+关于图表浮动问题的讨论有很多。被提出的方案有
+\begin{itemize}
+  \item 放弃浮动体
+  \item 使用 \verb+\clearpage+ 强制插入当前待放置的浮动体（类似地有 \verb+\FloatBarrier+ 等， 见 \ref{FloatBarrier} \ref{endfloat}）
+  \item 使用 float 宏包提供的 H 位置选项禁止浮动
+  \item 任其自由浮动
+\end{itemize}
+我个人倾向于文档编辑中“任其自由浮动”，必要时“放弃浮动体”；还可以利用 \verb+\captionof{}{}+ 保证能够被引用 (\verb+\ref{}+).
+\end{frame}
+
+
+\section{小技巧}
+\subsection{放大段首字符}
+% \input{Sections/initials.tex}
+\begin{frame}[fragile]{英文段首}
+\begin{vertlst}
+  % \usepackage{lettrine,ctex}     % ctex provides Chinese support
+  
+  \lettrine[lines=3]{T}{he Road Not Taken} \\
+  Two roads diverged in a yellow wood,
+  And sorry I could not travel both
+  And be one traveler, long I stood
+  And looked down one as far as I could
+  To where it bent in the undergrowth;
+\end{vertlst}
+\end{frame}
+
+
+\begin{frame}[fragile]{中文段首}
+\begin{vertlst}
+  \lettrine{断}{章}
+  你站在桥上看风景，
+  看风景人在楼上看你。
+  明月装饰了你的窗子，
+  你装饰了别人的梦。
+  \end{vertlst}
+\end{frame}
+
+
+
+\subsection{塑形段落}
+% \input{Sections/shapepar.tex}
+\begin{frame}[fragile]{shapepar}
+\begin{vertlst}
+% \usepackage{shapepar,ctex}     % ctex provides Chinese support
+\small
+\nutpar{\zhlipsum[2-3][name=nanshanjing]}
+\end{vertlst}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{vertlst}
+\tiny\heartpar{How do I love thee? Let me count the ways.
+I love thee to the depth and breadth and height
+My soul can reach, when feeling out of sight
+For the ends of being and ideal grace.
+I love thee to the level of every day’s
+Most quiet need, by sun and candle-light. \ldots{}
+I love thee with a love I seemed to lose
+With my lost saints. I love thee with the breath,
+Smiles, tears, of all my life; and, if God choose,
+I shall but love thee better after death.}
+\end{vertlst}
+\end{frame}
+
+% \printbibliography[title=参考资料]
+\begin{frame}[allowframebreaks]{参考资料}
+\bibliography{ref}
+\end{frame}
+\end{document}

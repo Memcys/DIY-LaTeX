@@ -1,11 +1,8 @@
 % Following https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions#Figures_in_multiple_parts
 \documentclass{article}
-\usepackage{caption}
-\usepackage{lipsum}     % This package is optional
-
+\usepackage{caption,lipsum}     % lipsum is optional
 \DeclareCaptionLabelFormat{cont}{#1~#2\alph{ContinuedFloat}}
 \captionsetup[ContinuedFloat]{labelformat=cont}
-
 \begin{document}
 \begin{figure}
 	\ContinuedFloat*

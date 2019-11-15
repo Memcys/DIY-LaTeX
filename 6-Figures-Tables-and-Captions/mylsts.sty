@@ -14,10 +14,8 @@
 
 % Color definitions
 \definecolor{bgcolor}{rgb}{.95,.95,.92}
-\definecolor{framecolor}{rgb}{.98,.98,.95}
+\definecolor{framecolor}{rgb}{.8,.8,.75}
 \definecolor{titlecolor}{named}{white}
-
-\newcommand{\codesize}{\footnotesize}
 
 % Code listing definitions using lstlisting and lstinputlisting
 \newcommand{\inputlst}[3][]{
@@ -26,15 +24,15 @@
     numbers=left,
     numberstyle=\tiny,
     frame=TB,
-    xleftmargin=1cm,
-    xrightmargin=1cm,
+    xleftmargin=\xleftmargin,
+    xrightmargin=\xrightmargin,
     rulesep=.7pt,
     rulesepcolor=\color{framecolor},
     backgroundcolor=\color{bgcolor},
     breaklines,
     breakautoindent=true,
     showstringspaces=false,
-    basicstyle=\codesize\ttfamily,    % \codesize is defined elsewhere
+    basicstyle=\codesize\ttfamily,    % \codesize is defined in mymisc*.sty
     commentstyle=\codesize,
     caption=\href{run:#3}{#3},
     #1,
@@ -84,7 +82,7 @@
     language=tex,
     numbers=left,
     numberstyle=\codesize,
-    frame=TB,
+    frame=tb,
     xleftmargin=1.5cm,
     xrightmargin=1.5cm,
     rulesep=.7pt,
@@ -103,9 +101,9 @@
     language=bash,
     % numbers=none,
     numberstyle=\codesize,
-    % frame=TB,
-    xleftmargin=1.5cm,
-    xrightmargin=1.5cm,
+    frame=tb,
+    xleftmargin=\xleftmargin,
+    xrightmargin=\xrightmargin,
     % rulesep=.7pt,
     % rulesepcolor=\color{framecolor},
     backgroundcolor=\color{bgcolor},

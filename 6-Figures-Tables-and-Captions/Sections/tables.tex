@@ -8,8 +8,9 @@ tabular 环境是我常用的表格环境。它本身不是浮动体。示例如
 123 & 123 & 3 \\ \hline
 \end{tabular}
 \end{sidelst}
+另有 tabu, tableau 等表格环境。这里不作介绍。
 
-表格环境多且复杂。这里将仅仅列举。希望大家自己参阅更多文档；并且调整代码，根据输出效果能够有所领会。以下主要参考 \cite{wiki-table} 中 \url{https://en.wikibooks.org/wiki/LaTeX/Tables\#Floating\_with\_table}{Floating with table} 一节。
+表格环境多且复杂。这里将仅仅列举。希望大家自己参阅更多文档；并且调整代码，根据输出效果能够有所领会。以下主要参考 \cite{wiki:tables} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Tables\#Floating\_with\_table}{Floating with table} 一节。
 \begin{sidelst}
 \centering     % center the following objects
 \begin{tabular}{r | l c}  % alignment: {r: right; l: left; c: center}
@@ -69,11 +70,13 @@ Day & Min Temp & Max Temp & Summary \\ \hline
 Monday & 11C & 22C & A clear day with lots of sunshine. \\ \hline
 \end{tabular}
 \end{vertlst}
+这里我推荐阅读 \cite{texblog-table}.
+
 
 \subsection{长表格}
 有的图表等可能过长或过宽。可以考虑缩小字体大小、列间距，横向 (landscape) 放置或跨页放置。
 
-横向放置可使用 landscape 环境。多个宏包 (geometry, lscape, pdflscape) 提供了 landscape 相关选项。甚至可以直接在文档类选项中指定 landscape. 请参见 \cite{texblog}. 这里以 pdflscape 宏包为例。效果见表 \ref{demo-pdflscape} 所在页面。
+横向放置可使用 landscape 环境。多个宏包 (geometry, lscape, pdflscape) 提供了 landscape 相关选项。甚至可以直接在文档类选项中指定 landscape. 请参见 \cite{texblog-landscape}. 这里以 pdflscape 宏包为例。效果见表 \ref{demo-pdflscape} 所在页面。
 \texinputlst{Demos/demo-pdflscape.tex}
 
 \begin{landscape}

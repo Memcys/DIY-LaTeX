@@ -1,29 +1,19 @@
 \documentclass{ctexart}
-\usepackage{graphicx}
-\usepackage{mwe}
-
+\usepackage{graphicx,mwe}
 \begin{document}
 \begin{figure}
-  \caption{带有（上）图注的正向 C}
-  \centering
+  \centering \caption{带有（上）图注的正向 C}
   \includegraphics[width=.5\textwidth]{example-image-c}
 \end{figure}
-
 \begin{figure}
-\centering
-  \reflectbox{%
+\centering \reflectbox{%
   \includegraphics[width=.5\textwidth]{example-image-c}}
 \caption{带有（下）图注的镜像 C}
 \end{figure}
-
 \begin{table}
 \centering
   \begin{tabular}{| l c r |}
-  \hline
-  1 & 2 & 3 \\
-  4 & 5 & 6 \\
-  7 & 8 & 9 \\
-  \hline
+  \hline 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \\ \hline
   \end{tabular}
 \caption{带有表注简单表格}
 \end{table}
