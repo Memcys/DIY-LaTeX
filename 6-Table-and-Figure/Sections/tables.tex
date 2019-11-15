@@ -1,0 +1,91 @@
+\subsection{tabular 环境}
+tabular 环境是我常用的表格环境。它本身不是浮动体。示例如下：
+\begin{sidelst}
+\begin{tabular}{|r|c|l|}
+\cline{1-1} \cline{3-3}
+1 & & 321 \\ \hline
+12 & 2 \\[.5cm] \hline
+123 & 123 & 3 \\ \hline
+\end{tabular}
+\end{sidelst}
+
+表格环境多且复杂。这里将仅仅列举。希望大家自己参阅更多文档；并且调整代码，根据输出效果能够有所领会。以下主要参考 \cite{wiki-table} 中 \url{https://en.wikibooks.org/wiki/LaTeX/Tables\#Floating\_with\_table}{Floating with table} 一节。
+\begin{sidelst}
+\centering     % center the following objects
+\begin{tabular}{r | l c}  % alignment: {r: right; l: left; c: center}
+1 & 2 & 3 \\              % &: new column; \\: new row
+4 & 5 & 6 \\
+7 & 8 & 9 \\ \hline       % hline: horizontal line
+\end{tabular}
+\\[1cm]
+\begin{tabular}{|r|l|}    % | vertical line
+\hline
+7C0 & hexadecimal \\
+3700 & octal \\ \cline{2-2} % horizontal line from i to j
+11111000000 & binary \\
+\hline \hline
+1984 & decimal \\ \hline
+\end{tabular}
+\\[1cm]
+\begin{tabular}{cc}
+\hline % \parbox: paragraph box; automatically wrap the paragraph
+cell content & \parbox[t]{2.cm}{rather long par\\new par}
+\\ \hline
+\end{tabular}
+\\[1cm]
+\begin{tabular}{r@{.}l} % @{} seperation between columns
+\hline
+3   & 14159 \\
+16  & 2     \\
+123 & 456   \\ \hline
+\end{tabular}
+\end{sidelst}
+
+\begin{vertlst}
+% \usepackage{dcolumn}
+\newcolumntype{d}[1]{D{.}{\cdot}{#1} }
+%the argument for d specifies the maximum number of decimal places
+\begin{tabular}{l r c d{1} }
+\toprule
+L & R & C & \multicolumn{1}{c}{Decimal} \\ \midrule
+1 & 2 & 3 & 4 \\
+11 & 22 & 33 & 44 \\
+1.1 & 2.2 & 3.3 & 4.4 \\ \bottomrule
+\end{tabular}
+\\[.5cm]
+\begin{tabular}{ |l|l|l| }
+\hline
+\multicolumn{3}{ |c| }{Team sheet} \\ \hline
+Goalkeeper & GK & Paul Robinson \\ \hline
+\multirow{4}{*}{Defenders} & LB & Lucas Radebe \\
+  & DC & Michael Duburry \\
+  & DC & Dominic Matteo \\
+  & RB & Didier Domi \\ \hline
+\end{tabular}
+\\[.5cm]
+\begin{tabular}{ *{3}{| c} | p{4.5cm} |}
+\hline
+Day & Min Temp & Max Temp & Summary \\ \hline
+Monday & 11C & 22C & A clear day with lots of sunshine. \\ \hline
+\end{tabular}
+\end{vertlst}
+
+\subsection{长表格}
+有的图表等可能过长或过宽。可以考虑缩小字体大小、列间距，横向 (landscape) 放置或跨页放置。
+
+横向放置可使用 landscape 环境。多个宏包 (geometry, lscape, pdflscape) 提供了 landscape 相关选项。甚至可以直接在文档类选项中指定 landscape. 请参见 \cite{texblog}. 这里以 pdflscape 宏包为例。效果见表 \ref{demo-pdflscape} 所在页面。
+\texinputlst{Demos/demo-pdflscape.tex}
+
+\begin{landscape}
+\begin{table}
+\caption{山海经·南山经} \label{demo-pdflscape}
+\centering
+\begin{tabular}{b{5.2cm} m{5.2cm} p{5.2cm}}
+\toprule
+\zhlipsum[2][name=nanshanjing] & \zhlipsum[2][name=nanshanjing] & \zhlipsum[2][name=nanshanjing] \\ \midrule
+\multicolumn{3}{l}{\zhlipsum[3][name=nanshanjing]} \\ \bottomrule
+\end{tabular}
+\end{table}
+\end{landscape}
+
+宏包 longtable 可以产生跨页的表格。具体请参见其\href{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}{宏包文档} \cite{longtable}.

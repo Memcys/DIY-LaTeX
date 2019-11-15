@@ -1,0 +1,21 @@
+% Following https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions#Figures_in_multiple_parts
+\documentclass{article}
+\usepackage{caption}
+\usepackage{lipsum}     % This package is optional
+
+\DeclareCaptionLabelFormat{cont}{#1~#2\alph{ContinuedFloat}}
+\captionsetup[ContinuedFloat]{labelformat=cont}
+
+\begin{document}
+\begin{figure}
+	\ContinuedFloat*
+	\[ \mathrm{e^{i \pi}} + 1 = 0 \]
+	\caption{Euler's identity, first form.}
+\end{figure}
+\lipsum[4]
+\begin{figure}
+	\ContinuedFloat
+	\[ \mathrm{e^{i \pi}} = -1 \]
+	\caption{Euler's identity, second form.}
+\end{figure}
+\end{document}

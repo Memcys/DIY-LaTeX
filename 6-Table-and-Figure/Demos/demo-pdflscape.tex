@@ -1,0 +1,21 @@
+\documentclass{ctexart}
+\usepackage{pdflscape}
+\usepackage{zhlipsum}
+\usepackage{dcolumn}
+\usepackage{booktabs}
+
+\setCJKmainfont{Noto Serif CJK TC}
+
+\begin{document}
+\begin{landscape}
+\begin{table}
+\caption{山海经·南山经}
+\centering
+\begin{tabular}{b{5.2cm} m{5.2cm} p{5.2cm}}
+\toprule
+\multicolumn{3}{c}{\zhlipsum[2][name=nanshanjing]} \\ \midrule
+\zhlipsum[2][name=nanshanjing] & \zhlipsum[2][name=nanshanjing] & \zhlipsum[2][name=nanshanjing] \\ \bottomrule
+\end{tabular}
+\end{table}
+\end{landscape}
+\end{document}

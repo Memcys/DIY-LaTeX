@@ -1,0 +1,84 @@
+\subsection{插图}
+正文中通过可以通过如下方式插入图片：
+\begin{vertlst}
+% \usepackage{graphicx} % Provide \includegraphics[]{}
+% \usepackage{mwe}      % Provide images example-image and example-image-c.
+  
+% 行内图片
+行
+\includegraphics[height=2\ccwd]{example-image-c}
+内
+\includegraphics[height=2\ccwd,angle=45]{example-image-c}
+图
+\includegraphics[totalheight=2\ccwd,angle=90]{example-image-c}
+片
+\reflectbox{\includegraphics[totalheight=2\ccwd]{example-image-c}}
+。
+\end{vertlst}
+或
+\begin{vertlst}
+% 行间图片
+行间 \\
+\includegraphics[scale=.5]{example-image} \\
+图片。
+\end{vertlst}
+
+\verb+\includegraphics+ 有不少可选参数。常用的可能有
+\begin{description}
+  \item[angle] 指定旋转角度 ($^\circ$)。
+  \item[width] 指定图片宽度。例如， width=5cm; 或者， width=.5\verb+\linewidth+ 等。
+  \item[height] 指定图片高度。例如， height=.35\verb+\textheight+.
+  \item[totalheight] 制定图片全高。当图片旋转时，效果不同于 height.
+  \item[scale] 放缩。如 scale=.5 表示缩小为 0.5 倍。 
+  \item[trim] 选定矩形区域。例如 trim = 1 2 3 4 选定图片区域为距左部 1bp, 距下部 2bp, 距右部 3bp, 距上部 4bp 的矩形区域。 可自行指定单位。
+  \item[clip] 按选定的区域裁减。
+  \item[keepaspectratio] 保持长宽比例。可设置为 true 或 false. 
+  \item[page] 指定插入的 PDF 页面。 
+\end{description}
+如果在导言区添加
+\begin{texlst}
+\graphicspath{{Demos/}{Images/}}
+\end{texlst}
+则将在插入图片时在上述两个文件夹下搜索图片（注意 \verb+/+ 不可缺少）。
+
+
+\subsection{\cnen[figure]{浮动体环境}}
+在装有 LaTeX Workshop 插件的 VS Code 编辑器中，键入 `figure' 可通过回车键得到如下自动补全的模板内容：
+\begin{texlst}
+\begin{figure}[]
+  \centering
+  
+  \caption{}
+  \label{}
+\end{figure}
+\end{texlst}
+在第 3 行添加
+\begin{texlst}
+\includegraphics[]{path/to/figure}
+\end{texlst}
+则可插入指定的图片。
+
+以下是对上述代码的解释：
+\begin{itemize}
+  \item \verb+\begin{figure}+ 和 \verb+\end{figure}+ 是一个 figure 浮动体环境。其后的 \verb+[]+ 中为位置参数：h，t，b，p，!，H 或它们的组合（H 依赖于宏包 float 且将覆盖其余选项）。位置参数已在“盒子、浮动体”的主题报告中介绍。值得一提的是，\LaTeX 中 \verb+[]+ 内的参数均为可选参数。
+  \item \verb+\centering+ 指定水平中心对齐。也可使用 center 环境 \\
+    \begin{texlst}[numbers=none]
+    \begin{center}
+    ...
+    \end{center}
+    \end{texlst}
+    代替。需要注意二者的作用域不同。
+  \item \verb+\includegraphics[]{}+ 插入图片（支持格式 .png, .jpeg, .pdf, .eps, .ps, .tiff 等）
+  \item \verb+\caption+ 添加图注。
+  \item \verb+\label{}+ 添加标签。可在文中通过 \verb+\ref{}+ 引用。需注意，\verb+\label{}+ 必须出现在 \verb+\caption{}+ 后。
+\end{itemize}
+
+此外，还可以通过 float 宏包给图片添加边框。
+\texinputlst{Demos/demo-boxed.tex}
+效果如图 \ref{demo-boxed}.
+\begin{figure}[]
+  \centering
+  \includegraphics[trim=4.6cm 11cm 4.6cm 11cm, clip]{demo-boxed}
+  \caption{demo-boxed}
+  \label{demo-boxed}
+\end{figure}

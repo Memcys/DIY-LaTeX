@@ -1,0 +1,29 @@
+在浮动体环境中，添加 \verb+\caption{}+ 即得到标注。
+
+\texinputlst{Demos/demo-caption.tex}
+\begin{figure}[]
+  \centering
+  \includegraphics[trim=7.5cm 3.7cm 7.5cm 4.2cm, clip]{demo-caption}
+  \caption{图表的标柱示例}
+  \label{demo-caption}
+\end{figure}
+\texinputlst{Demos/demo-sidecap.tex}
+\captionsetup[figure]{name=边注图}
+\begin{figure}[]
+  \centering
+  \includegraphics[trim=6.8cm 12.5cm 6.8cm 9.5cm, clip]{demo-sidecap}
+  \caption{sidecap 示例}
+  \label{demo-sidecap}
+\end{figure}
+\captionsetup[figure]{name=图}
+
+% \subsection{标注样式}
+\href{http://www.ctan.org/pkg/caption}{caption 宏包} \cite{caption} 提供了标注样式的修改命令。
+\begin{texlst}[numbers=none]
+\usepackage{caption}
+\captionsetup[figure]{name=边注图}
+\end{texlst}
+修改标号样式：
+\begin{texlst}[numbers=none]
+\renewcommand{\thefigure}{\arabic{section}.\roman{figure}}
+\end{texlst}

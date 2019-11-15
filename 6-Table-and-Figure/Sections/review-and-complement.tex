@@ -1,0 +1,40 @@
+\subsection{\cnen[Indentation]{缩进}}
+\verb+\indent+ 表示段落缩进；\verb+\noindent+ 表示取消段落缩进。
+
+\subsection{\cnen[Floats]{浮动体}}
+除了 ``table'' 和 ``figure'' 两种默认的浮动体，\LaTeX 还支持自定义浮动体。\cite{wiki-floats} 中\href{https://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions\#Floats}{Floats} 一节中写道：
+\begin{quote}
+  Floats are there to deal with the problem of the object that won't fit on the present page, and to help when you really don't want the object here just now. 
+\end{quote}
+
+报错信息
+\begin{bashlst}
+! LaTeX Error: Too many unprocessed floats.
+\end{bashlst}
+表示待放置的浮动体数量超过了上限（默认上限为 18 个）。宏包 morefloats 可以提升该上限。浮动体在每页中的数量、在页面部分的占比也受限制。可以通过下列命令修改默认值：
+\begin{texlst}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.7}
+\end{texlst}
+具体请参见 \cite{placement} 或其他资料。
+
+\subsection{\cnen[Bibliography]{参考文献}}
+我个人只用 biblatex 宏包并结合 biber 编译工具。用法示例如下：
+\begin{texlst}
+% Preamble
+\usepackage[]{biblatex}
+\addbibresource{bib-filename.bib}
+
+% Bibliography in the document
+\printbibliography[]
+\end{texlst}
+编译时，根据提示，需使用 biber （或 bibtex）编译。当然，latexmk 工具可以自动完成相应编译。
+\begin{bashlst}
+biber tex-filename
+# or bibtex tex-filename
+\end{bashlst}

@@ -1,0 +1,24 @@
+\ProvidesPackage{myfloatpkgs}
+
+% For figures
+\RequirePackage{graphicx}
+\RequirePackage{wrapfig}
+\RequirePackage{pinlabel}
+
+\graphicspath{{Demos/}}
+
+
+% For tables
+\RequirePackage{dcolumn}
+\RequirePackage{multirow}
+\RequirePackage{booktabs}
+
+
+% For captions
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{pdflscape}
+
+% For figures in multiple parts. Provided by the package caption
+\DeclareCaptionLabelFormat{cont}{#1~#2\alph{ContinuedFloat}}
+\captionsetup[ContinuedFloat]{labelformat=cont}

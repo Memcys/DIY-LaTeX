@@ -1,0 +1,23 @@
+参考 \cite{wiki:float} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions\#Keeping\_floats\_in\_their\_place}{Keeping floats in their place} 一节。
+
+\begin{itemize}
+  \item\label{FloatBarrier} placeins 宏包提供的 \verb+\FloatBarrier+ 阻止浮动体越过其所在位置。
+  \item\label{endfloat} endfloat 宏包将所有浮动体放置在文末。
+  \item caption 宏包提供命令 \verb+\captionof{type}{caption content}+, 为不在浮动体环境中的对象提供标注。
+\end{itemize}
+\begin{sidelst}
+请见图 \ref{captionof}.
+
+\includegraphics[width=\linewidth]{example-image}
+\captionof{figure}{captionof 示例}
+\label{captionof}
+\end{sidelst}
+
+关于图表浮动问题的讨论有很多，比如 \url{https://www.latex-project.org/publications/2014-FMi-TUB-tb111mitt-float-placement.pdf}, \url{https://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat}, \url{https://tex.stackexchange.com/questions/8625/force-figure-placement-in-text}, \cite{placement}. 被提出的方案有
+\begin{itemize}
+  \item 放弃浮动体
+  \item 使用 \verb+\clearpage+ 强制插入当前待放置的浮动体（类似地有 \verb+\FloatBarrier+ 等， 见 \ref{FloatBarrier} \ref{endfloat}）
+  \item 使用 float 宏包提供的 H 位置选项禁止浮动
+  \item 任其自由浮动
+\end{itemize}
+我个人倾向于文档编辑中“任其自由浮动”，必要时“放弃浮动体”；还可以利用 \verb+\captionof{}{}+ 保证能够被引用 (\verb+\ref{}+).
