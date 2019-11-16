@@ -1,0 +1,13 @@
+在 \LaTeX 中以绝对位置放置图片是可能的。一种可行的方法是通过 textpos 宏包。虽然它名字上是对 `text' 的位置控制，但是它也可以无差别地对待\emph{非浮动体}的图表等。
+
+\begin{vertlst}
+\zhlipsum[2][name=nanshanjing]
+\begin{textblock}{200}[0,.9](10,240)
+\includegraphics[width=2cm]{example-image}
+\end{textblock}
+\zhlipsum[3][name=nanshanjing]
+\end{vertlst}
+
+可以注意到，由于使用了绝对位置，该 textblock 块是可以覆盖文本的。本示例参考了 \cite{stackexchange-abspos}\todo{很抱歉，我看不懂 textpos 宏包文档}.
+
+另一种可能的绝对位置控制方式是使用 Ti\emph{k}Z. 这里不作介绍。

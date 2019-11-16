@@ -4,18 +4,28 @@
 \RequirePackage{zhlipsum}
 \RequirePackage{lettrine}
 \RequirePackage{shapepar}
-% \RequirePackage{biblatex}
+\RequirePackage{biblatex}
+\usepackage[absolute,overlay]{textpos}
+\RequirePackage[backgroundcolor=orange!50]{todonotes}
 \RequirePackage[]{hyperref}
 
-\newcommand{\cnen}[2][]{#2 ~|~ #1}
-\newcommand{\xleftmargin}{0pt}
-\newcommand{\xrightmargin}{0pt}
+\hypersetup{
+  colorlinks,
+  linkcolor=red!75!yellow,
+  citecolor=magenta,
+  runcolor=blue!50!cyan,
+}
 
-% \addbibresource{ref.bib}
-\bibliographystyle{plain}
+\newcommand{\cnen}[2][]{#2 ~|~ #1}
+\newcommand{\xleftmargin}{20pt}
+\newcommand{\xrightmargin}{20pt}
+
+\addbibresource{ref.bib}
 
 \newcommand{\codesize}{\scriptsize}
 \setlength{\parskip}{\baselineskip}
 
 % Title info
 \titlegraphic{\includegraphics[width=.5\linewidth]{../1-Math-Mode-and-AMS/ucaslogo}}
+
+\presetkeys{todonotes}{inline}{}

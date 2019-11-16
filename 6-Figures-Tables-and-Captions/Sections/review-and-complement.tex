@@ -1,7 +1,9 @@
-\subsection{\cnen[Indentation]{缩进}}
+\subsection[缩进和行、段间距]{\cnen[Indentation, Linespread \& Parskip]{缩进和行、段间距}}
 \verb+\indent+ 表示段落缩进；\verb+\noindent+ 表示取消段落缩进。
 
-\subsection{\cnen[Floats]{浮动体}}
+关于行、段间距，可参考 \cite{jianshu,liam}.
+
+\subsection[浮动体]{\cnen[Floats]{浮动体}}
 除了 ``table'' 和 ``figure'' 两种默认的浮动体，\LaTeX 还支持自定义浮动体。\cite{wiki:floats} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions\#Floats}{Floats} 一节中写道：
 \begin{quote}
   Floats are there to deal with the problem of the object that won't fit on the present page, and to help when you really don't want the object here just now. 
@@ -21,9 +23,9 @@
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\floatpagefraction}{0.7}
 \end{texlst}
-具体请参见 \cite{placement} 或其他资料。
+具体请参见 morefloats 宏包文档或 \cite{placement}.
 
-\subsection{\cnen[Bibliography]{参考文献}}
+\subsection[参考文献]{\cnen[Bibliography]{参考文献}}
 我个人只用 biblatex 宏包并结合 biber 编译工具。用法示例如下：
 \begin{texlst}
 % Preamble
@@ -38,3 +40,12 @@
 biber tex-filename
 # or bibtex tex-filename
 \end{bashlst}
+
+\begin{Ex}{参考文献引用}
+请自行完成一个 MWE，引用以下 BibTeX 条目：
+\texinputlst[firstline=17,lastline=23,label={lst:bib}]{ref.bib}
+
+\myhrule
+
+\emph{提示}：把 \ref{lst:bib} 的代码保存成一个 .bib 文件，利用 \verb+\cite+ 在文中引用。根据自己选择的方案，选择合适的编译引擎，多次编译后得到最终文件。
+\end{Ex}

@@ -1,8 +1,10 @@
-\documentclass[]{ctexbeamer}
+\documentclass[final]{ctexbeamer}
 
 \usepackage{myfloatpkgs}
 \usepackage{mymisc-beamer}
 \usepackage{mylsts}
+% \usepackage{syntonly}
+% \syntaxonly
 
 \usetheme{EastLansing}
 \usefonttheme{serif}
@@ -14,17 +16,25 @@
 \subtitle{Figures, Tables and Captions}
 \author[Memcys]{Memcys \\ https://github.com/Memcys/DIY-LaTeX}
 \institute[UCAS]{University of Chinese Academy of Sciences}
+\date{2019-11-17}
 
 \begin{document}
 \titlepage
 
 \setcounter{section}{-1}
 \section{回顾及补充}
-% \input{Sections/review-and-complement.tex}
-% \subsection{\cnen[Indentation]{缩进}}
-% \verb+\indent+ 表示段落缩进；\verb+\noindent+ 表示取消段落缩进。
+\subsection{缩进和行、段间距}
+\begin{frame}[fragile]{缩进和行、段间距}
+\verb+\indent+ 表示段落缩进；\verb+\noindent+ 表示取消段落缩进。
 
-\subsection{\cnen[Floats]{浮动体}}
+关于行、段间距，可参考 \cite{jianshu,liam}. 为调节段间距，本 beamer 文档在导言区使用了
+\begin{texlst}
+\setlength{\parskip}{\baselineskip}
+\end{texlst}
+\end{frame}
+
+
+\subsection{浮动体}
 \begin{frame}{浮动体}
 除了 ``table'' 和 ``figure''，\LaTeX 还支持自定义浮动体。
 
@@ -54,7 +64,7 @@
 \end{frame}
 
 
-\subsection{\cnen[Bibliography]{参考文献}}
+\subsection{参考文献}
 \begin{frame}[fragile]{biblatex + biber}
 我个人常用 biblatex 宏包并结合 biber 编译工具。用法示例如下：
 \begin{texlst}
@@ -72,11 +82,23 @@ biber tex-filename
 \end{bashlst}
 \end{frame}
 
+\begin{frame}[fragile]{练习：参考文献}
+\begin{Ex}{参考文献引用}{bib}
+请自行完成一个 MWE，引用以下 BibTeX 条目：
+\texinputlst[firstline=17,lastline=23,label={lst:bib}]{ref.bib}
 
-\section{\cnen[Figures]{图}}
+\myhrule
+
+\emph{提示}：把 \ref{lst:bib} 的代码保存成一个 .bib 文件，利用 \verb+\cite+ 在文中引用。根据自己选择的方案，选择合适的编译引擎，多次编译后得到最终文件。
+\end{Ex}
+\end{frame}
+
+
+
+\section{图}
 % \input{Sections/figures.tex}
 \subsection{插图}
-\begin{frame}[fragile,allowframebreaks]{行内插图}
+\begin{frame}[fragile]{行内插图}
 正文中通过可以通过如下方式插入图片：
 \begin{vertlst}
 % \usepackage{graphicx} % Provide \includegraphics[]{}
@@ -120,7 +142,7 @@ biber tex-filename
 \end{frame}
 
 
-\subsection{\cnen[figure]{浮动体环境}}
+\subsection{浮动体环境}
 \begin{frame}[fragile]{figure 环境}
 在装有 LaTeX Workshop 插件的 VS Code 编辑器中，键入 `figure' 可通过回车键得到如下自动补全的模板内容：
 \begin{texlst}
@@ -141,17 +163,17 @@ biber tex-filename
 
 \begin{frame}[fragile]
 \begin{itemize}
-  \item \verb+\begin{figure}+ 和 \verb+\end{figure}+ 是一个 figure 浮动体环境。其后的 \verb+[]+ 中为位置参数：h，t，b，p，!，H 或它们的组合（H 依赖于宏包 float 且将覆盖其余选项）。位置参数已在“盒子、浮动体”的主题报告中介绍。值得一提的是，\LaTeX 中 \verb+[]+ 内的参数均为可选参数。
+  \item \verb+\begin{figure}+ 和 \verb+\end{figure}+ 是一个 figure 浮动体环境。其后的 \verb+[]+ 中为位置参数：h，t，b，p，!，H 或它们的组合（H 依赖于宏包 float 且将覆盖其余选项）。
   \item \verb+\centering+ 指定水平中心对齐。也可使用 center 环境 \\
-    \begin{texlst}[numbers=none]
-    \begin{center}
-    ...
-    \end{center}
-    \end{texlst}
+\begin{texlst}[numbers=none]
+\begin{center}
+...
+\end{center}
+\end{texlst}
     代替。需要注意二者的作用域不同。
   \item \verb+\includegraphics[]{}+ 插入图片
   \item \verb+\caption+ 添加图注
-  \item \verb+\label{}+ 添加标签。可通过 \verb+\ref{}+ 引用。\verb+\label{}+ 须在 \verb+\caption{}+ 后
+  \item \verb+\label{}+ 添加标签。通过 \verb+\ref{}+ 引用。\verb+\label{}+ 须在 \verb+\caption{}+ 后
 \end{itemize}
 \end{frame}
 
@@ -173,8 +195,25 @@ biber tex-filename
 \end{frame}
 
 
+\subsection{图表嵌入文段}
+% \input{Sections/wrapping.tex}
+\begin{frame}[fragile]{wrapfig}
+参考 \cite{wiki:floats} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions#Wrapping\_text\_around\_figures}{Wrapping text around figures} 一节。
+\begin{vertlst}
+% \usepackage{wrapfig,ctex}
+\small\zhlipsum[2][name=nanshanjing]
+\begin{wrapfigure}{r}{.4\textwidth}
+  \vspace{-12pt}\centering
+  \includegraphics[width=.3\textwidth,height=\ccwd]{example-image}
+  \caption{图片嵌入文段示例}
+\end{wrapfigure}
+\zhlipsum[3][name=nanshanjing]
+\end{vertlst}
+\end{frame}
 
-\section{\cnen[Tables]{表格}}
+
+
+\section{表格}
 % \input{Sections/tables.tex}
 \subsection{tabular 环境}
 \begin{frame}[fragile]{tabular}
@@ -279,7 +318,7 @@ Monday & 11C & 22C & A clear day with lots of sunshine. \\ \hline
 
 
 \subsection{长表格}
-\begin{frame}[fragile,allowframebreaks]{landscape}
+\begin{frame}[fragile]{landscape}
 有的图表等可能过长或过宽。可缩小字体大小、列间距，横向 (landscape) 放置或跨页放置。
 
 横向放置可使用 landscape 环境。多个宏包 (geometry, lscape, pdflscape) 提供了 landscape 相关选项。甚至可以直接在文档类选项中指定 landscape. 请参见 \cite{texblog-table}.
@@ -297,8 +336,38 @@ Monday & 11C & 22C & A clear day with lots of sunshine. \\ \hline
 宏包 longtable 可以产生跨页的表格。具体请参见其\href{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}{宏包文档} \cite{longtable}.
 \end{frame}
 
+\subsection[CSV to LaTeX tables]{由 CSV 文件生成 \LaTeX 表格}
+\begin{frame}[fragile]{csvsimple}
+CSV 是 Comma Separated Value 的缩写，中文也称“逗号分隔值”。以下参考 \cite{texblog-csv}. 其中讨论了宏包 csvsimple, pgfplotstable. 这里仅以宏包 csvsimple 为例。
 
-\section{\cnen[Captions]{标注}}
+假设我们有一个待插入的 CSV 文件：
+\bashinputlst{Demos/scientists.csv}
+\end{frame}
+
+\begin{frame}[fragile]
+我们可以通过以下代码实现自动插入：
+\begin{sidelst}
+% \usepackage{csvsimple}
+
+\csvautotabular{Demos/scientists.csv}
+\end{sidelst}
+\end{frame}
+
+
+\begin{frame}{插件}
+另外，正如“盒子、浮动体”报告中提到的，也可以通过 \href{https://github.com/krlmlr/Excel2LaTeX}{Excel2LaTeX} （Office Excel 插件）, \href{http://calc2latex.sourceforge.net/}{Calc2LaTeX} （Libre Office Calc 插件）等插件从其他表格数据文件导出 \LaTeX 格式的表格代码。
+\end{frame}
+
+
+\begin{frame}[fragile]{练习：表格}
+\begin{Ex}{实现 \LaTeX 表格}{table}
+请自己实现一个 \LaTeX 表格，无论是手写，从 CSV 导入，还是由其他插件生成。
+\end{Ex}
+\end{frame}
+
+
+
+\section{标注}
 % \input{Sections/floats.tex}
 \begin{frame}[fragile]{caption}
 % 在浮动体环境中，添加 \verb+\caption{}+ 即得到标注。
@@ -356,35 +425,11 @@ Monday & 11C & 22C & A clear day with lots of sunshine. \\ \hline
 \listoffigures
 \listoftables
 \end{texlst}
-分别列出添加了 \verb+\caption{}+ 或 \verb+\captionof{}{}+ 的图表。
+分别列出添加了 \verb+\caption{}+ 或 \verb+\captionof{}{}+ 的图表。效果请见 \href{run:figures-and-tables.pdf#page.16}{figures-and-tables.pdf \S 4.1 图表目录}。
 \end{frame}
 
 
-% \begin{frame}[fragile]
-% \listoftables
-% \listoffigures
-% \end{frame}
-
-
-
-\subsection{图表嵌入文段}
-% \input{Sections/wrapping.tex}
-\begin{frame}[fragile]{wrapfig}
-参考 \cite{wiki:floats} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions\#Wrapping\_text\_around\_figures}{Wrapping text around figures} 一节。
-\begin{vertlst}
-% \usepackage{wrapfig,ctex}
-\small\zhlipsum[2][name=nanshanjing]
-\begin{wrapfigure}{r}{.4\textwidth}
-  \vspace{-12pt}\centering
-  \includegraphics[width=.3\textwidth]{example-image}
-  \caption{图片嵌入文段示例}
-\end{wrapfigure}
-\zhlipsum[3][name=nanshanjing]
-\end{vertlst}
-\end{frame}
-
-
-\subsection{\cnen[Subfloats]{子浮动体}}\label{sec:subfloats}
+\subsection{子浮动体}\label{sec:subfloats}
 % \input{Sections/subfloats.tex}
 \begin{frame}[fragile]{subfigure}
 \href{http://www.ctan.org/pkg/subcaption}{subcaption 宏包} \cite{subcaption} 提高 figure 中的子环境 subfigure.
@@ -480,12 +525,25 @@ Monday & 11C & 22C & A clear day with lots of sunshine. \\ \hline
 关于图表浮动问题的讨论有很多。被提出的方案有
 \begin{itemize}
   \item 放弃浮动体
-  \item 使用 \verb+\clearpage+ 强制插入当前待放置的浮动体（类似地有 \verb+\FloatBarrier+ 等， 见 \ref{FloatBarrier} \ref{endfloat}）
+  \item 使用 \verb+\clearpage+ 强制插入当前待放置的浮动体（类似地有 \verb+\FloatBarrier+ 等， 见 \ref{FloatBarrier}）
   \item 使用 float 宏包提供的 H 位置选项禁止浮动
   \item 任其自由浮动
 \end{itemize}
 我个人倾向于文档编辑中“任其自由浮动”，必要时“放弃浮动体”；还可以利用 \verb+\captionof{}{}+ 保证能够被引用 (\verb+\ref{}+).
 \end{frame}
+
+
+\subsection{放置绝对位置}
+\begin{frame}[fragile]{textpos}
+在 \LaTeX 中以绝对位置放置图片是可能的。一种可行的方法是通过 textpos 宏包。虽然它名字上是对 `text' 的位置控制，但是它也可以无差别地对待\emph{非浮动体}的图表等。效果请见 \href{run:figures-and-tables.pdf#page.20}{figures-and-tables.pdf \S 4.5 放置绝对位置}.
+\end{frame}
+
+\begin{frame}
+可以注意到，由于使用了绝对位置，该 textblock 块是可以覆盖文本的。本示例参考了 \cite{stackexchange-abspos} （很抱歉，我看不懂 textpos 宏包文档）。
+
+另一种可能的绝对位置控制方式是使用 Ti\emph{k}Z. 这里不作介绍。
+\end{frame}
+
 
 
 \section{小技巧}
@@ -543,8 +601,42 @@ I shall but love thee better after death.}
 \end{vertlst}
 \end{frame}
 
-% \printbibliography[title=参考资料]
+
+\subsection{todonotes}
+\begin{frame}[fragile]
+\frametitle{todonotes}
+这里仅举例介绍 todonotes 宏包的基本用法。
+
+其它一些替代宏包有 luatodonotes, easy-todo, fixmetodonotes, todo, fixme.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{vertlst}
+\centering
+相见欢·无言独上西楼 \\
+【南唐】 李煜 \\
+无言独上西楼，月如钩。寂寞梧桐深院，锁清秋。 \\
+剪不断，理还乱，是离愁。别是一般\todo[inline,inlinewidth=1.3cm,noinlinepar,size=\tiny,textcolor=black!70,backgroundcolor=white,bordercolor=white]{后人也常用“番”}滋味，在心头。
+\end{vertlst}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{vertlst}
+\missingfigure[figwidth=8cm,figcolor=magenta!10]{Testing a long text string}
+\end{vertlst}
+\end{frame}
+
+
+\begin{frame}[fragile]{练习：批注}
+\begin{Ex}{\LaTeX 批注}{todonotes}
+请使用 todonotes 宏包的 \verb+todo[]{}+ 命令对一个 \LaTeX 文档做批注。
+\end{Ex}
+\end{frame}
+
+
 \begin{frame}[allowframebreaks]{参考资料}
-\bibliography{ref}
+\printbibliography[heading=none]
 \end{frame}
 \end{document}

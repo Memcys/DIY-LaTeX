@@ -4,7 +4,7 @@ tabular 环境是我常用的表格环境。它本身不是浮动体。示例如
 \begin{tabular}{|r|c|l|}
 \cline{1-1} \cline{3-3}
 1 & & 321 \\ \hline
-12 & 2 \\[.5cm] \hline
+12 & 2 \\ \hline
 123 & 123 & 3 \\ \hline
 \end{tabular}
 \end{sidelst}
@@ -91,4 +91,23 @@ Monday & 11C & 22C & A clear day with lots of sunshine. \\ \hline
 \end{table}
 \end{landscape}
 
-宏包 longtable 可以产生跨页的表格。具体请参见其\href{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}{宏包文档} \cite{longtable}.
+宏包 longtable 可以产生跨页的表格。具体请参见其\href{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}{宏包文档} \cite{longtable}. 根据 \cite{wiki:tables} \href{https://en.wikibooks.org/wiki/LaTeX/Tables#The\_tabu\_environment}{Table across several pages} 一小节, tabu 宏包提供的 longtabu 环境也可以跨页。
+
+
+\subsection[CSV to LaTeX tables]{由 CSV 文件生成 \LaTeX 表格}
+CSV 是 Comma Separated Value 的缩写，中文也称“逗号分隔值”。以下参考 \cite{texblog-csv}. 其中讨论了宏包 csvsimple, pgfplotstable. 这里仅以宏包 csvsimple 为例。
+
+假设我们有一个待插入的 CSV 文件：
+\bashinputlst{Demos/scientists.csv}
+我们可以通过以下代码实现自动插入：
+\begin{sidelst}
+% \usepackage{csvsimple}
+
+\csvautotabular{Demos/scientists.csv}
+\end{sidelst}
+
+另外，正如“盒子、浮动体”报告中提到的，也可以通过 \href{https://github.com/krlmlr/Excel2LaTeX}{Excel2LaTeX}\todo[fancyline]{Office Excel 插件}, \href{http://calc2latex.sourceforge.net/}{Calc2LaTeX}\todo{Libre Office Calc 插件} 等插件从其他表格数据文件导出 \LaTeX 格式的表格代码。
+
+\begin{Ex}{实现 \LaTeX 表格}
+请自己实现一个 \LaTeX 表格，无论是手写，从 CSV 导入，还是由其他插件生成。
+\end{Ex}

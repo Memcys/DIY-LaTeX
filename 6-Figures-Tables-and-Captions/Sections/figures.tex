@@ -42,7 +42,7 @@
 则将在插入图片时在上述两个文件夹下搜索图片（注意 \verb+/+ 不可缺少）。
 
 
-\subsection{\cnen[figure]{浮动体环境}}
+\subsection[浮动体环境]{\cnen[figure]{浮动体环境}}
 在装有 LaTeX Workshop 插件的 VS Code 编辑器中，键入 `figure' 可通过回车键得到如下自动补全的模板内容：
 \begin{texlst}
 \begin{figure}[]
@@ -62,11 +62,11 @@
 \begin{itemize}
   \item \verb+\begin{figure}+ 和 \verb+\end{figure}+ 是一个 figure 浮动体环境。其后的 \verb+[]+ 中为位置参数：h，t，b，p，!，H 或它们的组合（H 依赖于宏包 float 且将覆盖其余选项）。位置参数已在“盒子、浮动体”的主题报告中介绍。值得一提的是，\LaTeX 中 \verb+[]+ 内的参数均为可选参数。
   \item \verb+\centering+ 指定水平中心对齐。也可使用 center 环境 \\
-    \begin{texlst}[numbers=none]
-    \begin{center}
-    ...
-    \end{center}
-    \end{texlst}
+\begin{texlst}[numbers=none]
+\begin{center}
+...
+\end{center}
+\end{texlst}
     代替。需要注意二者的作用域不同。
   \item \verb+\includegraphics[]{}+ 插入图片（支持格式 .png, .jpeg, .pdf, .eps, .ps, .tiff 等）
   \item \verb+\caption+ 添加图注。

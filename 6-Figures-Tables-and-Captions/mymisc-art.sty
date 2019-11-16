@@ -5,14 +5,26 @@
 \RequirePackage{lettrine}
 \RequirePackage{shapepar}
 \RequirePackage[top=3cm,bottom=3cm]{geometry}
-% \RequirePackage{biblatex}
-\RequirePackage[colorlinks,citecolor=magenta!50!blue!70]{hyperref}
+\RequirePackage{biblatex}
+\usepackage[absolute,overlay]{textpos}
+\RequirePackage[backgroundcolor=orange!50]{todonotes}
+\RequirePackage{hyperref}
+
+\hypersetup{
+  colorlinks,
+  backref,
+  % urlcolor=blue!50!green,
+  citecolor=magenta,
+  runcolor=blue!50!cyan,
+}
 
 \newcommand{\cnen}[2][]{#2 ~|~ #1}
 \newcommand{\xleftmargin}{1.5cm}
 \newcommand{\xrightmargin}{1.5cm}
+\newcommand{\codesize}{\small}
 
-% \addbibresource{ref.bib}
-\bibliographystyle{plain}
+\addbibresource{ref.bib}
 
-\newcommand{\codesize}{\footnotesize}
+% For textblock environment provided by textpos
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}

@@ -1,0 +1,23 @@
+这里仅举例介绍 todonotes 宏包的基本用法。其它一些替代宏包有 luatodonotes\todo[fancyline]{比 todonotes 更强大，但须通过 lua(la)tex 引擎编译}, easy-todo, fixmetodonotes, todo, fixme.
+
+\begin{vertlst}
+\centering
+相见欢·无言独上西楼 \\
+【南唐】 李煜 \\
+无言独上西楼，月如钩。寂寞梧桐深院，锁清秋。 \\
+剪不断，理还乱，是离愁。别是一般\todo[inline,inlinewidth=1.7cm,noinlinepar,size=\tiny,textcolor=black!70,backgroundcolor=white,bordercolor=white]{后人也常用“番”}滋味，在心头。
+
+\vspace{1cm}
+临江仙 \\
+【北宋】宴几道 \\
+浅浅余寒春半，雪消蕙草初长。烟迷柳岸旧池塘。风吹梅蕊闹，雨细杏花香。 \\
+月堕枝头欢意，从前虚梦高唐\todo[inline,inlinewidth=1.6cm,noinlinepar,size=\tiny,textcolor=black!70,backgroundcolor=white,bordercolor=white]{高唐：楚襄王曾梦遇神女。此喻好事如梦。}，觉来何处放思量。如今不是梦，真个到伊行。
+\end{vertlst}
+
+\begin{vertlst}
+\missingfigure[figwidth=8cm,figcolor=magenta!10]{Testing a long text string}
+\end{vertlst}
+
+\begin{Ex}{\LaTeX 批注}
+请使用 todonotes 宏包的 \verb+todo[]{}+ 命令对一个 \LaTeX 文档做批注。
+\end{Ex}

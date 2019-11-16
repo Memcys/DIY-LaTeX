@@ -13,8 +13,8 @@
 \lstloadlanguages{tex,bash}
 
 % Color definitions
-\definecolor{bgcolor}{rgb}{.95,.95,.92}
-\definecolor{framecolor}{rgb}{.8,.8,.75}
+\definecolor{bgcolor}{rgb}{.92,.95,.85}
+\definecolor{framecolor}{rgb}{.5,.75,.65}
 \definecolor{titlecolor}{named}{white}
 
 % Code listing definitions using lstlisting and lstinputlisting
@@ -120,7 +120,7 @@
   colback=bgcolor,
   colframe=framecolor,
   fonttitle=\bfseries,
-  separator sign={\ $\blacktriangleright$},
+  separator sign={\ $\triangleright$},
   description color=titlecolor,
 }{ex}
 
@@ -130,3 +130,6 @@ colframe=red!75!black,fonttitle=\bfseries,
 colbacktitle=red!85!black,enhanced,
 attach boxed title to top center={yshift=-2mm},
 title=#2,#1}
+
+% Horizontal rule
+\newcommand{\myhrule}{\rule[\parskip]{\textwidth}{.2pt}}

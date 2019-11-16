@@ -14,7 +14,7 @@ Then you can feel free to compile the main .tex files: *figures-and-tables.tex* 
 By virtue of the .latexmkrc file, you can simply type
 
     latexmk
-and then take coffee and have a rest; it took 33 seconds for the first compilation in my Linux machine.
+and then take coffee and have a rest; it took 57.12 seconds for the first compilation in my Linux machine.
 
 #### Clean up
 To keep .pdf files, please type
