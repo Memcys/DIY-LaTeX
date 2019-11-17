@@ -72,6 +72,17 @@ Monday & 11C & 22C & A clear day with lots of sunshine. \\ \hline
 \end{vertlst}
 这里我推荐阅读 \cite{texblog-table}.
 
+使用 table 环境就实现了一个类似 figure 环境的浮动体。如果在 table 中嵌入 tabular 环境，则用法如：
+\begin{texlst}
+\begin{table}
+  \caption{}
+  \label{}
+  \centering
+  \begin{tabular}{}
+    
+  \end{tabular}
+\end{table}
+\end{texlst}
 
 \subsection{长表格}
 有的图表等可能过长或过宽。可以考虑缩小字体大小、列间距，横向 (landscape) 放置或跨页放置。

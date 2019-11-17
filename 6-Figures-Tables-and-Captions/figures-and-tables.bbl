@@ -1,0 +1,396 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{latexproject}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.latex-project.org/publications/2014-FMi-TUB-tb111mitt-float-placement.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.latex-project.org/publications/2014-FMi-TUB-tb111mitt-float-placement.pdf
+      \endverb
+    \endentry
+    \entry{stackexchange-1}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat
+      \endverb
+      \verb{url}
+      \verb https://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat
+      \endverb
+    \endentry
+    \entry{stackexchange-2}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://tex.stackexchange.com/questions/8625/force-figure-placement-in-text
+      \endverb
+      \verb{url}
+      \verb https://tex.stackexchange.com/questions/8625/force-figure-placement-in-text
+      \endverb
+    \endentry
+    \entry{stackexchange-abspos}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \field{urlday}{16}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://tex.stackexchange.com/questions/32661/how-to-locate-figures-with-x-y-specified-location-in-a-presentation
+      \endverb
+      \verb{url}
+      \verb https://tex.stackexchange.com/questions/32661/how-to-locate-figures-with-x-y-specified-location-in-a-presentation
+      \endverb
+    \endentry
+    \entry{longtable}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=3094f4812cc660f7320fd1ab3d3da906}{%
+           family={Carlisle},
+           familyi={C\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{3094f4812cc660f7320fd1ab3d3da906}
+      \strng{fullhash}{3094f4812cc660f7320fd1ab3d3da906}
+      \strng{bibnamehash}{3094f4812cc660f7320fd1ab3d3da906}
+      \strng{authorbibnamehash}{3094f4812cc660f7320fd1ab3d3da906}
+      \strng{authornamehash}{3094f4812cc660f7320fd1ab3d3da906}
+      \strng{authorfullhash}{3094f4812cc660f7320fd1ab3d3da906}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Version: 2019/02/06}
+      \field{title}{The longtable package}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf
+      \endverb
+      \verb{url}
+      \verb http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf
+      \endverb
+    \endentry
+    \entry{liam}{online}{}
+      \name{author}{1}{}{%
+        {{hash=84cb00cd7e0faacfe52d25c811e8b363}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Liam},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{84cb00cd7e0faacfe52d25c811e8b363}
+      \strng{fullhash}{84cb00cd7e0faacfe52d25c811e8b363}
+      \strng{bibnamehash}{84cb00cd7e0faacfe52d25c811e8b363}
+      \strng{authorbibnamehash}{84cb00cd7e0faacfe52d25c811e8b363}
+      \strng{authornamehash}{84cb00cd7e0faacfe52d25c811e8b363}
+      \strng{authorfullhash}{84cb00cd7e0faacfe52d25c811e8b363}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{【LaTeX Tips】关于行距的研究}
+      \field{urlday}{16}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://liam.page/2013/10/17/LaTeX-Linespace/
+      \endverb
+      \verb{url}
+      \verb https://liam.page/2013/10/17/LaTeX-Linespace/
+      \endverb
+    \endentry
+    \entry{placement}{online}{}
+      \name{author}{1}{}{%
+        {{hash=eb1456eaf221901454a1daba9b4e8aa3}{%
+           family={Hyndsight},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{eb1456eaf221901454a1daba9b4e8aa3}
+      \strng{fullhash}{eb1456eaf221901454a1daba9b4e8aa3}
+      \strng{bibnamehash}{eb1456eaf221901454a1daba9b4e8aa3}
+      \strng{authorbibnamehash}{eb1456eaf221901454a1daba9b4e8aa3}
+      \strng{authornamehash}{eb1456eaf221901454a1daba9b4e8aa3}
+      \strng{authorfullhash}{eb1456eaf221901454a1daba9b4e8aa3}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Controlling figure and table placement in LaTeX}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://robjhyndman.com/hyndsight/latex-floats/
+      \endverb
+      \verb{url}
+      \verb https://robjhyndman.com/hyndsight/latex-floats/
+      \endverb
+    \endentry
+    \entry{pinlabel}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=fb03c08e20d0b610189622e766272d52}{%
+           family={ROURKE},
+           familyi={R\bibinitperiod},
+           given={COLIN},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{fb03c08e20d0b610189622e766272d52}
+      \strng{fullhash}{fb03c08e20d0b610189622e766272d52}
+      \strng{bibnamehash}{fb03c08e20d0b610189622e766272d52}
+      \strng{authorbibnamehash}{fb03c08e20d0b610189622e766272d52}
+      \strng{authornamehash}{fb03c08e20d0b610189622e766272d52}
+      \strng{authorfullhash}{fb03c08e20d0b610189622e766272d52}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{pinlabel, A \TeX labelling package}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb http://mirrors.ctan.org/macros/latex/contrib/pinlabel/pinlabdoc.pdf
+      \endverb
+      \verb{url}
+      \verb http://mirrors.ctan.org/macros/latex/contrib/pinlabel/pinlabdoc.pdf
+      \endverb
+    \endentry
+    \entry{caption}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=1f7b4f8fb1312c184175d6339f35e887}{%
+           family={Sommerfeldt},
+           familyi={S\bibinitperiod},
+           given={Axel},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{1f7b4f8fb1312c184175d6339f35e887}
+      \strng{fullhash}{1f7b4f8fb1312c184175d6339f35e887}
+      \strng{bibnamehash}{1f7b4f8fb1312c184175d6339f35e887}
+      \strng{authorbibnamehash}{1f7b4f8fb1312c184175d6339f35e887}
+      \strng{authornamehash}{1f7b4f8fb1312c184175d6339f35e887}
+      \strng{authorfullhash}{1f7b4f8fb1312c184175d6339f35e887}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Version: 2019-09-01}
+      \field{title}{caption 宏包}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ctan.org/pkg/caption
+      \endverb
+      \verb{url}
+      \verb https://www.ctan.org/pkg/caption
+      \endverb
+    \endentry
+    \entry{subcaption}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=1f7b4f8fb1312c184175d6339f35e887}{%
+           family={Sommerfeldt},
+           familyi={S\bibinitperiod},
+           given={Axel},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{1f7b4f8fb1312c184175d6339f35e887}
+      \strng{fullhash}{1f7b4f8fb1312c184175d6339f35e887}
+      \strng{bibnamehash}{1f7b4f8fb1312c184175d6339f35e887}
+      \strng{authorbibnamehash}{1f7b4f8fb1312c184175d6339f35e887}
+      \strng{authornamehash}{1f7b4f8fb1312c184175d6339f35e887}
+      \strng{authorfullhash}{1f7b4f8fb1312c184175d6339f35e887}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Version: 	1.3 2019-08-31}
+      \field{title}{subcaption 宏包}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb http://www.ctan.org/pkg/subcaption
+      \endverb
+      \verb{url}
+      \verb http://www.ctan.org/pkg/subcaption
+      \endverb
+    \endentry
+    \entry{texblog-csv}{online}{}
+      \field{sortinit}{t}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{labeltitlesource}{title}
+      \field{title}{texblog --- Generate LaTeX tables from CSV files (Excel)}
+      \field{urlday}{16}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://texblog.org/2012/05/30/generate-latex-tables-from-csv-files-excel/
+      \endverb
+      \verb{url}
+      \verb https://texblog.org/2012/05/30/generate-latex-tables-from-csv-files-excel/
+      \endverb
+    \endentry
+    \entry{texblog-landscape}{online}{}
+      \field{sortinit}{t}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{labeltitlesource}{title}
+      \field{title}{texblog --- Landscape in Latex}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://texblog.org/2007/11/10/landscape-in-latex/
+      \endverb
+      \verb{url}
+      \verb https://texblog.org/2007/11/10/landscape-in-latex/
+      \endverb
+    \endentry
+    \entry{texblog-table}{online}{}
+      \field{sortinit}{t}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{labeltitlesource}{title}
+      \field{title}{texblog --- Professional and clean tables with LaTeX}
+      \field{urlday}{16}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://texblog.org/2017/02/06/proper-tables-with-latex/
+      \endverb
+      \verb{url}
+      \verb https://texblog.org/2017/02/06/proper-tables-with-latex/
+      \endverb
+    \endentry
+    \entry{wiki:floats}{online}{}
+      \name{author}{1}{}{%
+        {{hash=5886004bd42dfe6ea957dc7e00167fcc}{%
+           family={Wikibooks},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \strng{fullhash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \strng{bibnamehash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \strng{authorbibnamehash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \strng{authornamehash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \strng{authorfullhash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \field{sortinit}{W}
+      \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{LaTeX/Floats, Figures and Captions --- Wikibooks{,} The Free Textbook Project}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikibooks.org/w/index.php?title=LaTeX/Floats,_Figures_and_Captions&oldid=3570319
+      \endverb
+      \verb{url}
+      \verb https://en.wikibooks.org/w/index.php?title=LaTeX/Floats,_Figures_and_Captions&oldid=3570319
+      \endverb
+    \endentry
+    \entry{wiki:tables}{online}{}
+      \name{author}{1}{}{%
+        {{hash=5886004bd42dfe6ea957dc7e00167fcc}{%
+           family={Wikibooks},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \strng{fullhash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \strng{bibnamehash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \strng{authorbibnamehash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \strng{authornamehash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \strng{authorfullhash}{5886004bd42dfe6ea957dc7e00167fcc}
+      \field{sortinit}{W}
+      \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{LaTeX/Tables --- Wikibooks{,} The Free Textbook Project}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikibooks.org/w/index.php?title=LaTeX/Tables\&oldid=3560859
+      \endverb
+      \verb{url}
+      \verb https://en.wikibooks.org/w/index.php?title=LaTeX/Tables%5C&oldid=3560859
+      \endverb
+    \endentry
+    \entry{jianshu}{online}{}
+      \name{author}{1}{}{%
+        {{hash=786e910ff3bec8dbe7526ee8a8c9699b}{%
+           family={刘亚彬\_244c},
+           familyi={刘\bibinitperiod}}}%
+      }
+      \strng{namehash}{786e910ff3bec8dbe7526ee8a8c9699b}
+      \strng{fullhash}{786e910ff3bec8dbe7526ee8a8c9699b}
+      \strng{bibnamehash}{786e910ff3bec8dbe7526ee8a8c9699b}
+      \strng{authorbibnamehash}{786e910ff3bec8dbe7526ee8a8c9699b}
+      \strng{authornamehash}{786e910ff3bec8dbe7526ee8a8c9699b}
+      \strng{authorfullhash}{786e910ff3bec8dbe7526ee8a8c9699b}
+      \field{sortinit}{刘}
+      \field{sortinithash}{f3ff24b163d4496b49484b7a115b76c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{latex 标题、段落及行距}
+      \field{urlday}{16}
+      \field{urlmonth}{11}
+      \field{urlyear}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.jianshu.com/p/d7848f815e5f
+      \endverb
+      \verb{url}
+      \verb https://www.jianshu.com/p/d7848f815e5f
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
