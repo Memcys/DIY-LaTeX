@@ -1,4 +1,7 @@
 !5-BibTeX/*
+
+**.listing
+**.exercise
 */Ignored/*
 *.py
 __*

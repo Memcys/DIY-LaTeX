@@ -8,7 +8,7 @@ tabular 环境是我常用的表格环境。它本身不是浮动体。示例如
 123 & 123 & 3 \\ \hline
 \end{tabular}
 \end{sidelst}
-另有 tabu, tableau 等表格环境。这里不作介绍。
+另有 tabu, tabularx 以及 array 等环境支持各种各样的表格环境。这里不作介绍。
 
 表格环境多且复杂。这里将仅仅列举。希望大家自己参阅更多文档；并且调整代码，根据输出效果能够有所领会。以下主要参考 \cite{wiki:tables} 中 \href{https://en.wikibooks.org/wiki/LaTeX/Tables\#Floating\_with\_table}{Floating with table} 一节。
 \begin{sidelst}
@@ -102,7 +102,7 @@ Monday & 11C & 22C & A clear day with lots of sunshine. \\ \hline
 \end{table}
 \end{landscape}
 
-宏包 longtable 可以产生跨页的表格。具体请参见其\href{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}{宏包文档} \cite{longtable}. 根据 \cite{wiki:tables} \href{https://en.wikibooks.org/wiki/LaTeX/Tables#The\_tabu\_environment}{Table across several pages} 一小节, tabu 宏包提供的 longtabu 环境也可以跨页。
+宏包 longtable 可以产生跨页的表格。具体请参见其\href{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}{宏包文档} \cite{longtable}. 根据 \cite{wiki:tables} \href{https://en.wikibooks.org/wiki/LaTeX/Tables#The\_tabu\_environment}{Table across several pages} 一小节, tabu 宏包提供的 longtabu 环境（依赖于 longtable 宏包）也可以跨页。
 
 
 \subsection[CSV to LaTeX tables]{由 CSV 文件生成 \LaTeX 表格}
