@@ -1,0 +1,13 @@
+{
+    "name": "LaTeX",
+    "build": {
+      "dockerfile": "Dockerfile",
+      "context": "..",
+    },
+  
+  
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+      "James-Yu.latex-workshop"
+    ]
+  }      
