@@ -1,0 +1,83 @@
+% Copyright (C) 2018-2020 Pasquale Claudio Africa and the LaTeX community.
+% A full list of contributors can be found at
+%
+%     https://github.com/Memcys/fud-beamertheme
+% 
+% This file is based on beamerouterthemefocus.sty with several modifications (see lines followed by # !).
+% 
+% beamerthemefocus is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% beamerthemefocus is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with beamerthemefocus. If not, see <http://www.gnu.org/licenses/>.
+
+\mode<presentation>
+
+
+% DEFINE COLORS. ---------------------------------------------------------------
+\definecolor{main}{RGB}{64, 64, 64}
+\definecolor{background}{RGB}{239, 239, 239}
+
+\definecolor{alert}{RGB}{180, 0, 0}
+\definecolor{example}{RGB}{0, 110, 0}
+% ! color of \emph{}
+\definecolor{emph}{RGB}{65, 105, 225}   % RoyalBlue1 in x11names, following http://hexcolor16.com/4876ff
+% ! color similar to UCAS logo
+\definecolor{logo}{RGB}{39, 64, 139} % RoyalBlue4 in x11names, following https://www.color-hex.com/color/27408b
+
+% SET COLORS. ------------------------------------------------------------------
+\setbeamercolor{normal text}{fg=main, bg=background}
+\setbeamercolor{alerted text}{fg=alert}
+\setbeamercolor{example text}{fg=example}
+
+% \setbeamercolor{titlelike}{fg=background, bg=main}
+
+% ! titlepage (upper), section page (upper), and frametitle
+\setbeamercolor{titlelike}{fg=background, bg=main!20!logo}
+\setbeamercolor{frametitle}{parent={titlelike}}
+
+\setbeamercolor{footline}{fg=background, bg=main}
+
+% \setbeamercolor{block title}{bg=main!80!background, fg=background}
+% \setbeamercolor{block body}{bg=main!10!background, fg=main}
+
+% ! block color based on the color of UCAS logo
+\setbeamercolor{block title}{bg=logo!80!background, fg=background}
+\setbeamercolor{block body}{bg=logo!10!background, fg=main}
+
+\setbeamercolor{block title alerted}{bg=alert, fg=background}
+\setbeamercolor{block body alerted}{bg=alert!10!background, fg=main}
+
+\setbeamercolor{block title example}{bg=example, fg=background}
+\setbeamercolor{block body example}{bg=example!10!background, fg=main}
+
+\setbeamercolor{itemize item}{fg=main}
+\setbeamercolor{itemize subitem}{fg=main}
+
+\setbeamercolor{enumerate item}{fg=main!70!black}
+\setbeamercolor{enumerate subitem}{fg=main!70!black}
+
+\setbeamercolor{description item}{fg=main!70!black}
+\setbeamercolor{description subitem}{fg=main!70!black}
+
+\setbeamercolor{caption name}{fg=main}
+
+\setbeamercolor{section in toc}{fg=main}
+\setbeamercolor{subsection in toc}{fg=main}
+\setbeamercolor{section number projected}{bg=main}
+\setbeamercolor{subsection number projected}{bg=main}
+
+\setbeamercolor{bibliography item}{fg=main}
+\setbeamercolor{bibliography entry author}{fg=main!70!black}
+\setbeamercolor{bibliography entry title}{fg=main}
+\setbeamercolor{bibliography entry location}{fg=main}
+\setbeamercolor{bibliography entry note}{fg=main}
+
+\mode<all>
